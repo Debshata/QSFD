@@ -1,0 +1,115 @@
+{
+  "experiment": "qnn_linear_8q_pca",
+  "model": "qnn",
+  "qubits": 8,
+  "features": 8,
+  "feature_strategy": "pca_components",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 35,
+  "logical_total_gates": 103,
+  "logical_single_qubit_gates": 75,
+  "logical_two_qubit_gates": 28,
+  "trainable_parameters": 32,
+  "transpiled_depth": 59,
+  "transpiled_total_gates": 231,
+  "transpiled_two_qubit_gates": 28,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.775699,
+  "roc_auc": 0.9225,
+  "precision": 0.75,
+  "recall": 0.7,
+  "f1": 0.724138,
+  "f2": 0.709459,
+  "balanced_accuracy": 0.8,
+  "brier_score": null,
+  "threshold": 0.44870539263047093,
+  "score_is_probability": false,
+  "training_seconds": 55.946,
+  "inference_ms_per_transaction": 3.5152,
+  "total_seconds": 57.043,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "n_entangling_pairs": 7,
+    "feature_names": [
+      "PC1",
+      "PC2",
+      "PC3",
+      "PC4",
+      "PC5",
+      "PC6",
+      "PC7",
+      "PC8"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.803359,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 59,
+        "transpiled_total_gates": 231,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 121,
+          "sx": 82,
+          "cx": 28
+        }
+      }
+    },
+    "confusion": {
+      "tp": 42,
+      "fp": 14,
+      "tn": 126,
+      "fn": 18
+    },
+    "val_score_mean": 0.38279,
+    "test_score_std": 0.097372
+  }
+}

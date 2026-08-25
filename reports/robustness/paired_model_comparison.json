@@ -1,0 +1,13 @@
+{
+  "metric": "pr_auc",
+  "point_delta": -0.018336,
+  "ci_low": -0.043621,
+  "ci_high": 0.003012,
+  "p_value": 0.097,
+  "significant_at_0.05": false,
+  "n_valid_boot": 2000,
+  "models": {
+    "a": "xgboost",
+    "b": "random_forest"
+  }
+}

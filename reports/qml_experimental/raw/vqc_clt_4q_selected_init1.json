@@ -1,0 +1,97 @@
+{
+  "experiment": "vqc_clt_4q_selected_init1",
+  "model": "clt_vqc",
+  "qubits": 4,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu",
+  "clt_edges": 3,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 21,
+  "logical_total_gates": 47,
+  "logical_single_qubit_gates": 35,
+  "logical_two_qubit_gates": 12,
+  "trainable_parameters": 16,
+  "transpiled_depth": 37,
+  "transpiled_total_gates": 111,
+  "transpiled_two_qubit_gates": 12,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.867996,
+  "roc_auc": 0.886548,
+  "precision": 0.657895,
+  "recall": 0.833333,
+  "f1": 0.735294,
+  "f2": 0.791139,
+  "balanced_accuracy": 0.82381,
+  "brier_score": 0.131001,
+  "threshold": 0.3323602964969792,
+  "score_is_probability": true,
+  "training_seconds": 38.354,
+  "inference_ms_per_transaction": 2.4982,
+  "total_seconds": 39.203,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "n_entangling_pairs": 3,
+    "feature_names": [
+      "V10",
+      "V11",
+      "V12",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.643668,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      }
+    },
+    "confusion": {
+      "tp": 50,
+      "fp": 26,
+      "tn": 114,
+      "fn": 10
+    },
+    "val_score_mean": 0.310696,
+    "test_score_std": 0.164097,
+    "init_seed": 1
+  }
+}

@@ -1,0 +1,1353 @@
+{
+  "experiment": "transpilation_study",
+  "model": "circuit_analysis",
+  "qubits": null,
+  "features": null,
+  "feature_strategy": null,
+  "structure": null,
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": null,
+  "logical_total_gates": null,
+  "logical_single_qubit_gates": null,
+  "logical_two_qubit_gates": null,
+  "trainable_parameters": null,
+  "transpiled_depth": null,
+  "transpiled_total_gates": null,
+  "transpiled_two_qubit_gates": null,
+  "swap_count": null,
+  "train_samples": null,
+  "val_samples": null,
+  "test_samples": null,
+  "row_fingerprint": null,
+  "pr_auc": null,
+  "roc_auc": null,
+  "precision": null,
+  "recall": null,
+  "f1": null,
+  "f2": null,
+  "balanced_accuracy": null,
+  "brier_score": null,
+  "threshold": null,
+  "score_is_probability": null,
+  "training_seconds": null,
+  "inference_ms_per_transaction": null,
+  "total_seconds": null,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "rows": [
+      {
+        "qubits": 4,
+        "structure": "linear",
+        "n_entangling_pairs": 3,
+        "logical_depth": 23,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "linear",
+        "n_entangling_pairs": 3,
+        "logical_depth": 23,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "linear",
+        "n_entangling_pairs": 3,
+        "logical_depth": 23,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "linear",
+        "n_entangling_pairs": 3,
+        "logical_depth": 23,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "circular",
+        "n_entangling_pairs": 4,
+        "logical_depth": 33,
+        "logical_total_gates": 56,
+        "logical_two_qubit_gates": 16,
+        "trainable_parameters": 16,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 56,
+        "transpiled_total_gates": 122,
+        "transpiled_two_qubit_gates": 16,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 64,
+          "sx": 42,
+          "cx": 16
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "circular",
+        "n_entangling_pairs": 4,
+        "logical_depth": 33,
+        "logical_total_gates": 56,
+        "logical_two_qubit_gates": 16,
+        "trainable_parameters": 16,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 78,
+        "transpiled_total_gates": 156,
+        "transpiled_two_qubit_gates": 42,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 72,
+          "sx": 42,
+          "cx": 42
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "circular",
+        "n_entangling_pairs": 4,
+        "logical_depth": 33,
+        "logical_total_gates": 56,
+        "logical_two_qubit_gates": 16,
+        "trainable_parameters": 16,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 56,
+        "transpiled_total_gates": 122,
+        "transpiled_two_qubit_gates": 16,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 64,
+          "sx": 42,
+          "cx": 16
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "circular",
+        "n_entangling_pairs": 4,
+        "logical_depth": 33,
+        "logical_total_gates": 56,
+        "logical_two_qubit_gates": 16,
+        "trainable_parameters": 16,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 56,
+        "transpiled_total_gates": 122,
+        "transpiled_two_qubit_gates": 16,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 64,
+          "sx": 42,
+          "cx": 16
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "full",
+        "n_entangling_pairs": 6,
+        "logical_depth": 39,
+        "logical_total_gates": 74,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 16,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 55,
+        "transpiled_total_gates": 130,
+        "transpiled_two_qubit_gates": 24,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 64,
+          "sx": 40,
+          "cx": 24,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "full",
+        "n_entangling_pairs": 6,
+        "logical_depth": 39,
+        "logical_total_gates": 74,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 16,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 111,
+        "transpiled_total_gates": 173,
+        "transpiled_two_qubit_gates": 57,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 74,
+          "cx": 57,
+          "sx": 42
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "full",
+        "n_entangling_pairs": 6,
+        "logical_depth": 39,
+        "logical_total_gates": 74,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 16,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 78,
+        "transpiled_total_gates": 150,
+        "transpiled_two_qubit_gates": 40,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 69,
+          "sx": 41,
+          "cx": 40
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "full",
+        "n_entangling_pairs": 6,
+        "logical_depth": 39,
+        "logical_total_gates": 74,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 16,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 78,
+        "transpiled_total_gates": 150,
+        "transpiled_two_qubit_gates": 40,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 69,
+          "sx": 41,
+          "cx": 40
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 3,
+        "logical_depth": 21,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 3,
+        "logical_depth": 21,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 3,
+        "logical_depth": 21,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 4,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 3,
+        "logical_depth": 21,
+        "logical_total_gates": 47,
+        "logical_two_qubit_gates": 12,
+        "trainable_parameters": 16,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "linear",
+        "n_entangling_pairs": 5,
+        "logical_depth": 29,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "linear",
+        "n_entangling_pairs": 5,
+        "logical_depth": 29,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "linear",
+        "n_entangling_pairs": 5,
+        "logical_depth": 29,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "linear",
+        "n_entangling_pairs": 5,
+        "logical_depth": 29,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "circular",
+        "n_entangling_pairs": 6,
+        "logical_depth": 47,
+        "logical_total_gates": 84,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 24,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 78,
+        "transpiled_total_gates": 184,
+        "transpiled_two_qubit_gates": 24,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 96,
+          "sx": 64,
+          "cx": 24
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "circular",
+        "n_entangling_pairs": 6,
+        "logical_depth": 47,
+        "logical_total_gates": 84,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 24,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 133,
+        "transpiled_total_gates": 247,
+        "transpiled_two_qubit_gates": 75,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 108,
+          "cx": 75,
+          "sx": 64
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "circular",
+        "n_entangling_pairs": 6,
+        "logical_depth": 47,
+        "logical_total_gates": 84,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 24,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 78,
+        "transpiled_total_gates": 184,
+        "transpiled_two_qubit_gates": 24,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 96,
+          "sx": 64,
+          "cx": 24
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "circular",
+        "n_entangling_pairs": 6,
+        "logical_depth": 47,
+        "logical_total_gates": 84,
+        "logical_two_qubit_gates": 24,
+        "trainable_parameters": 24,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 103,
+        "transpiled_total_gates": 218,
+        "transpiled_two_qubit_gates": 51,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 103,
+          "sx": 64,
+          "cx": 51
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "full",
+        "n_entangling_pairs": 15,
+        "logical_depth": 63,
+        "logical_total_gates": 165,
+        "logical_two_qubit_gates": 60,
+        "trainable_parameters": 24,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 73,
+        "transpiled_total_gates": 219,
+        "transpiled_two_qubit_gates": 60,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 99,
+          "cx": 60,
+          "sx": 58,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "full",
+        "n_entangling_pairs": 15,
+        "logical_depth": 63,
+        "logical_total_gates": 165,
+        "logical_two_qubit_gates": 60,
+        "trainable_parameters": 24,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 204,
+        "transpiled_total_gates": 477,
+        "transpiled_two_qubit_gates": 151,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 202,
+          "cx": 151,
+          "sx": 124
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "full",
+        "n_entangling_pairs": 15,
+        "logical_depth": 63,
+        "logical_total_gates": 165,
+        "logical_two_qubit_gates": 60,
+        "trainable_parameters": 24,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 175,
+        "transpiled_total_gates": 381,
+        "transpiled_two_qubit_gates": 127,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 158,
+          "cx": 127,
+          "sx": 96
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "full",
+        "n_entangling_pairs": 15,
+        "logical_depth": 63,
+        "logical_total_gates": 165,
+        "logical_two_qubit_gates": 60,
+        "trainable_parameters": 24,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 201,
+        "transpiled_total_gates": 407,
+        "transpiled_two_qubit_gates": 131,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 173,
+          "cx": 131,
+          "sx": 102,
+          "x": 1
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 5,
+        "logical_depth": 30,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 49,
+        "transpiled_total_gates": 173,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 91,
+          "sx": 58,
+          "cx": 20,
+          "x": 4
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 5,
+        "logical_depth": 30,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 86,
+        "transpiled_total_gates": 189,
+        "transpiled_two_qubit_gates": 44,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 94,
+          "sx": 51,
+          "cx": 44
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 5,
+        "logical_depth": 30,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 86,
+        "transpiled_total_gates": 189,
+        "transpiled_two_qubit_gates": 44,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 94,
+          "sx": 51,
+          "cx": 44
+        }
+      },
+      {
+        "qubits": 6,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 5,
+        "logical_depth": 30,
+        "logical_total_gates": 75,
+        "logical_two_qubit_gates": 20,
+        "trainable_parameters": 24,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 82,
+        "transpiled_total_gates": 189,
+        "transpiled_two_qubit_gates": 38,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 94,
+          "sx": 54,
+          "cx": 38,
+          "x": 3
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "linear",
+        "n_entangling_pairs": 7,
+        "logical_depth": 35,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 59,
+        "transpiled_total_gates": 231,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 121,
+          "sx": 82,
+          "cx": 28
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "linear",
+        "n_entangling_pairs": 7,
+        "logical_depth": 35,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 59,
+        "transpiled_total_gates": 231,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 121,
+          "sx": 82,
+          "cx": 28
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "linear",
+        "n_entangling_pairs": 7,
+        "logical_depth": 35,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 59,
+        "transpiled_total_gates": 231,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 121,
+          "sx": 82,
+          "cx": 28
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "linear",
+        "n_entangling_pairs": 7,
+        "logical_depth": 35,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 59,
+        "transpiled_total_gates": 231,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 121,
+          "sx": 82,
+          "cx": 28
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "circular",
+        "n_entangling_pairs": 8,
+        "logical_depth": 61,
+        "logical_total_gates": 112,
+        "logical_two_qubit_gates": 32,
+        "trainable_parameters": 32,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 100,
+        "transpiled_total_gates": 246,
+        "transpiled_two_qubit_gates": 32,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 128,
+          "sx": 86,
+          "cx": 32
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "circular",
+        "n_entangling_pairs": 8,
+        "logical_depth": 61,
+        "logical_total_gates": 112,
+        "logical_two_qubit_gates": 32,
+        "trainable_parameters": 32,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 177,
+        "transpiled_total_gates": 331,
+        "transpiled_two_qubit_gates": 101,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 144,
+          "cx": 101,
+          "sx": 86
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "circular",
+        "n_entangling_pairs": 8,
+        "logical_depth": 61,
+        "logical_total_gates": 112,
+        "logical_two_qubit_gates": 32,
+        "trainable_parameters": 32,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 100,
+        "transpiled_total_gates": 246,
+        "transpiled_two_qubit_gates": 32,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 128,
+          "sx": 86,
+          "cx": 32
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "circular",
+        "n_entangling_pairs": 8,
+        "logical_depth": 61,
+        "logical_total_gates": 112,
+        "logical_two_qubit_gates": 32,
+        "trainable_parameters": 32,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 121,
+        "transpiled_total_gates": 286,
+        "transpiled_two_qubit_gates": 62,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 138,
+          "sx": 86,
+          "cx": 62
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "full",
+        "n_entangling_pairs": 28,
+        "logical_depth": 87,
+        "logical_total_gates": 292,
+        "logical_two_qubit_gates": 112,
+        "trainable_parameters": 32,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 93,
+        "transpiled_total_gates": 328,
+        "transpiled_two_qubit_gates": 112,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 138,
+          "cx": 112,
+          "sx": 76,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "full",
+        "n_entangling_pairs": 28,
+        "logical_depth": 87,
+        "logical_total_gates": 292,
+        "logical_two_qubit_gates": 112,
+        "trainable_parameters": 32,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 299,
+        "transpiled_total_gates": 936,
+        "transpiled_two_qubit_gates": 285,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 396,
+          "cx": 285,
+          "sx": 255
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "full",
+        "n_entangling_pairs": 28,
+        "logical_depth": 87,
+        "logical_total_gates": 292,
+        "logical_two_qubit_gates": 112,
+        "trainable_parameters": 32,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 307,
+        "transpiled_total_gates": 778,
+        "transpiled_two_qubit_gates": 310,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "cx": 310,
+          "rz": 296,
+          "sx": 172
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "full",
+        "n_entangling_pairs": 28,
+        "logical_depth": 87,
+        "logical_total_gates": 292,
+        "logical_two_qubit_gates": 112,
+        "trainable_parameters": 32,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 306,
+        "transpiled_total_gates": 600,
+        "transpiled_two_qubit_gates": 233,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 235,
+          "cx": 233,
+          "sx": 131,
+          "x": 1
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 7,
+        "logical_depth": 39,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "full",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 218,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 114,
+          "sx": 74,
+          "cx": 28,
+          "x": 2
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 7,
+        "logical_depth": 39,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 85,
+        "transpiled_total_gates": 259,
+        "transpiled_two_qubit_gates": 70,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 120,
+          "cx": 70,
+          "sx": 69
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 7,
+        "logical_depth": 39,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "ring",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 100,
+        "transpiled_total_gates": 271,
+        "transpiled_two_qubit_gates": 70,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 128,
+          "sx": 73,
+          "cx": 70
+        }
+      },
+      {
+        "qubits": 8,
+        "structure": "chow_liu",
+        "n_entangling_pairs": 7,
+        "logical_depth": 39,
+        "logical_total_gates": 103,
+        "logical_two_qubit_gates": 28,
+        "trainable_parameters": 32,
+        "coupling_map": "heavy_hex_like",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 218,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 114,
+          "sx": 74,
+          "cx": 28,
+          "x": 2
+        }
+      }
+    ]
+  }
+}

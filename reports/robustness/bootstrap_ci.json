@@ -1,0 +1,86 @@
+{
+  "xgboost": {
+    "pr_auc": {
+      "point": 0.800718,
+      "ci_low": 0.713413,
+      "ci_high": 0.877815,
+      "boot_mean": 0.799869,
+      "boot_std": 0.042916,
+      "n_valid_boot": 2000
+    },
+    "roc_auc": {
+      "point": 0.977194,
+      "ci_low": 0.957964,
+      "ci_high": 0.992072,
+      "boot_mean": 0.977416,
+      "boot_std": 0.008768,
+      "n_valid_boot": 2000
+    },
+    "precision": {
+      "point": 0.901639,
+      "ci_low": 0.821906,
+      "ci_high": 0.967226,
+      "boot_mean": 0.899743,
+      "boot_std": 0.037728,
+      "n_valid_boot": 2000
+    },
+    "recall": {
+      "point": 0.743243,
+      "ci_low": 0.638865,
+      "ci_high": 0.836066,
+      "boot_mean": 0.741258,
+      "boot_std": 0.050481,
+      "n_valid_boot": 2000
+    },
+    "f1": {
+      "point": 0.814815,
+      "ci_low": 0.735982,
+      "ci_high": 0.876923,
+      "boot_mean": 0.811694,
+      "boot_std": 0.035941,
+      "n_valid_boot": 2000
+    }
+  },
+  "random_forest": {
+    "pr_auc": {
+      "point": 0.819054,
+      "ci_low": 0.735796,
+      "ci_high": 0.89269,
+      "boot_mean": 0.818268,
+      "boot_std": 0.040983,
+      "n_valid_boot": 2000
+    },
+    "roc_auc": {
+      "point": 0.969152,
+      "ci_low": 0.937395,
+      "ci_high": 0.992346,
+      "boot_mean": 0.968775,
+      "boot_std": 0.014488,
+      "n_valid_boot": 2000
+    },
+    "precision": {
+      "point": 0.903226,
+      "ci_low": 0.82757,
+      "ci_high": 0.967755,
+      "boot_mean": 0.902762,
+      "boot_std": 0.036603,
+      "n_valid_boot": 2000
+    },
+    "recall": {
+      "point": 0.756757,
+      "ci_low": 0.654762,
+      "ci_high": 0.844163,
+      "boot_mean": 0.755273,
+      "boot_std": 0.049291,
+      "n_valid_boot": 2000
+    },
+    "f1": {
+      "point": 0.823529,
+      "ci_low": 0.748294,
+      "ci_high": 0.882889,
+      "boot_mean": 0.821388,
+      "boot_std": 0.034904,
+      "n_valid_boot": 2000
+    }
+  }
+}

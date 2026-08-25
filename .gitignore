@@ -1,0 +1,33 @@
+# Data
+data/raw/
+data/processed/
+*.csv
+*.parquet
+!reports/*.csv
+# data/metadata/ stays trackable: lightweight JSON/CSV/Markdown documentation
+# describing the (git-ignored) raw/processed datasets, not the datasets themselves.
+!data/metadata/*.csv
+# Models
+models/**/*.joblib
+models/**/*.pkl
+models/**/*.npz
+# Logs
+logs/
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+# Secrets
+.env
+kaggle.json
+.kaggle/
+*.key
+*.pem
+secrets*
+.report_build/

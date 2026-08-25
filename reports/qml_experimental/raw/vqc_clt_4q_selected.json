@@ -1,0 +1,96 @@
+{
+  "experiment": "vqc_clt_4q_selected",
+  "model": "clt_vqc",
+  "qubits": 4,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu",
+  "clt_edges": 3,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 21,
+  "logical_total_gates": 47,
+  "logical_single_qubit_gates": 35,
+  "logical_two_qubit_gates": 12,
+  "trainable_parameters": 16,
+  "transpiled_depth": 37,
+  "transpiled_total_gates": 111,
+  "transpiled_two_qubit_gates": 12,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.887524,
+  "roc_auc": 0.924048,
+  "precision": 0.772727,
+  "recall": 0.85,
+  "f1": 0.809524,
+  "f2": 0.833333,
+  "balanced_accuracy": 0.871429,
+  "brier_score": 0.1329,
+  "threshold": 0.28962474250006287,
+  "score_is_probability": true,
+  "training_seconds": 38.802,
+  "inference_ms_per_transaction": 2.5199,
+  "total_seconds": 39.918,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "n_entangling_pairs": 3,
+    "feature_names": [
+      "V10",
+      "V11",
+      "V12",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.625566,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 37,
+        "transpiled_total_gates": 111,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 59,
+          "sx": 38,
+          "cx": 12,
+          "x": 2
+        }
+      }
+    },
+    "confusion": {
+      "tp": 51,
+      "fp": 15,
+      "tn": 125,
+      "fn": 9
+    },
+    "val_score_mean": 0.261173,
+    "test_score_std": 0.145275
+  }
+}

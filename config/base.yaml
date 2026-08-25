@@ -1,0 +1,20 @@
+# Global settings shared by every stage of the fraud-detection pipeline.
+seed: 42
+
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  data_metadata: data/metadata
+  models: models
+  reports: reports
+  figures: reports/figures
+  logs: logs
+
+split:
+  test_size: 0.20
+  val_size: 0.20          # fraction of the post-test-split remainder
+  stratify: true
+
+# Cap used when a dataset is too large to train on comfortably.
+# Sampling is stratified and seeded; set to null to disable.
+max_rows_for_training: 300000

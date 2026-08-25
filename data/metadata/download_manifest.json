@@ -1,0 +1,34 @@
+{
+  "creditcardfraud": {
+    "name": "creditcardfraud",
+    "kaggle_id": "mlg-ulb/creditcardfraud",
+    "ok": true,
+    "root": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\mlg-ulb\\creditcardfraud\\versions\\3",
+    "file": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\mlg-ulb\\creditcardfraud\\versions\\3\\creditcard.csv",
+    "size_mb": 150.83
+  },
+  "fraud_detection_sim": {
+    "name": "fraud_detection_sim",
+    "kaggle_id": "kartik2112/fraud-detection",
+    "ok": true,
+    "root": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\kartik2112\\fraud-detection\\versions\\1",
+    "file": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\kartik2112\\fraud-detection\\versions\\1\\fraudTrain.csv",
+    "size_mb": 351.24
+  },
+  "creditcard_2023": {
+    "name": "creditcard_2023",
+    "kaggle_id": "nelgiriyewithana/credit-card-fraud-detection-dataset-2023",
+    "ok": true,
+    "root": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\nelgiriyewithana\\credit-card-fraud-detection-dataset-2023\\versions\\1",
+    "file": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\nelgiriyewithana\\credit-card-fraud-detection-dataset-2023\\versions\\1\\creditcard_2023.csv",
+    "size_mb": 324.81
+  },
+  "synthetic_cc_fraud": {
+    "name": "synthetic_cc_fraud",
+    "kaggle_id": "praneeth1265/synthetic-credit-card-transactions-fraud-detection",
+    "ok": true,
+    "root": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\praneeth1265\\synthetic-credit-card-transactions-fraud-detection\\versions\\1",
+    "file": "C:\\Users\\debsh\\.cache\\kagglehub\\datasets\\praneeth1265\\synthetic-credit-card-transactions-fraud-detection\\versions\\1\\fraud_dataset_5l.csv",
+    "size_mb": 123.21
+  }
+}

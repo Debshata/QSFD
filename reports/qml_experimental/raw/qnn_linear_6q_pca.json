@@ -1,0 +1,105 @@
+{
+  "experiment": "qnn_linear_6q_pca",
+  "model": "qnn",
+  "qubits": 6,
+  "features": 6,
+  "feature_strategy": "pca_components",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 29,
+  "logical_total_gates": 75,
+  "logical_single_qubit_gates": 55,
+  "logical_two_qubit_gates": 20,
+  "trainable_parameters": 24,
+  "transpiled_depth": 51,
+  "transpiled_total_gates": 169,
+  "transpiled_two_qubit_gates": 20,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.715924,
+  "roc_auc": 0.890238,
+  "precision": 0.595506,
+  "recall": 0.883333,
+  "f1": 0.711409,
+  "f2": 0.805471,
+  "balanced_accuracy": 0.813095,
+  "brier_score": null,
+  "threshold": 0.3450293704206594,
+  "score_is_probability": false,
+  "training_seconds": 38.55,
+  "inference_ms_per_transaction": 2.3573,
+  "total_seconds": 39.299,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n_entangling_pairs": 5,
+    "feature_names": [
+      "PC1",
+      "PC2",
+      "PC3",
+      "PC4",
+      "PC5",
+      "PC6"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.53562,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      }
+    },
+    "confusion": {
+      "tp": 53,
+      "fp": 36,
+      "tn": 104,
+      "fn": 7
+    },
+    "val_score_mean": 0.313711,
+    "test_score_std": 0.147933
+  }
+}

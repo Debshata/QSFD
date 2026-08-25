@@ -1,0 +1,100 @@
+{
+  "dataset": "creditcardfraud",
+  "trained_at": "2026-08-18T07:22:01",
+  "seed": 42,
+  "production_model": "xgboost",
+  "selection": {
+    "weights": {
+      "pr_auc": 0.45,
+      "recall": 0.2,
+      "f2": 0.15,
+      "precision": 0.1,
+      "fpr_penalty": 0.05,
+      "latency": 0.1
+    },
+    "candidates": [
+      {
+        "model": "xgboost",
+        "selection_score": 0.789908,
+        "pr_auc": 0.8007183786183377,
+        "recall": 0.7432432432432432,
+        "precision": 0.9016393442622951,
+        "f2": 0.7703081232492998,
+        "false_positive_rate": 0.00010897400969868686,
+        "single_transaction_ms": 3.052,
+        "latency_quality": 0.7577,
+        "inference_ms_per_sample": 0.00146
+      },
+      {
+        "model": "logistic_regression",
+        "selection_score": 0.749162,
+        "pr_auc": 0.7327794371318237,
+        "recall": 0.6891891891891891,
+        "precision": 0.7727272727272727,
+        "f2": 0.7044198895027625,
+        "false_positive_rate": 0.00027243502424671717,
+        "single_transaction_ms": 0.801,
+        "latency_quality": 1.0,
+        "inference_ms_per_sample": 8e-05
+      },
+      {
+        "model": "random_forest",
+        "selection_score": 0.732885,
+        "pr_auc": 0.8190539780072548,
+        "recall": 0.7567567567567568,
+        "precision": 0.9032258064516129,
+        "f2": 0.7821229050279329,
+        "false_positive_rate": 0.00010897400969868686,
+        "single_transaction_ms": 76.336,
+        "latency_quality": 0.0586,
+        "inference_ms_per_sample": 0.00442
+      }
+    ],
+    "selected": "xgboost"
+  },
+  "saved_models": {
+    "logistic_regression": "D:\\Quantum Secure Fraud Detection System\\models\\classical\\logistic_regression",
+    "random_forest": "D:\\Quantum Secure Fraud Detection System\\models\\classical\\random_forest",
+    "xgboost": "D:\\Quantum Secure Fraud Detection System\\models\\classical\\xgboost",
+    "isolation_forest": "D:\\Quantum Secure Fraud Detection System\\models\\classical\\isolation_forest"
+  },
+  "failed_models": [],
+  "split": {
+    "strategy": "temporal",
+    "duplicates_dropped": 9144,
+    "train": {
+      "rows": 176424,
+      "fraud": 346,
+      "fraud_rate": 0.001961
+    },
+    "val": {
+      "rows": 44106,
+      "fraud": 53,
+      "fraud_rate": 0.001202
+    },
+    "test": {
+      "rows": 55133,
+      "fraud": 74,
+      "fraud_rate": 0.001342
+    }
+  },
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "packages": {
+      "numpy": "2.5.1",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "sklearn": "1.9.0",
+      "xgboost": "3.4.0",
+      "imblearn": "0.14.2",
+      "joblib": "1.5.3",
+      "matplotlib": "3.11.1",
+      "qiskit": "2.5.2",
+      "qiskit_aer": "0.17.2",
+      "qiskit_machine_learning": "0.9.0",
+      "shap": "0.52.0"
+    }
+  }
+}

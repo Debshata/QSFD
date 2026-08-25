@@ -1,0 +1,73 @@
+{
+  "experiment": "qnn_clt_4q_selected_s256seed2",
+  "model": "clt_qnn",
+  "qubits": 4,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu",
+  "clt_edges": 3,
+  "simulator": "aer",
+  "shots": 256,
+  "noise": "none",
+  "logical_depth": 21,
+  "logical_total_gates": 47,
+  "logical_single_qubit_gates": 35,
+  "logical_two_qubit_gates": 12,
+  "trainable_parameters": 16,
+  "transpiled_depth": null,
+  "transpiled_total_gates": null,
+  "transpiled_two_qubit_gates": null,
+  "swap_count": null,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.885644,
+  "roc_auc": 0.916786,
+  "precision": 0.684932,
+  "recall": 0.833333,
+  "f1": 0.75188,
+  "f2": 0.798722,
+  "balanced_accuracy": 0.834524,
+  "brier_score": null,
+  "threshold": 0.2915462733687446,
+  "score_is_probability": false,
+  "training_seconds": 4.137,
+  "inference_ms_per_transaction": 0.285,
+  "total_seconds": 4.423,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "n_entangling_pairs": 3,
+    "feature_names": [
+      "V10",
+      "V11",
+      "V12",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.57791,
+    "confusion": {
+      "tp": 50,
+      "fp": 23,
+      "tn": 117,
+      "fn": 10
+    },
+    "val_score_mean": 0.287287,
+    "test_score_std": 0.156931
+  }
+}

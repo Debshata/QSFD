@@ -1,0 +1,103 @@
+{
+  "experiment": "qsvm_linear_6q_selected",
+  "model": "qsvm",
+  "qubits": 6,
+  "features": 6,
+  "feature_strategy": "original_selected",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 17,
+  "logical_total_gates": 27,
+  "logical_single_qubit_gates": 17,
+  "logical_two_qubit_gates": 10,
+  "trainable_parameters": 6,
+  "transpiled_depth": 19,
+  "transpiled_total_gates": 39,
+  "transpiled_two_qubit_gates": 10,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.94964,
+  "roc_auc": 0.96619,
+  "precision": 0.927273,
+  "recall": 0.85,
+  "f1": 0.886957,
+  "f2": 0.864407,
+  "balanced_accuracy": 0.910714,
+  "brier_score": null,
+  "threshold": -0.0014374376966872493,
+  "score_is_probability": false,
+  "training_seconds": 292.459,
+  "inference_ms_per_transaction": 2131.965,
+  "total_seconds": 956.851,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n_entangling_pairs": 5,
+    "feature_names": [
+      "V4",
+      "V10",
+      "V11",
+      "V12",
+      "V14",
+      "V17"
+    ],
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 19,
+        "transpiled_total_gates": 39,
+        "transpiled_two_qubit_gates": 10,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 23,
+          "cx": 10,
+          "sx": 6
+        }
+      }
+    },
+    "confusion": {
+      "tp": 51,
+      "fp": 4,
+      "tn": 136,
+      "fn": 9
+    },
+    "val_score_mean": -0.597187,
+    "test_score_std": 0.900255
+  }
+}

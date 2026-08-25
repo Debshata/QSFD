@@ -1,0 +1,24 @@
+# Risk engine. Fraud probability and risk level are separate concepts:
+# the probability comes from the model, the risk level is a business mapping.
+
+risk:
+  # Risk score = fraud_probability * 100, rounded to 2dp.
+  score_scale: 100
+
+  # Bands are expressed on the fraud PROBABILITY (0..1), not the score.
+  # low:    p <= low_upper_bound
+  # medium: low_upper_bound < p <= medium_upper_bound
+  # high:   p > medium_upper_bound
+  low_upper_bound: 0.30
+  medium_upper_bound: 0.70
+
+  # When true, any transaction at/above the model's selected decision
+  # threshold is floored at MEDIUM even if it lands in the LOW band.
+  # Prevents a low band from silently overriding a positive prediction.
+  enforce_threshold_floor: true
+
+explainability:
+  top_k: 5
+  # shap | native  -- falls back to native importance if SHAP is unavailable.
+  method: shap
+  shap_background_samples: 100

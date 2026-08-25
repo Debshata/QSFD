@@ -1,0 +1,95 @@
+{
+  "experiment": "qnn_linear_4q_selected",
+  "model": "qnn",
+  "qubits": 4,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 23,
+  "logical_total_gates": 47,
+  "logical_single_qubit_gates": 35,
+  "logical_two_qubit_gates": 12,
+  "trainable_parameters": 16,
+  "transpiled_depth": 43,
+  "transpiled_total_gates": 107,
+  "transpiled_two_qubit_gates": 12,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.719528,
+  "roc_auc": 0.847143,
+  "precision": 0.605263,
+  "recall": 0.766667,
+  "f1": 0.676471,
+  "f2": 0.727848,
+  "balanced_accuracy": 0.77619,
+  "brier_score": null,
+  "threshold": 0.25185084068897506,
+  "score_is_probability": false,
+  "training_seconds": 26.934,
+  "inference_ms_per_transaction": 1.8182,
+  "total_seconds": 33.214,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n_entangling_pairs": 3,
+    "feature_names": [
+      "V10",
+      "V11",
+      "V12",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.513442,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      }
+    },
+    "confusion": {
+      "tp": 46,
+      "fp": 30,
+      "tn": 110,
+      "fn": 14
+    },
+    "val_score_mean": 0.228523,
+    "test_score_std": 0.166524
+  }
+}

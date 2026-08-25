@@ -1,0 +1,536 @@
+[
+  {
+    "model": "qnn",
+    "pipeline": "selected",
+    "qubits": 4,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.638004,
+          "std": 0.038422,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.810516,
+          "std": 0.032505,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.59556,
+          "std": 0.028934,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.677778,
+          "std": 0.09263,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.632622,
+          "std": 0.057546,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 25.317333,
+          "std": 0.593461,
+          "n": 3
+        },
+        "logical_depth": 23,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 43,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "n_entangling_pairs": 3
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.873448,
+          "std": 0.025494,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.915119,
+          "std": 0.014238,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.765687,
+          "std": 0.023886,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.85,
+          "std": 0.02357,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.805321,
+          "std": 0.017387,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 25.448667,
+          "std": 0.554813,
+          "n": 3
+        },
+        "logical_depth": 21,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 37,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "n_entangling_pairs": 3
+      }
+    }
+  },
+  {
+    "model": "vqc",
+    "pipeline": "selected",
+    "qubits": 4,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.628016,
+          "std": 0.047822,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.785238,
+          "std": 0.031908,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.527824,
+          "std": 0.057377,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.677778,
+          "std": 0.145509,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.581741,
+          "std": 0.060847,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 39.88,
+          "std": 0.961666,
+          "n": 3
+        },
+        "logical_depth": 23,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 43,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "n_entangling_pairs": 3
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.827743,
+          "std": 0.030448,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.887659,
+          "std": 0.011012,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.696435,
+          "std": 0.027909,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.822222,
+          "std": 0.028328,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.75334,
+          "std": 0.015311,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 39.003333,
+          "std": 0.50933,
+          "n": 3
+        },
+        "logical_depth": 21,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 37,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "n_entangling_pairs": 3
+      }
+    }
+  },
+  {
+    "model": "qnn",
+    "pipeline": "selected",
+    "qubits": 6,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.762093,
+          "std": 0.101847,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.876071,
+          "std": 0.026527,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.714791,
+          "std": 0.092644,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.822222,
+          "std": 0.061363,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.756796,
+          "std": 0.032886,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 38.119333,
+          "std": 0.490622,
+          "n": 3
+        },
+        "logical_depth": 29,
+        "logical_two_qubit_gates": 20,
+        "transpiled_depth": 51,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "n_entangling_pairs": 5
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.784459,
+          "std": 0.073869,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.887579,
+          "std": 0.025662,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.738298,
+          "std": 0.091441,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.794444,
+          "std": 0.043745,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.759811,
+          "std": 0.041337,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 39.456333,
+          "std": 1.853876,
+          "n": 3
+        },
+        "logical_depth": 30,
+        "logical_two_qubit_gates": 20,
+        "transpiled_depth": 86,
+        "transpiled_two_qubit_gates": 44,
+        "swap_count": 0,
+        "n_entangling_pairs": 5
+      }
+    }
+  },
+  {
+    "model": "vqc",
+    "pipeline": "selected",
+    "qubits": 6,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.711628,
+          "std": 0.082135,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.864603,
+          "std": 0.025127,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.700721,
+          "std": 0.054965,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.827778,
+          "std": 0.015713,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.757558,
+          "std": 0.029403,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 105.071,
+          "std": 1.513175,
+          "n": 3
+        },
+        "logical_depth": 29,
+        "logical_two_qubit_gates": 20,
+        "transpiled_depth": 51,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "n_entangling_pairs": 5
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.813164,
+          "std": 0.040558,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.905913,
+          "std": 0.018499,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.697154,
+          "std": 0.022071,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.85,
+          "std": 0.040825,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.764843,
+          "std": 0.004666,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 101.737333,
+          "std": 0.822088,
+          "n": 3
+        },
+        "logical_depth": 30,
+        "logical_two_qubit_gates": 20,
+        "transpiled_depth": 86,
+        "transpiled_two_qubit_gates": 44,
+        "swap_count": 0,
+        "n_entangling_pairs": 5
+      }
+    }
+  },
+  {
+    "model": "qnn",
+    "pipeline": "selected",
+    "qubits": 8,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.495462,
+          "std": 0.064892,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.772063,
+          "std": 0.054336,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.517488,
+          "std": 0.102337,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.783333,
+          "std": 0.082776,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.609667,
+          "std": 0.043689,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 54.825,
+          "std": 0.601041,
+          "n": 3
+        },
+        "logical_depth": 35,
+        "logical_two_qubit_gates": 28,
+        "transpiled_depth": 59,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "n_entangling_pairs": 7
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.799486,
+          "std": 0.040218,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.883453,
+          "std": 0.035127,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.75006,
+          "std": 0.102198,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.65,
+          "std": 0.08165,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.687973,
+          "std": 0.050914,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 58.205667,
+          "std": 2.644772,
+          "n": 3
+        },
+        "logical_depth": 39,
+        "logical_two_qubit_gates": 28,
+        "transpiled_depth": 85,
+        "transpiled_two_qubit_gates": 70,
+        "swap_count": 0,
+        "n_entangling_pairs": 7
+      }
+    }
+  },
+  {
+    "model": "vqc",
+    "pipeline": "selected",
+    "qubits": 8,
+    "init_seeds": [
+      1,
+      2,
+      3
+    ],
+    "standard_structure": "linear",
+    "arms": {
+      "linear": {
+        "pr_auc": {
+          "mean": 0.548521,
+          "std": 0.048479,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.818651,
+          "std": 0.032224,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.583236,
+          "std": 0.045324,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.816667,
+          "std": 0.082776,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.679758,
+          "std": 0.055815,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 304.389333,
+          "std": 6.035526,
+          "n": 3
+        },
+        "logical_depth": 35,
+        "logical_two_qubit_gates": 28,
+        "transpiled_depth": 59,
+        "transpiled_two_qubit_gates": 28,
+        "swap_count": 0,
+        "n_entangling_pairs": 7
+      },
+      "chow_liu": {
+        "pr_auc": {
+          "mean": 0.757795,
+          "std": 0.10612,
+          "n": 3
+        },
+        "roc_auc": {
+          "mean": 0.88496,
+          "std": 0.04092,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.7371,
+          "std": 0.053726,
+          "n": 3
+        },
+        "recall": {
+          "mean": 0.711111,
+          "std": 0.177604,
+          "n": 3
+        },
+        "f1": {
+          "mean": 0.711925,
+          "std": 0.110444,
+          "n": 3
+        },
+        "training_seconds": {
+          "mean": 304.329,
+          "std": 6.25846,
+          "n": 3
+        },
+        "logical_depth": 39,
+        "logical_two_qubit_gates": 28,
+        "transpiled_depth": 85,
+        "transpiled_two_qubit_gates": 70,
+        "swap_count": 0,
+        "n_entangling_pairs": 7
+      }
+    }
+  }
+]

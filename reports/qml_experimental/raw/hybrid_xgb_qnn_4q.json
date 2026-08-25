@@ -1,0 +1,102 @@
+{
+  "experiment": "hybrid_xgb_qnn_4q",
+  "model": "hybrid_xgb_qnn",
+  "qubits": 4,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 23,
+  "logical_total_gates": 47,
+  "logical_single_qubit_gates": 35,
+  "logical_two_qubit_gates": 12,
+  "trainable_parameters": 16,
+  "transpiled_depth": 43,
+  "transpiled_total_gates": 107,
+  "transpiled_two_qubit_gates": 12,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.902465,
+  "roc_auc": 0.933929,
+  "precision": 0.847458,
+  "recall": 0.833333,
+  "f1": 0.840336,
+  "f2": 0.83612,
+  "balanced_accuracy": 0.884524,
+  "brier_score": 0.078724,
+  "threshold": 0.3964820972475083,
+  "score_is_probability": true,
+  "training_seconds": 28.194,
+  "inference_ms_per_transaction": 1.7111,
+  "total_seconds": 28.795,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 43,
+        "transpiled_total_gates": 107,
+        "transpiled_two_qubit_gates": 12,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 57,
+          "sx": 38,
+          "cx": 12
+        }
+      }
+    },
+    "confusion": {
+      "tp": 50,
+      "fp": 9,
+      "tn": 131,
+      "fn": 10
+    },
+    "ablation": {
+      "classical_only": {
+        "pr_auc": 0.934775,
+        "roc_auc": 0.958452,
+        "precision": 0.890909,
+        "recall": 0.816667,
+        "f1": 0.852174
+      },
+      "quantum_only": {
+        "pr_auc": 0.63364,
+        "roc_auc": 0.812857,
+        "precision": 0.596774,
+        "recall": 0.616667,
+        "f1": 0.606557
+      }
+    },
+    "fusion": {
+      "fusion": "logistic_meta",
+      "components": [
+        "xgboost",
+        "qnn"
+      ],
+      "weights": [
+        3.105081,
+        1.411847
+      ]
+    },
+    "components": [
+      "xgboost",
+      "qnn"
+    ],
+    "fusion_fitted_on": "validation"
+  }
+}

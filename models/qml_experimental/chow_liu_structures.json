@@ -1,0 +1,1400 @@
+{
+  "selected_4": {
+    "subset": {
+      "pipeline": "selected",
+      "n_features": 4,
+      "feature_names": [
+        "V10",
+        "V11",
+        "V12",
+        "V17"
+      ],
+      "interpretable_features": true,
+      "explained_variance_ratio": null,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 4,
+        "n_edges": 3,
+        "root": 0,
+        "feature_names": [
+          "V10",
+          "V11",
+          "V12",
+          "V17"
+        ],
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "edge_weights_nats": [
+          0.575368,
+          0.544572,
+          0.513945
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.575368
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.544572
+          },
+          {
+            "a": "V10",
+            "b": "V17",
+            "mutual_information": 0.513945
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "3": 0,
+          "2": 1
+        },
+        "total_edge_weight": 1.633885,
+        "degree": {
+          "V10": 2,
+          "V11": 2,
+          "V12": 1,
+          "V17": 1
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 4,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            1.760017,
+            2.203467,
+            2.292016,
+            2.32783,
+            2.349629,
+            2.38165,
+            2.427583
+          ],
+          [
+            0.263964,
+            0.365324,
+            0.475892,
+            0.597578,
+            0.700448,
+            0.875071,
+            1.529149
+          ],
+          [
+            1.648392,
+            2.423314,
+            2.675104,
+            2.744919,
+            2.792446,
+            2.854892,
+            2.906079
+          ],
+          [
+            1.556908,
+            2.457721,
+            2.505499,
+            2.529634,
+            2.552544,
+            2.593875,
+            2.631946
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": true
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 4,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "V10": 0,
+        "V11": 1,
+        "V12": 2,
+        "V17": 3
+      },
+      "qubit_to_feature": {
+        "0": "V10",
+        "1": "V11",
+        "2": "V12",
+        "3": "V17"
+      },
+      "entangling_pairs": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "edge_weights_nats": [
+        0.575368,
+        0.544572,
+        0.513945
+      ],
+      "n_entangling_pairs": 3
+    }
+  },
+  "selected_6": {
+    "subset": {
+      "pipeline": "selected",
+      "n_features": 6,
+      "feature_names": [
+        "V4",
+        "V10",
+        "V11",
+        "V12",
+        "V14",
+        "V17"
+      ],
+      "interpretable_features": true,
+      "explained_variance_ratio": null,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 6,
+        "n_edges": 5,
+        "root": 0,
+        "feature_names": [
+          "V4",
+          "V10",
+          "V11",
+          "V12",
+          "V14",
+          "V17"
+        ],
+        "edges": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "edge_weights_nats": [
+          0.575368,
+          0.545147,
+          0.544572,
+          0.513945,
+          0.495804
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.575368
+          },
+          {
+            "a": "V11",
+            "b": "V14",
+            "mutual_information": 0.545147
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.544572
+          },
+          {
+            "a": "V10",
+            "b": "V17",
+            "mutual_information": 0.513945
+          },
+          {
+            "a": "V4",
+            "b": "V10",
+            "mutual_information": 0.495804
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "2": 1,
+          "5": 1,
+          "3": 2,
+          "4": 2
+        },
+        "total_edge_weight": 2.674837,
+        "degree": {
+          "V4": 1,
+          "V10": 3,
+          "V11": 3,
+          "V12": 1,
+          "V14": 1,
+          "V17": 1
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 6,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            0.480746,
+            0.643975,
+            0.759681,
+            0.867204,
+            0.974544,
+            1.191364,
+            1.831238
+          ],
+          [
+            1.760017,
+            2.203467,
+            2.292016,
+            2.32783,
+            2.349629,
+            2.38165,
+            2.427583
+          ],
+          [
+            0.263964,
+            0.365324,
+            0.475892,
+            0.597578,
+            0.700448,
+            0.875071,
+            1.529149
+          ],
+          [
+            1.648392,
+            2.423314,
+            2.675104,
+            2.744919,
+            2.792446,
+            2.854892,
+            2.906079
+          ],
+          [
+            1.749577,
+            2.54643,
+            2.755395,
+            2.826184,
+            2.862089,
+            2.904098,
+            2.961641
+          ],
+          [
+            1.556908,
+            2.457721,
+            2.505499,
+            2.529634,
+            2.552544,
+            2.593875,
+            2.631946
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": true
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 6,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "V4": 0,
+        "V10": 1,
+        "V11": 2,
+        "V12": 3,
+        "V14": 4,
+        "V17": 5
+      },
+      "qubit_to_feature": {
+        "0": "V4",
+        "1": "V10",
+        "2": "V11",
+        "3": "V12",
+        "4": "V14",
+        "5": "V17"
+      },
+      "entangling_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "edge_weights_nats": [
+        0.575368,
+        0.545147,
+        0.544572,
+        0.513945,
+        0.495804
+      ],
+      "n_entangling_pairs": 5
+    }
+  },
+  "selected_8": {
+    "subset": {
+      "pipeline": "selected",
+      "n_features": 8,
+      "feature_names": [
+        "V3",
+        "V4",
+        "V10",
+        "V11",
+        "V12",
+        "V14",
+        "V17",
+        "V21"
+      ],
+      "interpretable_features": true,
+      "explained_variance_ratio": null,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 8,
+        "n_edges": 7,
+        "root": 0,
+        "feature_names": [
+          "V3",
+          "V4",
+          "V10",
+          "V11",
+          "V12",
+          "V14",
+          "V17",
+          "V21"
+        ],
+        "edges": [
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "edge_weights_nats": [
+          0.575368,
+          0.545147,
+          0.544572,
+          0.513945,
+          0.496958,
+          0.495804,
+          0.361463
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.575368
+          },
+          {
+            "a": "V11",
+            "b": "V14",
+            "mutual_information": 0.545147
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.544572
+          },
+          {
+            "a": "V10",
+            "b": "V17",
+            "mutual_information": 0.513945
+          },
+          {
+            "a": "V3",
+            "b": "V10",
+            "mutual_information": 0.496958
+          },
+          {
+            "a": "V4",
+            "b": "V10",
+            "mutual_information": 0.495804
+          },
+          {
+            "a": "V17",
+            "b": "V21",
+            "mutual_information": 0.361463
+          }
+        ],
+        "parents": {
+          "0": null,
+          "2": 0,
+          "3": 2,
+          "6": 2,
+          "1": 2,
+          "4": 3,
+          "5": 3,
+          "7": 6
+        },
+        "total_edge_weight": 3.533257,
+        "degree": {
+          "V3": 1,
+          "V4": 1,
+          "V10": 4,
+          "V11": 3,
+          "V12": 1,
+          "V14": 1,
+          "V17": 2,
+          "V21": 1
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 8,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            2.176787,
+            2.678564,
+            2.772448,
+            2.829644,
+            2.879088,
+            2.920996,
+            2.966675
+          ],
+          [
+            0.480746,
+            0.643975,
+            0.759681,
+            0.867204,
+            0.974544,
+            1.191364,
+            1.831238
+          ],
+          [
+            1.760017,
+            2.203467,
+            2.292016,
+            2.32783,
+            2.349629,
+            2.38165,
+            2.427583
+          ],
+          [
+            0.263964,
+            0.365324,
+            0.475892,
+            0.597578,
+            0.700448,
+            0.875071,
+            1.529149
+          ],
+          [
+            1.648392,
+            2.423314,
+            2.675104,
+            2.744919,
+            2.792446,
+            2.854892,
+            2.906079
+          ],
+          [
+            1.749577,
+            2.54643,
+            2.755395,
+            2.826184,
+            2.862089,
+            2.904098,
+            2.961641
+          ],
+          [
+            1.556908,
+            2.457721,
+            2.505499,
+            2.529634,
+            2.552544,
+            2.593875,
+            2.631946
+          ],
+          [
+            1.408762,
+            1.419235,
+            1.426515,
+            1.431422,
+            1.438379,
+            1.450524,
+            1.492298
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": true
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 8,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "V3": 0,
+        "V4": 1,
+        "V10": 2,
+        "V11": 3,
+        "V12": 4,
+        "V14": 5,
+        "V17": 6,
+        "V21": 7
+      },
+      "qubit_to_feature": {
+        "0": "V3",
+        "1": "V4",
+        "2": "V10",
+        "3": "V11",
+        "4": "V12",
+        "5": "V14",
+        "6": "V17",
+        "7": "V21"
+      },
+      "entangling_pairs": [
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "edge_weights_nats": [
+        0.575368,
+        0.545147,
+        0.544572,
+        0.513945,
+        0.496958,
+        0.495804,
+        0.361463
+      ],
+      "n_entangling_pairs": 7
+    }
+  },
+  "pca_4": {
+    "subset": {
+      "pipeline": "pca",
+      "n_features": 4,
+      "feature_names": [
+        "PC1",
+        "PC2",
+        "PC3",
+        "PC4"
+      ],
+      "interpretable_features": false,
+      "explained_variance_ratio": 0.8583,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 4,
+        "n_edges": 3,
+        "root": 0,
+        "feature_names": [
+          "PC1",
+          "PC2",
+          "PC3",
+          "PC4"
+        ],
+        "edges": [
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "edge_weights_nats": [
+          0.636386,
+          0.509894,
+          0.443247
+        ],
+        "named_edges": [
+          {
+            "a": "PC3",
+            "b": "PC4",
+            "mutual_information": 0.636386
+          },
+          {
+            "a": "PC1",
+            "b": "PC2",
+            "mutual_information": 0.509894
+          },
+          {
+            "a": "PC1",
+            "b": "PC4",
+            "mutual_information": 0.443247
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "3": 0,
+          "2": 3
+        },
+        "total_edge_weight": 1.589527,
+        "degree": {
+          "PC1": 2,
+          "PC2": 1,
+          "PC3": 1,
+          "PC4": 2
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 4,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            1.90159,
+            3.115709,
+            3.121201,
+            3.123722,
+            3.125914,
+            3.127858,
+            3.129615
+          ],
+          [
+            2.52536,
+            2.53395,
+            2.537792,
+            2.539678,
+            2.543159,
+            2.554079,
+            2.692684
+          ],
+          [
+            0.322244,
+            0.337679,
+            0.342934,
+            0.344992,
+            0.347871,
+            0.35536,
+            0.387549
+          ],
+          [
+            1.357406,
+            1.52855,
+            1.590231,
+            1.616598,
+            1.635728,
+            1.663971,
+            1.735118
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": false
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 4,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "PC1": 0,
+        "PC2": 1,
+        "PC3": 2,
+        "PC4": 3
+      },
+      "qubit_to_feature": {
+        "0": "PC1",
+        "1": "PC2",
+        "2": "PC3",
+        "3": "PC4"
+      },
+      "entangling_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "edge_weights_nats": [
+        0.636386,
+        0.509894,
+        0.443247
+      ],
+      "n_entangling_pairs": 3
+    }
+  },
+  "pca_6": {
+    "subset": {
+      "pipeline": "pca",
+      "n_features": 6,
+      "feature_names": [
+        "PC1",
+        "PC2",
+        "PC3",
+        "PC4",
+        "PC5",
+        "PC6"
+      ],
+      "interpretable_features": false,
+      "explained_variance_ratio": 0.9112,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 6,
+        "n_edges": 5,
+        "root": 0,
+        "feature_names": [
+          "PC1",
+          "PC2",
+          "PC3",
+          "PC4",
+          "PC5",
+          "PC6"
+        ],
+        "edges": [
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        "edge_weights_nats": [
+          0.636386,
+          0.509894,
+          0.482274,
+          0.443247,
+          0.372001
+        ],
+        "named_edges": [
+          {
+            "a": "PC3",
+            "b": "PC4",
+            "mutual_information": 0.636386
+          },
+          {
+            "a": "PC1",
+            "b": "PC2",
+            "mutual_information": 0.509894
+          },
+          {
+            "a": "PC4",
+            "b": "PC5",
+            "mutual_information": 0.482274
+          },
+          {
+            "a": "PC1",
+            "b": "PC4",
+            "mutual_information": 0.443247
+          },
+          {
+            "a": "PC2",
+            "b": "PC6",
+            "mutual_information": 0.372001
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "3": 0,
+          "5": 1,
+          "2": 3,
+          "4": 3
+        },
+        "total_edge_weight": 2.443802,
+        "degree": {
+          "PC1": 2,
+          "PC2": 2,
+          "PC3": 1,
+          "PC4": 3,
+          "PC5": 1,
+          "PC6": 1
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 6,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            1.90159,
+            3.115709,
+            3.121201,
+            3.123722,
+            3.125914,
+            3.127858,
+            3.129615
+          ],
+          [
+            2.52536,
+            2.53395,
+            2.537792,
+            2.539678,
+            2.543159,
+            2.554079,
+            2.692684
+          ],
+          [
+            0.322244,
+            0.337679,
+            0.342934,
+            0.344992,
+            0.347871,
+            0.35536,
+            0.387549
+          ],
+          [
+            1.357406,
+            1.52855,
+            1.590231,
+            1.616598,
+            1.635728,
+            1.663971,
+            1.735118
+          ],
+          [
+            1.847201,
+            1.984143,
+            2.002775,
+            2.021996,
+            2.036517,
+            2.081425,
+            2.16333
+          ],
+          [
+            2.791151,
+            2.826917,
+            2.838271,
+            2.848639,
+            2.856572,
+            2.867115,
+            2.924308
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": false
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 6,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "PC1": 0,
+        "PC2": 1,
+        "PC3": 2,
+        "PC4": 3,
+        "PC5": 4,
+        "PC6": 5
+      },
+      "qubit_to_feature": {
+        "0": "PC1",
+        "1": "PC2",
+        "2": "PC3",
+        "3": "PC4",
+        "4": "PC5",
+        "5": "PC6"
+      },
+      "entangling_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "edge_weights_nats": [
+        0.636386,
+        0.509894,
+        0.482274,
+        0.443247,
+        0.372001
+      ],
+      "n_entangling_pairs": 5
+    }
+  },
+  "pca_8": {
+    "subset": {
+      "pipeline": "pca",
+      "n_features": 8,
+      "feature_names": [
+        "PC1",
+        "PC2",
+        "PC3",
+        "PC4",
+        "PC5",
+        "PC6",
+        "PC7",
+        "PC8"
+      ],
+      "interpretable_features": false,
+      "explained_variance_ratio": 0.9316,
+      "train_samples": 250,
+      "val_samples": 100,
+      "test_samples": 200,
+      "train_fraud": 75,
+      "val_fraud": 30,
+      "test_fraud": 60,
+      "row_fingerprint": "2da40ffb169cd76b"
+    },
+    "structure": {
+      "tree": {
+        "n_nodes": 8,
+        "n_edges": 7,
+        "root": 0,
+        "feature_names": [
+          "PC1",
+          "PC2",
+          "PC3",
+          "PC4",
+          "PC5",
+          "PC6",
+          "PC7",
+          "PC8"
+        ],
+        "edges": [
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "edge_weights_nats": [
+          0.636386,
+          0.509894,
+          0.482274,
+          0.443247,
+          0.372001,
+          0.358733,
+          0.339829
+        ],
+        "named_edges": [
+          {
+            "a": "PC3",
+            "b": "PC4",
+            "mutual_information": 0.636386
+          },
+          {
+            "a": "PC1",
+            "b": "PC2",
+            "mutual_information": 0.509894
+          },
+          {
+            "a": "PC4",
+            "b": "PC5",
+            "mutual_information": 0.482274
+          },
+          {
+            "a": "PC1",
+            "b": "PC4",
+            "mutual_information": 0.443247
+          },
+          {
+            "a": "PC2",
+            "b": "PC6",
+            "mutual_information": 0.372001
+          },
+          {
+            "a": "PC3",
+            "b": "PC8",
+            "mutual_information": 0.358733
+          },
+          {
+            "a": "PC7",
+            "b": "PC8",
+            "mutual_information": 0.339829
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "3": 0,
+          "5": 1,
+          "2": 3,
+          "4": 3,
+          "7": 2,
+          "6": 7
+        },
+        "total_edge_weight": 3.142364,
+        "degree": {
+          "PC1": 2,
+          "PC2": 2,
+          "PC3": 2,
+          "PC4": 3,
+          "PC5": 1,
+          "PC6": 1,
+          "PC7": 1,
+          "PC8": 2
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 8,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            1.90159,
+            3.115709,
+            3.121201,
+            3.123722,
+            3.125914,
+            3.127858,
+            3.129615
+          ],
+          [
+            2.52536,
+            2.53395,
+            2.537792,
+            2.539678,
+            2.543159,
+            2.554079,
+            2.692684
+          ],
+          [
+            0.322244,
+            0.337679,
+            0.342934,
+            0.344992,
+            0.347871,
+            0.35536,
+            0.387549
+          ],
+          [
+            1.357406,
+            1.52855,
+            1.590231,
+            1.616598,
+            1.635728,
+            1.663971,
+            1.735118
+          ],
+          [
+            1.847201,
+            1.984143,
+            2.002775,
+            2.021996,
+            2.036517,
+            2.081425,
+            2.16333
+          ],
+          [
+            2.791151,
+            2.826917,
+            2.838271,
+            2.848639,
+            2.856572,
+            2.867115,
+            2.924308
+          ],
+          [
+            1.653144,
+            1.945543,
+            2.037022,
+            2.096978,
+            2.144974,
+            2.18888,
+            2.248859
+          ],
+          [
+            0.982156,
+            1.177492,
+            1.255507,
+            1.309689,
+            1.364551,
+            1.438783,
+            1.688068
+          ]
+        ]
+      },
+      "mi_estimator": "plug_in",
+      "interpretable_features": false
+    },
+    "qubit_mapping": {
+      "structure": "chow_liu",
+      "n_qubits": 8,
+      "entangling_gate": "cz",
+      "feature_to_qubit": {
+        "PC1": 0,
+        "PC2": 1,
+        "PC3": 2,
+        "PC4": 3,
+        "PC5": 4,
+        "PC6": 5,
+        "PC7": 6,
+        "PC8": 7
+      },
+      "qubit_to_feature": {
+        "0": "PC1",
+        "1": "PC2",
+        "2": "PC3",
+        "3": "PC4",
+        "4": "PC5",
+        "5": "PC6",
+        "6": "PC7",
+        "7": "PC8"
+      },
+      "entangling_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "edge_weights_nats": [
+        0.636386,
+        0.509894,
+        0.482274,
+        0.443247,
+        0.372001,
+        0.358733,
+        0.339829
+      ],
+      "n_entangling_pairs": 7
+    }
+  }
+}

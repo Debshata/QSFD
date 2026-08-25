@@ -1,0 +1,116 @@
+{
+  "experiment": "vqc_clt_8q_selected_init1",
+  "model": "clt_vqc",
+  "qubits": 8,
+  "features": 8,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu",
+  "clt_edges": 7,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 39,
+  "logical_total_gates": 103,
+  "logical_single_qubit_gates": 75,
+  "logical_two_qubit_gates": 28,
+  "trainable_parameters": 32,
+  "transpiled_depth": 85,
+  "transpiled_total_gates": 259,
+  "transpiled_two_qubit_gates": 70,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.637151,
+  "roc_auc": 0.848095,
+  "precision": 0.736842,
+  "recall": 0.466667,
+  "f1": 0.571429,
+  "f2": 0.503597,
+  "balanced_accuracy": 0.697619,
+  "brier_score": 0.201501,
+  "threshold": 0.492929372430927,
+  "score_is_probability": true,
+  "training_seconds": 308.651,
+  "inference_ms_per_transaction": 22.3248,
+  "total_seconds": 315.242,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "n_entangling_pairs": 7,
+    "feature_names": [
+      "V3",
+      "V4",
+      "V10",
+      "V11",
+      "V12",
+      "V14",
+      "V17",
+      "V21"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.943514,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 85,
+        "transpiled_total_gates": 259,
+        "transpiled_two_qubit_gates": 70,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 120,
+          "cx": 70,
+          "sx": 69
+        }
+      }
+    },
+    "confusion": {
+      "tp": 28,
+      "fp": 10,
+      "tn": 130,
+      "fn": 32
+    },
+    "val_score_mean": 0.429382,
+    "test_score_std": 0.059494,
+    "init_seed": 1
+  }
+}

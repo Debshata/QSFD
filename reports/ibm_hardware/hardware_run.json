@@ -1,0 +1,124 @@
+{
+  "started_at": "2026-08-25T06:35:02",
+  "auth_channel": "ibm_quantum_platform",
+  "backend_candidates": [
+    {
+      "name": "ibm_fez",
+      "qubits": 156,
+      "pending_jobs": 1
+    },
+    {
+      "name": "ibm_kingston",
+      "qubits": 156,
+      "pending_jobs": 1
+    },
+    {
+      "name": "ibm_marrakesh",
+      "qubits": 156,
+      "pending_jobs": 2871
+    }
+  ],
+  "selected_backend": {
+    "name": "ibm_fez",
+    "num_qubits": 156
+  },
+  "smoke_test": {
+    "job_id": "da6eiuu0ukec7381vff0",
+    "backend": "ibm_fez",
+    "circuit": "bell_state_2q",
+    "shots": 128,
+    "expectation_value": 1.052776,
+    "wall_seconds": 19.76,
+    "ideal_expected": 1.0
+  },
+  "hardware_experiment": {
+    "job_id": "da6ejl46l22c73dm82ng",
+    "backend": "ibm_fez",
+    "shots": 1024,
+    "wall_seconds": 1.22,
+    "candidates": {
+      "clt": {
+        "structure": "chow_liu",
+        "n_qubits": 4,
+        "logical_depth": 21,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 45,
+        "row_indices": [
+          128,
+          151,
+          198,
+          171,
+          86,
+          17
+        ],
+        "true_labels": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hardware_expectation_values": [
+          -0.267404,
+          0.117972,
+          -0.200553,
+          -0.251674,
+          -0.12977,
+          -0.21235
+        ],
+        "simulator_expectation_values": [
+          -0.332693,
+          -0.019968,
+          -0.354057,
+          -0.141743,
+          -0.629545,
+          -0.618322
+        ],
+        "mean_abs_deviation": 0.228735
+      },
+      "generic": {
+        "structure": "linear",
+        "n_qubits": 4,
+        "logical_depth": 23,
+        "logical_two_qubit_gates": 12,
+        "transpiled_depth": 47,
+        "row_indices": [
+          128,
+          151,
+          198,
+          171,
+          86,
+          17
+        ],
+        "true_labels": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hardware_expectation_values": [
+          0.009948,
+          0.011937,
+          0.033822,
+          0.033822,
+          0.013927,
+          0.00199
+        ],
+        "simulator_expectation_values": [
+          -0.291799,
+          -0.40772,
+          -0.401231,
+          -0.283123,
+          -0.65393,
+          -0.361729
+        ],
+        "mean_abs_deviation": 0.417496
+      }
+    }
+  },
+  "status": "ok",
+  "finished_at": "2026-08-25T06:36:26"
+}

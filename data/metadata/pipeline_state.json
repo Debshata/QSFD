@@ -1,0 +1,78 @@
+{
+  "stages": {
+    "download": {
+      "status": "ok",
+      "seconds": 7.91,
+      "fingerprint": "66d9b3e227a96b3d",
+      "finished_at": "2026-08-18T07:20:08"
+    },
+    "profile": {
+      "status": "ok",
+      "seconds": 28.09,
+      "fingerprint": "f11ecc230cb3bb91",
+      "finished_at": "2026-08-18T07:20:36"
+    },
+    "train_classical": {
+      "status": "ok",
+      "seconds": 86.51,
+      "fingerprint": "cb8deb11daf23b3d",
+      "finished_at": "2026-08-18T07:22:03"
+    },
+    "train_qml": {
+      "status": "ok",
+      "seconds": 745.33,
+      "fingerprint": "9be3a81c38eabc63",
+      "finished_at": "2026-08-18T07:34:28"
+    },
+    "smoke_test": {
+      "status": "ok",
+      "seconds": 7.27,
+      "fingerprint": "c15eeea55b947957",
+      "finished_at": "2026-08-18T07:34:36"
+    },
+    "compare": {
+      "status": "ok",
+      "seconds": 0.02,
+      "fingerprint": "7c4b16d38437be06",
+      "finished_at": "2026-08-18T07:34:36"
+    },
+    "tests": {
+      "status": "ok",
+      "seconds": 15.8,
+      "fingerprint": "e3b0c44298fc1c14",
+      "finished_at": "2026-08-18T07:34:51"
+    }
+  },
+  "last_run": {
+    "finished_at": "2026-08-18T07:34:51",
+    "total_seconds": 891.0,
+    "results": {
+      "download": "ok",
+      "profile": "ok",
+      "train_classical": "ok",
+      "train_qml": "ok",
+      "smoke_test": "ok",
+      "compare": "ok",
+      "tests": "ok"
+    },
+    "environment": {
+      "python": "3.14.3",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+      "packages": {
+        "numpy": "2.5.1",
+        "pandas": "3.0.5",
+        "scipy": "1.18.0",
+        "sklearn": "1.9.0",
+        "xgboost": "3.4.0",
+        "imblearn": "0.14.2",
+        "joblib": "1.5.3",
+        "matplotlib": "3.11.1",
+        "qiskit": "2.5.2",
+        "qiskit_aer": "0.17.2",
+        "qiskit_machine_learning": "0.9.0",
+        "shap": "0.52.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "experiment": "clt_classifier_8f_selected",
+  "model": "chow_liu_classifier",
+  "qubits": null,
+  "features": 8,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu_generative",
+  "clt_edges": 7,
+  "simulator": "n/a",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": null,
+  "logical_total_gates": null,
+  "logical_single_qubit_gates": null,
+  "logical_two_qubit_gates": null,
+  "trainable_parameters": null,
+  "transpiled_depth": null,
+  "transpiled_total_gates": null,
+  "transpiled_two_qubit_gates": null,
+  "swap_count": null,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.945845,
+  "roc_auc": 0.958929,
+  "precision": 0.87931,
+  "recall": 0.85,
+  "f1": 0.864407,
+  "f2": 0.855705,
+  "balanced_accuracy": 0.9,
+  "brier_score": 0.056642,
+  "threshold": 0.3088797354826835,
+  "score_is_probability": true,
+  "training_seconds": 0.005,
+  "inference_ms_per_transaction": 0.0015,
+  "total_seconds": 0.122,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "confusion": {
+      "tp": 51,
+      "fp": 7,
+      "tn": 133,
+      "fn": 9
+    },
+    "raw_llr_metrics": {
+      "pr_auc": 0.945845,
+      "roc_auc": 0.958929,
+      "precision": 0.87931,
+      "recall": 0.85,
+      "f1": 0.864407
+    },
+    "raw_llr_threshold": 0.875582,
+    "structure": {
+      "fraud_tree": {
+        "n_nodes": 8,
+        "n_edges": 7,
+        "root": 0,
+        "feature_names": [
+          "V3",
+          "V4",
+          "V10",
+          "V11",
+          "V12",
+          "V14",
+          "V17",
+          "V21"
+        ],
+        "edges": [
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "edge_weights_nats": [
+          0.751348,
+          0.707905,
+          0.673904,
+          0.663013,
+          0.651187,
+          0.491023,
+          0.453394
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.751348
+          },
+          {
+            "a": "V3",
+            "b": "V10",
+            "mutual_information": 0.707905
+          },
+          {
+            "a": "V10",
+            "b": "V17",
+            "mutual_information": 0.673904
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.663013
+          },
+          {
+            "a": "V10",
+            "b": "V14",
+            "mutual_information": 0.651187
+          },
+          {
+            "a": "V4",
+            "b": "V12",
+            "mutual_information": 0.491023
+          },
+          {
+            "a": "V17",
+            "b": "V21",
+            "mutual_information": 0.453394
+          }
+        ],
+        "parents": {
+          "0": null,
+          "2": 0,
+          "6": 2,
+          "3": 2,
+          "5": 2,
+          "7": 6,
+          "4": 3,
+          "1": 4
+        },
+        "total_edge_weight": 4.391773,
+        "degree": {
+          "V3": 1,
+          "V4": 1,
+          "V10": 4,
+          "V11": 2,
+          "V12": 2,
+          "V14": 1,
+          "V17": 2,
+          "V21": 1
+        }
+      },
+      "legitimate_tree": {
+        "n_nodes": 8,
+        "n_edges": 7,
+        "root": 0,
+        "feature_names": [
+          "V3",
+          "V4",
+          "V10",
+          "V11",
+          "V12",
+          "V14",
+          "V17",
+          "V21"
+        ],
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "edge_weights_nats": [
+          0.255373,
+          0.210382,
+          0.196625,
+          0.193721,
+          0.189214,
+          0.180482,
+          0.163078
+        ],
+        "named_edges": [
+          {
+            "a": "V4",
+            "b": "V10",
+            "mutual_information": 0.255373
+          },
+          {
+            "a": "V3",
+            "b": "V14",
+            "mutual_information": 0.210382
+          },
+          {
+            "a": "V4",
+            "b": "V21",
+            "mutual_information": 0.196625
+          },
+          {
+            "a": "V4",
+            "b": "V11",
+            "mutual_information": 0.193721
+          },
+          {
+            "a": "V14",
+            "b": "V17",
+            "mutual_information": 0.189214
+          },
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.180482
+          },
+          {
+            "a": "V14",
+            "b": "V21",
+            "mutual_information": 0.163078
+          }
+        ],
+        "parents": {
+          "0": null,
+          "5": 0,
+          "6": 5,
+          "7": 5,
+          "1": 7,
+          "2": 1,
+          "3": 1,
+          "4": 3
+        },
+        "total_edge_weight": 1.388876,
+        "degree": {
+          "V3": 1,
+          "V4": 3,
+          "V10": 1,
+          "V11": 2,
+          "V12": 1,
+          "V14": 3,
+          "V17": 1,
+          "V21": 2
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 8,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            2.176787,
+            2.678564,
+            2.772448,
+            2.829644,
+            2.879088,
+            2.920996,
+            2.966675
+          ],
+          [
+            0.480746,
+            0.643975,
+            0.759681,
+            0.867204,
+            0.974544,
+            1.191364,
+            1.831238
+          ],
+          [
+            1.760017,
+            2.203467,
+            2.292016,
+            2.32783,
+            2.349629,
+            2.38165,
+            2.427583
+          ],
+          [
+            0.263964,
+            0.365324,
+            0.475892,
+            0.597578,
+            0.700448,
+            0.875071,
+            1.529149
+          ],
+          [
+            1.648392,
+            2.423314,
+            2.675104,
+            2.744919,
+            2.792446,
+            2.854892,
+            2.906079
+          ],
+          [
+            1.749577,
+            2.54643,
+            2.755395,
+            2.826184,
+            2.862089,
+            2.904098,
+            2.961641
+          ],
+          [
+            1.556908,
+            2.457721,
+            2.505499,
+            2.529634,
+            2.552544,
+            2.593875,
+            2.631946
+          ],
+          [
+            1.408762,
+            1.419235,
+            1.426515,
+            1.431422,
+            1.438379,
+            1.450524,
+            1.492298
+          ]
+        ]
+      },
+      "smoothing": 1.0,
+      "mi_estimator": "plug_in",
+      "log_prior_ratio": -0.847298,
+      "calibration": {
+        "attempted": true,
+        "method": "sigmoid",
+        "brier_before": 0.121477,
+        "applied": true,
+        "brier_after": 0.091347
+      }
+    },
+    "feature_names": [
+      "V3",
+      "V4",
+      "V10",
+      "V11",
+      "V12",
+      "V14",
+      "V17",
+      "V21"
+    ]
+  }
+}

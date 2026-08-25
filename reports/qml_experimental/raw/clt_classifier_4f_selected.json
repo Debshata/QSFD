@@ -1,0 +1,243 @@
+{
+  "experiment": "clt_classifier_4f_selected",
+  "model": "chow_liu_classifier",
+  "qubits": null,
+  "features": 4,
+  "feature_strategy": "original_selected",
+  "structure": "chow_liu_generative",
+  "clt_edges": 3,
+  "simulator": "n/a",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": null,
+  "logical_total_gates": null,
+  "logical_single_qubit_gates": null,
+  "logical_two_qubit_gates": null,
+  "trainable_parameters": null,
+  "transpiled_depth": null,
+  "transpiled_total_gates": null,
+  "transpiled_two_qubit_gates": null,
+  "swap_count": null,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.905692,
+  "roc_auc": 0.925,
+  "precision": 0.722222,
+  "recall": 0.866667,
+  "f1": 0.787879,
+  "f2": 0.833333,
+  "balanced_accuracy": 0.861905,
+  "brier_score": 0.081657,
+  "threshold": 0.22852646104319774,
+  "score_is_probability": true,
+  "training_seconds": 0.002,
+  "inference_ms_per_transaction": 0.0011,
+  "total_seconds": 0.113,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "confusion": {
+      "tp": 52,
+      "fp": 20,
+      "tn": 120,
+      "fn": 8
+    },
+    "raw_llr_metrics": {
+      "pr_auc": 0.905692,
+      "roc_auc": 0.925,
+      "precision": 0.722222,
+      "recall": 0.866667,
+      "f1": 0.787879
+    },
+    "raw_llr_threshold": -1.333398,
+    "structure": {
+      "fraud_tree": {
+        "n_nodes": 4,
+        "n_edges": 3,
+        "root": 0,
+        "feature_names": [
+          "V10",
+          "V11",
+          "V12",
+          "V17"
+        ],
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "edge_weights_nats": [
+          0.751348,
+          0.673904,
+          0.663013
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.751348
+          },
+          {
+            "a": "V10",
+            "b": "V17",
+            "mutual_information": 0.673904
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.663013
+          }
+        ],
+        "parents": {
+          "0": null,
+          "3": 0,
+          "1": 0,
+          "2": 1
+        },
+        "total_edge_weight": 2.088265,
+        "degree": {
+          "V10": 2,
+          "V11": 2,
+          "V12": 1,
+          "V17": 1
+        }
+      },
+      "legitimate_tree": {
+        "n_nodes": 4,
+        "n_edges": 3,
+        "root": 0,
+        "feature_names": [
+          "V10",
+          "V11",
+          "V12",
+          "V17"
+        ],
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "edge_weights_nats": [
+          0.180482,
+          0.146496,
+          0.132602
+        ],
+        "named_edges": [
+          {
+            "a": "V11",
+            "b": "V12",
+            "mutual_information": 0.180482
+          },
+          {
+            "a": "V10",
+            "b": "V11",
+            "mutual_information": 0.146496
+          },
+          {
+            "a": "V11",
+            "b": "V17",
+            "mutual_information": 0.132602
+          }
+        ],
+        "parents": {
+          "0": null,
+          "1": 0,
+          "2": 1,
+          "3": 1
+        },
+        "total_edge_weight": 0.45958,
+        "degree": {
+          "V10": 1,
+          "V11": 3,
+          "V12": 1,
+          "V17": 1
+        }
+      },
+      "discretization": {
+        "strategy": "quantile",
+        "n_bins": 8,
+        "n_features": 4,
+        "cardinalities": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "edges": [
+          [
+            1.760017,
+            2.203467,
+            2.292016,
+            2.32783,
+            2.349629,
+            2.38165,
+            2.427583
+          ],
+          [
+            0.263964,
+            0.365324,
+            0.475892,
+            0.597578,
+            0.700448,
+            0.875071,
+            1.529149
+          ],
+          [
+            1.648392,
+            2.423314,
+            2.675104,
+            2.744919,
+            2.792446,
+            2.854892,
+            2.906079
+          ],
+          [
+            1.556908,
+            2.457721,
+            2.505499,
+            2.529634,
+            2.552544,
+            2.593875,
+            2.631946
+          ]
+        ]
+      },
+      "smoothing": 1.0,
+      "mi_estimator": "plug_in",
+      "log_prior_ratio": -0.847298,
+      "calibration": {
+        "attempted": true,
+        "method": "sigmoid",
+        "brier_before": 0.078409,
+        "applied": true,
+        "brier_after": 0.078295
+      }
+    },
+    "feature_names": [
+      "V10",
+      "V11",
+      "V12",
+      "V17"
+    ]
+  }
+}

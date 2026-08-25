@@ -1,0 +1,20 @@
+{
+  "existing_loader_path": {
+    "creditcardfraud": true,
+    "fraud_detection_sim": true,
+    "creditcard_2023": true,
+    "synthetic_cc_fraud": true
+  },
+  "local_raw_copies": {
+    "creditcardfraud": true,
+    "fraud_detection_sim": true,
+    "creditcard_2023": true,
+    "synthetic_cc_fraud": true
+  },
+  "processed_files_consumable": {
+    "creditcardfraud": true,
+    "fraud_detection_sim": true,
+    "creditcard_2023": true,
+    "synthetic_cc_fraud": true
+  }
+}

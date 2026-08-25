@@ -1,0 +1,127 @@
+{
+  "dataset": "creditcardfraud",
+  "trained_at": "2026-08-18T07:34:27",
+  "seed": 42,
+  "subset": {
+    "qml_training_samples": 250,
+    "qml_validation_samples": 100,
+    "qml_test_samples": 200,
+    "qml_features": 4,
+    "reduction_method": "pca",
+    "explained_variance_ratio": 0.8583,
+    "selected_feature_names": null,
+    "train_fraud": 75,
+    "val_fraud": 30,
+    "test_fraud": 60,
+    "train_fraud_ratio": 0.3,
+    "test_fraud_ratio": 0.3
+  },
+  "saved_models": {
+    "qsvm": "D:\\Quantum Secure Fraud Detection System\\models\\qml\\qsvm",
+    "vqc": "D:\\Quantum Secure Fraud Detection System\\models\\qml\\vqc",
+    "qnn": "D:\\Quantum Secure Fraud Detection System\\models\\qml\\qnn"
+  },
+  "failed_models": [],
+  "controlled_baselines": [
+    {
+      "model": "classical_logistic_regression",
+      "ok": true,
+      "test_metrics": {
+        "threshold": 0.294551,
+        "roc_auc": 0.9660714285714285,
+        "pr_auc": 0.9580172498035765,
+        "precision": 0.9423076923076923,
+        "recall": 0.8166666666666667,
+        "f1": 0.875,
+        "f2": 0.839041095890411,
+        "balanced_accuracy": 0.8976190476190475,
+        "mcc": 0.8308149253915943,
+        "accuracy": 0.93,
+        "specificity": 0.9785714285714285,
+        "false_positive_rate": 0.02142857142857143,
+        "false_negative_rate": 0.18333333333333332,
+        "tp": 49,
+        "fp": 3,
+        "tn": 137,
+        "fn": 11,
+        "n_samples": 200,
+        "n_positives": 60,
+        "score_is_probability": true,
+        "brier_score": 0.06108486025211146
+      }
+    },
+    {
+      "model": "classical_svm_rbf",
+      "ok": true,
+      "test_metrics": {
+        "threshold": 0.360943,
+        "roc_auc": 0.9671428571428572,
+        "pr_auc": 0.9601560151862951,
+        "precision": 0.9444444444444444,
+        "recall": 0.85,
+        "f1": 0.8947368421052632,
+        "f2": 0.8673469387755102,
+        "balanced_accuracy": 0.9142857142857143,
+        "mcc": 0.8552563133940304,
+        "accuracy": 0.94,
+        "specificity": 0.9785714285714285,
+        "false_positive_rate": 0.02142857142857143,
+        "false_negative_rate": 0.15,
+        "tp": 51,
+        "fp": 3,
+        "tn": 137,
+        "fn": 9,
+        "n_samples": 200,
+        "n_positives": 60,
+        "score_is_probability": true,
+        "brier_score": 0.0445955902122061
+      }
+    },
+    {
+      "model": "classical_random_forest",
+      "ok": true,
+      "test_metrics": {
+        "threshold": 0.622513,
+        "roc_auc": 0.9633333333333334,
+        "pr_auc": 0.9570044824958704,
+        "precision": 1.0,
+        "recall": 0.8666666666666667,
+        "f1": 0.9285714285714286,
+        "f2": 0.8904109589041096,
+        "balanced_accuracy": 0.9333333333333333,
+        "mcc": 0.9054390204866476,
+        "accuracy": 0.96,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.13333333333333333,
+        "tp": 52,
+        "fp": 0,
+        "tn": 140,
+        "fn": 8,
+        "n_samples": 200,
+        "n_positives": 60,
+        "score_is_probability": true,
+        "brier_score": 0.048596625000000004
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "packages": {
+      "numpy": "2.5.1",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "sklearn": "1.9.0",
+      "xgboost": "3.4.0",
+      "imblearn": "0.14.2",
+      "joblib": "1.5.3",
+      "matplotlib": "3.11.1",
+      "qiskit": "2.5.2",
+      "qiskit_aer": "0.17.2",
+      "qiskit_machine_learning": "0.9.0",
+      "shap": "0.52.0"
+    }
+  }
+}

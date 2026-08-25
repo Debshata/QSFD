@@ -1,0 +1,241 @@
+{
+  "engine": {
+    "model_name": "xgboost",
+    "model_version": "creditcardfraud-2026-08-18T07:22:01",
+    "threshold": 0.581018502738422,
+    "score_is_probability": true,
+    "calibrated": true,
+    "explainability_method": "shap",
+    "n_raw_features": 29,
+    "n_transformed_features": 29,
+    "dataset": "creditcardfraud",
+    "trained_at": "2026-08-18T07:22:01",
+    "risk": {
+      "low_upper_bound": 0.3,
+      "medium_upper_bound": 0.7,
+      "score_scale": 100.0,
+      "enforce_threshold_floor": true,
+      "mapping": {
+        "LOW": "p <= 0.3",
+        "MEDIUM": "0.3 < p <= 0.7 (or p >= model threshold)",
+        "HIGH": "p > 0.7"
+      }
+    },
+    "test_metrics": {
+      "threshold": 0.581019,
+      "roc_auc": 0.9771944886640032,
+      "pr_auc": 0.8007183786183377,
+      "precision": 0.9016393442622951,
+      "recall": 0.7432432432432432,
+      "f1": 0.8148148148148148,
+      "f2": 0.7703081232492998,
+      "balanced_accuracy": 0.8715671346167723,
+      "mcc": 0.8184025364871914,
+      "accuracy": 0.9995465510674187,
+      "specificity": 0.9998910259903013,
+      "false_positive_rate": 0.00010897400969868686,
+      "false_negative_rate": 0.25675675675675674,
+      "tp": 55,
+      "fp": 6,
+      "tn": 55053,
+      "fn": 19,
+      "n_samples": 55133,
+      "n_positives": 74,
+      "score_is_probability": true,
+      "brier_score": 0.0004414634144757278
+    },
+    "qml_attached": "qsvm"
+  },
+  "qml_attached": true,
+  "dataset": "creditcardfraud",
+  "cases": {
+    "legitimate": {
+      "transaction_id": "demo-legitimate-001",
+      "fraud_probability": 0.000304,
+      "fraud_prediction": 0,
+      "risk_score": 0.03,
+      "risk_level": "LOW",
+      "model_name": "xgboost",
+      "model_version": "creditcardfraud-2026-08-18T07:22:01",
+      "threshold": 0.581018502738422,
+      "top_contributing_features": [
+        {
+          "feature": "V14",
+          "contribution": -2.696439,
+          "direction": "decreases_fraud_risk",
+          "value": 0.528713
+        },
+        {
+          "feature": "V10",
+          "contribution": -1.584625,
+          "direction": "decreases_fraud_risk",
+          "value": 0.981741
+        },
+        {
+          "feature": "V1",
+          "contribution": -0.915029,
+          "direction": "decreases_fraud_risk",
+          "value": 0.799614
+        },
+        {
+          "feature": "V5",
+          "contribution": -0.912799,
+          "direction": "decreases_fraud_risk",
+          "value": -0.730704
+        },
+        {
+          "feature": "V11",
+          "contribution": -0.891752,
+          "direction": "decreases_fraud_risk",
+          "value": -0.286097
+        }
+      ],
+      "latency_ms": 67.474,
+      "latency_breakdown_ms": {
+        "preprocessing": 59.094,
+        "inference": 4.021,
+        "total": 67.474
+      },
+      "warnings": []
+    },
+    "fraud": {
+      "transaction_id": "demo-fraud-001",
+      "fraud_probability": 0.918203,
+      "fraud_prediction": 1,
+      "risk_score": 91.82,
+      "risk_level": "HIGH",
+      "model_name": "xgboost",
+      "model_version": "creditcardfraud-2026-08-18T07:22:01",
+      "threshold": 0.581018502738422,
+      "top_contributing_features": [
+        {
+          "feature": "V14",
+          "contribution": 5.711999,
+          "direction": "increases_fraud_risk",
+          "value": -9.5391
+        },
+        {
+          "feature": "V10",
+          "contribution": 2.003441,
+          "direction": "increases_fraud_risk",
+          "value": -3.724683
+        },
+        {
+          "feature": "V4",
+          "contribution": 1.700744,
+          "direction": "increases_fraud_risk",
+          "value": 4.258223
+        },
+        {
+          "feature": "V8",
+          "contribution": -0.968574,
+          "direction": "decreases_fraud_risk",
+          "value": 0.261701
+        },
+        {
+          "feature": "V12",
+          "contribution": 0.825762,
+          "direction": "increases_fraud_risk",
+          "value": -5.409692
+        }
+      ],
+      "latency_ms": 18.795,
+      "latency_breakdown_ms": {
+        "preprocessing": 10.47,
+        "inference": 3.053,
+        "total": 18.795
+      },
+      "warnings": []
+    }
+  },
+  "batch": {
+    "n": 1000,
+    "total_ms": 25.73,
+    "ms_per_transaction": 0.02573,
+    "risk_levels": {
+      "LOW": 1000,
+      "MEDIUM": 0,
+      "HIGH": 0
+    },
+    "flagged": 0,
+    "actual_fraud": 0
+  },
+  "latency_single_transaction": {
+    "mean_ms": 13.017,
+    "p50_ms": 12.755,
+    "p95_ms": 16.752,
+    "p99_ms": 18.338
+  },
+  "compare_models": {
+    "transaction_id": "demo-compare",
+    "fraud_probability": 0.918203,
+    "fraud_prediction": 1,
+    "risk_score": 91.82,
+    "risk_level": "HIGH",
+    "model_name": "xgboost",
+    "model_version": "creditcardfraud-2026-08-18T07:22:01",
+    "threshold": 0.581018502738422,
+    "top_contributing_features": [
+      {
+        "feature": "V14",
+        "contribution": 5.711999,
+        "direction": "increases_fraud_risk",
+        "value": -9.5391
+      },
+      {
+        "feature": "V10",
+        "contribution": 2.003441,
+        "direction": "increases_fraud_risk",
+        "value": -3.724683
+      },
+      {
+        "feature": "V4",
+        "contribution": 1.700744,
+        "direction": "increases_fraud_risk",
+        "value": 4.258223
+      },
+      {
+        "feature": "V8",
+        "contribution": -0.968574,
+        "direction": "decreases_fraud_risk",
+        "value": 0.261701
+      },
+      {
+        "feature": "V12",
+        "contribution": 0.825762,
+        "direction": "increases_fraud_risk",
+        "value": -5.409692
+      }
+    ],
+    "latency_ms": 16.042,
+    "classical": {
+      "model": "xgboost",
+      "prediction": 1,
+      "fraud_probability": 0.918203,
+      "score": 0.918203,
+      "score_is_probability": true,
+      "threshold": 0.581018502738422,
+      "latency_ms": 3.217,
+      "error": null
+    },
+    "qml": {
+      "model": "qsvm",
+      "prediction": 1,
+      "fraud_probability": null,
+      "score": 1.041458,
+      "score_is_probability": false,
+      "threshold": 0.026080524539536798,
+      "latency_ms": 1642.077,
+      "error": null
+    },
+    "latency_breakdown_ms": {
+      "preprocessing": 7.031,
+      "inference": 3.217,
+      "total": 16.042,
+      "qml": 1642.077
+    },
+    "warnings": [
+      "qsvm output is a decision score, not a probability; it is not used for risk banding"
+    ]
+  }
+}

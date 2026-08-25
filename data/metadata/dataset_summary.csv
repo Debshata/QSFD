@@ -1,0 +1,5 @@
+dataset,friendly_name,kaggle_id,row_count,feature_count,target_column,fraud_count,legitimate_count,fraud_percentage,train_size,validation_size,test_size,split_strategy,categorical_features,numerical_features,n_removed_columns,quantum_feature_counts,validation_passed
+creditcardfraud,creditcardfraud_ulb,mlg-ulb/creditcardfraud,275663,29,is_fraud,473,275190,0.171586,176424,44106,55133,temporal,0,29,1,2|4|6|8,True
+fraud_detection_sim,fraud_detection_kartik,kartik2112/fraud-detection,1296675,81,is_fraud,7506,1289169,0.578865,829872,207468,259335,temporal,3,6,13,2|4|6|8,True
+creditcard_2023,credit_card_fraud_2023,nelgiriyewithana/credit-card-fraud-detection-dataset-2023,568629,29,is_fraud,284314,284315,49.999912,363922,90981,113726,stratified_random,0,29,1,2|4|6|8,True
+synthetic_cc_fraud,synthetic_transactions,praneeth1265/synthetic-credit-card-transactions-fraud-detection,500000,55,is_fraud,65551,434449,13.1102,320000,80000,100000,temporal,2,28,3,2|4|6|8,True

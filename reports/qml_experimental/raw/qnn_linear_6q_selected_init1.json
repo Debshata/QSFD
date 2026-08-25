@@ -1,0 +1,106 @@
+{
+  "experiment": "qnn_linear_6q_selected_init1",
+  "model": "qnn",
+  "qubits": 6,
+  "features": 6,
+  "feature_strategy": "original_selected",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 29,
+  "logical_total_gates": 75,
+  "logical_single_qubit_gates": 55,
+  "logical_two_qubit_gates": 20,
+  "trainable_parameters": 24,
+  "transpiled_depth": 51,
+  "transpiled_total_gates": 169,
+  "transpiled_two_qubit_gates": 20,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.619463,
+  "roc_auc": 0.83869,
+  "precision": 0.586957,
+  "recall": 0.9,
+  "f1": 0.710526,
+  "f2": 0.813253,
+  "balanced_accuracy": 0.814286,
+  "brier_score": null,
+  "threshold": 0.4163432180476023,
+  "score_is_probability": false,
+  "training_seconds": 37.738,
+  "inference_ms_per_transaction": 2.5175,
+  "total_seconds": 38.598,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n_entangling_pairs": 5,
+    "feature_names": [
+      "V4",
+      "V10",
+      "V11",
+      "V12",
+      "V14",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.704889,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      }
+    },
+    "confusion": {
+      "tp": 54,
+      "fp": 38,
+      "tn": 102,
+      "fn": 6
+    },
+    "val_score_mean": 0.404333,
+    "test_score_std": 0.090552,
+    "init_seed": 1
+  }
+}

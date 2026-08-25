@@ -1,0 +1,26 @@
+[
+  {
+    "friendly_name": "creditcardfraud_ulb",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "friendly_name": "fraud_detection_kartik",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "friendly_name": "credit_card_fraud_2023",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "friendly_name": "synthetic_transactions",
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  }
+]

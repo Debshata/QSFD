@@ -1,0 +1,209 @@
+# Experimental QML research layer.
+#
+# This config drives src/qml_experimental only. It never touches the
+# production classical pipeline or the baseline src/qml models.
+
+enabled: true
+
+# ---------------------------------------------------------------------------
+# Controlled subset -- IDENTICAL for every experiment.
+# These values mirror the existing baseline (config/qml.yaml) on purpose: the
+# whole point is that CLT / scaling / QBoost / hybrid arms are compared on the
+# same rows the published baseline used.
+# ---------------------------------------------------------------------------
+subset:
+  train_samples: 250
+  val_samples: 100
+  test_samples: 200
+  fraud_ratio: 0.30
+
+# Qubit counts to sweep. n_features == n_qubits for every experiment.
+qubit_counts: [4, 6, 8]
+
+# 10 qubits is attempted only when `allow_10q` is true AND the 8-qubit runs
+# finished inside `stretch_goal_max_seconds`. Never enabled blindly.
+allow_10q: false
+stretch_goal_max_seconds: 300
+
+# ---------------------------------------------------------------------------
+# The two feature pipelines. They differ ONLY in the reduction step; the
+# selected rows are identical, so any difference is attributable to features.
+# ---------------------------------------------------------------------------
+pipelines:
+
+  # Pipeline A: the existing PCA baseline. Components are NOT transaction
+  # variables, so CLT trees built on them are not interpretable as feature
+  # dependencies -- Pipeline A is used for scaling/parity work only.
+  pca:
+    method: pca
+    interpretable_features: false
+
+  # Pipeline B: original preprocessed features chosen by mutual information
+  # with the target, fitted on training data only. Feature identity survives,
+  # which is what makes the Chow-Liu dependency graph interpretable.
+  selected:
+    method: mutual_info
+    interpretable_features: true
+
+# Angle encoding window. Reduced features are scaled into [0, pi].
+angle_scaling: true
+
+# ---------------------------------------------------------------------------
+# Chow-Liu Tree
+# ---------------------------------------------------------------------------
+chow_liu:
+  # Continuous fraud features need discretisation before a plug-in MI
+  # estimate. `quantile` keeps roughly equal mass per bin, which is far more
+  # stable than uniform width on heavy-tailed amount-like features.
+  discretization:
+    strategy: quantile        # quantile | uniform | kmeans
+    n_bins: 8
+    # Bins are fitted on TRAINING data only and applied to val/test.
+
+  mutual_information:
+    estimator: plug_in        # plug_in (discrete) | ksg (continuous, k-NN)
+    ksg_neighbors: 3
+
+  # Laplace/Dirichlet smoothing for the class-conditional generative model.
+  # Prevents a zero-frequency cell from sending a log-likelihood to -inf.
+  smoothing: 1.0
+
+  classifier:
+    # The raw output is a log-likelihood ratio, NOT a probability. Calibration
+    # is fitted on validation and kept only if it improves the Brier score.
+    calibrate: true
+    calibration_method: sigmoid
+
+# ---------------------------------------------------------------------------
+# Circuits. Standard vs CLT arms share EVERYTHING except `entanglement`.
+# ---------------------------------------------------------------------------
+circuits:
+  feature_map: ZZFeatureMap
+  feature_map_reps: 1
+  ansatz_reps: 2
+
+  # Entangling gate used for CLT edges. CZ is symmetric and is the native
+  # two-qubit primitive most simulators/backends reduce to, so it keeps the
+  # standard-vs-CLT comparison about topology rather than gate choice.
+  entangling_gate: cz
+
+  # Baseline topologies the CLT tree is compared against.
+  baseline_entanglements: [linear, circular, full]
+  # The generic arm used for the head-to-head ablation.
+  standard_entanglement: linear
+
+  optimizer: COBYLA
+  maxiter: 60
+
+# ---------------------------------------------------------------------------
+# Simulation modes
+# ---------------------------------------------------------------------------
+simulation:
+  ideal: true
+  shots: [256, 512, 1024, 2048]
+  # Repeat shot runs with these seeds to measure prediction variance.
+  shot_seeds: [1, 2, 3]
+
+noise:
+  # Named noise levels. Nothing in src/ hardcodes an error rate.
+  levels:
+    none:
+      enabled: true
+      readout_error: 0.0
+      one_qubit_depolarizing: 0.0
+      two_qubit_depolarizing: 0.0
+    low:
+      enabled: true
+      readout_error: 0.01
+      one_qubit_depolarizing: 0.0005
+      two_qubit_depolarizing: 0.005
+    moderate:
+      enabled: true
+      readout_error: 0.03
+      one_qubit_depolarizing: 0.002
+      two_qubit_depolarizing: 0.02
+  shots: 1024
+  seed: 42
+
+# ---------------------------------------------------------------------------
+# Transpilation study
+# ---------------------------------------------------------------------------
+transpilation:
+  optimization_level: 3
+  basis_gates: [rz, sx, x, cx]
+  # Representative connectivity constraints. `line` and `ring` are the honest
+  # stress tests -- `full` connectivity hides every SWAP the topology needs.
+  coupling_maps: [full, line, ring, heavy_hex_like]
+  seed: 42
+
+# ---------------------------------------------------------------------------
+# QBoost. See docs/qboost_design.md for the formulation and for exactly which
+# component is quantum and which is classical.
+# ---------------------------------------------------------------------------
+qboost:
+  n_weak_learners: 16
+  weak_learner: decision_stump      # depth-1 trees
+  # Regularisation strength on the number of selected learners in the QUBO.
+  lambda_penalty: 0.05
+  # Solver used for the QUBO. `simulated_annealing` is CLASSICAL and is
+  # labelled as such everywhere. `qaoa` runs a real gate-model circuit.
+  solver: simulated_annealing
+  qaoa_reps: 2
+  qaoa_maxiter: 50
+  # QAOA is only attempted when the QUBO is small enough to simulate.
+  qaoa_max_variables: 16   # 16 qubits = 65k amplitudes; trivially simulable
+  annealing_reads: 200
+  annealing_sweeps: 1000
+
+# ---------------------------------------------------------------------------
+# Hybrid classical-quantum fusion. Fusion weights are learned on VALIDATION
+# only -- never on the test fold.
+# ---------------------------------------------------------------------------
+hybrid:
+  fusion: logistic_meta      # weighted | logistic_meta
+  combinations:
+    - {name: xgb_qnn,      classical: xgboost, quantum: qnn}
+    - {name: xgb_vqc,      classical: xgboost, quantum: vqc}
+    - {name: xgb_clt_qnn,  classical: xgboost, quantum: clt_qnn}
+    - {name: xgb_clt_vqc,  classical: xgboost, quantum: clt_vqc}
+    - {name: clt_qnn,      classical: chow_liu, quantum: qnn}
+  qubits: 4
+
+# ---------------------------------------------------------------------------
+# Hardware-readiness heuristic. PROJECT-SPECIFIC, not an established metric.
+# Weights must sum to 1.0; the formula is documented in the final report.
+# ---------------------------------------------------------------------------
+hardware_readiness:
+  weights:
+    pr_auc: 0.30
+    noise_robustness: 0.25
+    transpiled_depth: 0.15
+    two_qubit_gates: 0.12
+    swap_count: 0.08
+    shot_stability: 0.06
+    runtime: 0.04
+  # Normalisation references. A circuit at or above these is scored 0 on that
+  # axis; at or below the floor it scores 1.
+  references:
+    max_transpiled_depth: 400
+    max_two_qubit_gates: 120
+    max_swaps: 60
+    max_runtime_seconds: 600
+    max_shot_std: 0.15
+
+# ---------------------------------------------------------------------------
+# Runtime guards. On timeout an experiment records status=timeout, saves what
+# it has, and the runner continues.
+# ---------------------------------------------------------------------------
+timeouts:
+  default_seconds: 900
+  qsvm_seconds: 1800
+  qsvm_8q_seconds: 2400
+  qboost_seconds: 900
+  noise_seconds: 1800
+  shots_seconds: 1800
+
+# QSVM is O(n^2) in circuit evaluations. 8 qubits is opt-in only.
+qsvm:
+  qubit_counts: [4, 6]
+  attempt_8q: true

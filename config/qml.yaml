@@ -1,0 +1,58 @@
+# Quantum machine-learning experimental branch.
+# Everything here runs on a statevector simulator; sizes are deliberately small.
+
+enabled: true
+
+subset:
+  # Drawn ONLY from the classical training split. The QML test subset is drawn
+  # from the same held-out test split used classically, so the controlled
+  # comparison is apples-to-apples.
+  # Sized from a measured benchmark: the fidelity quantum kernel needs
+  # O(n^2) circuit evaluations, ~80 pairs/s on this machine.
+  train_samples: 250
+  val_samples: 100
+  test_samples: 200
+  # Fraud proportion inside the QML subsets. Real base rates (~0.17%) would
+  # give <1 fraud sample at these sizes, so the subset is deliberately
+  # rebalanced. Metrics are therefore NOT comparable to the full-scale
+  # classical benchmark -- only to the controlled classical baselines.
+  fraud_ratio: 0.30
+
+feature_reduction:
+  # one of: pca | mutual_info | model_based
+  method: pca
+  n_components: 4
+  scale_before: true
+  # Reduced features are scaled into [0, pi] for angle encoding.
+  angle_scaling: true
+
+quantum_kernel:
+  enabled: true
+  feature_map: ZZFeatureMap    # ZZFeatureMap | ZFeatureMap | PauliFeatureMap
+  reps: 2
+  entanglement: linear
+  svc_C: 1.0
+
+vqc:
+  enabled: true
+  feature_map: ZZFeatureMap
+  feature_map_reps: 1
+  ansatz: RealAmplitudes
+  ansatz_reps: 2
+  optimizer: COBYLA
+  maxiter: 60
+
+qnn:
+  enabled: true
+  # EstimatorQNN + NeuralNetworkClassifier
+  feature_map: ZFeatureMap
+  feature_map_reps: 1
+  ansatz: RealAmplitudes
+  ansatz_reps: 2
+  optimizer: COBYLA
+  maxiter: 60
+
+runtime:
+  # Hard wall-clock budget per QML model. Exceeding it aborts that model and
+  # records the failure without killing the pipeline.
+  per_model_timeout_seconds: 1800

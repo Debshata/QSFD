@@ -1,0 +1,440 @@
+{
+  "creditcardfraud": {
+    "friendly_name": "creditcardfraud_ulb",
+    "kaggle_id": "mlg-ulb/creditcardfraud",
+    "original_files": [
+      "creditcard.csv"
+    ],
+    "local_raw_path": "D:\\Quantum Secure Fraud Detection System\\data\\raw\\creditcardfraud_ulb",
+    "local_processed_path": "D:\\Quantum Secure Fraud Detection System\\data\\processed\\creditcardfraud_ulb",
+    "row_count": 275663,
+    "feature_count": 29,
+    "original_target_column": "Class",
+    "standardised_target_column": "is_fraud",
+    "fraud_count": 473,
+    "legitimate_count": 275190,
+    "train_size": 176424,
+    "validation_size": 44106,
+    "test_size": 55133,
+    "split_strategy": "temporal",
+    "categorical_feature_count": 0,
+    "numerical_feature_count": 29,
+    "temporal_features_engineered": [],
+    "removed_columns": [
+      "Time"
+    ],
+    "quantum_feature_sets": {
+      "2": {
+        "method": "mutual_info",
+        "k": 2,
+        "selected_features": [
+          "V17",
+          "V14"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "4": {
+        "method": "mutual_info",
+        "k": 4,
+        "selected_features": [
+          "V17",
+          "V14",
+          "V12",
+          "V10"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "6": {
+        "method": "mutual_info",
+        "k": 6,
+        "selected_features": [
+          "V17",
+          "V14",
+          "V12",
+          "V10",
+          "V11",
+          "V16"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "8": {
+        "method": "mutual_info",
+        "k": 8,
+        "selected_features": [
+          "V17",
+          "V14",
+          "V12",
+          "V10",
+          "V11",
+          "V16",
+          "V4",
+          "V3"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      }
+    },
+    "preprocessing_strategy": {
+      "numeric": "median impute -> StandardScaler, fit on train only",
+      "categorical": "most-frequent impute -> OneHotEncoder(handle_unknown='ignore'), fit on train only",
+      "temporal": "n/a",
+      "resampling_applied_to_saved_files": "none (class_weight/SMOTE remain training-time-only concerns)",
+      "file_formats": "train/validation/test.csv are the clean, un-scaled, human-readable features (CSV). *_scaled and quantum_*_features are the one-hot-expanded, scaled, model-ready matrices (Parquet, to avoid multi-hundred-MB CSVs)."
+    },
+    "output_files": [
+      "train.csv",
+      "validation.csv",
+      "test.csv",
+      "train_scaled.parquet",
+      "validation_scaled.parquet",
+      "test_scaled.parquet",
+      "quantum_2_features.parquet",
+      "quantum_4_features.parquet",
+      "quantum_6_features.parquet",
+      "quantum_8_features.parquet"
+    ],
+    "validation_passed": true,
+    "seed": 42,
+    "processed_at": "2026-08-25T08:03:40"
+  },
+  "fraud_detection_sim": {
+    "friendly_name": "fraud_detection_kartik",
+    "kaggle_id": "kartik2112/fraud-detection",
+    "original_files": [
+      "fraudTrain.csv"
+    ],
+    "local_raw_path": "D:\\Quantum Secure Fraud Detection System\\data\\raw\\fraud_detection_kartik",
+    "local_processed_path": "D:\\Quantum Secure Fraud Detection System\\data\\processed\\fraud_detection_kartik",
+    "row_count": 1296675,
+    "feature_count": 81,
+    "original_target_column": "is_fraud",
+    "standardised_target_column": "is_fraud",
+    "fraud_count": 7506,
+    "legitimate_count": 1289169,
+    "train_size": 829872,
+    "validation_size": 207468,
+    "test_size": 259335,
+    "split_strategy": "temporal",
+    "categorical_feature_count": 3,
+    "numerical_feature_count": 6,
+    "temporal_features_engineered": [
+      "txn_hour",
+      "txn_day",
+      "txn_day_of_week",
+      "txn_month",
+      "txn_is_weekend",
+      "txn_hour_sin",
+      "txn_hour_cos",
+      "txn_dow_sin",
+      "txn_dow_cos"
+    ],
+    "removed_columns": [
+      "Unnamed: 0",
+      "cc_num",
+      "city",
+      "dob",
+      "first",
+      "job",
+      "last",
+      "merchant",
+      "street",
+      "trans_date_trans_time",
+      "trans_num",
+      "unix_time",
+      "zip"
+    ],
+    "quantum_feature_sets": {
+      "2": {
+        "method": "mutual_info",
+        "k": 2,
+        "selected_features": [
+          "amt",
+          "lat"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "4": {
+        "method": "mutual_info",
+        "k": 4,
+        "selected_features": [
+          "amt",
+          "lat",
+          "long",
+          "city_pop"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "6": {
+        "method": "mutual_info",
+        "k": 6,
+        "selected_features": [
+          "amt",
+          "lat",
+          "long",
+          "city_pop",
+          "txn_hour",
+          "txn_hour_cos"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "8": {
+        "method": "mutual_info",
+        "k": 8,
+        "selected_features": [
+          "amt",
+          "lat",
+          "long",
+          "city_pop",
+          "txn_hour",
+          "txn_hour_cos",
+          "txn_hour_sin",
+          "gender_F"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      }
+    },
+    "preprocessing_strategy": {
+      "numeric": "median impute -> StandardScaler, fit on train only",
+      "categorical": "most-frequent impute -> OneHotEncoder(handle_unknown='ignore'), fit on train only",
+      "temporal": "StandardScaler on engineered hour/day/month/cyclic features, fit on train only",
+      "resampling_applied_to_saved_files": "none (class_weight/SMOTE remain training-time-only concerns)",
+      "file_formats": "train/validation/test.csv are the clean, un-scaled, human-readable features (CSV). *_scaled and quantum_*_features are the one-hot-expanded, scaled, model-ready matrices (Parquet, to avoid multi-hundred-MB CSVs)."
+    },
+    "output_files": [
+      "train.csv",
+      "validation.csv",
+      "test.csv",
+      "train_scaled.parquet",
+      "validation_scaled.parquet",
+      "test_scaled.parquet",
+      "quantum_2_features.parquet",
+      "quantum_4_features.parquet",
+      "quantum_6_features.parquet",
+      "quantum_8_features.parquet"
+    ],
+    "validation_passed": true,
+    "seed": 42,
+    "processed_at": "2026-08-25T08:05:45"
+  },
+  "creditcard_2023": {
+    "friendly_name": "credit_card_fraud_2023",
+    "kaggle_id": "nelgiriyewithana/credit-card-fraud-detection-dataset-2023",
+    "original_files": [
+      "creditcard_2023.csv"
+    ],
+    "local_raw_path": "D:\\Quantum Secure Fraud Detection System\\data\\raw\\credit_card_fraud_2023",
+    "local_processed_path": "D:\\Quantum Secure Fraud Detection System\\data\\processed\\credit_card_fraud_2023",
+    "row_count": 568629,
+    "feature_count": 29,
+    "original_target_column": "Class",
+    "standardised_target_column": "is_fraud",
+    "fraud_count": 284314,
+    "legitimate_count": 284315,
+    "train_size": 363922,
+    "validation_size": 90981,
+    "test_size": 113726,
+    "split_strategy": "stratified_random",
+    "categorical_feature_count": 0,
+    "numerical_feature_count": 29,
+    "temporal_features_engineered": [],
+    "removed_columns": [
+      "id"
+    ],
+    "quantum_feature_sets": {
+      "2": {
+        "method": "mutual_info",
+        "k": 2,
+        "selected_features": [
+          "V14",
+          "V17"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "4": {
+        "method": "mutual_info",
+        "k": 4,
+        "selected_features": [
+          "V14",
+          "V17",
+          "V10",
+          "V12"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "6": {
+        "method": "mutual_info",
+        "k": 6,
+        "selected_features": [
+          "V14",
+          "V17",
+          "V10",
+          "V12",
+          "V4",
+          "V11"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "8": {
+        "method": "mutual_info",
+        "k": 8,
+        "selected_features": [
+          "V14",
+          "V17",
+          "V10",
+          "V12",
+          "V4",
+          "V11",
+          "V3",
+          "V16"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      }
+    },
+    "preprocessing_strategy": {
+      "numeric": "median impute -> StandardScaler, fit on train only",
+      "categorical": "most-frequent impute -> OneHotEncoder(handle_unknown='ignore'), fit on train only",
+      "temporal": "n/a",
+      "resampling_applied_to_saved_files": "none (class_weight/SMOTE remain training-time-only concerns)",
+      "file_formats": "train/validation/test.csv are the clean, un-scaled, human-readable features (CSV). *_scaled and quantum_*_features are the one-hot-expanded, scaled, model-ready matrices (Parquet, to avoid multi-hundred-MB CSVs)."
+    },
+    "output_files": [
+      "train.csv",
+      "validation.csv",
+      "test.csv",
+      "train_scaled.parquet",
+      "validation_scaled.parquet",
+      "test_scaled.parquet",
+      "quantum_2_features.parquet",
+      "quantum_4_features.parquet",
+      "quantum_6_features.parquet",
+      "quantum_8_features.parquet"
+    ],
+    "validation_passed": true,
+    "seed": 42,
+    "processed_at": "2026-08-25T08:07:05"
+  },
+  "synthetic_cc_fraud": {
+    "friendly_name": "synthetic_transactions",
+    "kaggle_id": "praneeth1265/synthetic-credit-card-transactions-fraud-detection",
+    "original_files": [
+      "fraud_dataset_5l.csv"
+    ],
+    "local_raw_path": "D:\\Quantum Secure Fraud Detection System\\data\\raw\\synthetic_transactions",
+    "local_processed_path": "D:\\Quantum Secure Fraud Detection System\\data\\processed\\synthetic_transactions",
+    "row_count": 500000,
+    "feature_count": 55,
+    "original_target_column": "fraud_label",
+    "standardised_target_column": "is_fraud",
+    "fraud_count": 65551,
+    "legitimate_count": 434449,
+    "train_size": 320000,
+    "validation_size": 80000,
+    "test_size": 100000,
+    "split_strategy": "temporal",
+    "categorical_feature_count": 2,
+    "numerical_feature_count": 28,
+    "temporal_features_engineered": [
+      "txn_hour",
+      "txn_day",
+      "txn_day_of_week",
+      "txn_month",
+      "txn_is_weekend",
+      "txn_hour_sin",
+      "txn_hour_cos",
+      "txn_dow_sin",
+      "txn_dow_cos"
+    ],
+    "removed_columns": [
+      "is_very_high",
+      "timestamp",
+      "user_id"
+    ],
+    "quantum_feature_sets": {
+      "2": {
+        "method": "mutual_info",
+        "k": 2,
+        "selected_features": [
+          "amount_ratio_to_avg",
+          "amount_log"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "4": {
+        "method": "mutual_info",
+        "k": 4,
+        "selected_features": [
+          "amount_ratio_to_avg",
+          "amount_log",
+          "amount",
+          "amount_zscore"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "6": {
+        "method": "mutual_info",
+        "k": 6,
+        "selected_features": [
+          "amount_ratio_to_avg",
+          "amount_log",
+          "amount",
+          "amount_zscore",
+          "merchant_risk",
+          "merchant_frequency"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      },
+      "8": {
+        "method": "mutual_info",
+        "k": 8,
+        "selected_features": [
+          "amount_ratio_to_avg",
+          "amount_log",
+          "amount",
+          "amount_zscore",
+          "merchant_risk",
+          "merchant_frequency",
+          "travel_speed_log",
+          "travel_speed"
+        ],
+        "explained_variance_ratio": null,
+        "note": "Selected on TRAINING data only; not claimed optimal without experimental validation."
+      }
+    },
+    "preprocessing_strategy": {
+      "numeric": "median impute -> StandardScaler, fit on train only",
+      "categorical": "most-frequent impute -> OneHotEncoder(handle_unknown='ignore'), fit on train only",
+      "temporal": "StandardScaler on engineered hour/day/month/cyclic features, fit on train only",
+      "resampling_applied_to_saved_files": "none (class_weight/SMOTE remain training-time-only concerns)",
+      "file_formats": "train/validation/test.csv are the clean, un-scaled, human-readable features (CSV). *_scaled and quantum_*_features are the one-hot-expanded, scaled, model-ready matrices (Parquet, to avoid multi-hundred-MB CSVs)."
+    },
+    "output_files": [
+      "train.csv",
+      "validation.csv",
+      "test.csv",
+      "train_scaled.parquet",
+      "validation_scaled.parquet",
+      "test_scaled.parquet",
+      "quantum_2_features.parquet",
+      "quantum_4_features.parquet",
+      "quantum_6_features.parquet",
+      "quantum_8_features.parquet"
+    ],
+    "validation_passed": true,
+    "seed": 42,
+    "processed_at": "2026-08-25T08:08:20"
+  }
+}

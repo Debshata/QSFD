@@ -1,0 +1,105 @@
+{
+  "experiment": "vqc_linear_6q_selected",
+  "model": "vqc",
+  "qubits": 6,
+  "features": 6,
+  "feature_strategy": "original_selected",
+  "structure": "linear",
+  "clt_edges": null,
+  "simulator": "ideal",
+  "shots": null,
+  "noise": "none",
+  "logical_depth": 29,
+  "logical_total_gates": 75,
+  "logical_single_qubit_gates": 55,
+  "logical_two_qubit_gates": 20,
+  "trainable_parameters": 24,
+  "transpiled_depth": 51,
+  "transpiled_total_gates": 169,
+  "transpiled_two_qubit_gates": 20,
+  "swap_count": 0,
+  "train_samples": 250,
+  "val_samples": 100,
+  "test_samples": 200,
+  "row_fingerprint": "2da40ffb169cd76b",
+  "pr_auc": 0.859043,
+  "roc_auc": 0.925714,
+  "precision": 0.742857,
+  "recall": 0.866667,
+  "f1": 0.8,
+  "f2": 0.83871,
+  "balanced_accuracy": 0.869048,
+  "brier_score": 0.153672,
+  "threshold": 0.41642524382617163,
+  "score_is_probability": true,
+  "training_seconds": 94.741,
+  "inference_ms_per_transaction": 6.0716,
+  "total_seconds": 96.668,
+  "status": "ok",
+  "error": null,
+  "extras": {
+    "entangling_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n_entangling_pairs": 5,
+    "feature_names": [
+      "V4",
+      "V10",
+      "V11",
+      "V12",
+      "V14",
+      "V17"
+    ],
+    "n_objective_evaluations": 60,
+    "final_objective": 0.728847,
+    "transpilation": {
+      "line": {
+        "coupling_map": "line",
+        "status": "ok",
+        "optimization_level": 3,
+        "basis_gates": [
+          "rz",
+          "sx",
+          "x",
+          "cx"
+        ],
+        "transpiled_depth": 51,
+        "transpiled_total_gates": 169,
+        "transpiled_two_qubit_gates": 20,
+        "swap_count": 0,
+        "transpiled_gate_counts": {
+          "rz": 89,
+          "sx": 60,
+          "cx": 20
+        }
+      }
+    },
+    "confusion": {
+      "tp": 52,
+      "fp": 18,
+      "tn": 122,
+      "fn": 8
+    },
+    "val_score_mean": 0.382694,
+    "test_score_std": 0.11292
+  }
+}
