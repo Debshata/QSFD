@@ -542,10 +542,21 @@ result so this can be verified rather than trusted.
 
 ### Scientific boundaries
 
-- All quantum results are **simulated**. No hardware jobs were submitted.
+- Almost all quantum results are **simulated**; one real IBM Quantum hardware
+  validation job has been run (4-qubit CLT-QNN vs generic QNN, simulator-fitted
+  weights evaluated on hardware — see `reports/ibm_hardware/`). It is not a
+  hardware-trained model and has not been repeated at other qubit counts.
 - Metrics use a controlled 250/100/200 subset rebalanced to 30% fraud. They
   are **not** comparable to the full-scale classical benchmark in
-  `reports/final_evaluation.md`.
+  `reports/final_evaluation.md`. This subset's row indices are now locked and
+  hashed in `research/experimental_protocol/locked_split.json`.
+- **No quantum model or quantum-inclusive hybrid has been shown to beat its
+  matched classical counterpart on identical data anywhere in this
+  repository.** See `research/QUANTUM_GATE_RESULT.md` for the full gate
+  analysis (current tier: 3 — Chow-Liu structural/circuit-complexity
+  characterization only, no verified predictive quantum benefit) and
+  `research/` for the gap analysis, literature review, and final results
+  tables.
 - QBoost's simulated-annealing solver is **classical**; only the QAOA solver
   is a genuine quantum algorithm, and it runs on a simulator. See
   [`docs/qboost_design.md`](docs/qboost_design.md).
