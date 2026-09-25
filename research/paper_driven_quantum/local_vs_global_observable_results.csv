@@ -1,0 +1,4 @@
+observable,qubits,topology,n_seeds,pr_auc_mean,pr_auc_std,pr_auc_min,pr_auc_max,mean_final_objective,mean_n_evaluations
+global,4,chow_liu,5,0.7737,0.0609,0.7018,0.8419,0.5427,60.0
+local_single,4,chow_liu,5,0.7178,0.0596,0.6301,0.8069,0.5827,60.0
+local_sum,4,chow_liu,5,0.7947,0.026,0.7594,0.8311,0.6227,60.0

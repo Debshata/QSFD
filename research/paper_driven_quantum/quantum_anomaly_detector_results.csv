@@ -1,0 +1,9 @@
+qubits,topology,method,val_pr_auc,n_nominal_train,train_seconds
+4,clt,quantum_ocsvm,0.8628,175,68.14
+4,linear,quantum_ocsvm,0.8708,175,61.77
+4,n/a,classical_ocsvm_rbf,0.8789,175,0.0
+4,n/a,isolation_forest,0.9145,175,0.0
+6,clt,quantum_ocsvm,0.9271,175,137.8
+6,linear,quantum_ocsvm,0.939,175,145.18
+6,n/a,classical_ocsvm_rbf,0.9329,175,0.0
+6,n/a,isolation_forest,0.9305,175,0.0

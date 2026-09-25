@@ -1,0 +1,16 @@
+# Paper × Current-System Gap Matrix
+
+| Method | Paper | Already implemented? | Current equivalent | Key mathematical difference | Expected benefit | Complexity | Priority | Status this round |
+|---|---|---|---|---|---|---|---|---|
+| Data re-uploading | PAPER_01 | Partially — `feature_map_reps` config knob exists but has never been swept as its own experiment | Single feature-map application per circuit | Repeated encode→process blocks vs. one-shot encoding | More expressivity without added qubits | Low | High | NOT ATTEMPTED |
+| Near-zero / identity-like initialization | PAPER_02 | No — `initial_point()` uses full-range `uniform(-π,π)` | Full-range random init | Starting near a trainable region vs. starting anywhere on the parameter manifold | Better/more consistent convergence | Low (adapted version); Medium (literal identity-block version) | Medium | NOT ATTEMPTED |
+| Local vs global observable | PAPER_03 | No — `EstimatorQNN` built without explicit `observables`, defaults to global `Z^n` | Implicit global observable | Locality of the cost function controls gradient concentration | Better trainability, lower seed variance | Low | High | **TESTED** — variance halved, mean gain inconclusive |
+| Unsupervised quantum-kernel anomaly detection | PAPER_04 | No — every existing quantum model (QNN/VQC/QSVM/CLT-*) is supervised | Isolation Forest (classical, unsupervised) | Learns a boundary around the nominal class only, using a quantum kernel, instead of a two-class decision function | Genuinely different learning paradigm from every other quantum model here — a real chance at error diversity | Medium (kernel is O(n²)) | High | **TESTED** — mixed by qubit count, 6q point estimate promising but bootstrap-rejected |
+| Class-conditional / discriminative dependency structure | (this project's own DCLT, motivated independently, not paper-sourced) | Yes — `research/quantum_contribution/discriminative_clt_results.csv` | Ordinary (pooled) Chow-Liu tree | Class-conditional MI difference vs. pooled MI | Fraud-specific entanglement structure | Low | (already tested, mixed result) | Reused, not re-tested |
+| Matched-sparsity control | (this project's own, motivated by scientific rigor, not paper-sourced) | Yes — `random_sparse_multiseed.csv` | Ad hoc generic topologies (linear/circular/full) | Same edge count, random vs. MI-informed | Attribute CLT's benefit to structure vs. sparsity | Low | (already tested) | Reused, not re-tested |
+| Hybrid LSTM + VQC | PAPER_05 | No, and explicitly rejected as a copy target | This project's own DL+quantum branch (`research/dl_quantum/`) uses an MLP, not an LSTM, and flags the reference paper's sequence-length-1 LSTM as a design flaw to avoid | Genuine per-card chronological sequences (this project, not yet built) vs. a dummy length-1 sequence (the paper) | N/A — deliberately not reproduced | N/A | Low (as a reproduction target) | Not applicable — used as literature context only |
+| (Unknown methods in PAPER_06) | PAPER_06 (`123.pdf`) | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | **PAPER UNREADABLE — no OCR available** |
+
+No method already covered by an earlier session's work (baseline QNN/VQC/QSVM, generic-vs-CLT structural benefit,
+QBoost, hybrids, complementarity/fusion/stacking) was rerun here — this table exists specifically to avoid that
+duplication.

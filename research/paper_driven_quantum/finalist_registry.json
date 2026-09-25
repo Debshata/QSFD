@@ -1,0 +1,5 @@
+{
+  "description": "Finalists promoted from the paper-driven quantum architecture discovery branch. A finalist may only be evaluated once on the locked TEST split (research/experimental_protocol/locked_split.json).",
+  "finalists": [],
+  "note": "Empty by design. Two paper-derived experiments produced positive point estimates -- quantum_ocsvm(linear, 6q) beating both classical anomaly-detection baselines, and the local-sum observable beating the global-observable QNN default on mean PR-AUC and seed variance -- but neither survives the promotion bar this project has applied consistently throughout: the anomaly-detector result's paired bootstrap 95% CIs cross zero against both classical comparators, and the observable result's 5-seed mean improvement is within one seed-standard-deviation of the baseline and has not been bootstrap-confirmed. Both are logged as PROMISING BUT UNVERIFIED in method_leaderboard.csv and negative_results.csv rather than promoted or discarded. The locked TEST split was not touched by this branch."
+}
