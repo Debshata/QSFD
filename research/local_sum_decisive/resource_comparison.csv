@@ -1,0 +1,7 @@
+metric,global,local_sum
+n_weight_params,12,12
+logical_depth,23,23
+logical_two_qubit_gates,12,12
+transpiled_depth,43,43
+transpiled_two_qubit_gates,12,12
+note,"Circuit is IDENTICAL for both arms -- only the measured observable differs, so resource cost is exactly equal by construction.",

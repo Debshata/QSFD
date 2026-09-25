@@ -1,0 +1,56 @@
+{
+  "n_seeds": 20,
+  "wins": 13,
+  "losses": 7,
+  "ties": 0,
+  "mean_delta_pr_auc": 0.0536,
+  "median_delta_pr_auc": 0.0756,
+  "std_delta_pr_auc": 0.0873,
+  "min_delta_pr_auc": -0.1473,
+  "max_delta_pr_auc": 0.2137,
+  "bootstrap_ci": {
+    "pr_auc": {
+      "mean_delta": 0.0536,
+      "ci_low": 0.0149,
+      "ci_high": 0.0913,
+      "excludes_zero": true
+    },
+    "recall": {
+      "mean_delta": -0.0853,
+      "ci_low": -0.1213,
+      "ci_high": -0.0447,
+      "excludes_zero": true
+    },
+    "precision": {
+      "mean_delta": 0.0835,
+      "ci_low": 0.0351,
+      "ci_high": 0.1294,
+      "excludes_zero": true
+    },
+    "f1": {
+      "mean_delta": -0.0452,
+      "ci_low": -0.0828,
+      "ci_high": -0.0062,
+      "excludes_zero": true
+    },
+    "f2": {
+      "mean_delta": -0.0741,
+      "ci_low": -0.1106,
+      "ci_high": -0.0342,
+      "excludes_zero": true
+    }
+  },
+  "wilcoxon_statistic": 168.0,
+  "wilcoxon_p_one_sided": 0.0085906982421875,
+  "permutation_p_one_sided": 0.0072,
+  "leave_one_out_min_mean": 0.0451,
+  "leave_one_out_max_mean": 0.0641,
+  "driven_by_outliers": false,
+  "promotion_gate": {
+    "condition_a_mean_positive": true,
+    "condition_b_majority_wins": true,
+    "condition_c_statistically_supported": true,
+    "condition_d_not_outlier_driven": true,
+    "passed": true
+  }
+}

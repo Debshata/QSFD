@@ -1,0 +1,25 @@
+{
+  "solo_pr_auc": {
+    "xgboost": 0.9613,
+    "global_qnn": 0.882,
+    "local_sum_qnn": 0.8663,
+    "classical_mlp_control": 0.9504
+  },
+  "C0_xgboost_alone": 0.9613,
+  "C1_xgboost_plus_global_qnn": 0.9632,
+  "C2_xgboost_plus_local_sum_qnn": 0.9665,
+  "C3_xgboost_plus_classical_control": 0.9671,
+  "bootstrap_C2_vs_C0": {
+    "point": 0.0052,
+    "ci_low": -0.0035,
+    "ci_high": 0.0173,
+    "excludes_zero": false
+  },
+  "bootstrap_C2_vs_C3": {
+    "point": -0.0007,
+    "ci_low": -0.0072,
+    "ci_high": 0.0057,
+    "excludes_zero": false
+  },
+  "incremental_quantum_value_verified": false
+}
