@@ -40,10 +40,23 @@ in the quantum branch is the 3-seed CLT-vs-generic structured ablation (`reports
 which is a circuit-structure comparison, not a classical-vs-quantum predictive comparison.
 
 ## Complementarity summary
-Not computed this session (Phase 3.1 not attempted — no `research/quantum_contribution/error_overlap.csv` exists).
-This is the single most valuable near-term follow-up: it is possible that a quantum model is complementary
-(catches different frauds) even while being strictly worse in aggregate PR-AUC, and that question has never been
-asked in this repository. Recorded here as the top-priority next experiment, not as a result.
+**Computed in a follow-up session** (`scripts/research/step1_error_complementarity.py`,
+`research/quantum_contribution/error_overlap.csv`, `complementarity_matrix.csv`,
+`complementarity_analysis.md`). Classical (SVM-RBF, Random Forest, Logistic Regression, XGBoost) and quantum
+(QNN, VQC, QSVM, CLT-QNN, CLT-VQC) models were retrained on the locked TRAIN rows (4-feature mutual-information
+pipeline, row fingerprint confirmed `2da40ffb169cd76b`) and scored on the locked VALIDATION rows (n=100, 30
+frauds). Result: **all 20 classical x quantum pairwise error correlations are positive** (range 0.26–0.89, most
+Q-statistics near +1.0) — no pair shows the negative/near-zero error correlation needed to support a
+complementarity-driven fusion advantage. Quantum models mostly fail on frauds classical models already catch, or
+fail on additional frauds without recovering compensating true positives (e.g. VQC: quantum-only frauds caught
+<=2 vs classical-only frauds caught 12–21, for every classical partner). This is a genuine negative result,
+logged in `research/quantum_contribution/negative_results.csv`. Per protocol, validation-selected fusion (step 2
+of the experiment queue) should still be run empirically since n=100 point estimates are noisy, but the a priori
+complementarity hypothesis motivating steps 2–11 is not supported by this evidence. Steps 2–15 of the full
+queue (fusion, stacking, residual learning, hard-case specialists, Chow-Liu ensemble exploitation, matched-sparsity
+control, multi-seed confirmation, locked-test evaluation, hardware) were **not executed in this follow-up
+session either** — only step 1 (error complementarity) was run to completion with real trained models. The tier
+call below therefore remains provisional and is not changed by this new (negative) finding.
 
 ## Circuit / noise / hardware summary
 - CLT-informed entanglement improves PR-AUC over generic topology in 6/6 tested comparisons (mean Δ +0.138,
