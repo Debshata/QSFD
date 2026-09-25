@@ -1,0 +1,6 @@
+{
+  "description": "Registry of quantum/hybrid candidates that passed validation-selected search AND survived a same-validation-set paired bootstrap significance check, and are therefore eligible for a single locked-TEST evaluation (task protocol step 11-12).",
+  "row_fingerprint_sha256_16": "2da40ffb169cd76b",
+  "finalists": [],
+  "note": "Intentionally empty. The two most promising validation-selected candidates from this session (SVM-RBF + CLT-QNN fusion, alpha=0.55; classical-stack + CLT-QNN feature) both showed small positive point-estimate PR-AUC deltas, but a 2000-resample paired bootstrap on the same validation rows gave 95% confidence intervals that cross zero ([-0.0130, +0.1140] and [-0.0061, +0.0234] respectively, see research/quantum_contribution/bootstrap_screening.csv). Per protocol, a candidate must survive this check before multi-seed confirmation and before ANY evaluation on the locked TEST split. Neither candidate qualified, so no finalist was registered and the locked TEST split (research/experimental_protocol/locked_split.json) was never touched by this session's quantum-contribution work."
+}

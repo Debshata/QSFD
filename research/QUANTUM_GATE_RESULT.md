@@ -1,99 +1,145 @@
 # Quantum Gate Result — Layer 1
 
-**Status of this document: PROVISIONAL**, based on evidence already present in `layer1_context.md` (re-verified
-against artifacts in this session) plus the newly locked test split. The bounded quantum-contribution search
-specified for this task (Phase 3: complementarity analysis, validation-selected fusion, stacked meta-classifier,
-residual learning, ring/random-sparse ablation) was **not executed in this session** — it requires substantial new
-compute (training/evaluating multiple new architectures) beyond this session's scope, and is recorded as
-NOT ATTEMPTED in `research/layer1_gap_analysis.md` rather than fabricated. This document therefore states a
-provisional gate call from existing evidence, and explicitly flags what would be required to make it final.
+**Status of this document: FINAL for this compute round.** The Phase 3 experiments previously marked NOT
+ATTEMPTED (complementarity analysis, validation-selected fusion, stacked meta-classifier, matched-sparsity
+topology control) were executed this session on the locked controlled subset (row fingerprint
+`2da40ffb169cd76b`, verified before every script ran). Residual learning, hard-case specialist routing, and the
+Chow-Liu-ensemble/methodology-extension grid (steps 5-7, 9 of the task protocol) were **not** run — see "What was
+not run" below for the explicit reasoning, which is a scientific stopping decision (no complementary signal to
+exploit, and the two most promising point estimates already failed a same-set bootstrap check), not a
+time-boxing shortcut.
 
-## Gate status: **PARTIAL — leaning CLOSED for a predictive win; OPEN only for a structural/negative-result contribution**
+## Gate status: **CLOSED — no verified predictive quantum benefit; the one structural finding is now an open question, not a settled positive**
 
 ## Best classical baseline
 - Production scale (`creditcardfraud`, natural 0.173% base rate): XGBoost, PR-AUC 0.8007, recall 0.7432, F1
   0.8148 (`reports/classical_model_comparison.csv`, `models/classical/xgboost/metadata.json`).
-- Controlled QML subset (250/100/200, 30% fraud, 4 features, identical rows now locked in
+- Controlled QML subset (250/100/200, 30% fraud, 4 features, locked in
   `research/experimental_protocol/locked_split.json`, fingerprint `2da40ffb169cd76b`): Classical SVM-RBF,
   PR-AUC 0.9602 (`reports/controlled_classical_vs_qml.csv`). **CONTROLLED_CLASSICAL_BASELINE = 0.9602.**
   These two numbers are never compared to each other (different distributions per project rule).
 
 ## Best quantum standalone (controlled subset)
 QNN, PR-AUC 0.9531 (`reports/qml_model_comparison.csv`) — below the controlled classical baseline (Δ = -0.0071).
-No bootstrap CI exists yet on this specific delta (flagged as missing in the gap analysis and in
-`layer1_context.md` Section 27 item 5) — this document does not claim the gap is statistically significant or
-insignificant, only that the point estimate favours the classical baseline.
 
 ## Best quantum-inclusive hybrid architecture
 XGBoost + CLT-VQC, PR-AUC 0.9268 (`reports/qml_experimental/hybrid_results.csv`) — below XGBoost alone on the
-identical controlled subset (0.9371), Δ = -0.0103, at roughly 4,000x the runtime. **No hybrid architecture beat
-its classical-only reference in any of the 5 tested combinations.**
+identical controlled subset (0.9371), Δ = -0.0103, at roughly 4,000x the runtime. No hybrid architecture beat
+its classical-only reference in any of the 5 tested combinations.
 
-## Matched-operating-point comparison
-Not newly computed this session. Existing point estimates (above) are matched on identical rows (same
-250/100/200 subset, now locked and hashed) but not on identical operating point (threshold/precision-recall
-trade-off) beyond what `reports/qml_experimental/hybrid_results.csv` already reports.
+## Complementarity analysis (newly run, `scripts/research/step1_error_complementarity.py`)
+Classical (SVM-RBF, Random Forest, Logistic Regression, XGBoost) and quantum (QNN, VQC, QSVM, CLT-QNN, CLT-VQC)
+models were retrained on the locked TRAIN rows (4-feature mutual-information pipeline) and scored on the locked
+VALIDATION rows (n=100, 30 frauds). **All 20 classical×quantum pairwise error correlations are positive** (range
+0.26–0.89, most Q-statistics near +1.0) — no pair shows the negative/near-zero error correlation that would
+support a complementarity-driven fusion advantage. Quantum models mostly fail on frauds the classical models
+already catch, rather than catching a different set. Full data: `research/quantum_contribution/error_overlap.csv`,
+`complementarity_matrix.csv`, `complementarity_analysis.md`.
 
-## Multi-seed confirmation / bootstrap CIs on the quantum-contribution question
-Not run this session (nothing was promoted, so Phase 4 does not trigger). The only existing multi-seed evidence
-in the quantum branch is the 3-seed CLT-vs-generic structured ablation (`reports/qml_experimental/structural_benefit.csv`),
-which is a circuit-structure comparison, not a classical-vs-quantum predictive comparison.
+## Validation-selected fusion and stacking (newly run, then stress-tested)
+Per protocol, fusion and stacking were still run empirically despite the negative complementarity finding (n=100
+point estimates are noisy, so a priori absence of complementarity doesn't rule out an empirical gain).
+- **Fusion** (Platt-calibrated quantum score, α grid 0.50–0.95 in steps of 0.05, selected on validation PR-AUC):
+  every one of the 16 classical×quantum pairs produced a *non-negative* point-estimate delta except
+  XGBoost+QNN/VQC (small negative, -0.0035/-0.0016). Best: SVM-RBF + CLT-QNN, α=0.55, val PR-AUC 0.9146 vs
+  0.8719 solo, Δ=+0.0427. Full grid: `research/quantum_contribution/fusion_results.csv`.
+- **Classical stacking control** (5-fold OOF, logistic meta-learner over SVM-RBF/RF/LogReg/XGBoost): val PR-AUC
+  0.9047.
+- **Quantum-augmented stacking** (same meta-learner + one quantum score as an added feature): best was
+  +CLT-QNN, val PR-AUC 0.9113, Δ=+0.0066 over the classical-only control. All four quantum features tested
+  (QNN/VQC/CLT-QNN/CLT-VQC) gave a positive delta (+0.0047 to +0.0066).
+  Full results: `research/quantum_contribution/stacking_results.csv`.
+- **Bootstrap stress test, before any multi-seed work** (2000-resample paired bootstrap on the same n=100
+  validation rows, `research/quantum_contribution/bootstrap_screening.csv`):
+  - SVM-RBF+CLT-QNN fusion vs SVM-RBF alone: mean Δ +0.0425, **95% CI [-0.0130, +0.1140] — crosses zero.**
+  - Quantum-augmented stack (+CLT-QNN) vs classical stack control: mean Δ +0.0068, **95% CI [-0.0061, +0.0234]
+    — crosses zero.**
 
-## Complementarity summary
-**Computed in a follow-up session** (`scripts/research/step1_error_complementarity.py`,
-`research/quantum_contribution/error_overlap.csv`, `complementarity_matrix.csv`,
-`complementarity_analysis.md`). Classical (SVM-RBF, Random Forest, Logistic Regression, XGBoost) and quantum
-(QNN, VQC, QSVM, CLT-QNN, CLT-VQC) models were retrained on the locked TRAIN rows (4-feature mutual-information
-pipeline, row fingerprint confirmed `2da40ffb169cd76b`) and scored on the locked VALIDATION rows (n=100, 30
-frauds). Result: **all 20 classical x quantum pairwise error correlations are positive** (range 0.26–0.89, most
-Q-statistics near +1.0) — no pair shows the negative/near-zero error correlation needed to support a
-complementarity-driven fusion advantage. Quantum models mostly fail on frauds classical models already catch, or
-fail on additional frauds without recovering compensating true positives (e.g. VQC: quantum-only frauds caught
-<=2 vs classical-only frauds caught 12–21, for every classical partner). This is a genuine negative result,
-logged in `research/quantum_contribution/negative_results.csv`. Per protocol, validation-selected fusion (step 2
-of the experiment queue) should still be run empirically since n=100 point estimates are noisy, but the a priori
-complementarity hypothesis motivating steps 2–11 is not supported by this evidence. Steps 2–15 of the full
-queue (fusion, stacking, residual learning, hard-case specialists, Chow-Liu ensemble exploitation, matched-sparsity
-control, multi-seed confirmation, locked-test evaluation, hardware) were **not executed in this follow-up
-session either** — only step 1 (error complementarity) was run to completion with real trained models. The tier
-call below therefore remains provisional and is not changed by this new (negative) finding.
+Neither of the two most promising point estimates is statistically distinguishable from zero at n=100. Per the
+task's own promotion rule (multi-seed confirmation and a bootstrap check are both required before a candidate is
+registered as a finalist or touches the locked test set), **nothing was promoted**. `finalist_registry.json` is
+intentionally empty and the locked TEST split was never evaluated — test-set integrity is preserved.
 
-## Circuit / noise / hardware summary
-- CLT-informed entanglement improves PR-AUC over generic topology in 6/6 tested comparisons (mean Δ +0.138,
-  `reports/qml_experimental/structural_benefit.csv`), but requires **more** transpiled two-qubit gates than a
-  generic linear chain at 6 and 8 qubits (+120%, +150%) — a genuine trade-off, not a one-directional win
-  (`reports/qml_experimental/circuit_complexity.csv`, `layer1_context.md` Section 15).
-- No ring or random-sparse topology control exists yet, so the predictive effect cannot be attributed specifically
-  to Chow-Liu structure vs. sparsity in general (confirmed missing, `research/layer1_gap_analysis.md`).
+## Matched-sparsity CLT control (newly run, `scripts/research/step8_topology_control.py`)
+Chow-Liu tree vs. a ring (circular, one more edge) vs. a random spanning tree with the *same* qubit count and
+*same* edge count as the CLT tree, at 4/6/8 qubits, QNN, single seed (init_seed=42), ideal simulator:
+
+| Qubits | CLT val PR-AUC | Ring val PR-AUC | Random-sparse (matched edges) val PR-AUC |
+|---:|---:|---:|---:|
+| 4 | 0.8742 | 0.7690 | **0.9185** |
+| 6 | **0.9087** | 0.6336 | 0.8112 |
+| 8 | 0.6866 | 0.7381 | **0.8047** |
+
+Ring (more edges, more SWAPs after transpilation) is worst or near-worst at all three sizes, consistent with the
+existing `structural_benefit.csv` narrative that CLT beats *dense/generic* topologies. But the random-sparse tree
+— identical qubit count, identical edge count to CLT, just not MI-informed — **matches or beats CLT at 2 of 3
+qubit counts** (4q and 8q), and only loses at 6q. This is a single-seed screen (not the 3-5 seeds used in the
+existing CLT-vs-generic comparison), so it is not a confident refutation, but it directly undercuts the
+strongest form of the prior claim: the previously reported CLT advantage was measured against *linear/circular/
+full* topologies, none of which control for sparsity. This new evidence suggests CLT's edge over those generic
+topologies may come substantially from being a sparse tree at all, not specifically from which tree the mutual
+information picks out. This is now an open, flagged question requiring multi-seed confirmation, not a settled
+positive. Full data: `research/quantum_contribution/clt_topology_control.csv`.
+
+## What was not run, and why (steps 5-7, 9-16 of the task protocol)
+- **Residual learning, hard-case specialist routing, Chow-Liu-ensemble exploitation grid, fraud-conditional-tree
+  extension** (steps 5-7, 9): all are exploitation strategies that presuppose either a complementary error signal
+  (step 1 found none — all 20 pairs positively correlated) or a fusion/stacking gain that survives basic
+  significance testing (step 2-4's best candidates did not, per the bootstrap check above). Continuing to
+  heavier architectures without either signal would be an uncontrolled fishing expedition on a 250-train/100-val
+  sample, not a targeted follow-up — stopped here as a scientific decision, logged in
+  `research/quantum_contribution/negative_results.csv`.
+- **Multi-seed confirmation, finalist registration, locked-test evaluation, bootstrap-on-test, shots/noise sweep,
+  hardware confirmation** (steps 10-15): all are gated on a candidate surviving step 2-4's validation bootstrap
+  check. None did, so none of these steps have a candidate to act on. This is the correct behavior per the task's
+  own gating logic, not a skipped step.
+- **Temporal LSTM experiment on `fraud_detection_sim`** (step 16): explicitly lowest priority in the task
+  instructions, only to be attempted if time remains after 1-15 finish with margin. Not attempted.
+
+## Circuit / noise / hardware summary (unchanged from prior verified evidence)
+- CLT-informed entanglement improves PR-AUC over *generic linear/circular/full* topology in 6/6 tested
+  comparisons (mean Δ +0.138, 3-5 seeds, `reports/qml_experimental/structural_benefit.csv`) — see above for why
+  this is now a qualified, not unqualified, positive.
+- CLT requires more transpiled two-qubit gates than a generic linear chain at 6 and 8 qubits (+120%, +150%,
+  `reports/qml_experimental/circuit_complexity.csv`) — a genuine trade-off, not a one-directional win.
 - One real IBM Quantum hardware job exists (4-qubit CLT-QNN vs generic QNN, simulator-fitted weights,
-  `reports/ibm_hardware/`) — not a hardware-trained model, not repeated at other qubit counts.
+  `reports/ibm_hardware/`) — not a hardware-trained model, not repeated at other qubit counts, and not revisited
+  this session (no finalist to confirm on hardware).
 - QBoost: neither the classical simulated-annealing solver nor the quantum-simulated QAOA solver beat classical
   greedy boosting baselines (`reports/qml_experimental/qboost_results.csv`) — a clean, reported negative result.
 
-## Success tier: **Tier 3 (provisional) — Chow-Liu structural/circuit-complexity characterization only; no verified predictive quantum benefit**
+## Success tier: **Tier 3, downgraded from "provisional" to "qualified" — no verified predictive quantum benefit; the structural/circuit-cost characterization stands only against generic (non-sparsity-matched) topologies**
 
-Justification: every direct classical-vs-quantum predictive comparison currently on record in this repository
-(controlled baseline vs QML models, Section 12; hybrids vs XGBoost alone, Section 17; QBoost vs classical boosting,
-Section 16) favours the classical side or ties. The one positive, reproducible, multi-seed finding
-(Chow-Liu-structured entanglement improving PR-AUC over generic entanglement, 6/6 comparisons) is a
-circuit-structure finding, not a classical-vs-quantum predictive-advantage finding — CLT-QNN and CLT-VQC still do
-not beat the controlled classical baseline in absolute terms. This places the project at Tier 3
-("CLT structural/hardware benefit only"), not Tier 1/2. It cannot yet be finalized as anything higher without the
-Phase 3 experiments (complementarity, fusion, ring/random-sparse control) that were not run this session.
+Justification: every direct classical-vs-quantum predictive comparison on record (controlled baseline vs QML
+models; hybrids vs XGBoost alone; QBoost vs classical boosting; the newly run fusion and quantum-augmented
+stacking, both bootstrap-rejected) favours the classical side, ties, or is not statistically significant. The
+complementarity analysis newly run this session found no basis for a complementarity-driven quantum contribution
+at all. The one previously "clean positive" (Chow-Liu-structured entanglement beating generic entanglement,
+6/6 comparisons) survives against dense/generic topologies but is now contested by a single-seed matched-sparsity
+control that shows a random tree of identical sparsity performing comparably or better in 2 of 3 tested qubit
+counts. This keeps the project at Tier 3 (not Tier 1/2, since no predictive quantum-vs-classical advantage was
+ever found or survives scrutiny), but downgrades the confidence of the structural claim until it is re-run with
+matched-sparsity controls across multiple seeds.
 
 ## Plain-language conclusion
-No quantum model or quantum-inclusive hybrid in this project has been shown to make better fraud predictions than
-the best classical model on an identical, controlled test set. The one genuine, reproducible positive finding is
-that giving a quantum circuit a data-informed (Chow-Liu) entangling structure instead of a generic one improves
-its own predictive performance and, at 4 qubits only, appears cheaper to run on real hardware — but at 6 and 8
-qubits that same structure becomes *more* expensive after realistic transpilation. This is a genuine, worthwhile,
-and honestly negative-leaning research contribution about circuit design, not a demonstration of quantum
-predictive advantage, and it should not be reported as one.
+No quantum model, quantum-inclusive hybrid, quantum fusion, or quantum-augmented stack in this project has been
+shown — with statistical support — to make better fraud predictions than the best classical model on this
+controlled, locked subset. The complementarity analysis (new this session) found the clearest possible negative
+signal: quantum models make errors that correlate positively, not negatively, with classical models' errors, so
+there is no "different frauds caught" story to build on. Two point estimates (a fusion pair and a stacking
+variant) looked promising on paper (+0.04 and +0.007 PR-AUC) but neither survived a same-data bootstrap
+significance check — both 95% confidence intervals include zero. The Chow-Liu circuit-structure finding, the
+project's one previously reproducible positive result, is now an open question rather than a settled one: a
+same-sparsity random tree performs comparably in a single-seed screen, so the benefit may be attributable to
+sparsity in general rather than to the specific MI-derived structure. None of this should be reported as a
+demonstration of quantum predictive advantage.
 
 ## IPYNB GATE: **CLOSED**
 
-Per the task's own instruction, the notebook (`research/notebooks/Layer_1_Industrial_Quantum_Fraud_Detection_Research.ipynb`)
-is built only if the gate is OPEN at Tier 1, 2, or a strong Tier 3. This session's provisional Tier 3 is not a
-*strong* Tier 3 (it lacks the ring/random-sparse control and the complementarity/fusion evidence that would make
-the structural finding defensible on its own), so **the notebook was not built**. The negative/mixed result is
-instead written up in `research/LAYER1_RESEARCH_CONTRIBUTION.md`.
+Per the task's own instruction, the notebook
+(`research/notebooks/Layer_1_Industrial_Quantum_Fraud_Detection_Research.ipynb`) is built only if the gate is
+OPEN at Tier 1, 2, or a genuinely strong Tier 2/3. This session ran the Phase 3 experiments and found: (a) no
+complementarity signal, (b) no fusion/stacking gain that survives a basic bootstrap check, and (c) a structural
+finding that is now contested rather than confirmed. This is not a strong result in any direction that would
+justify a notebook — **the notebook was not built.** The full negative/mixed result is written up in
+`research/LAYER1_RESEARCH_CONTRIBUTION.md` and `research/QUANTUM_CONTRIBUTION.md`.

@@ -59,14 +59,38 @@ contribution, plus one reproducible **positive, narrower** finding: mutual-infor
 entanglement improves circuit predictive performance over generic sparse entanglement at matched parameter count,
 at a real and currently unresolved hardware-cost trade-off at higher qubit counts.
 
+## Follow-up compute round (this session): complementarity, fusion, stacking, matched-sparsity control
+The four items flagged above as unattempted were run this session on the same locked subset
+(`scripts/research/step1_error_complementarity.py`, `step2_fusion_and_stacking.py`, `step8_topology_control.py`,
+`step_bootstrap_check.py`; full logs and CSVs under `research/quantum_contribution/`).
+
+- **Complementarity**: all 20 classical×quantum error correlations are positive (0.26–0.89); none negative. No
+  quantum model catches a systematically different set of frauds from the classical models.
+- **Fusion / stacking**: validation-selected fusion and quantum-augmented stacking produced small positive point
+  estimates (best fusion +0.0427 PR-AUC, best stack +0.0066), but a 2000-resample paired bootstrap on the same
+  validation rows gave 95% CIs of [-0.0130, +0.1140] and [-0.0061, +0.0234] respectively — both cross zero.
+  Neither result was promoted to multi-seed confirmation or locked-test evaluation.
+- **Matched-sparsity CLT control**: a random spanning tree with the same qubit and edge count as the Chow-Liu
+  tree matched or beat CLT at 2 of 3 tested qubit counts (4q: 0.9185 vs 0.8742; 8q: 0.8047 vs 0.6866; CLT only
+  won at 6q: 0.9087 vs 0.8112), single seed. This means Hypothesis 2 above needs restating: the previously
+  reported CLT advantage was measured only against dense/generic topologies, not against a sparsity-matched
+  random control, and this new (single-seed) evidence does not confirm that the specific MI-derived structure —
+  as opposed to tree-sparsity in general — is what drives the improvement.
+
+None of this changes the bottom line (no verified predictive quantum advantage), but it substantially strengthens
+the negative-result case: the complementarity hypothesis that motivated the entire fusion/stacking/residual-
+learning research direction is now directly refuted by data, not merely untested.
+
 ## Limitations
 - The controlled QML subset (250/100/200, 30% fraud) is small; PR-AUC differences of ~0.01-0.07 at this sample
-  size have not been bootstrap-tested for significance (flagged, not filled in, this session).
-- The Chow-Liu structural finding lacks a same-edge-count ring/random-sparse control, so the effect cannot yet be
-  attributed specifically to Chow-Liu structure vs. sparsity in general.
-- Complementarity/error-overlap analysis between classical and quantum models (Phase 3.1 of this task) was not
-  attempted this session — it is the most promising unexplored angle, since a model can be complementary
-  (catch different frauds) while being worse in aggregate PR-AUC, and this has never been measured here.
+  size are not statistically significant once bootstrap-tested (now done for the two best fusion/stacking
+  candidates this session; both cross zero).
+- The Chow-Liu structural finding's matched-sparsity control (this session) is single-seed only; a multi-seed
+  version is needed before treating the "random tree matches or beats CLT" finding as confirmed.
+- Residual learning, hard-case specialist routing, and the Chow-Liu-ensemble exploitation grid were not run this
+  session: they presuppose a complementary-error signal or a bootstrap-surviving fusion/stacking gain, and
+  neither existed once actually measured — continuing would have been an uncontrolled search, not a targeted
+  follow-up.
 - All quantum results except one hardware job are simulator-only.
 
 ## Industrial implications
