@@ -134,6 +134,88 @@ same-sparsity random tree performs comparably in a single-seed screen, so the be
 sparsity in general rather than to the specific MI-derived structure. None of this should be reported as a
 demonstration of quantum predictive advantage.
 
+## Follow-up compute round (multi-seed random-sparse control, discriminative CLT, DL+quantum decisive comparison)
+
+This round ran three further real experiments requested to close remaining gaps in the analysis above. All were
+executed directly (no delegation), on the same locked split, TRAIN/VALIDATION only.
+
+**1. Multi-seed random-sparse topology control** (`scripts/research/p6_random_sparse_multiseed.py`,
+`research/quantum_contribution/random_sparse_multiseed.csv` /
+`random_sparse_multiseed_summary.csv`) — the single-seed random-sparse result above (CLT beaten at 4q/8q) is now
+checked against a distribution of 10 random spanning trees (same edge count as the CLT tree) at 4 and 6 qubits
+(8 qubits skipped this round — ~60s/run made 10 seeds too slow for this session; recorded as a scope limit, not
+silently dropped):
+
+| Qubits | CLT val PR-AUC | Random-sparse mean ± std (n=10) | Random-sparse min–max | CLT's percentile in the random distribution |
+|---:|---:|---:|---:|---:|
+| 4 | 0.8742 | 0.8610 ± 0.0713 | 0.7274 – 0.9181 | 30th (below average, inside the distribution) |
+| 6 | 0.9087 | 0.7964 ± 0.0704 | 0.6883 – 0.9185 | 90th (clearly above average) |
+
+This is a genuinely mixed result, not a clean refutation or confirmation: at 4 qubits CLT is unremarkable relative
+to random sparse trees of the same size (inside one standard deviation of the mean); at 6 qubits CLT is near the
+top of the random distribution (~1.6 std above the mean), suggesting the mutual-information-derived structure
+specifically helps at that qubit count. The prior single-seed finding that "random sparse can beat CLT" is
+confirmed at 4 qubits (CLT is below-average there) but not supported at 6 qubits (CLT is above-average there).
+**Conclusion: whether Chow-Liu structure beats generic sparsity is qubit-count-dependent and not yet resolved
+consistently — this remains an open question requiring the 8-qubit case and more seeds before any claim either
+way.**
+
+**2. Fraud-discriminative Chow-Liu (DCLT)** (`scripts/research/p11_discriminative_clt.py`,
+`research/quantum_contribution/discriminative_clt_results.csv`) — a class-conditional MI-difference topology
+(`D(i,j) = |MI_fraud(i,j) - MI_legit(i,j)|`, computed on locked TRAIN rows only) was compared against the ordinary
+pooled CLT, single seed:
+
+| Qubits | DCLT val PR-AUC | Ordinary CLT val PR-AUC (this run) |
+|---:|---:|---:|
+| 4 | 0.9181 | 0.8742 |
+| 6 | 0.7371 | 0.9087 |
+
+Mixed, opposite-direction result (DCLT better at 4q, worse at 6q) — no consistent advantage. At n=250 train rows,
+splitting further by class (≈75 fraud rows) for the class-conditional MI estimate is a small-sample regime; the
+4-qubit DCLT edges were nearly identical to the ordinary CLT edges, so the two results likely reflect estimation
+noise rather than a real discriminative effect. **This candidate extension is not supported by current evidence
+and was not pursued further** (per the branch's own stopping rule: 1-2 tries, stop if nothing promising).
+
+**3. DL+Quantum branch, static-track "decisive comparison"** (`scripts/research/p_dlq_static_decisive.py`,
+`research/dl_quantum/DL_QUANTUM_RESULTS.md`, `static_results.csv`) — tests whether
+`Classical + Deep Learning + Quantum > Classical + Deep Learning`, per that branch's stated central hypothesis.
+Using an sklearn MLPClassifier(32,16) as the deep-learning component (explicitly scoped down from
+LSTM/GRU/PyTorch — with only 250 training rows a from-scratch neural sequence model is not justified; see the
+temporal-track note below) and CLT-QNN as the quantum component, all meta-features generated via proper 3-fold
+out-of-fold stacking on TRAIN, evaluated on locked VALIDATION (locked TEST untouched):
+
+| Architecture | Validation PR-AUC |
+|---|---:|
+| XGBoost solo | 0.8943 |
+| MLP solo | 0.5181 |
+| XGBoost + MLP (stacked) | 0.8977 |
+| XGBoost + CLT-QNN (stacked) | 0.9038 |
+| **XGBoost + MLP + CLT-QNN (stacked) — the decisive architecture** | **0.9050** |
+
+Decisive comparison: **+0.0073 PR-AUC** point estimate (XGBoost+MLP+CLT-QNN vs XGBoost+MLP), but a 2000-resample
+paired bootstrap on the same validation rows gives a **95% CI of [-0.0170, +0.0337] — crosses zero**. Not
+distinguishable from noise, matching the same pattern seen in every other fusion/stacking test in this project.
+Also notable as a genuine negative finding: the from-scratch MLP alone scored PR-AUC 0.5181, well below XGBoost's
+0.8943 — with only 250 rows, an untuned small neural network is not currently a competitive deep-learning baseline
+on this subset (logged in `research/dl_quantum/negative_results.csv`, not hidden).
+
+**Temporal track**: confirmed `fraud_detection_sim` genuinely supports it (`cc_num` identifier +
+`trans_date_trans_time`, `chronological: true` per `data/metadata/dataset_specs.json`) — this is a real scope gap,
+not a data limitation. Building leakage-safe chronological per-card sequences and training/comparing GRU vs LSTM
+vs a quantum-augmented temporal ensemble is a substantial additional engineering effort that was not attempted
+this round; recorded explicitly as **NOT ATTEMPTED** in `research/dl_quantum/negative_results.csv` rather than
+approximated with a dummy sequence-length-1 LSTM (the exact methodological weakness flagged in
+`research/literature/reference_paper_analysis.md`).
+
+`research/dl_quantum/finalist_registry.json` is intentionally empty — the decisive comparison did not survive its
+own bootstrap check, so nothing was promoted and the locked TEST split was never touched by this branch either.
+
+### Updated tier assessment after this round
+No change to the overall gate: still **Tier 3, qualified**. Nothing in this round found a statistically supported
+predictive quantum benefit (the DL+quantum decisive comparison is the closest point estimate yet, +0.0073, but it
+is not significant). The Chow-Liu structural question got more nuanced, not resolved: it now depends on qubit
+count in a way that needs more seeds and the 8-qubit case before any directional claim is defensible.
+
 ## IPYNB GATE: **CLOSED**
 
 Per the task's own instruction, the notebook

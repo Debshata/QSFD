@@ -1,0 +1,6 @@
+architecture,val_pr_auc
+A_xgboost_solo,0.8943
+B_mlp_solo,0.5181
+C_xgb_mlp,0.8977
+F_xgb_qnn,0.9038
+G_xgb_mlp_qnn,0.905

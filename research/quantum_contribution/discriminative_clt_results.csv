@@ -1,0 +1,5 @@
+qubits,topology,n_edges,val_pr_auc,train_seconds
+4,dclt,3,0.9181,26.33
+4,clt_ordinary_rerun,3,0.8742,24.74
+6,dclt,5,0.7371,36.36
+6,clt_ordinary_rerun,5,0.9087,36.97

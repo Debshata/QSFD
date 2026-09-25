@@ -1,0 +1,5 @@
+{
+  "description": "Finalists promoted from the DL+quantum ensemble branch. A finalist may only be evaluated once on the locked TEST split (research/experimental_protocol/locked_split.json).",
+  "finalists": [],
+  "note": "Empty by design: the decisive comparison (XGBoost+MLP+CLT-QNN vs XGBoost+MLP) produced a point estimate of +0.0073 PR-AUC on validation with a bootstrap 95% CI of [-0.0170, +0.0337], which crosses zero. Per the branch's own promotion criteria (a candidate may be registered as a finalist only if validation evidence shows a defensible, non-noise advantage over the strongest non-quantum ensemble), nothing qualifies for promotion. The locked TEST split was therefore never touched by this branch."
+}
