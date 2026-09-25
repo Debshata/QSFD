@@ -1,0 +1,28 @@
+{
+  "description": "QML-M development confirmation context. Independent of the locked QML-S subset (different seed offsets, verified non-overlapping train/arch_val/confirm_val). Feature selection: mutual-information, 6 features, fit on TRAIN only.",
+  "seed_offsets": {
+    "train": 142,
+    "arch_val": 143,
+    "confirm_val": 144
+  },
+  "fraud_ratio": 0.3,
+  "feature_names": [
+    "V4",
+    "V10",
+    "V11",
+    "V12",
+    "V14",
+    "V17"
+  ],
+  "train_samples": 600,
+  "train_fraud": 180,
+  "arch_val_samples": 250,
+  "arch_val_fraud": 75,
+  "confirm_val_samples": 250,
+  "confirm_val_fraud": 75,
+  "train_row_fingerprint": "c50f546cb0e4ab52",
+  "arch_val_row_fingerprint": "1c26bad0a6985ff1",
+  "confirm_val_row_fingerprint": "ba2b030ff9fc4d22",
+  "arch_val_confirm_val_overlap": 0,
+  "policy": "Architecture/hyperparameter/topology selection uses TRAIN + ARCH_VAL only. CONFIRM_VAL may only be used once, for at most 2 frozen finalists, after ARCH_VAL screening is complete. The original locked_split.json TEST set remains untouched by this confirmation round entirely."
+}

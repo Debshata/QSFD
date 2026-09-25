@@ -1,0 +1,4 @@
+baseline,component_added,pr_auc_delta_mean,seed_std_delta,a0_mean,a0_std,variant_mean,variant_std
+A0_baseline_global_obs,A1_local_sum_observable,0.0739,-0.0023,0.7721,0.0302,0.846,0.028
+A0_baseline_global_obs,A2_data_reuploading,0.0107,0.0448,0.7721,0.0302,0.7829,0.075
+A0_baseline_global_obs,A3_near_zero_init,-0.0199,0.0311,0.7721,0.0302,0.7522,0.0614

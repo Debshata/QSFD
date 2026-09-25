@@ -1,0 +1,5 @@
+arm,n_seeds,pr_auc_mean,pr_auc_std,pr_auc_min,pr_auc_max,mean_runtime
+A0_baseline_global_obs,5,0.7721,0.0302,0.7141,0.8027,68.4
+A1_local_sum_observable,5,0.846,0.028,0.7972,0.8821,77.5
+A2_data_reuploading,5,0.7829,0.075,0.6622,0.8839,102.0
+A3_near_zero_init,5,0.7522,0.0614,0.6553,0.8083,71.7

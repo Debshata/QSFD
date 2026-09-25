@@ -1,0 +1,49 @@
+{
+  "split": "CONFIRM_VAL (frozen, n=250, 75 fraud, first and only use)",
+  "A0_baseline_global_observable": {
+    "seeds": [
+      42,
+      7,
+      13,
+      99,
+      2024
+    ],
+    "pr_auc_values": [
+      0.868673818301287,
+      0.7739579802463342,
+      0.7191682968895069,
+      0.8851098628503715,
+      0.8920260806992611
+    ],
+    "mean": 0.8278,
+    "std": 0.069
+  },
+  "A1_local_sum_observable": {
+    "seeds": [
+      42,
+      7,
+      13,
+      99,
+      2024
+    ],
+    "pr_auc_values": [
+      0.90884474333862,
+      0.8841347664453685,
+      0.9011691865995539,
+      0.8123821908848634,
+      0.8463428275270239
+    ],
+    "mean": 0.8706,
+    "std": 0.0362
+  },
+  "delta_mean": 0.0428,
+  "mann_whitney_u": 17.0,
+  "mann_whitney_p_one_sided": 0.21031746031746032,
+  "arch_val_result_for_comparison": {
+    "A0_mean": 0.7721,
+    "A0_std": 0.0302,
+    "A1_mean": 0.846,
+    "A1_std": 0.028
+  },
+  "confirmed": false
+}

@@ -1,0 +1,29 @@
+{
+  "context": "QML-M (arch_val, n=250, 75 fraud)",
+  "n_legitimate_train": 420,
+  "qubits": 6,
+  "topology": "linear",
+  "quantum_ocsvm_pr_auc": 0.9538107902829729,
+  "classical_ocsvm_rbf_pr_auc": 0.9567945350510979,
+  "isolation_forest_pr_auc": 0.9616909324005031,
+  "quantum_runtime_seconds": 1796.7,
+  "score_correlation_quantum_vs_rbf": 0.9025795275158348,
+  "score_correlation_quantum_vs_isolation_forest": 0.9789860349341063,
+  "bootstrap_delta_vs_rbf": {
+    "point": -0.0029837447681250184,
+    "ci_low": -0.011655975532128831,
+    "ci_high": 0.004356974628791933
+  },
+  "bootstrap_delta_vs_isolation_forest": {
+    "point": -0.007880142117530187,
+    "ci_low": -0.02024193143774674,
+    "ci_high": 0.001698608357842142
+  },
+  "original_qml_s_result_for_comparison": {
+    "quantum_ocsvm_linear_6q": 0.939,
+    "classical_ocsvm_rbf": 0.9329,
+    "isolation_forest": 0.9305,
+    "n_legitimate_train": 175,
+    "n_val": 100
+  }
+}

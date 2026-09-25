@@ -1,0 +1,7 @@
+model,kernel,qubits,encoding,reuploading,topology,n_train_legitimate,n_validation,PR_AUC,Recall,Precision,F1,F2,score_correlation_with_RBF,fraud_only_caught,runtime,context
+quantum_ocsvm,fidelity,6,IQP-style ZZ,no,linear,175,100,0.9390,,,,,,,145.18,QML-S (original screen)
+classical_ocsvm_rbf,rbf,6,n/a,n/a,n/a,175,100,0.9329,,,,,,,0.0,QML-S (original screen)
+isolation_forest,n/a,6,n/a,n/a,n/a,175,100,0.9305,,,,,,,0.0,QML-S (original screen)
+quantum_ocsvm,fidelity,6,IQP-style ZZ,no,linear,420,250,0.9538,,,,,0.903,,1796.7,QML-M (confirmation)
+classical_ocsvm_rbf,rbf,6,n/a,n/a,n/a,420,250,0.9568,,,,,,,0.0,QML-M (confirmation)
+isolation_forest,n/a,6,n/a,n/a,n/a,420,250,0.9617,,,,,0.979,,0.0,QML-M (confirmation)
