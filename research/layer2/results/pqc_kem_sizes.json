@@ -1,0 +1,6 @@
+{
+  "algorithm": "ML-KEM-768",
+  "encapsulation_key_bytes": 1184,
+  "decapsulation_key_bytes": 2400,
+  "ciphertext_bytes": 1088
+}

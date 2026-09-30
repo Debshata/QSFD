@@ -1,0 +1,7 @@
+condition,n_trials,mean_qber,std_qber,mean_sifted_length,sifted_ratio,detection_rate,key_acceptance_rate
+clean,30,0.0,0.0,1005.5,0.5027,,1.0
+noise_1pct,30,0.0089,0.0052,1005.5,0.5027,,1.0
+noise_5pct,30,0.0479,0.0091,1005.5,0.5027,,1.0
+noise_10pct,30,0.0947,0.0192,1005.5,0.5027,,0.8
+eve_intercept_resend,30,0.2394,0.0237,1004.0,0.502,1.0,0.0
+eve_and_noise_2pct,30,0.2642,0.0192,1004.0,0.502,1.0,0.0

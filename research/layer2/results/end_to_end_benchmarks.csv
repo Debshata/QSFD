@@ -1,0 +1,6 @@
+case,fraud_probability,risk_level,selected_profile,context_build_ms,policy_decision_ms,key_establishment_ms,signature_ms,symmetric_encryption_ms,total_security_ms,ciphertext_size_bytes
+very_low_risk,0.02,LOW,BASELINE,0.0552,0.0251,1.1011,21.8615,0.9524,23.915,81
+borderline_low_medium,0.29,LOW,BASELINE,0.0507,0.0327,0.8304,0.3658,0.0635,1.2597,81
+medium_risk,0.5,MEDIUM,PQC_ENHANCED,0.0331,0.017,12.1925,40.4224,0.0426,52.6575,81
+borderline_medium_high,0.69,MEDIUM,PQC_ENHANCED,0.0247,0.0131,7.4338,37.8667,0.0419,45.3424,81
+high_risk,0.9,HIGH,HYBRID_MAXIMUM,0.0252,0.012,8.774,6297.9013,0.0425,6306.7178,81
