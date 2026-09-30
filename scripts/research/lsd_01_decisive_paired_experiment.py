@@ -38,7 +38,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 QSC = ROOT / "research" / "quantum_signal_confirmation"
-OUT = ROOT / "research" / "local_sum_decisive"
+OUT = ROOT / "results" / "layer1" / "local_sum_decisive"
 OUT.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT))
 

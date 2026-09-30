@@ -25,7 +25,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "research" / "local_sum_decisive"
+OUT = ROOT / "results" / "layer1" / "local_sum_decisive"
 sys.path.insert(0, str(ROOT))
 
 

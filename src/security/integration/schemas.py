@@ -21,7 +21,7 @@ FraudAssessment and SecurityContext, so a future Layer 1 model swap requires
 no Layer 2 change.
 
 Fraud risk and cryptographic quantum-threat posture are two different risk
-dimensions (see research/integration/LAYER1_LAYER2_INTEGRATION.md). This
+dimensions (see docs/research/integration/LAYER1_LAYER2_INTEGRATION.md). This
 module keeps them as separate constructor inputs to SecurityContext rather
 than deriving one from the other.
 """
@@ -69,7 +69,7 @@ class SecurityContext:
     # value that the default policy treats as ordinary sensitivity. This is
     # a controlled, explicitly-synthetic policy attribute when no real
     # transaction-sensitivity field exists in the source dataset -- see
-    # research/integration/LAYER1_LAYER2_INTEGRATION.md for why it is kept
+    # docs/research/integration/LAYER1_LAYER2_INTEGRATION.md for why it is kept
     # separate from fraud risk rather than inferred from it.
     transaction_sensitivity: Literal["standard", "elevated"] = "standard"
     quantum_safe_mode: bool = False   # system-wide switch: has this deployment opted into PQC-by-default?

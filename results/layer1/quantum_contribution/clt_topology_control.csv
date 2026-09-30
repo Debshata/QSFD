@@ -1,0 +1,10 @@
+qubits,topology,n_edges,clt_n_edges,logical_depth,logical_two_qubit_gates,transpiled_depth,transpiled_two_qubit_gates,swap_count,val_pr_auc,train_seconds
+4,chow_liu,3,3,23,12,32,12,0,0.8742,37.0
+4,ring,4,3,33,16,78,42,0,0.769,40.35
+4,random_sparse,3,3,24,12,37,12,0,0.9185,33.53
+6,chow_liu,5,5,28,20,74,32,0,0.9087,49.96
+6,ring,6,5,47,24,133,75,0,0.6336,52.7
+6,random_sparse,5,5,32,20,65,32,0,0.8112,44.1
+8,chow_liu,7,7,28,28,70,43,0,0.6866,61.13
+8,ring,8,7,61,32,177,101,0,0.7381,62.76
+8,random_sparse,7,7,30,28,64,41,0,0.8047,61.43

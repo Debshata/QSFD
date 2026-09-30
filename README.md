@@ -549,14 +549,14 @@ result so this can be verified rather than trusted.
 - Metrics use a controlled 250/100/200 subset rebalanced to 30% fraud. They
   are **not** comparable to the full-scale classical benchmark in
   `reports/final_evaluation.md`. This subset's row indices are now locked and
-  hashed in `research/experimental_protocol/locked_split.json`.
+  hashed in `docs/protocols/locked_split.json`.
 - **No quantum model or quantum-inclusive hybrid has been shown to beat its
   matched classical counterpart on identical data anywhere in this
-  repository.** See `research/QUANTUM_GATE_RESULT.md` for the full gate
+  repository.** See `docs/research/layer1/QUANTUM_GATE_RESULT.md` for the full gate
   analysis (current tier: 3 — Chow-Liu structural/circuit-complexity
   characterization only, no verified predictive quantum benefit) and
-  `research/` for the gap analysis, literature review, and final results
-  tables.
+  `docs/research/layer1/` for the gap analysis, literature review, and final
+  results tables, and `research/` for the reproducible Jupyter notebooks.
 - QBoost's simulated-annealing solver is **classical**; only the QAOA solver
   is a genuine quantum algorithm, and it runs on a simulator. See
   [`docs/qboost_design.md`](docs/qboost_design.md).

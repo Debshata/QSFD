@@ -52,7 +52,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "research" / "quantum_signal_confirmation"
+OUT = ROOT / "results" / "layer1" / "quantum_signal_confirmation"
 OUT.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT))
 

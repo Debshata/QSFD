@@ -19,7 +19,7 @@ Implementation: `kyber-py` (https://github.com/GiacomoPope/kyber-py), a pure-
 Python reference implementation of FIPS 203 -- chosen because `liboqs-python`
 requires building the native liboqs C library, which needs a C toolchain/
 cmake not available in this environment (see
-research/layer2/LAYER2_REFERENCE_REPOSITORIES.md for the full verification
+docs/research/layer2/LAYER2_REFERENCE_REPOSITORIES.md for the full verification
 and why liboqs was not used here). Pure Python means benchmark timings in
 this project are NOT representative of a production/hardware-accelerated
 implementation's latency -- this is stated explicitly wherever KEM latency

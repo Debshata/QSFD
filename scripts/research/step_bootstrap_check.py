@@ -10,7 +10,7 @@ from pathlib import Path
 from sklearn.metrics import average_precision_score
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "research" / "quantum_contribution"
+OUT = ROOT / "results" / "layer1" / "quantum_contribution"
 
 d = np.load(OUT / "step2_scores.npz")
 yva = d["y_val"]

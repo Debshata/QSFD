@@ -609,27 +609,27 @@ Given the current repository state:
 
 This addendum appends new evidence without altering the verified content above.
 
-- **Gap analysis** re-verified against artifacts on disk: `research/layer1_gap_analysis.md`. Confirms the ring/
+- **Gap analysis** re-verified against artifacts on disk: `docs/research/layer1/layer1_gap_analysis.md`. Confirms the ring/
   random-sparse topology control (Section 15/22/27) is still missing, and additionally confirms that the
   bootstrap CI on the controlled classical-vs-QML delta (Section 27 item 5) is still missing.
-- **Reference paper analysis**: `research/literature/reference_paper_analysis.md` and
-  `research/literature/novelty_matrix.md` analyze arXiv:2505.00137v1 (hybrid Quantum LSTM for fraud detection).
+- **Reference paper analysis**: `docs/research/literature/reference_paper_analysis.md` and
+  `docs/research/literature/novelty_matrix.md` analyze arXiv:2505.00137v1 (hybrid Quantum LSTM for fraud detection).
   Key finding: that paper's LSTM uses a sequence length of 1 (a static transaction vector reshaped), which is
   **not genuine temporal modeling** — flagged explicitly, and not replicated in this project. Dataset check:
   `data/metadata/dataset_specs.json` confirms the primary/production dataset (`creditcardfraud`) has no
   customer/card identifier at all, so no genuine multi-transaction sequence can be built on it; only the
   non-primary `fraud_detection_sim` dataset carries a `cc_num` identifier that could support a genuinely
   sequenced model in future work. No LSTM was added to Layer 1 as a result of this review.
-- **Locked test split**: `research/experimental_protocol/locked_split.json` persists the exact 250/100/200
+- **Locked test split**: `docs/protocols/locked_split.json` persists the exact 250/100/200
   controlled-subset train/validation/test row indices used throughout Sections 11-19, with a verifiable hash
   (`row_fingerprint_sha256_16 = 2da40ffb169cd76b`, matching `src.qml_experimental.data.row_fingerprint()`).
   From this point forward, the test indices in that file may only be used for final held-out evaluation, not for
   architecture/feature/threshold/fusion-weight selection.
 - **Bounded quantum-contribution search (complementarity analysis, validation-selected fusion, stacked
   meta-classifier, residual learning, ring/random-sparse ablation) was NOT executed this session** — it requires
-  new compute beyond this session's scope and is recorded as not attempted (`research/layer1_gap_analysis.md`,
-  `research/QUANTUM_GATE_RESULT.md`) rather than fabricated.
-- **Provisional gate call** (`research/QUANTUM_GATE_RESULT.md`): Tier 3 (CLT structural/circuit-complexity
+  new compute beyond this session's scope and is recorded as not attempted (`docs/research/layer1/layer1_gap_analysis.md`,
+  `docs/research/layer1/QUANTUM_GATE_RESULT.md`) rather than fabricated.
+- **Provisional gate call** (`docs/research/layer1/QUANTUM_GATE_RESULT.md`): Tier 3 (CLT structural/circuit-complexity
   characterization only; no verified predictive quantum benefit), consistent with Sections 12/16/17 above.
   IPYNB GATE: CLOSED — the research notebook was not built this session because the gate is not a strong Tier 3.
 - **Layer 2 readiness verdict**: **READY WITH LIMITATIONS.** The production `FraudAssessment` contract (Section 29)
