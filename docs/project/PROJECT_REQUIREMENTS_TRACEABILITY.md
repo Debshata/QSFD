@@ -5,13 +5,17 @@ Source documents (read in full via direct PDF text extraction, not relied on fro
 - **DOC-A**: `Quantum-secure Financial Platform (2).pdf` (2 pages, 1489 extracted characters) — project pitch/overview.
 - **DOC-B**: `Quantum_Secure_Fraud_Detection_System_SRS.pdf` (4 pages, 4473 extracted characters) — the formal SRS,
   authored by Shreyansh Jaiswal, Abhishek Chaubey, Debshata Choudhury.
-- **DOC-C**: `Github repos 7th Sem Project (1).pdf` (and its non-suffixed and `(2)` variants) — **UNREADABLE**.
-  `pypdf` extracted 0-2 characters from every variant across both of its 2 pages; this is a scanned/image-only PDF
-  with no OCR tool available in this environment (the identical limitation already documented for `123.pdf` in
-  `docs/research/layer1/paper_method_registry.md`). Its specific repository list is **not** independently
-  verified from this PDF. The repository URLs referenced in `docs/research/layer2/LAYER2_REFERENCE_REPOSITORIES.md`
-  came from the URLs the user typed directly into an earlier session's prompt text, not from this PDF — that
-  distinction is recorded honestly rather than implied to be PDF-sourced.
+- **DOC-C**: `Github repos 7th Sem Project (1).pdf` — **SOURCE UNAVAILABLE FOR RELIABLE TEXT EXTRACTION**.
+  Every supplied variant/copy of this file (including a later re-upload, `Github repos 7th Sem Project (1) (1).pdf`)
+  was checked with `pypdf` and returned 0-2 extractable characters across all pages — a scanned/image-only PDF.
+  A single additional, bounded attempt was made this round (`pytesseract`/`pdf2image` installed via pip), but both
+  require a native binary (`tesseract`, `poppler`) that is not present in this sandboxed Windows environment and
+  cannot be installed without admin/system package access — per this round's own instruction not to spend hours
+  building a fragile OCR stack for one document, this was not pursued further. Its specific repository list is
+  **not** independently verified from this PDF. The repository URLs referenced in
+  `docs/research/layer2/LAYER2_REFERENCE_REPOSITORIES.md` came from URLs the user typed directly into an earlier
+  session's prompt text, not from this PDF — that distinction is recorded honestly rather than implied to be
+  PDF-sourced.
 
 ---
 
