@@ -1,0 +1,4 @@
+policy,n,n_fraud,security_escalation_rate,fraud_weighted_coverage,benign_escalation_rate,pct_BASELINE,pct_HYBRID_MAXIMUM,pct_PQC_ENHANCED,pct_QKD_EXPERIMENTAL
+A_categorical,55133,74,0.0011,0.7432,0.0001,99.89,0.11,0.0,0
+B_continuous,55133,74,0.0011,0.7432,0.0001,99.89,0.01,0.0,0.1
+C_anomaly_assisted,55133,74,0.0015,0.7432,0.0005,99.85,0.01,0.03,0.1

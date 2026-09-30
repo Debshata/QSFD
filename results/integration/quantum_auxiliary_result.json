@@ -1,0 +1,13 @@
+{
+  "fwc_B": 0.9067,
+  "fwc_D": 0.92,
+  "ber_B": 0.0114,
+  "ber_D": 0.1829,
+  "delta_fwc": 0.0133,
+  "delta_ber": 0.1714,
+  "n_routing_changed": 31,
+  "n_routing_changed_that_were_fraud": 1,
+  "svm_rbf_pr_auc": 0.967,
+  "local_sum_qnn_pr_auc": 0.8663,
+  "mean_disagreement": 0.2809
+}
