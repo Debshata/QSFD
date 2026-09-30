@@ -1,0 +1,9 @@
+{
+  "qiskit_version": "2.5.2",
+  "qiskit_aer_version": "0.17.2",
+  "n_bits_per_trial": 200,
+  "n_trials_per_condition": 30,
+  "detection_threshold": 0.11,
+  "total_runtime_seconds": 31.5,
+  "note": "n_bits reduced from the protocol simulator's 2000 to 200 to bound per-qubit circuit-simulation overhead; sifted-key statistics are computed identically otherwise."
+}

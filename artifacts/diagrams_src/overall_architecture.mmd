@@ -1,0 +1,17 @@
+graph TD
+    A[Transaction] --> B[Preprocessing]
+    B --> C[Classical ML<br/>LR / RF / XGBoost / Isolation Forest]
+    B --> D[Quantum ML research<br/>QSVM / VQC / QNN, Local-Sum observable]
+    C --> E[FraudAssessment<br/>fraud probability, risk score/level, model metadata]
+    D --> E
+    E --> F[SecurityContext -> SecurityPolicyEngine]
+    F --> G[BASELINE<br/>AES-256-GCM + ECDH-P256]
+    F --> H[PQC_ENHANCED<br/>ML-KEM-768 + ML-DSA-65]
+    F --> I[HYBRID_MAXIMUM<br/>ECDH + ML-KEM hybrid]
+    F --> J[QKD_EXPERIMENTAL<br/>+ simulated BB84 material]
+    G --> K[Protected Transaction<br/>+ Auditable SecurityDecision]
+    H --> K
+    I --> K
+    J --> K
+    style D fill:#FCEAEA,stroke:#C44E52
+    style J fill:#FCEAEA,stroke:#C44E52

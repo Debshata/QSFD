@@ -1,0 +1,11 @@
+graph LR
+    subgraph Global observable
+        A1["Encoded state psi(x,theta)"] --> B1["O = Z0 (x) Z1 (x) ... (x) Zn-1<br/>(one joint measurement)"]
+        B1 --> C1["f(x) in -1,1<br/>higher seed variance"]
+    end
+    subgraph Local-Sum observable
+        A2["Encoded state psi(x,theta)"] --> B2["O = 1/n * sum_i Zi<br/>(average of local measurements)"]
+        B2 --> C2["f(x) in -1,1<br/>lower seed variance"]
+    end
+    style B2 fill:#FCEAEA,stroke:#C44E52
+    style C2 fill:#FCEAEA,stroke:#C44E52

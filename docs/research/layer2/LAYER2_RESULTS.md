@@ -80,6 +80,42 @@ the textbook-cited ~25% expectation for this attack. At 10% channel noise (near 
 20% of trials were rejected due to natural statistical fluctuation in the QBER sample — a genuine, expected
 consequence of estimating QBER from a finite random sample, not a simulation bug.
 
+## C.1 Native PQC backend attempt (bounded, unsuccessful)
+
+A follow-up session attempted to install `liboqs-python` as an optimized/native PQC backend to compare against
+the pure-Python reference implementations above. `pip install liboqs-python` itself succeeded, but `import oqs`
+immediately triggers an automatic attempt to build native `liboqs` from source via `cmake`, which failed with
+`FileNotFoundError: [WinError 2]` because this Windows environment has no CMake/MSVC toolchain on `PATH`
+(`where cl` and `where cmake` both return nothing) and no unattended, non-interactive installation route for one
+was available. Per the pre-specified fallback rule, no substitute package was installed merely for having a
+similar name. **Result: NATIVE PQC BACKEND UNAVAILABLE IN CURRENT ENVIRONMENT.** All PQC timings in this document
+remain reference-Python-implementation costs; no reference-vs-native benchmark could be produced.
+
+## C.2 BB84 cross-implementation validation with Qiskit circuits
+
+An independent, circuit-level BB84 implementation (`src/security/qkd/bb84_qiskit.py`) was built using Qiskit +
+Qiskit Aer, preparing and measuring explicit single-qubit states (Z-basis: computational; X-basis: Hadamard)
+rather than sampling protocol-level probabilities. It was run under the same six conditions as the protocol-level
+simulator, 30 trials each, at a reduced raw-bit count (200 vs. 2000) to bound simulator overhead
+(`results/layer2/bb84_qiskit_summary.csv`, `bb84_qiskit_trials.csv`, environment metadata in
+`bb84_qiskit_environment.json`; Qiskit 2.5.2, Qiskit Aer 0.17.2).
+
+| Condition | Protocol-sim mean QBER | Qiskit-circuit mean QBER | Abs. diff |
+|---|---:|---:|---:|
+| Clean channel | 0.0000 | 0.0000 | 0.0000 |
+| 1% channel noise | 0.0089 | 0.0134 | 0.0045 |
+| 5% channel noise | 0.0479 | 0.0503 | 0.0024 |
+| 10% channel noise | 0.0947 | 0.1009 | 0.0062 |
+| Intercept-resend Eve | 0.2394 | 0.2447 | 0.0053 |
+| Eve + 2% noise | 0.2642 | 0.2647 | 0.0005 |
+
+**Finding: the two independent implementations agree closely** (largest gap 0.62 percentage points, on 200-bit
+vs. 2000-bit samples), and the Qiskit implementation detected the intercept-resend eavesdropper in 30/30 trials
+at the same 0.11 QBER threshold. This is evidence that the protocol-level simulator's sifting/QBER logic
+correctly reproduces the behavior of explicit per-qubit state preparation and measurement circuits — it is
+cross-implementation validation of simulated protocol logic, **not** evidence of physical quantum key
+distribution. Both implementations remain software simulations; see `LAYER2_LIMITATIONS.md`.
+
 ## D. End-to-end latency by security profile (`end_to_end_benchmarks.csv`, 5 representative risk cases, single run each)
 
 | Case | Fraud probability | Selected profile | Total security processing time |

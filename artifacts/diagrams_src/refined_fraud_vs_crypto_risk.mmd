@@ -1,0 +1,9 @@
+graph TD
+    A[Transaction] --> B[Fraud Intelligence<br/>Layer 1: fraud probability, risk level]
+    A --> C[Security Requirements<br/>system policy, transaction sensitivity - separate axis]
+    B --> D[Security Policy Engine]
+    C --> D
+    D --> E[Cryptographic Profile -> Protected Transaction]
+    F["FRAUD RISK is NOT EQUAL TO CRYPTOGRAPHIC QUANTUM RISK"]
+    style C fill:#FCEAEA,stroke:#C44E52
+    style F fill:#FFF3CD,stroke:#C44E52,stroke-width:2px

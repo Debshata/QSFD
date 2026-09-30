@@ -1,169 +1,232 @@
 # Quantum-Secure Fraud Detection System (QSFD)
 
-A research platform combining **fraud detection** (classical ML + a quantum ML research layer) with
-**risk-adaptive security** (classical cryptography, standardized post-quantum cryptography, and a simulated
-quantum key distribution protocol). It exists to investigate one question experimentally, not to assume the
-answer: *can behavioral fraud intelligence make cryptographic security orchestration more targeted and
-cost-effective, and does quantum computing add anything beyond what strong classical methods already provide?*
+QSFD is an experimental financial-security platform investigating **where quantum machine learning, post-quantum
+cryptography, and simulated quantum key distribution provide measurable value within an integrated fraud-aware
+architecture** — and where they do not. Rather than assuming quantum methods must outperform classical
+alternatives, the project uses controlled experiments, strong classical controls, and pre-specified protocols to
+identify both benefits and boundaries.
 
-> **No quantum advantage is claimed anywhere in this repository.** Every quantum result — in fraud detection and
-> in the BB84 simulation — is reported with its exact evidence and its limitations. See
-> [`docs/research/layer1/QUANTUM_GATE_RESULT.md`](docs/research/layer1/QUANTUM_GATE_RESULT.md) and
-> [`research/01_Layer1_Fraud_Detection_Research.ipynb`](research/01_Layer1_Fraud_Detection_Research.ipynb) for the
-> full record.
+> **This project does not claim quantum supremacy.** It provides: (1) a statistically supported QML
+> architecture-level improvement, (2) rigorous evidence establishing the *boundary* of that improvement, (3) a
+> real post-quantum cryptography implementation and benchmark, (4) a controlled BB84 simulation, (5) a
+> cost-constrained Layer 1 → Layer 2 integration experiment, and (6) reproducible positive *and* negative results.
 
----
+## Central Research Question
 
-## Architecture
+*Where do quantum and post-quantum techniques provide measurable utility, where do they fail to provide
+additional utility, and what practical trade-offs emerge when they are integrated into a fraud-aware financial
+security architecture?*
 
-```
-Transaction
-      |
-      v
-Preprocessing (median/mode impute, StandardScaler, OneHotEncoder; fit on TRAIN fold only)
-      |
-      +--------------------------------------+
-      |                                       |
-      v                                       v
-LAYER 1a: Classical ML                LAYER 1b: Quantum ML (research)
-  Logistic Regression                   QSVM / VQC / QNN
-  Random Forest                         Chow-Liu structured circuits, QBoost
-  XGBoost  <- PRODUCTION MODEL           Hybrid classical-quantum fusion
-  Isolation Forest (anomaly)            Local-Sum vs Global observable study
-      |                                       |
-      +-------------------+-------------------+
-                          |
-                          v
-              FraudAssessment (fraud probability, risk score/level,
-                    model metadata, contributing features)
-                          |
-                          v
-LAYER 2: SecurityContext -> SecurityPolicyEngine -> SecurityProfile
-      |                    |                    |
-      v                    v                    v
-  BASELINE            PQC_ENHANCED        HYBRID_MAXIMUM / QKD_EXPERIMENTAL
-  AES-256-GCM         ML-KEM-768          ECDH+ML-KEM hybrid + dual signature
-  + ECDH-P256         + ML-DSA-65         (+ simulated BB84 key material)
-  + ECDSA-P256
-                          |
-                          v
-              Protected Transaction + Auditable SecurityDecision
-                          |
-                          v
-              [ LAYER 3: attack simulation -- FUTURE WORK, not implemented ]
-```
+This decomposes into three investigated dimensions:
+
+| Dimension | Question |
+|---|---|
+| **A. Quantum machine learning** | Can quantum model design improve the stability and predictive behavior of a variational quantum fraud detector? |
+| **B. Quantum utility boundary** | Does that improvement translate into superiority or incremental utility over strong classical fraud-detection methods? |
+| **C. Quantum-secure systems** | How can fraud intelligence, post-quantum cryptography, and simulated QKD coexist in an integrated architecture, and what trade-offs result? |
+
+A conceptual insight emerges from dimension C that shapes the whole architecture:
+
+> **FRAUD RISK ≠ CRYPTOGRAPHIC QUANTUM RISK.** *"How suspicious is this transaction?"* (Layer 1) and *"what
+> cryptographic protection should this transaction receive?"* (Layer 2) are related but not equivalent questions.
+> A low-fraud-probability transaction is not thereby exempt from post-quantum protection; a high-fraud-probability
+> transaction is not automatically more vulnerable to Shor's algorithm.
+
+![Refined architecture: fraud risk vs cryptographic risk](artifacts/figures/diagrams/refined_fraud_vs_crypto_risk.png)
+
+## System Architecture
+
+![Overall QSFD architecture](artifacts/figures/diagrams/overall_architecture.png)
 
 **Every security profile, including BASELINE, uses full AES-256-GCM authenticated encryption plus a real
-key-establishment algorithm.** Fraud risk controls only *additional* protection layered on top — it never
-weakens the baseline.
+key-establishment algorithm.** Fraud risk controls only *additional* protection layered on top — it never weakens
+the baseline.
 
-## Current status
+## Research Questions
 
-| Layer | Status |
+| # | Question | Answer | Evidence |
+|---|---|---|---|
+| RQ1 | How do strong classical and quantum models compare for highly imbalanced fraud detection? | Classical (XGBoost) leads on both production and controlled benchmarks | `docs/research/layer1/QUANTUM_GATE_RESULT.md` |
+| RQ2 | Can observable locality materially improve a variational quantum fraud classifier without increasing quantum resources? | **Yes — statistically supported** | 20-seed paired experiment, below |
+| RQ3 | Does the improved QML representation provide statistically verified incremental utility beyond strong classical controls? | **No — not verified** | Classical capacity control, below |
+| RQ4 | What overhead arises from introducing standardized post-quantum primitives into the transaction-security layer? | Substantial and implementation-dependent (up to ~15s/signature for SLH-DSA in this pure-Python build) | `docs/research/layer2/LAYER2_RESULTS.md` |
+| RQ5 | Does the implemented BB84 simulator reproduce expected eavesdropping/noise behavior? | **Yes, under stated simulation conditions** (30/30 trials) | `results/layer2/bb84_summary.csv` |
+| RQ6 | Can Layer 1 risk intelligence improve Layer 2 security orchestration under a pre-specified operational cost budget? | **Not under the tested configurations** | `docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md` |
+| RQ7 | What architectural lesson emerges from integrating fraud risk, QML, PQC, and simulated QKD? | Fraud risk and cryptographic-quantum-threat posture must be modeled as separate axes, not one derived from the other | See diagram above |
+
+## Layer 1 — Fraud Detection
+
+### The Experimental Progression
+
+![Layer 1 experimental workflow](artifacts/figures/diagrams/layer1_experimental_workflow.png)
+
+**Classical baselines** established first (Logistic Regression, Random Forest, XGBoost — production, Isolation
+Forest). **Conventional QML** (QSVM, VQC, QNN) evaluated next on a controlled subset — none beat the classical
+baselines. Rather than stopping there, the project asked whether the limitation was partly *architectural*, and
+investigated structured topologies, quantum kernels, anomaly detection, data re-uploading, and initialization
+strategies — most of these hypotheses were **rejected under stronger validation** (see
+[Negative Results](#negative-results)). One candidate survived: changing the QNN's *measurement observable*.
+
+### The Local-Sum Observable Finding
+
+![Global vs Local-Sum measurement](artifacts/figures/diagrams/global_vs_localsum_diagram.png)
+
+Holding circuit resources constant, changing the measurement from a **global** observable (one joint measurement
+across all qubits) to a **local-sum** observable (the average of per-qubit local measurements) produced a
+statistically supported improvement in fraud-ranking performance, validated across 20 paired random seeds:
+
+| | Global QNN | Local-Sum QNN |
+|---|---:|---:|
+| Mean PR-AUC (20 seeds) | 0.8077 | **0.8612** |
+| Std | 0.073 | 0.051 |
+
+**Mean paired delta: +0.0536** · **Bootstrap 95% CI: [+0.0149, +0.0913]** (excludes zero) · **Wilcoxon p = 0.0086**
+· **Permutation p = 0.0072** · **Local-Sum won 13/20 seeds**, not driven by any single outlier.
+
+Gradient diagnostics show the Local-Sum observable's gradient norm is smaller *and* less variable across seeds at
+every training checkpoint than the Global observable's — **consistent with improved optimization stability**,
+not with larger/healthier gradients or proof of barren-plateau elimination. This is a conservative, evidence-scoped
+claim, not a causal one.
+
+### The Classical Capacity Control — Establishing the Boundary
+
+The Local-Sum result answers *"does quantum model design matter?"* — yes. It does not by itself answer the harder
+question: *"does the improved quantum representation provide information an equivalent classical nonlinear
+representation cannot?"*
+
+| Architecture | PR-AUC |
+|---|---:|
+| XGBoost alone | 0.9613 |
+| XGBoost + Local-Sum QNN | 0.9665 |
+| XGBoost + matched classical nonlinear control | **0.9671** |
+
+The classical control's point estimate is *higher* than the quantum-augmented ensemble's, and neither delta
+excludes zero on a paired bootstrap. **Answer: not verified.** This is the boundary of the Local-Sum finding, and
+it is reported with the same weight as the positive result above.
+
+### What Layer 1 Establishes / Does Not Establish
+
+| Establishes | Does Not Establish |
 |---|---|
-| **Layer 1** (fraud detection) | **Implemented and research-complete.** Production classical model (XGBoost) plus an extensive, statistically validated quantum-ML research branch. Frozen — see the scientific result below. |
-| **Layer 2** (security) | **Implemented.** Classical crypto, post-quantum crypto (ML-KEM/ML-DSA/SLH-DSA), BB84 simulation, risk-adaptive policy engine, real benchmarks. |
-| **Layer 1 -> Layer 2 integration** | **Implemented and experimentally evaluated.** A pre-specified policy ablation (categorical/continuous/anomaly-assisted/quantum-assisted routing) was run and reported — see [Key results](#key-results). |
-| **Layer 3** (attack simulation: Shor, Grover, MITM, replay, brute-force, adversarial ML) | **Not implemented — future work.** See [Layer 3](#layer-3--future-work). |
-| **Web dashboard / API** | **Not implemented.** This is a research codebase (CLI scripts + Jupyter notebooks + a test suite), not a deployed system with a UI. See [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md) for the honest gap analysis against the original SRS. |
+| Local-Sum observable significantly improves the matched Global-observable QNN (statistically supported) | Quantum beats XGBoost |
+| The improvement is consistent with reduced optimization variance | Barren-plateau elimination (not proven) |
+| Quantum model *design* materially affects fraud-ranking performance | System-level or incremental quantum predictive advantage |
 
-## Research contribution
+## Layer 2 — Quantum-Secure Financial Security
 
-**Layer 1**: a controlled, statistically validated investigation of *observable locality* in a variational
-quantum fraud classifier. A "local-sum" measurement observable significantly and reproducibly improves a
-resource-matched "global" observable QNN (20 paired seeds, bootstrap CI excludes zero, Wilcoxon p=0.0086,
-permutation p=0.0072) — a genuine quantum-architecture-level finding. This does **not** establish system-level
-quantum predictive advantage: the same quantum signal does not beat the production classical model (XGBoost) with
-statistical support, and a matched classical nonlinear capacity control performs at least as well.
+QML addresses *prediction*; PQC addresses *cryptographic resilience against future quantum-capable adversaries*
+— a different problem entirely. Layer 2 implements and benchmarks all three security tracks:
 
-**Layer 2**: a working, tested implementation of classical cryptography (AES-256-GCM, RSA-3072, ECC/P-256) and
-standardized post-quantum cryptography (ML-KEM-768, ML-DSA-65, SLH-DSA-SHA2-128s — the current names for the
-CRYSTALS-Kyber/Dilithium/SPHINCS+ families named in the original project proposal), plus a BB84 QKD **simulation**
-(not a physical channel), with real, repeated-measurement benchmarks.
-
-**Integration**: fraud intelligence is converted into an auditable `SecurityContext` that drives risk-adaptive
-security-profile selection. A pre-specified experiment (protocol committed before results were seen — see
-[`docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md`](docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md)) found that
-categorical and continuous routing perform identically on this dataset, and that neither an anomaly-assisted nor
-a quantum-assisted escalation signal clears a pre-specified cost budget — both negative results, reported
-plainly rather than hidden.
-
-## Key results
-
-| Question | Answer | Evidence |
+| Track | Algorithms | Purpose |
 |---|---|---|
-| Does Local-Sum observable beat Global observable QNN? | **Yes, statistically supported** | `research/01_Layer1_Fraud_Detection_Research.ipynb` §20-23 |
-| Does any quantum model beat XGBoost on fraud detection? | **No** | Same notebook §26; `docs/research/layer1/QUANTUM_GATE_RESULT.md` |
-| Does BB84 simulation detect an intercept-resend eavesdropper? | **Yes, 30/30 trials at stated conditions** | `research/02_Layer2_Quantum_Secure_Cryptography_Research.ipynb` §31-35 |
-| Does an anomaly/quantum-assisted signal improve Layer 2 routing? | **No — both fail their pre-specified cost budget** | `docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md` |
-| Is SLH-DSA (SPHINCS+) practical for real-time signing here? | **No — ~15s/signature in this pure-Python implementation** | `docs/research/layer2/LAYER2_RESULTS.md` |
+| Classical cryptography | AES-256-GCM, RSA-3072, ECC/P-256 | Symmetric payload protection + classical key establishment/signatures |
+| Post-quantum cryptography | ML-KEM-768, ML-DSA-65, SLH-DSA-SHA2-128s (standardized descendants of CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+) | Quantum-resistant key establishment + signatures |
+| Simulated QKD | BB84 (software simulation) | Information-theoretic eavesdropper detection, **not** physical key distribution |
 
-## Datasets
+### Cryptographic Protection Flow
 
-Four Kaggle datasets are supported (`config/datasets.yaml`); **`creditcardfraud`** (mlg-ulb/creditcardfraud) is
-the sole production dataset. See `data/metadata/dataset_summary.csv` for profiling of all four, and
-[`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md) for how
-this differs from the original SRS's dataset list (PaySim/IEEE-CIS/CICIDS2017/NSL-KDD were specified but are not
-used; three different datasets are used instead, sharing only Credit Card Fraud in common).
+![Layer 2 cryptographic workflow](artifacts/figures/diagrams/layer2_crypto_workflow.png)
 
-Datasets download via `kagglehub` on first use — no manual download needed, but a free Kaggle account/API token
-is required (`~/.kaggle/kaggle.json`).
+Post-quantum key/signature material is substantially larger than classical equivalents (ML-DSA-65's signature is
+~47× ECDSA's; SLH-DSA's is ~112×), and signing latency varies by algorithm — ML-DSA's rejection-sampling
+construction gives it genuinely high variance (86–1494ms across 30 runs), while SLH-DSA-SHA2-128s required
+~15 seconds per signature **in this project's pure-Python implementation**. The project evaluates both a
+reference pure-Python and an attempted optimized/native PQC backend, so implementation overhead can be
+separated, in principle, from primitive-level trade-offs: installing `liboqs-python` as a native backend was
+attempted, but importing it triggers an automatic native `liboqs` build via CMake, which failed in this sandboxed
+Windows environment (no CMake/MSVC toolchain on `PATH`, and no unattended toolchain installation was possible).
+**Result: NATIVE PQC BACKEND UNAVAILABLE IN CURRENT ENVIRONMENT** — all PQC latency figures in this project,
+including the ~15-second SLH-DSA signing time, remain reference-Python-implementation costs and should not be
+generalized to optimized native implementations. Full benchmarks and the native-backend attempt record:
+[`docs/research/layer2/LAYER2_RESULTS.md`](docs/research/layer2/LAYER2_RESULTS.md) /
+[`LAYER2_LIMITATIONS.md`](docs/research/layer2/LAYER2_LIMITATIONS.md).
 
-## Installation
+### BB84 Simulation
 
-```bash
-python -m pip install -r requirements.txt
-```
+![BB84 protocol](artifacts/figures/diagrams/bb84_protocol_diagram.png)
+![BB84 intercept-resend](artifacts/figures/diagrams/bb84_intercept_resend_diagram.png)
 
-Requirements include: `numpy`/`pandas`/`scikit-learn`/`xgboost` (classical ML), `qiskit`/`qiskit-machine-learning`
-(quantum ML — see `docs/QML_ENVIRONMENT.md`), `cryptography` (classical crypto), `kyber-py`/`dilithium-py`/
-`slh-dsa` (post-quantum crypto — pure-Python reference implementations; see
-[`docs/research/layer2/LAYER2_REFERENCE_REPOSITORIES.md`](docs/research/layer2/LAYER2_REFERENCE_REPOSITORIES.md)
-for why liboqs's native implementation was not used), `nbformat`/`nbconvert`/`pylatexenc` (notebook execution).
+**This is a software simulation, not physical QKD, quantum hardware, or production quantum communication.** Under
+30 trials per condition at a 2000-bit raw key length: measured QBER tracked injected channel noise closely
+(1%→0.89%, 5%→4.79%, 10%→9.47%), and an intercept-resend eavesdropper was **detected in 30/30 trials** at the
+stated 11% acceptance threshold — a result valid under exactly these stated conditions, not a universal guarantee.
 
-## Quick start
+An independent, circuit-level BB84 implementation was additionally built with Qiskit + Qiskit Aer
+(`src/security/qkd/bb84_qiskit.py`), preparing and measuring explicit single-qubit states rather than sampling
+protocol-level probabilities. Run across the same six conditions (30 trials each, 200-bit raw keys), it agreed
+closely with the protocol-level simulator (largest gap 0.62 percentage points) and detected the intercept-resend
+eavesdropper in 30/30 trials at the same threshold — see
+[`results/layer2/bb84_cross_implementation_comparison.csv`](results/layer2/bb84_cross_implementation_comparison.csv).
+This is cross-implementation validation of simulated protocol logic; **it does not make BB84 a physical QKD
+demonstration** — no photon is transmitted and no physical no-cloning property is exercised, on a simulator or on
+real quantum hardware.
 
-```bash
-# Full classical pipeline: download -> profile -> train -> evaluate -> report -> test
-python scripts/prepare_data.py
-python scripts/run_fraud_pipeline.py
+## Layer 1 → Layer 2 Integration
 
-# Quantum ML research layer (small controlled subset, see docs/research/layer1/)
-python scripts/run_qml_experiments.py
+The initial intuitive architecture might suggest *higher fraud risk → stronger quantum security*. A pre-specified
+experiment (protocol committed **before** results were seen:
+[`docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md`](docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md)) tested this
+directly across four routing policies, on the production test fold (n=55,133):
 
-# Layer 2 security benchmarks
-python scripts/security/run_layer2_benchmarks.py
-python scripts/security/run_bb84_and_e2e_benchmarks.py
+| Policy | Fraud-Weighted Coverage | Benign Escalation Rate |
+|---|---:|---:|
+| Categorical (risk-level) | 74.32% | 0.01% |
+| Continuous (probability) | 74.32% (identical — honest null result) | 0.01% |
+| + Anomaly-assisted | 74.32% (no gain) | 0.05% (5× cost) |
+| + Quantum-assisted (separate sample) | +1.33pp (1 extra fraud caught) | **16× cost increase** |
 
-# Layer 1 -> Layer 2 integration experiment
-python scripts/integration/run_policy_experiment.py
-python scripts/integration/run_policy_d_quantum.py
+**Neither anomaly-assisted nor quantum-assisted routing clears the pre-specified cost budget.** This is a valid,
+important systems result: *adding more sophisticated risk signals does not automatically improve security
+orchestration* — rejecting a signal that costs more than it's worth is the correct engineering decision, and the
+pre-specified protocol is what makes this conclusion credible rather than post-hoc.
 
-# Run all tests
-python -m pytest -q
-```
+## Negative Results
 
-## Reproducing the research notebooks
+Reported with the same rigor as positive findings — see
+[`reports/materials/NEGATIVE_RESULTS.md`](reports/materials/NEGATIVE_RESULTS.md) for the full list:
 
-```bash
-python scripts/notebooks/build_notebook_1.py     # (re)builds the notebook cell structure
-python scripts/notebooks/execute_notebooks.py research/01_Layer1_Fraud_Detection_Research.ipynb
-python scripts/notebooks/build_notebook_2.py
-python scripts/notebooks/execute_notebooks.py research/02_Layer2_Quantum_Secure_Cryptography_Research.ipynb
-```
+- No quantum model beats controlled classical baselines standalone.
+- Chow-Liu structural benefit is qubit-count-dependent against a matched-sparsity control.
+- Neither QBoost solver beats classical boosting.
+- No hybrid classical-quantum fusion beats XGBoost alone.
+- The quantum anomaly detector's promising small-scale result **reversed** at larger, independent scale.
+- Data re-uploading and near-zero initialization did not improve on existing baselines.
+- Local-Sum QNN does not beat XGBoost, and does not beat a matched classical capacity control.
+- Categorical and continuous routing behave identically on this dataset; anomaly/quantum-assisted routing fail
+  their pre-specified cost budgets.
 
-Both notebooks load real, previously-computed artifacts (`reports/`, `results/`, `models/`) rather than
-retraining expensive models inline — they run in well under a minute each.
+## Scientifically Meaningful Contributions
 
-## Running tests
+| Contribution | Evidence | Establishes | Does Not Establish |
+|---|---|---|---|
+| 1. Empirical QML | 20 paired seeds, bootstrap/Wilcoxon/permutation | Observable-locality design improves matched QNN | — |
+| 2. QML boundary | Classical capacity control | Improved QML ≠ quantum predictive advantage | Quantum superiority over XGBoost |
+| 3. Research methodology | Pre-specified protocols, multi-seed, bootstrap, negative-result preservation throughout | A disciplined framework resistant to overclaiming | — |
+| 4. PQC system evaluation | Real, benchmarked ML-KEM/ML-DSA/SLH-DSA implementation; native `liboqs` backend attempted | Integration feasibility + real reference-implementation cost | Universal algorithm performance (native backend unavailable in this environment) |
+| 5. QKD simulation + cross-validation | 180 protocol-simulator BB84 trials + 180 independent Qiskit circuit-level trials across 6 matched conditions | Expected eavesdropping/noise behavior reproduced by two independent implementations (agreement within 0.62 pp) | Physical QKD security |
+| 6. Integrated systems insight | Pre-specified routing ablation | Fraud risk and cryptographic risk must be modeled separately | Risk-adaptive security is universally ineffective |
 
-```bash
-python -m pytest -q
-```
+Not claimed as "first" — see [`reports/materials/LITERATURE_MATRIX.csv`](reports/materials/LITERATURE_MATRIX.csv)
+for what prior work already established. The contribution is methodological rigor and integration, not priority
+of invention.
 
-228 tests (195 Layer 1 + 33 Layer 2/integration), 0 failures at the time of writing.
+## Limitations
 
-## Repository structure
+- No web dashboard or API layer exists — this is a research codebase (CLI + notebooks + tests), not a deployed
+  system. See [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md).
+- Post-quantum benchmarks reflect a pure-Python implementation, not production-grade native code; a native
+  `liboqs` backend was attempted and found unavailable in this environment (no C/CMake toolchain).
+- BB84 is a software simulation with no physical channel; a second, independent Qiskit circuit-level
+  implementation adds a simple bit-flip channel noise model and cross-validates the original simulator, but
+  neither implementation involves a physical channel or hardware.
+- No concurrency/load testing exists.
+- The integration experiment's null/negative findings were measured on one dataset and threshold configuration.
+- Layer 3 (attack simulation) is not implemented.
+
+Full list: [`reports/materials/LIMITATIONS.md`](reports/materials/LIMITATIONS.md),
+[`reports/materials/THREATS_TO_VALIDITY.md`](reports/materials/THREATS_TO_VALIDITY.md).
+
+## Repository Structure
 
 ```
 src/
@@ -173,65 +236,73 @@ src/
   fraud_engine/        Production inference engine + FraudAssessment contract
   security/            Layer 2: classical/, pqc/, qkd/, policy/, integration/, benchmarking/
   data/                Dataset loading, preprocessing, leakage validation
-tests/                 195 Layer 1 tests + 33 Layer 2/integration tests
+tests/                 228 tests (195 Layer 1 + 33 Layer 2/integration)
 scripts/
   research/            Historical Layer 1 experiment scripts
   security/            Layer 2 benchmark scripts
   integration/         Layer 1->Layer 2 policy experiment scripts
-  notebooks/           Notebook builder/executor scripts
+  notebooks/           Notebook builder/executor scripts, conceptual diagram generator
+  reports/             Final report generator
 config/                YAML configuration (datasets, classical, qml, risk policy)
 models/                Trained model artifacts (classical + QML)
-reports/               Layer 1 evaluation reports and QML experimental results
-results/
-  layer1/              Every Layer 1 research round's CSV/JSON/NPZ artifacts
-  layer2/               Layer 2 benchmark CSVs/JSON
-  integration/          Layer 1->Layer 2 experiment CSVs/JSON
-docs/
-  project/             Requirements traceability against the original SRS
-  protocols/           Locked test split, pre-specified experimental protocols
-  references/          External reference material
-  research/            All research documentation (layer1/, layer2/, integration/, literature/)
-artifacts/figures/     All figures generated by the notebooks, organized by layer
-research/              ONLY the two final Jupyter notebooks (01_Layer1..., 02_Layer2...)
-reports/materials/     Final-report source material (literature review, claim-evidence matrix, etc.)
+reports/               Layer 1 evaluation reports, QML experimental results, reports/materials/ (final-report source)
+results/               layer1/, layer2/, integration/ -- every experiment's CSV/JSON/NPZ artifacts
+docs/                  project/ (traceability), protocols/ (locked splits, pre-specified protocols), research/ (all findings)
+artifacts/figures/     Notebook and report figures, organized by layer + diagrams/ (Mermaid-rendered)
+artifacts/diagrams_src/  Mermaid (.mmd) source for every conceptual/architecture diagram
+research/              ONLY the two final Jupyter notebooks
 ```
+
+## Installation
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Running Tests
+
+```bash
+python -m pytest -q
+```
+
+228 tests, 0 failures at time of writing.
+
+## Research Notebooks
+
+```bash
+python scripts/notebooks/build_notebook_1.py && python scripts/notebooks/execute_notebooks.py research/01_Layer1_Fraud_Detection_Research.ipynb
+python scripts/notebooks/build_notebook_2.py && python scripts/notebooks/execute_notebooks.py research/02_Layer2_Quantum_Secure_Cryptography_Research.ipynb
+```
+
+Both load real, previously-computed artifacts (never retrain expensive models inline) and run in well under a
+minute each. Diagrams are Mermaid (`.mmd` source in `artifacts/diagrams_src/`, rendered via
+`scripts/notebooks/make_conceptual_diagrams.py`, which requires Node.js/`npx`).
 
 ## Reproducibility
 
-- Global seed 42 (`config/base.yaml`), propagated through Python/NumPy/scikit-learn/XGBoost/Qiskit RNGs.
-- The Layer 1 quantum research subset's exact row indices are locked and hashed:
-  [`docs/protocols/locked_split.json`](docs/protocols/locked_split.json) (fingerprint `2da40ffb169cd76b`).
-- The Layer 1->Layer 2 integration experiment's policy formulations and selection criterion were committed
-  **before** the experiment ran: [`docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md`](docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md).
-- Every notebook figure/table cites the artifact file it was loaded from.
+- Global seed 42, propagated through Python/NumPy/scikit-learn/XGBoost/Qiskit RNGs.
+- Locked quantum research subset: [`docs/protocols/locked_split.json`](docs/protocols/locked_split.json) (fingerprint `2da40ffb169cd76b`).
+- Integration experiment protocol committed before results were seen: [`docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md`](docs/protocols/LAYER2_INTEGRATION_PROTOCOL.md).
+- Every figure/table in the notebooks and final report cites its source artifact.
 
-## Limitations
+## Future Work — Layer 3
 
-- **No web dashboard or API layer exists** (see [Current status](#current-status)) — every requirement in the
-  original SRS that assumes one is unmet at the interface level, though the underlying logic exists.
-- **Post-quantum cryptography uses pure-Python reference implementations**, not the native `liboqs` library
-  (unavailable without a C toolchain in this environment) — benchmark timings, especially SLH-DSA's ~15s/signature,
-  substantially overstate real-world PQC cost. See [`docs/research/layer2/LAYER2_LIMITATIONS.md`](docs/research/layer2/LAYER2_LIMITATIONS.md).
-- **BB84 is a software simulation**, not a physical quantum channel — no claim of physical QKD security is made.
-- **No concurrency/load testing** exists for either layer.
-- **The Layer 1->Layer 2 integration experiment's anomaly/quantum-assisted null results** were measured on one
-  dataset/sample; see [`docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md`](docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md)
-  for the full limitations list.
-- **Layer 3 (attack simulation) is not implemented.**
+Explicitly deferred: MITM, replay, brute-force, and adversarial ML (evasion/poisoning) attack simulations;
+illustrative (non-production-scale) demonstrations of Shor's and Grover's algorithms — **no claim is made that
+this project has broken real RSA, ECC, or AES**; QKD-specific attacks beyond intercept-resend; formal
+cryptographic migration-risk analysis; a production dashboard/API. Full scope:
+[`reports/materials/FUTURE_WORK_LAYER3.md`](reports/materials/FUTURE_WORK_LAYER3.md).
 
-## Layer 3 — Future Work
+## Responsible Interpretation
 
-Explicitly deferred, not implemented: MITM, replay, brute-force, and adversarial ML (evasion/poisoning) attack
-simulations; demonstrations of Shor's algorithm (threatens RSA/ECC asymptotically) and Grover's algorithm (halves
-effective symmetric-key search strength) against production-scale keys — **no claim is made that this project has
-broken real RSA or AES**, nor should one be made without a genuine experiment; QKD-specific attack extensions
-beyond the implemented intercept-resend case; formal cryptographic migration-risk analysis.
+This project's quantum findings are scoped narrowly and deliberately: a real, statistically validated
+architecture-level result exists (Local-Sum observable design), and it does not extend to claims of quantum
+superiority, quantum supremacy, or physical quantum-secure communication. Readers — researchers, evaluators, or
+recruiters — should come away understanding both what worked and what did not, and why each boundary matters.
 
-## Full documentation index
+## Full Documentation Index
 
-- [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md) — every SRS requirement mapped to its implementation status.
-- [`docs/research/layer1/`](docs/research/layer1/) — every Layer 1 research round's findings (gap analysis, literature review, quantum gate results, local-sum decisive validation).
-- [`docs/research/layer2/`](docs/research/layer2/) — Layer 2 results, reference-repository verification, limitations.
-- [`docs/research/integration/`](docs/research/integration/) — Layer 1->Layer 2 architecture and experiment results.
-- [`docs/research/literature/`](docs/research/literature/) — analysis of the supplied reference papers.
-- [`reports/materials/`](reports/materials/) — final-report source material (literature review, claim-evidence matrix, figure/table/equation indices).
+- [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md)
+- [`docs/research/layer1/`](docs/research/layer1/), [`docs/research/layer2/`](docs/research/layer2/), [`docs/research/integration/`](docs/research/integration/), [`docs/research/literature/`](docs/research/literature/)
+- [`reports/materials/`](reports/materials/) — literature review, claim-evidence matrix, figure/table/equation indices, final report DOCX source material
+- [`Quantum_Secure_Fraud_Detection_System_Final_Report.docx`](Quantum_Secure_Fraud_Detection_System_Final_Report.docx) — the complete standalone research report

@@ -1,0 +1,8 @@
+graph TD
+    A[Alice: random bits + random bases] --> B["State preparation: |0>, |1>, |+>, |->"]
+    B --> C[Quantum channel - optional noise]
+    C --> D[Bob: random bases, measures]
+    D --> E[Alice and Bob publicly compare bases]
+    E --> F[Sifted key - matching-basis bits kept]
+    F --> G["Sample disclosed -> QBER = N_error / N_sifted -> accept/reject key"]
+    style G fill:#FCEAEA,stroke:#C44E52

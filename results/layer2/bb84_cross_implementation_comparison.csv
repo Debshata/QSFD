@@ -1,0 +1,7 @@
+condition,protocol_mean_qber,qiskit_mean_qber,abs_diff,protocol_detection_rate,qiskit_detection_rate
+clean,0.0,0.0,0.0,,
+noise_1pct,0.0089,0.0134,0.0045,,
+noise_5pct,0.0479,0.0503,0.0024,,
+noise_10pct,0.0947,0.1009,0.0062,,
+eve_intercept_resend,0.2394,0.2447,0.0053,1.0,1.0
+eve_and_noise_2pct,0.2642,0.2647,0.0005,1.0,1.0

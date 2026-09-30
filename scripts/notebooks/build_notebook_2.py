@@ -47,10 +47,19 @@ cost.
 
 ## 2. Overall QSFD Architecture
 
+```mermaid
+graph TD
+    A[Transaction] --> B[Preprocessing]
+    B --> C[Layer 1: classical + quantum research]
+    C --> D[FraudAssessment]
+    D --> E[SecurityContext]
+    E --> F[SecurityPolicyEngine]
+    F --> G[SecurityProfile]
+    G --> H[Protected Transaction]
+    H --> I[Audit]
 ```
-Transaction -> Preprocessing -> Layer 1 (classical + quantum research) -> FraudAssessment
-      -> SecurityContext -> SecurityPolicyEngine -> SecurityProfile -> Protected Transaction -> Audit
-```
+
+![Overall QSFD architecture](../artifacts/figures/diagrams/overall_architecture.png)
 
 ## 3. Threat Model
 
@@ -60,8 +69,14 @@ Per the project's source SRS (`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md
   integrity) and digital signatures (authenticity).
 - **Future quantum threats**: Shor's algorithm breaking RSA/ECC, Grover's algorithm halving symmetric key
   strength -- addressed by migrating key establishment and signatures to standardized post-quantum algorithms.
-  **Fraud risk and quantum-cryptographic threat are different risk dimensions** (Section 5 below) -- a
-  low-fraud-risk transaction is not thereby "quantum-safe-exempt."
+  **Fraud risk and quantum-cryptographic threat are different risk dimensions** -- a low-fraud-risk transaction
+  is not thereby "quantum-safe-exempt."
+
+**Why Layer 2 exists as a separate research question**: fraud detection and cryptographic security address
+different threats entirely. Layer 2 investigates *"how can transaction-risk intelligence interact with
+quantum-safe security without conflating fraud risk and cryptographic threat?"*
+
+![Refined architecture: fraud risk vs cryptographic risk](../artifacts/figures/diagrams/refined_fraud_vs_crypto_risk.png)
 """)
 
 # ============================================================================
@@ -221,6 +236,24 @@ plt.show()
 
 # ============================================================================
 md(r"""
+## 20b. Cryptographic Protection Workflow
+
+```mermaid
+graph TD
+    A[Transaction Payload] --> B[Security Profile Selection]
+    B --> C[Key Establishment: ECDH and/or ML-KEM]
+    C --> D[HKDF-SHA256 -> AES-256 key]
+    D --> E[AES-256-GCM Authenticated Encryption]
+    E --> F[Digital Signature: ECDSA / ML-DSA / plus SLH-DSA]
+    F --> G[Protected Transaction]
+    style C fill:#FCEAEA,stroke:#C44E52
+```
+
+![Layer 2 cryptographic workflow](../artifacts/figures/diagrams/layer2_crypto_workflow.png)
+
+Note precisely: ML-KEM establishes a *key*, it does not directly encrypt the transaction payload -- AES-256-GCM
+always performs the bulk symmetric encryption, per the implementation in `src/security/integration/secure_transaction.py`.
+
 ## 21. Hybrid Security Profile
 
 The `HYBRID_MAXIMUM`/`QKD_EXPERIMENTAL` profiles combine a classical ECDH secret and a PQC ML-KEM secret via a
@@ -329,6 +362,26 @@ $$QBER = \frac{N_{\text{error}}}{N_{\text{sifted}}}$$
 
 **This is a classical software simulation of BB84's information-theoretic structure** (`src/security/qkd/bb84.py`)
 — no physical quantum channel, no hardware, no claim of physical QKD security.
+
+```mermaid
+graph TD
+    A[Alice: random bits + random bases] --> B[State preparation]
+    B --> C[Quantum channel - optional noise]
+    C --> D[Bob: random bases, measures]
+    D --> E[Public basis comparison]
+    E --> F[Sifted key]
+    F --> G[QBER estimate -> accept/reject]
+    style G fill:#FCEAEA,stroke:#C44E52
+```
+
+![BB84 protocol](../artifacts/figures/diagrams/bb84_protocol_diagram.png)
+
+**Intercept-resend eavesdropper**: Eve measures in a randomly chosen basis and resends a freshly prepared qubit.
+When her basis does not match Alice's, her measurement (and resend) is uniformly random, introducing a
+detectable bit error with probability approximately 25% on those qubits -- this is the mechanism the simulation
+reproduces from real random measurements, not a hardcoded value.
+
+![BB84 intercept-resend](../artifacts/figures/diagrams/bb84_intercept_resend_diagram.png)
 """)
 
 code("""
@@ -364,6 +417,110 @@ settings (measured QBER ~24-26%, close to the textbook ~25% expectation for this
 a universal 100% detection guarantee, only as the observed rate under these exact conditions. At 10% channel
 noise (near the 11% acceptance threshold), 20% of trials were rejected due to natural finite-sample QBER
 estimation variance — an expected statistical effect, not a simulation defect.
+""")
+
+# ============================================================================
+md(r"""
+## 35b. Implementation Backend as an Experimental Variable
+
+Two follow-up experiments turn the implementation limitations above into explicit research questions rather than
+leaving them as unquantified caveats: **(i)** does a native PQC backend change the measured cost picture, and
+**(ii)** does an independent, circuit-level BB84 implementation reproduce the protocol-level simulator's results?
+
+### (i) Native PQC backend attempt
+
+`liboqs-python` (a wrapper around the native `liboqs` C library) was installed via `pip install liboqs-python`.
+Importing it triggers an automatic native-library build via `cmake`, which failed immediately:
+""")
+
+code(r"""
+# Reproduces the exact failure observed when attempting the native PQC backend:
+#   import oqs
+#   -> FileNotFoundError: [WinError 2] The system cannot find the file specified
+# because no CMake/MSVC C/C++ toolchain is present on PATH in this Windows environment.
+import shutil
+print("cmake on PATH:", shutil.which("cmake"))
+print("cl.exe (MSVC) on PATH:", shutil.which("cl"))
+""")
+
+md(r"""
+**Result: NATIVE PQC BACKEND UNAVAILABLE IN CURRENT ENVIRONMENT.** No C/C++ toolchain (CMake, MSVC) is available
+to build native `liboqs` in this sandboxed Windows environment, and no other cryptographic package was
+substituted merely for having a similar name (per the pre-specified fallback rule for this experiment). This is a
+disclosed environment limitation, not evidence about the algorithms themselves: the pure-Python reference
+implementations used throughout this notebook remain correct (verified via genuine round-trip and
+tamper-rejection tests) but their latency — including the ~15-second SLH-DSA signing time reported in Section 14
+— should be read as **reference-implementation cost**, not as a general statement about SLH-DSA's practicality
+on optimized native code. See `docs/research/layer2/LAYER2_LIMITATIONS.md` for the full record of this attempt.
+
+### (ii) Qiskit circuit-level BB84 cross-validation
+
+An independent, circuit-level BB84 implementation was built using Qiskit + Qiskit Aer
+(`src/security/qkd/bb84_qiskit.py`), which prepares and measures explicit single-qubit states rather than
+sampling protocol-level probabilities directly:
+
+$$\text{bit=0, Z} \to |0\rangle \text{ (no gate)} \qquad \text{bit=1, Z} \to |1\rangle \text{ (X gate)}$$
+$$\text{bit=0, X} \to |+\rangle \text{ (H gate)} \qquad \text{bit=1, X} \to |-\rangle \text{ (X then H)}$$
+
+Measurement in the X basis applies an H gate before a computational-basis measurement.
+""")
+
+code("""
+from qiskit import QuantumCircuit
+import sys
+sys.path.insert(0, str(ROOT / "src"))
+from security.qkd.bb84_qiskit import prepare_circuit, measure_circuit
+
+fig = measure_circuit(prepare_circuit(1, "Z"), "Z").draw("mpl")
+fig.suptitle("Representative Alice -> Bob circuit (bit=1, Z basis, matching bases)")
+fig.savefig(ROOT / "artifacts" / "figures" / "layer2" / "bb84_circuit_full_representative.png", bbox_inches="tight")
+plt.show()
+""")
+
+code("""
+fig = measure_circuit(prepare_circuit(1, "Z"), "X").draw("mpl")
+fig.suptitle("Eve intercept: measures Alice's Z-basis |1> state in the wrong (X) basis")
+fig.savefig(ROOT / "artifacts" / "figures" / "layer2" / "bb84_circuit_eve_intercept_representative.png", bbox_inches="tight")
+plt.show()
+""")
+
+md("""
+The circuit implementation was run under the same six conditions as the protocol-level simulator (30 trials per
+condition, `scripts/security/run_bb84_qiskit_benchmarks.py`), using a reduced raw-bit count per trial (200 vs.
+2000) to bound per-qubit circuit-simulation overhead -- this reduction is disclosed, not hidden.
+""")
+
+code("""
+bb84_cross = pd.read_csv(RESULTS_L2 / "bb84_cross_implementation_comparison.csv")
+bb84_cross
+""")
+
+code("""
+fig, ax = plt.subplots(figsize=(7, 4))
+x = range(len(bb84_cross))
+width = 0.35
+ax.bar([i - width/2 for i in x], bb84_cross["protocol_mean_qber"].astype(float) * 100, width, label="Protocol-level simulator")
+ax.bar([i + width/2 for i in x], bb84_cross["qiskit_mean_qber"].astype(float) * 100, width, label="Qiskit circuit simulator")
+ax.set_xticks(list(x)); ax.set_xticklabels(bb84_cross["condition"], rotation=30, ha="right", fontsize=8)
+ax.set_ylabel("Mean QBER (%)")
+ax.set_title("Cross-implementation validation: protocol simulator vs. Qiskit circuits")
+ax.legend()
+plt.tight_layout()
+plt.savefig(ROOT / "artifacts" / "figures" / "layer2" / "bb84_cross_implementation_comparison.png", bbox_inches="tight")
+plt.show()
+""")
+
+md("""
+**Result: the two independent implementations agree closely** across all six conditions (largest absolute
+difference 0.0062, on 200-bit vs. 2000-bit samples per trial) -- see the table above. The Qiskit circuit
+implementation also detected the intercept-resend eavesdropper in 30/30 trials at the same 0.11 QBER threshold.
+This is cross-implementation validation that the protocol-level simulator's sifting and QBER-estimation logic
+correctly reproduces the behavior of explicit per-qubit state preparation and measurement circuits.
+
+**This does not change the software-simulation status of BB84 in this project.** Running these circuits on
+Qiskit Aer's classical simulator (or, hypothetically, on real IBM Quantum hardware) still transmits no physical
+photon and exercises no physical no-cloning property. **BB84 in this project remains, in every implementation, a
+software simulation** -- the improvement is circuit-level validation, not physical quantum key distribution.
 """)
 
 # ============================================================================
@@ -403,6 +560,7 @@ md("""
 | Quantum-assisted routing fails its own pre-specified cost budget by 16x | 30 |
 | HYBRID_MAXIMUM/QKD_EXPERIMENTAL cost ~4-6+ seconds, dominated by SLH-DSA | 21, 36-37 |
 | SLH-DSA is not currently practical in a real-time path (pure-Python) | 14 |
+| Native `liboqs` PQC backend unavailable in this environment (no C/CMake toolchain) | 35b |
 
 ## 39. Scientific Contribution
 
@@ -417,9 +575,10 @@ data, they do not clear a pre-specified cost bar.
 
 See `docs/research/layer2/LAYER2_LIMITATIONS.md` and
 `docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md` for the full itemized lists —
-summarized: pure-Python PQC performance is not production-representative; no concurrency/load testing exists; the
-policy ablation's null result for categorical-vs-continuous may be dataset-specific; Policy D's sample is small
-(n=250).
+summarized: pure-Python PQC performance is not production-representative and a native `liboqs` backend could not
+be installed in this environment (no C/CMake toolchain); no concurrency/load testing exists; the policy
+ablation's null result for categorical-vs-continuous may be dataset-specific; Policy D's sample is small (n=250);
+the Qiskit BB84 cross-validation used a reduced per-trial bit count (200 vs. 2000) to bound simulator overhead.
 
 ## 41. Layer 2 Conclusion
 
@@ -429,6 +588,16 @@ tested (anomaly-assisted and quantum-assisted routing), **neither is supported b
 configurations — both add cost without a correspondingly defensible fraud-coverage gain. Categorical and
 continuous routing are equally effective on this dataset. No claim of quantum advantage, quantum supremacy, or
 physical QKD security is made.
+
+### What Layer 2 Establishes / Does Not Establish
+
+| Establishes | Does Not Establish |
+|---|---|
+| Classical + standardized PQC (ML-KEM/ML-DSA/SLH-DSA) can be integrated into a common transaction-security architecture | Universal PQC algorithm performance (pure-Python only) |
+| BB84 simulator reproduces expected eavesdropping/noise behavior under stated conditions (30/30 detection) | Physical QKD security or hardware quantum communication |
+| An independent Qiskit circuit implementation cross-validates the protocol-level BB84 simulator (agreement within 0.62 pp across 6 conditions) | That circuit-level simulation is physical QKD -- it is not |
+| Fraud risk and cryptographic-quantum-threat posture must be modeled as separate axes | Risk-adaptive security is universally ineffective (only tested configurations failed their cost budget) |
+| Real, repeated-measurement cryptographic benchmarks characterize genuine PQC migration cost | That this cost is representative of optimized/native PQC implementations (native `liboqs` backend attempted, unavailable in this environment) |
 
 ## 42. Layer 3 — Future Work
 

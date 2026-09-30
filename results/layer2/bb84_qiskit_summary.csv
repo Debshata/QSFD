@@ -1,0 +1,7 @@
+condition,n_trials,mean_qber,median_qber,std_qber,ci95_low,ci95_high,mean_sifted_length,sifted_ratio,detection_rate
+clean,30,0.0,0.0,0.0,0.0,0.0,100.3,0.5015,
+noise_1pct,30,0.0134,0.0105,0.0124,0.0,0.0373,100.3,0.5015,
+noise_5pct,30,0.0503,0.0408,0.0273,0.0192,0.1038,100.3,0.5015,
+noise_10pct,30,0.1009,0.0979,0.0407,0.0389,0.1716,100.3,0.5015,
+eve_intercept_resend,30,0.2447,0.245,0.0462,0.1487,0.3001,100.3,0.5015,1.0
+eve_and_noise_2pct,30,0.2647,0.2643,0.0419,0.1952,0.3443,100.3,0.5015,1.0

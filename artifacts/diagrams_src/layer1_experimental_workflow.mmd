@@ -1,0 +1,13 @@
+graph TD
+    A[Classical Baselines<br/>LR / RF / XGBoost / Isolation Forest] --> B[Conventional QML<br/>QSVM / VQC / QNN]
+    B --> C[Structured / Paper-Driven Experiments<br/>Chow-Liu, QBoost, hybrids, anomaly detector]
+    C --> D[Rejected Hypotheses<br/>re-uploading, near-zero init, anomaly detector at scale]
+    D --> E[Local-Sum Observable Candidate Identified]
+    E --> F[Independent Confirmation<br/>separate QML-M context]
+    F --> G[20-Seed Paired Validation<br/>bootstrap / Wilcoxon / permutation]
+    G --> H[Gradient Diagnostics]
+    H --> I[Classical Capacity Control]
+    I --> J[Scientific Boundary:<br/>architecture-level improvement,<br/>no system-level advantage]
+    style E fill:#FCEAEA,stroke:#C44E52
+    style G fill:#FCEAEA,stroke:#C44E52
+    style J fill:#FCEAEA,stroke:#C44E52

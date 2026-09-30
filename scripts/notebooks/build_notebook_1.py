@@ -61,6 +61,42 @@ These are evaluated separately throughout this notebook, and their answers turn 
 states the resulting Layer 1 conclusion precisely.
 """)
 
+md(r"""
+## 1b. Research Motivation, Hypotheses, and Experimental Philosophy
+
+The central research question this notebook investigates is not "does quantum beat classical?" in isolation, but
+the broader question: **where does quantum model design provide measurable utility, where does it fail to, and
+what is the boundary of any observed effect?** The experimental philosophy followed throughout is:
+
+```
+QUESTION -> HYPOTHESIS -> CONTROLLED EXPERIMENT -> RESULT -> STRONGER CONTROL -> BOUNDARY OF THE RESULT -> SYSTEM IMPLICATION
+```
+
+The progression this notebook follows (each stage answers *why* the next experiment was run):
+
+```mermaid
+graph TD
+    A[Classical Baselines] --> B[Conventional QML]
+    B --> C[Structured / Paper-Driven Experiments]
+    C --> D[Rejected Hypotheses]
+    D --> E[Local-Sum Observable Candidate Identified]
+    E --> F[Independent Confirmation]
+    F --> G[20-Seed Paired Validation]
+    G --> H[Gradient Diagnostics]
+    H --> I[Classical Capacity Control]
+    I --> J[Scientific Boundary]
+    style E fill:#FCEAEA,stroke:#C44E52
+    style G fill:#FCEAEA,stroke:#C44E52
+    style J fill:#FCEAEA,stroke:#C44E52
+```
+
+![Layer 1 experimental workflow](../artifacts/figures/diagrams/layer1_experimental_workflow.png)
+
+Objective is explicitly **not** to maximize accuracy alone. The study investigates performance, trainability
+stability, incremental utility beyond strong classical controls, and robustness of any positive finding under
+independent confirmation and stronger controls.
+""")
+
 # ============================================================================
 # 2. System architecture
 # ============================================================================
@@ -429,6 +465,26 @@ worst a polynomially vanishing gradient. This motivates testing a local-sum alte
 $$O_{\text{local-sum}} = \frac{1}{n}\sum_{i=0}^{n-1} Z_i$$
 
 both measured on the *identical* circuit -- only the observable differs.
+
+```mermaid
+graph LR
+    subgraph Global observable
+        A1[Encoded state] --> B1[O = Z0 tensor Z1 tensor ... tensor Zn-1]
+        B1 --> C1[higher seed variance]
+    end
+    subgraph Local-Sum observable
+        A2[Encoded state] --> B2[O = 1/n * sum Zi]
+        B2 --> C2[lower seed variance]
+    end
+    style B2 fill:#FCEAEA,stroke:#C44E52
+    style C2 fill:#FCEAEA,stroke:#C44E52
+```
+
+![Global vs Local-Sum measurement](../artifacts/figures/diagrams/global_vs_localsum_diagram.png)
+
+**HYPOTHESIS**: if observable locality controls trainability (Cerezo et al.), the local-sum measurement should
+show more stable optimization behavior across random seeds than the global measurement, and plausibly a higher
+mean fraud-ranking performance as a downstream consequence.
 """)
 
 md("""
@@ -753,6 +809,14 @@ md("""
 **The Layer 1 contribution is therefore a meaningful, statistically validated finding about quantum circuit
 design (observable locality) and its effect on trainability -- not a demonstration of quantum predictive or
 system-level advantage.**
+
+### What Layer 1 Establishes / Does Not Establish
+
+| Establishes | Does Not Establish |
+|---|---|
+| Local-Sum observable significantly improves the matched Global-observable QNN (statistically supported: bootstrap CI excludes zero, Wilcoxon p=0.0086, permutation p=0.0072) | Quantum beats XGBoost |
+| The improvement is consistent with reduced optimization variance across seeds | Barren-plateau elimination (not proven -- gradients were smaller, not larger) |
+| Quantum model *design* (observable choice) materially affects fraud-ranking performance | System-level or incremental quantum predictive advantage over a matched classical nonlinear control |
 """)
 
 md("""
