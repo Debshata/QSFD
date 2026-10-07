@@ -1,0 +1,5 @@
+circuit_name,optimization_level,logical_depth,transpiled_depth,one_qubit_gate_count,two_qubit_gate_count
+grover_opt0,0,8,14,22.0,2
+grover_opt1,1,8,12,18.0,2
+grover_opt2,2,8,10,12.0,2
+grover_opt3,3,8,10,12.0,2

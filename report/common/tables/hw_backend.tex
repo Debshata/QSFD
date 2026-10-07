@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Theory vs.\ ideal Aer vs.\ backend-derived noisy Aer vs.\ IBM hardware (ibm\_marrakesh); mean and 95\% $t$-interval over independent jobs.}
+\label{tab:hw-backend}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrrrr}
+\toprule
+Experiment & Qubit & Theory & Ideal Aer & Noisy Aer & IBM mean & CI low & CI high & Jobs \\
+\midrule
+BB84 matched-basis QBER (no Eve) & best (q98) & 0.0000 & 0.0000 & 0.0025 & 0.0048 & 0.0036 & 0.0060 & 5 \\
+Intercept-resend QBER & best (q98) & 0.2500 & 0.2500 & 0.2512 & 0.2632 & 0.2579 & 0.2685 & 5 \\
+BB84 matched-basis QBER (no Eve) & typical (q155) & 0.0000 & 0.0000 & 0.0110 & 0.0094 & 0.0082 & 0.0106 & 5 \\
+Intercept-resend QBER & typical (q155) & 0.2500 & 0.2500 & 0.2557 & 0.2591 & 0.2535 & 0.2648 & 5 \\
+BB84 matched-basis QBER (no Eve) & worse (q126) & 0.0000 & 0.0000 & 0.0738 & 0.0446 & 0.0277 & 0.0616 & 5 \\
+Intercept-resend QBER & worse (q126) & 0.2500 & 0.2500 & 0.2873 & 0.2868 & 0.2796 & 0.2939 & 5 \\
+Grover 2q success probability & pair [135, 139] & 1.0000 & 1.0000 & 0.9678 & 0.9460 & 0.9386 & 0.9534 & 5 \\
+\bottomrule
+\end{tabular}}
+\end{table}

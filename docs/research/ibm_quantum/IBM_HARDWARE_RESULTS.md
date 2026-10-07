@@ -1,5 +1,8 @@
 # IBM Quantum Hardware Validation (BB84 primitives, intercept-resend model, 2-qubit Grover)
 
+> **Status of this document:** the single-job results below are the **PILOT / hardware baseline**. Headline hardware results come from the replicated campaign (5 independent jobs, calibration-tiered qubits, ideal and noisy-Aer controls) summarised in [`docs/research/layer2/LAYER2_FINAL_RESULTS.md`](../layer2/LAYER2_FINAL_RESULTS.md) §4 and `results/ibm_quantum/hardware_statistics.json`.
+
+
 **Provenance.** Job `db2u94vr11fs7397g1u0`, backend `ibm_marrakesh`, status DONE, 2026-10-07 (UTC), 17 circuits x 1024 shots,
 transpilation optimization level 1, one SamplerV2 job (open plan). Raw counts: `results/ibm_quantum/bb84_grover_experiments.json`;
 registry: `results/ibm_quantum/hardware_experiment_registry.json`. An earlier QML-circuit hardware run (`ibm_fez`,

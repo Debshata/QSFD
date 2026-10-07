@@ -1,0 +1,1390 @@
+{
+ "campaign": "A",
+ "job_index": 3,
+ "job_id": "db2ul8u8v0ts73c3j3i0",
+ "backend": "ibm_marrakesh",
+ "status": "DONE",
+ "submitted_utc": "2026-10-07T06:46:34.769557+00:00",
+ "shots": 2048,
+ "metrics": {
+  "caller": "qiskit_ibm_runtime~sampler.py",
+  "qiskit_version": "qiskit_ibm_runtime-0.49.0,qiskit-2.5.2*,qiskit_aer-0.17.2",
+  "timestamps": {
+   "created": "2026-10-07T06:45:55.449414Z",
+   "finished": "2026-10-07T06:46:32.824832Z",
+   "running": "2026-10-07T06:45:57.042769Z"
+  },
+  "usage": {
+   "qpu_charge_time_seconds": 31,
+   "value": 0.5004,
+   "unit": "resource_units",
+   "status": "complete",
+   "details": [
+    {
+     "value": 0.5004,
+     "unit": "resource_units",
+     "metric": {
+      "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+      "value": 31
+     }
+    }
+   ]
+  },
+  "circuits_execution_time_ns": 28219914752
+ },
+ "circuits": [
+  {
+   "circuit_name": "matched_0_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 2047,
+    "1": 1
+   },
+   "logical_depth": 1,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_0_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1056,
+    "1": 992
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_1_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 2028,
+    "0": 20
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "mismatched_1_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1014,
+    "0": 1034
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "mismatched_+_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 1038,
+    "1": 1010
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_+_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 2048
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_-_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 991,
+    "1": 1057
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_-_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 2034,
+    "0": 14
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "eveZ_0_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 2047,
+    "1": 1
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 2047,
+    "1": 1
+   }
+  },
+  {
+   "circuit_name": "eveX_0_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1037,
+    "0": 1011
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "0": 1004,
+    "1": 1044
+   }
+  },
+  {
+   "circuit_name": "eveZ_1_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1958,
+    "0": 90
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 2025,
+    "0": 23
+   }
+  },
+  {
+   "circuit_name": "eveX_1_Z",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 1013,
+    "1": 1035
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1017,
+    "0": 1031
+   }
+  },
+  {
+   "circuit_name": "eveZ_+_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1033,
+    "0": 1015
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1020,
+    "0": 1028
+   }
+  },
+  {
+   "circuit_name": "eveX_+_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "0": 2048
+   },
+   "logical_depth": 6,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 2048
+   }
+  },
+  {
+   "circuit_name": "eveZ_-_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1053,
+    "1": 995
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1005,
+    "0": 1043
+   }
+  },
+  {
+   "circuit_name": "eveX_-_X",
+   "qubit_role": "best",
+   "physical_qubits": [
+    98
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1954,
+    "0": 94
+   },
+   "logical_depth": 7,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 2026,
+    "0": 22
+   }
+  },
+  {
+   "circuit_name": "matched_0_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 2036,
+    "1": 12
+   },
+   "logical_depth": 1,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_0_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1054,
+    "1": 994
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_1_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 2028,
+    "0": 20
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "mismatched_1_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1004,
+    "0": 1044
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "mismatched_+_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1011,
+    "0": 1037
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_+_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 2033,
+    "1": 15
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_-_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 992,
+    "0": 1056
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_-_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 2022,
+    "0": 26
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "eveZ_0_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 2036,
+    "1": 12
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 2038,
+    "1": 10
+   }
+  },
+  {
+   "circuit_name": "eveX_0_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1005,
+    "0": 1043
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "0": 987,
+    "1": 1061
+   }
+  },
+  {
+   "circuit_name": "eveZ_1_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 2005,
+    "0": 43
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 2019,
+    "0": 29
+   }
+  },
+  {
+   "circuit_name": "eveX_1_Z",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 986,
+    "0": 1062
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1018,
+    "0": 1030
+   }
+  },
+  {
+   "circuit_name": "eveZ_+_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1006,
+    "1": 1042
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1029,
+    "0": 1019
+   }
+  },
+  {
+   "circuit_name": "eveX_+_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "0": 2038,
+    "1": 10
+   },
+   "logical_depth": 6,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 2032,
+    "1": 16
+   }
+  },
+  {
+   "circuit_name": "eveZ_-_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1025,
+    "1": 1023
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "0": 1059,
+    "1": 989
+   }
+  },
+  {
+   "circuit_name": "eveX_-_X",
+   "qubit_role": "typical",
+   "physical_qubits": [
+    155
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1991,
+    "0": 57
+   },
+   "logical_depth": 7,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 2018,
+    "0": 30
+   }
+  },
+  {
+   "circuit_name": "matched_0_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 1900,
+    "1": 148
+   },
+   "logical_depth": 1,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_0_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 982,
+    "1": 1066
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_1_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1970,
+    "0": 78
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "mismatched_1_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1077,
+    "0": 971
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "mismatched_+_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 977,
+    "1": 1071
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_+_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1904,
+    "1": 144
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 1,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 1
+  },
+  {
+   "circuit_name": "mismatched_-_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "mismatched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1077,
+    "0": 971
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 4,
+   "one_qubit_gate_count": 3,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 4
+  },
+  {
+   "circuit_name": "matched_-_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "matched",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1958,
+    "0": 90
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 1,
+   "total_ops": 2
+  },
+  {
+   "circuit_name": "eveZ_0_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 1904,
+    "1": 144
+   },
+   "logical_depth": 2,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 1887,
+    "1": 161
+   }
+  },
+  {
+   "circuit_name": "eveX_0_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "0",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "1": 1058,
+    "0": 990
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "0": 988,
+    "1": 1060
+   }
+  },
+  {
+   "circuit_name": "eveZ_1_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 181,
+    "1": 1867
+   },
+   "logical_depth": 3,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 1980,
+    "0": 68
+   }
+  },
+  {
+   "circuit_name": "eveX_1_Z",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "1",
+   "alice_basis": "Z",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "Z",
+   "counts": {
+    "0": 986,
+    "1": 1062
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1082,
+    "0": 966
+   }
+  },
+  {
+   "circuit_name": "eveZ_+_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1067,
+    "0": 981
+   },
+   "logical_depth": 4,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "1": 1081,
+    "0": 967
+   }
+  },
+  {
+   "circuit_name": "eveX_+_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "+",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "0": 1905,
+    "1": 143
+   },
+   "logical_depth": 6,
+   "transpiled_depth": 2,
+   "one_qubit_gate_count": 0,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 2,
+   "eve_counts": {
+    "0": 1924,
+    "1": 124
+   }
+  },
+  {
+   "circuit_name": "eveZ_-_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "Z",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1048,
+    "0": 1000
+   },
+   "logical_depth": 5,
+   "transpiled_depth": 8,
+   "one_qubit_gate_count": 6,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 8,
+   "eve_counts": {
+    "0": 1004,
+    "1": 1044
+   }
+  },
+  {
+   "circuit_name": "eveX_-_X",
+   "qubit_role": "worse",
+   "physical_qubits": [
+    126
+   ],
+   "opt_level": 1,
+   "experiment_type": "intercept_resend",
+   "state": "-",
+   "alice_basis": "X",
+   "eve_present": true,
+   "eve_basis": "X",
+   "bob_basis": "X",
+   "counts": {
+    "1": 1834,
+    "0": 214
+   },
+   "logical_depth": 7,
+   "transpiled_depth": 3,
+   "one_qubit_gate_count": 1,
+   "two_qubit_gate_count": 0,
+   "measure_count": 2,
+   "total_ops": 3,
+   "eve_counts": {
+    "1": 1968,
+    "0": 80
+   }
+  },
+  {
+   "circuit_name": "grover_opt0",
+   "qubit_role": "grover_pair",
+   "physical_qubits": [
+    135,
+    139
+   ],
+   "opt_level": 0,
+   "experiment_type": "grover",
+   "state": "11",
+   "alice_basis": "",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "",
+   "counts": {
+    "10": 81,
+    "01": 27,
+    "11": 1937,
+    "00": 3
+   },
+   "logical_depth": 8,
+   "transpiled_depth": 14,
+   "one_qubit_gate_count": 22,
+   "two_qubit_gate_count": 2,
+   "measure_count": 2,
+   "total_ops": 26
+  },
+  {
+   "circuit_name": "grover_opt1",
+   "qubit_role": "grover_pair",
+   "physical_qubits": [
+    135,
+    139
+   ],
+   "opt_level": 1,
+   "experiment_type": "grover",
+   "state": "11",
+   "alice_basis": "",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "",
+   "counts": {
+    "11": 1948,
+    "10": 65,
+    "01": 24,
+    "00": 11
+   },
+   "logical_depth": 8,
+   "transpiled_depth": 12,
+   "one_qubit_gate_count": 18,
+   "two_qubit_gate_count": 2,
+   "measure_count": 2,
+   "total_ops": 22
+  },
+  {
+   "circuit_name": "grover_opt2",
+   "qubit_role": "grover_pair",
+   "physical_qubits": [
+    135,
+    139
+   ],
+   "opt_level": 2,
+   "experiment_type": "grover",
+   "state": "11",
+   "alice_basis": "",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "",
+   "counts": {
+    "11": 1914,
+    "10": 90,
+    "01": 32,
+    "00": 12
+   },
+   "logical_depth": 8,
+   "transpiled_depth": 10,
+   "one_qubit_gate_count": 12,
+   "two_qubit_gate_count": 2,
+   "measure_count": 2,
+   "total_ops": 16
+  },
+  {
+   "circuit_name": "grover_opt3",
+   "qubit_role": "grover_pair",
+   "physical_qubits": [
+    135,
+    139
+   ],
+   "opt_level": 3,
+   "experiment_type": "grover",
+   "state": "11",
+   "alice_basis": "",
+   "eve_present": false,
+   "eve_basis": "",
+   "bob_basis": "",
+   "counts": {
+    "11": 1915,
+    "01": 36,
+    "10": 75,
+    "00": 22
+   },
+   "logical_depth": 8,
+   "transpiled_depth": 10,
+   "one_qubit_gate_count": 12,
+   "two_qubit_gate_count": 2,
+   "measure_count": 2,
+   "total_ops": 16
+  }
+ ]
+}

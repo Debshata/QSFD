@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Physical qubits used and their calibration snapshot at campaign start, with observed hardware error.}
+\label{tab:hw-calibration}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrlr}
+\toprule
+Role & Qubit & T1 (\$\textbackslash mu\$s) & T2 (\$\textbackslash mu\$s) & Readout err. & 1Q err. & Circuit & No-Eve QBER \\
+\midrule
+best & 98 & 265.6 & 68.85 & 0.002075 & 0.0008155 & BB84 single-qubit & 0.004785 \\
+typical & 155 & 393.9 & 107 & 0.01221 & 0.0003537 & BB84 single-qubit & 0.009399 \\
+worse & 126 & 104.3 & 8.646 & 0.07593 & 0.0004358 & BB84 single-qubit & 0.04463 \\
+grover\_pair & 135 & 294.5 & 91.06 & 0.02295 & 0.0001081 & Grover 2q (cz err 0.0011) & -- \\
+grover\_pair & 139 & 136.3 & 158.9 & 0.005371 & 0.00019 & Grover 2q (cz err 0.0011) & -- \\
+\bottomrule
+\end{tabular}}
+\end{table}

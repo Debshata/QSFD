@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\small
+\caption{BB84 software simulation: protocol simulator (2000 bits/trial) and Qiskit/Aer circuit simulator (500 bits/trial). QBER over the full sifted key; 95\% $t$-interval over trials; detection rate = fraction of trials with QBER above 0.11.}
+\label{tab:bb84}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrrrr}
+\toprule
+Impl. & Condition & Trials & Bits & \$\textbackslash eta\_\{sift\}\$ & Mean QBER & CI low & CI high & Det. rate \\
+\midrule
+protocol 2000 & clean & 100 & 2000 & 0.4999 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\
+protocol 2000 & noise\_1pct & 100 & 2000 & 0.4999 & 0.0097 & 0.0091 & 0.0103 & 0.0000 \\
+protocol 2000 & noise\_5pct & 100 & 2000 & 0.4999 & 0.0490 & 0.0477 & 0.0504 & 0.0000 \\
+protocol 2000 & noise\_10pct & 100 & 2000 & 0.4999 & 0.0979 & 0.0960 & 0.0999 & 0.1200 \\
+protocol 2000 & eve\_intercept\_resend & 100 & 2000 & 0.4996 & 0.2508 & 0.2479 & 0.2537 & 1.0000 \\
+protocol 2000 & eve\_and\_noise\_2pct & 100 & 2000 & 0.4996 & 0.2606 & 0.2578 & 0.2635 & 1.0000 \\
+qiskit 500 & clean & 50 & 500 & 0.4991 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\
+qiskit 500 & noise\_1pct & 50 & 500 & 0.4991 & 0.0082 & 0.0059 & 0.0104 & 0.0000 \\
+qiskit 500 & noise\_5pct & 50 & 500 & 0.4991 & 0.0498 & 0.0458 & 0.0538 & 0.0000 \\
+qiskit 500 & noise\_10pct & 50 & 500 & 0.4991 & 0.0960 & 0.0896 & 0.1023 & 0.2200 \\
+qiskit 500 & eve\_intercept\_resend & 50 & 500 & 0.4991 & 0.2438 & 0.2360 & 0.2515 & 1.0000 \\
+qiskit 500 & eve\_and\_noise\_2pct & 50 & 500 & 0.4991 & 0.2649 & 0.2576 & 0.2722 & 1.0000 \\
+\bottomrule
+\end{tabular}}
+\end{table}

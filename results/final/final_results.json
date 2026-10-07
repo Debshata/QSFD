@@ -1,0 +1,1095 @@
+{
+ "layer1": {
+  "sources": [
+   "results/layer1/local_sum_decisive/statistical_tests.json",
+   "results/layer1/local_sum_decisive/incremental_value_result.json",
+   "reports/classical_model_comparison.csv"
+  ],
+  "classical_models": {
+   "random_forest": {
+    "pr_auc": 0.8190539780072548,
+    "roc_auc": 0.9691523785541112,
+    "precision": 0.9032258064516128,
+    "recall": 0.7567567567567568,
+    "f1": 0.8235294117647058,
+    "single_transaction_ms": 76.336
+   },
+   "xgboost": {
+    "pr_auc": 0.8007183786183377,
+    "roc_auc": 0.9771944886640032,
+    "precision": 0.9016393442622952,
+    "recall": 0.7432432432432432,
+    "f1": 0.8148148148148148,
+    "single_transaction_ms": 3.052
+   },
+   "logistic_regression": {
+    "pr_auc": 0.7327794371318237,
+    "roc_auc": 0.9838902543365028,
+    "precision": 0.7727272727272727,
+    "recall": 0.6891891891891891,
+    "f1": 0.7285714285714285,
+    "single_transaction_ms": 0.801
+   },
+   "isolation_forest": {
+    "pr_auc": 0.0396540955221953,
+    "roc_auc": 0.9492443732350015,
+    "precision": 0.0444214876033057,
+    "recall": 0.581081081081081,
+    "f1": 0.0825335892514395,
+    "single_transaction_ms": 26.623
+   }
+  },
+  "local_sum_vs_global": {
+   "n_seeds": 20,
+   "wins": 13,
+   "mean_delta_pr_auc": 0.0536,
+   "bootstrap_ci": [
+    0.0149,
+    0.0913
+   ],
+   "wilcoxon_p_one_sided": 0.0085906982421875,
+   "permutation_p_one_sided": 0.0072
+  },
+  "classical_capacity_control": {
+   "xgboost": 0.9613,
+   "xgboost_plus_global_qnn": 0.9632,
+   "xgboost_plus_local_sum_qnn": 0.9665,
+   "xgboost_plus_classical_control": 0.9671,
+   "bootstrap_C2_vs_C0": {
+    "point": 0.0052,
+    "ci_low": -0.0035,
+    "ci_high": 0.0173,
+    "excludes_zero": false
+   },
+   "incremental_quantum_value_verified": false
+  },
+  "seed_results_columns": [
+   "seed",
+   "observable",
+   "pr_auc",
+   "recall",
+   "precision",
+   "f1",
+   "f2",
+   "runtime",
+   "n_iterations"
+  ]
+ },
+ "layer2": {
+  "sources": [
+   "results/layer2/pqcrypto_summary.csv",
+   "results/layer2/pqcrypto_raw.csv",
+   "results/layer2/pqc_backend_comparison.csv",
+   "results/layer2/pqc_benchmark_meta.json",
+   "results/layer2/end_to_end_banking_summary.csv",
+   "results/layer2/bb84_final_summary.csv",
+   "results/layer2/bb84_final_agreement.json",
+   "results/layer2/bb84_threshold_sweep.csv"
+  ],
+  "pqc_environment": {
+   "timestamp_utc": "2026-10-07T06:35:34.837620+00:00",
+   "os": "Windows-11-10.0.26200-SP0",
+   "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+   "python": "3.14.3",
+   "cryptography": "50.0.0",
+   "backends": {
+    "pqcrypto": {
+     "available": true,
+     "version": "1.0.0"
+    },
+    "reference_python": {
+     "available": true,
+     "libraries": {
+      "kyber-py": "1.2.0",
+      "dilithium-py": "1.4.0",
+      "slh-dsa": "0.2.5"
+     }
+    }
+   },
+   "liboqs": "python wrapper installed (liboqs-python 0.16.0.1); native library build failed (no CMake/MSVC); no liboqs measurements",
+   "timer": "time.perf_counter_ns",
+   "message_bytes": 87
+  },
+  "classical_crypto": {
+   "ECDH-P256_decaps": {
+    "median_ms": 0.0549,
+    "p95_ms": 0.0606299999999999,
+    "n": 200
+   },
+   "ECDSA-P256_sign": {
+    "median_ms": 0.0312,
+    "p95_ms": 0.0316,
+    "n": 200
+   },
+   "ECDSA-P256_verify": {
+    "median_ms": 0.0765,
+    "p95_ms": 0.0790099999999999,
+    "n": 200
+   },
+   "RSA-3072_sign": {
+    "median_ms": 1.49925,
+    "p95_ms": 2.087444999999999,
+    "n": 200
+   },
+   "RSA-3072_verify": {
+    "median_ms": 0.0454,
+    "p95_ms": 0.0469099999999999,
+    "n": 200
+   },
+   "RSA-3072_decaps": {
+    "median_ms": 1.49275,
+    "p95_ms": 1.9197949999999997,
+    "n": 200
+   }
+  },
+  "reference_pqc": {
+   "ML-KEM-768_keygen": {
+    "median_ms": 3.7132,
+    "p95_ms": 4.03931,
+    "n": 30
+   },
+   "ML-KEM-768_encaps": {
+    "median_ms": 5.01555,
+    "p95_ms": 5.273685,
+    "n": 30
+   },
+   "ML-KEM-768_decaps": {
+    "median_ms": 6.781000000000001,
+    "p95_ms": 7.228095,
+    "n": 30
+   },
+   "ML-DSA-65_sign": {
+    "median_ms": 45.49385,
+    "p95_ms": 130.40567999999996,
+    "n": 30
+   },
+   "ML-DSA-65_verify": {
+    "median_ms": 12.6523,
+    "p95_ms": 13.280905,
+    "n": 30
+   },
+   "SLH-DSA-SHA2-128s_sign": {
+    "median_ms": 4330.9793,
+    "p95_ms": 4634.933870000001,
+    "n": 3
+   },
+   "SLH-DSA-SHA2-128s_verify": {
+    "median_ms": 4.41545,
+    "p95_ms": 5.028035,
+    "n": 10
+   }
+  },
+  "optimized_pqc": {
+   "ML-KEM-768_keygen": {
+    "median_ms": 0.0721499999999999,
+    "p95_ms": 0.075405,
+    "n": 200
+   },
+   "ML-KEM-768_encaps": {
+    "median_ms": 0.0876,
+    "p95_ms": 0.0922499999999999,
+    "n": 200
+   },
+   "ML-KEM-768_decaps": {
+    "median_ms": 0.1112,
+    "p95_ms": 0.11651,
+    "n": 200
+   },
+   "ML-DSA-65_sign": {
+    "median_ms": 9.4546,
+    "p95_ms": 10.009365,
+    "n": 200
+   },
+   "ML-DSA-65_verify": {
+    "median_ms": 0.2198,
+    "p95_ms": 0.225105,
+    "n": 200
+   },
+   "SLH-DSA-SHA2-128s_sign": {
+    "median_ms": 1268.8964,
+    "p95_ms": 1568.0860699999994,
+    "n": 30
+   },
+   "SLH-DSA-SHA2-128s_verify": {
+    "median_ms": 1.2316,
+    "p95_ms": 1.36875,
+    "n": 200
+   }
+  },
+  "backend_comparison": {
+   "n_pairs": 24,
+   "largest_speedup": {
+    "algorithm": "ML-KEM-1024",
+    "operation": "decaps",
+    "speedup": 61.82306226175349
+   },
+   "smallest_speedup": {
+    "algorithm": "SLH-DSA-SHA2-128s",
+    "operation": "sign",
+    "speedup": 3.413185899179791
+   },
+   "slh_dsa_128s_sign": {
+    "algorithm": "SLH-DSA-SHA2-128s",
+    "operation": "sign",
+    "n_reference": 3,
+    "n_optimized": 30,
+    "reference_median_ms": 4330.9793,
+    "optimized_median_ms": 1268.8964,
+    "abs_diff_ms": 3062.0829,
+    "speedup": 3.413185899179791,
+    "reduction_pct": 70.70185950784848,
+    "reference_p95_ms": 4634.933870000001,
+    "optimized_p95_ms": 1568.0860699999994
+   }
+  },
+  "historical_reference_slh_dsa_sign_ms": {
+   "value_ms": 15238,
+   "n": 5,
+   "source": "results/layer2/signature_benchmarks.csv (earlier session)",
+   "note": "differs from this session's controlled run; both preserved; do not treat as implementation-independent"
+  },
+  "end_to_end": {
+   "A_classical_ECDH+ECDSA": {
+    "n": 200,
+    "median_ms": 0.30205,
+    "p95_ms": 0.5681449999999987,
+    "mean_ms": 0.3486695,
+    "secured_bytes": 475,
+    "plaintext_bytes": 312,
+    "payload_expansion": 1.5224358974358974
+   },
+   "B_reference_ML-KEM-768+ML-DSA-65": {
+    "n": 30,
+    "median_ms": 72.82695,
+    "p95_ms": 140.54857,
+    "mean_ms": 87.51937,
+    "secured_bytes": 4737,
+    "plaintext_bytes": 312,
+    "payload_expansion": 15.182692307692308
+   },
+   "C_optimized_ML-KEM-768+ML-DSA-65": {
+    "n": 200,
+    "median_ms": 10.1547,
+    "p95_ms": 11.021449999999998,
+    "mean_ms": 10.3035945,
+    "secured_bytes": 4737,
+    "plaintext_bytes": 312,
+    "payload_expansion": 15.182692307692308
+   },
+   "D_hybrid_optimized_ECDH+ML-KEM-768_ECDSA+ML-DSA-65": {
+    "n": 200,
+    "median_ms": 10.53355,
+    "p95_ms": 10.98989,
+    "mean_ms": 10.566033499999998,
+    "secured_bytes": 4873,
+    "plaintext_bytes": 312,
+    "payload_expansion": 15.618589743589745
+   },
+   "B2_reference_ML-KEM-768+SLH-DSA-128s": {
+    "n": 3,
+    "median_ms": 3631.6911,
+    "p95_ms": 3661.07259,
+    "mean_ms": 3628.2743666666665,
+    "secured_bytes": 9284,
+    "plaintext_bytes": 312,
+    "payload_expansion": 29.756410256410252
+   },
+   "C2_optimized_ML-KEM-768+SLH-DSA-128s": {
+    "n": 20,
+    "median_ms": 1252.8182,
+    "p95_ms": 1268.356315,
+    "mean_ms": 1253.9255200000002,
+    "secured_bytes": 9284,
+    "plaintext_bytes": 312,
+    "payload_expansion": 29.756410256410252
+   }
+  },
+  "bb84_software": {
+   "protocol_2000|clean": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "median_qber": 0.0,
+    "std_qber": 0.0,
+    "sifting_efficiency": 0.4998699999999999,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_2000|noise_1pct": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.0096924761189112,
+    "ci95": [
+     0.0090622253594571,
+     0.0103227268783654
+    ],
+    "median_qber": 0.0098571897730077,
+    "std_qber": 0.0031763198018757,
+    "sifting_efficiency": 0.4998699999999999,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_2000|noise_5pct": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.0490406549288281,
+    "ci95": [
+     0.0476779625480093,
+     0.0504033473096469
+    ],
+    "median_qber": 0.0483385646699694,
+    "std_qber": 0.0068676581949835,
+    "sifting_efficiency": 0.4998699999999999,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_2000|noise_10pct": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.0979330719211676,
+    "ci95": [
+     0.0959812801083159,
+     0.0998848637340193
+    ],
+    "median_qber": 0.099107072691552,
+    "std_qber": 0.0098365847106144,
+    "sifting_efficiency": 0.4998699999999999,
+    "detection_rate_at_0p11": 0.12
+   },
+   "protocol_2000|eve_intercept_resend": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.2508253785724916,
+    "ci95": [
+     0.247945608379307,
+     0.2537051487656762
+    ],
+    "median_qber": 0.2492474747474747,
+    "std_qber": 0.0145133836845924,
+    "sifting_efficiency": 0.499585,
+    "detection_rate_at_0p11": 1.0
+   },
+   "protocol_2000|eve_and_noise_2pct": {
+    "n_trials": 100,
+    "n_transmitted": 2000,
+    "mean_qber": 0.2606354785072706,
+    "ci95": [
+     0.2577695402341656,
+     0.2635014167803756
+    ],
+    "median_qber": 0.2588595036197622,
+    "std_qber": 0.0144436739682807,
+    "sifting_efficiency": 0.499585,
+    "detection_rate_at_0p11": 1.0
+   },
+   "protocol_500|clean": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "median_qber": 0.0,
+    "std_qber": 0.0,
+    "sifting_efficiency": 0.5004200000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_500|noise_1pct": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.0104200121012824,
+    "ci95": [
+     0.008990152921419,
+     0.0118498712811458
+    ],
+    "median_qber": 0.0087527771393549,
+    "std_qber": 0.0072061635131188,
+    "sifting_efficiency": 0.5004200000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_500|noise_5pct": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.049560071416172,
+    "ci95": [
+     0.0470121527981813,
+     0.0521079900341626
+    ],
+    "median_qber": 0.0498004801195529,
+    "std_qber": 0.0128409275807946,
+    "sifting_efficiency": 0.5004200000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "protocol_500|noise_10pct": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.0999068234171211,
+    "ci95": [
+     0.0965472707355624,
+     0.1032663760986798
+    ],
+    "median_qber": 0.1,
+    "std_qber": 0.0169313777854416,
+    "sifting_efficiency": 0.5004200000000001,
+    "detection_rate_at_0p11": 0.34
+   },
+   "protocol_500|eve_intercept_resend": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.250288976855717,
+    "ci95": [
+     0.2447788354100086,
+     0.2557991183014254
+    ],
+    "median_qber": 0.2504980079681275,
+    "std_qber": 0.0277698537012443,
+    "sifting_efficiency": 0.5025,
+    "detection_rate_at_0p11": 1.0
+   },
+   "protocol_500|eve_and_noise_2pct": {
+    "n_trials": 100,
+    "n_transmitted": 500,
+    "mean_qber": 0.2608974560811477,
+    "ci95": [
+     0.2556854531463198,
+     0.2661094590159756
+    ],
+    "median_qber": 0.261111439900574,
+    "std_qber": 0.0262673037374303,
+    "sifting_efficiency": 0.5025,
+    "detection_rate_at_0p11": 1.0
+   },
+   "qiskit_500|clean": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "median_qber": 0.0,
+    "std_qber": 0.0,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "qiskit_500|noise_1pct": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.0081683897309532,
+    "ci95": [
+     0.005941648782217,
+     0.0103951306796894
+    ],
+    "median_qber": 0.0043479082780392,
+    "std_qber": 0.0078352061455853,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "qiskit_500|noise_5pct": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.049786466789136,
+    "ci95": [
+     0.0457563711790813,
+     0.0538165623991908
+    ],
+    "median_qber": 0.0482946263725585,
+    "std_qber": 0.0141806481392096,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 0.0
+   },
+   "qiskit_500|noise_10pct": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.0959653010936052,
+    "ci95": [
+     0.0896259995563474,
+     0.102304602630863
+    ],
+    "median_qber": 0.0930358350236646,
+    "std_qber": 0.0223060227960651,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 0.22
+   },
+   "qiskit_500|eve_intercept_resend": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.2437867945703298,
+    "ci95": [
+     0.2360397237214493,
+     0.2515338654192104
+    ],
+    "median_qber": 0.2386525608944917,
+    "std_qber": 0.0272595234573133,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 1.0
+   },
+   "qiskit_500|eve_and_noise_2pct": {
+    "n_trials": 50,
+    "n_transmitted": 500,
+    "mean_qber": 0.2648935401149397,
+    "ci95": [
+     0.2576225431898228,
+     0.2721645370400565
+    ],
+    "median_qber": 0.2621742367833209,
+    "std_qber": 0.0255843679636564,
+    "sifting_efficiency": 0.4990800000000001,
+    "detection_rate_at_0p11": 1.0
+   }
+  },
+  "bb84_agreement_protocol500_vs_qiskit500": {
+   "comparison": "protocol_500 vs qiskit_500",
+   "per_condition": {
+    "clean": {
+     "protocol": 0.0,
+     "qiskit": 0.0,
+     "abs_diff": 0.0,
+     "welch_p": null
+    },
+    "noise_1pct": {
+     "protocol": 0.010420012101282437,
+     "qiskit": 0.008168389730953247,
+     "abs_diff": 0.002251622370329189,
+     "welch_p": 0.09188584966765524
+    },
+    "noise_5pct": {
+     "protocol": 0.049560071416172,
+     "qiskit": 0.049786466789136084,
+     "abs_diff": 0.00022639537296408746,
+     "welch_p": 0.9244698118152409
+    },
+    "noise_10pct": {
+     "protocol": 0.09990682341712115,
+     "qiskit": 0.09596530109360524,
+     "abs_diff": 0.003941522323515911,
+     "welch_p": 0.27431345471872404
+    },
+    "eve_intercept_resend": {
+     "protocol": 0.25028897685571705,
+     "qiskit": 0.24378679457032987,
+     "abs_diff": 0.006502182285387181,
+     "welch_p": 0.17421321337972126
+    },
+    "eve_and_noise_2pct": {
+     "protocol": 0.2608974560811477,
+     "qiskit": 0.2648935401149397,
+     "abs_diff": 0.00399608403379198,
+     "welch_p": 0.3735894998488784
+    }
+   },
+   "MAE": 0.002819634397664725,
+   "RMSE": 0.0036263783234279966,
+   "max_abs_diff": 0.006502182285387181
+  },
+  "eve_threshold_analysis": {
+   "protocol_2000|no_eve_all_noise_levels": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.03,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 0.985
+    },
+    "first_max_balanced_accuracy_threshold": 0.12,
+    "max_balanced_accuracy": 1.0
+   },
+   "protocol_2000|no_eve_clean_to_5pct": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.0,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 1.0
+    },
+    "first_max_balanced_accuracy_threshold": 0.07,
+    "max_balanced_accuracy": 1.0
+   },
+   "protocol_500|no_eve_all_noise_levels": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.085,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 0.9575
+    },
+    "first_max_balanced_accuracy_threshold": 0.14,
+    "max_balanced_accuracy": 1.0
+   },
+   "protocol_500|no_eve_clean_to_5pct": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.0,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 1.0
+    },
+    "first_max_balanced_accuracy_threshold": 0.08,
+    "max_balanced_accuracy": 1.0
+   },
+   "qiskit_500|no_eve_all_noise_levels": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.055,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 0.9725
+    },
+    "first_max_balanced_accuracy_threshold": 0.16,
+    "max_balanced_accuracy": 1.0
+   },
+   "qiskit_500|no_eve_clean_to_5pct": {
+    "at_0p11": {
+     "TPR": 1.0,
+     "FPR": 0.0,
+     "miss_rate": 0.0,
+     "balanced_accuracy": 1.0
+    },
+    "first_max_balanced_accuracy_threshold": 0.09,
+    "max_balanced_accuracy": 1.0
+   }
+  }
+ },
+ "ibm_quantum": {
+  "sources": [
+   "results/ibm_quantum/hardware_statistics.json",
+   "results/ibm_quantum/hardware_experiments_raw.csv",
+   "results/ibm_quantum/hardware_experiments_summary.csv",
+   "results/ibm_quantum/bb84_grover_experiments.json",
+   "reports/ibm_hardware/hardware_run.json"
+  ],
+  "qml_ibm_fez": {
+   "backend": "ibm_fez",
+   "job_id": "da6ejl46l22c73dm82ng",
+   "shots": 1024,
+   "note": "CLT-QNN and linear QNN circuits (4 qubits) with weights frozen from simulator training, bound to 6 held-out transactions; inference only",
+   "circuits": {
+    "clt": {
+     "structure": "chow_liu",
+     "n_qubits": 4,
+     "n_transactions": 6,
+     "logical_depth": 21,
+     "transpiled_depth": 45,
+     "logical_two_qubit_gates": 12,
+     "mean_abs_deviation": 0.228735,
+     "pearson_r_hw_vs_sim": 0.43457219256567126,
+     "spearman_rho_hw_vs_sim": -0.028571428571428574,
+     "hardware_value_range": [
+      -0.267404,
+      0.117972
+     ],
+     "simulator_value_range": [
+      -0.629545,
+      -0.019968
+     ]
+    },
+    "generic": {
+     "structure": "linear",
+     "n_qubits": 4,
+     "n_transactions": 6,
+     "logical_depth": 23,
+     "transpiled_depth": 47,
+     "logical_two_qubit_gates": 12,
+     "mean_abs_deviation": 0.417496,
+     "pearson_r_hw_vs_sim": 0.15968114359372304,
+     "spearman_rho_hw_vs_sim": 0.0,
+     "hardware_value_range": [
+      0.00199,
+      0.033822
+     ],
+     "simulator_value_range": [
+      -0.65393,
+      -0.283123
+     ]
+    }
+   }
+  },
+  "pilot_ibm_marrakesh": {
+   "backend": "ibm_marrakesh",
+   "job_id": "db2u94vr11fs7397g1u0",
+   "status": "DONE",
+   "shots": 1024,
+   "circuits": 17,
+   "classification": "PILOT / HARDWARE BASELINE"
+  },
+  "campaign": {
+   "id": "A",
+   "backend": "ibm_marrakesh",
+   "n_jobs": 5,
+   "job_ids": [
+    "db2ugk42ljfc73d57mi0",
+    "db2ukr42ljfc73d57ttg",
+    "db2ul8u8v0ts73c3j3i0",
+    "db2ulj7r11fs7397go30",
+    "db2ulu42ljfc73d57vl0"
+   ],
+   "shots_per_circuit": 2048,
+   "circuits_per_job": 52,
+   "total_circuits": 260,
+   "total_shots": 532480
+  },
+  "statistics": {
+   "campaign": "A",
+   "n_jobs": 5,
+   "job_ids": [
+    "db2ugk42ljfc73d57mi0",
+    "db2ukr42ljfc73d57ttg",
+    "db2ul8u8v0ts73c3j3i0",
+    "db2ulj7r11fs7397go30",
+    "db2ulu42ljfc73d57vl0"
+   ],
+   "backend": "ibm_marrakesh",
+   "shots_per_circuit": 2048,
+   "eve_vs_no_eve": {
+    "best": {
+     "label": "best qubit, paired by job",
+     "n_pairs": 5,
+     "mean_delta": 0.25841064453125,
+     "bootstrap_ci95": [
+      0.2558349609375,
+      0.2614501953125
+     ],
+     "sign_flip_permutation_p_one_sided": 0.03125,
+     "min_attainable_p": 0.03125,
+     "cohens_dz": 72.80526715499943,
+     "all_deltas_positive": true
+    },
+    "typical": {
+     "label": "typical qubit, paired by job",
+     "n_pairs": 5,
+     "mean_delta": 0.2497314453125,
+     "bootstrap_ci95": [
+      0.24591064453125,
+      0.2525634765625
+     ],
+     "sign_flip_permutation_p_one_sided": 0.03125,
+     "min_attainable_p": 0.03125,
+     "cohens_dz": 58.5572858821292,
+     "all_deltas_positive": true
+    },
+    "worse": {
+     "label": "worse qubit, paired by job",
+     "n_pairs": 5,
+     "mean_delta": 0.24215087890625,
+     "bootstrap_ci95": [
+      0.2356201171875,
+      0.2505859375
+     ],
+     "sign_flip_permutation_p_one_sided": 0.03125,
+     "min_attainable_p": 0.03125,
+     "cohens_dz": 24.664702449844697,
+     "all_deltas_positive": true
+    }
+   },
+   "eve_noeve_separation": {
+    "max_no_eve_qber": 0.05615234375,
+    "min_eve_qber": 0.25238037109375,
+    "fully_separated": true
+   },
+   "state_asymmetry_Z": {
+    "best": {
+     "P_meas1_given_prep0": 0.00087890625,
+     "P_meas0_given_prep1": 0.00986328125,
+     "ratio_1_over_0": 11.222222222222221
+    },
+    "typical": {
+     "P_meas1_given_prep0": 0.00703125,
+     "P_meas0_given_prep1": 0.011328125,
+     "ratio_1_over_0": 1.611111111111111
+    },
+    "worse": {
+     "P_meas1_given_prep0": 0.05634765625,
+     "P_meas0_given_prep1": 0.03388671875,
+     "ratio_1_over_0": 0.6013864818024264
+    }
+   },
+   "state_asymmetry_consistent_across_all_job_role_cells": false,
+   "state_asymmetry_cells_consistent": "11/15",
+   "noisy_aer_prediction": {
+    "MAE_hw_vs_noisy": 0.013028971354166667,
+    "RMSE_hw_vs_noisy": 0.01863294550299298,
+    "MAE_hw_vs_ideal": 0.02184516059027778,
+    "RMSE_hw_vs_ideal": 0.03326152378099053,
+    "n_circuit_role_cells": 36,
+    "noisy_underpredicts_in": 17,
+    "matched_best": {
+     "hardware": 0.00478515625,
+     "noisy_aer": 0.00250244140625,
+     "ideal_aer": 0.0
+    },
+    "matched_typical": {
+     "hardware": 0.0093994140625,
+     "noisy_aer": 0.010986328125,
+     "ideal_aer": 0.0
+    },
+    "matched_worse": {
+     "hardware": 0.04462890625,
+     "noisy_aer": 0.07379150390625,
+     "ideal_aer": 0.0
+    }
+   },
+   "grover": {
+    "pair": [
+     135,
+     139
+    ],
+    "gate": "cz",
+    "pair_gate_error": 0.0011199823212822702,
+    "pooled_mean_success": 0.94599609375,
+    "by_level": [
+     {
+      "opt_level": 0,
+      "n_jobs": 5,
+      "mean_success": 0.94648,
+      "std": 0.00873,
+      "ci95_low": 0.93565,
+      "ci95_high": 0.95732,
+      "min": 0.9375,
+      "max": 0.96094,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96729,
+      "transpiled_depth": 14,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 22,
+      "hw_minus_ideal": -0.05352,
+      "hw_minus_noisy": -0.0208
+     },
+     {
+      "opt_level": 1,
+      "n_jobs": 5,
+      "mean_success": 0.95215,
+      "std": 0.00543,
+      "ci95_low": 0.94541,
+      "ci95_high": 0.95889,
+      "min": 0.94434,
+      "max": 0.95947,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 12,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 18,
+      "hw_minus_ideal": -0.04785,
+      "hw_minus_noisy": -0.01587
+     },
+     {
+      "opt_level": 2,
+      "n_jobs": 5,
+      "mean_success": 0.94414,
+      "std": 0.01117,
+      "ci95_low": 0.93027,
+      "ci95_high": 0.95801,
+      "min": 0.93066,
+      "max": 0.95752,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 10,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 12,
+      "hw_minus_ideal": -0.05586,
+      "hw_minus_noisy": -0.02388
+     },
+     {
+      "opt_level": 3,
+      "n_jobs": 5,
+      "mean_success": 0.94121,
+      "std": 0.00755,
+      "ci95_low": 0.93184,
+      "ci95_high": 0.95058,
+      "min": 0.93359,
+      "max": 0.95166,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 10,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 12,
+      "hw_minus_ideal": -0.05879,
+      "hw_minus_noisy": -0.02681
+     }
+    ],
+    "note": "two-qubit Grover over 4 items, marked state |11>; educational demonstration only"
+   },
+   "qubit_quality": {
+    "best": {
+     "physical_qubit": 98,
+     "readout_error": 0.0020751953125,
+     "sx_error": 0.0008155212164657947,
+     "T1_us": 265.63317629889644,
+     "T2_us": 68.8483615630601,
+     "mean_no_eve_QBER": 0.00478515625
+    },
+    "typical": {
+     "physical_qubit": 155,
+     "readout_error": 0.01220703125,
+     "sx_error": 0.0003536518433568813,
+     "T1_us": 393.90483205593597,
+     "T2_us": 106.9500324101309,
+     "mean_no_eve_QBER": 0.0093994140625
+    },
+    "worse": {
+     "physical_qubit": 126,
+     "readout_error": 0.075927734375,
+     "sx_error": 0.00043577243429264516,
+     "T1_us": 104.25380759795331,
+     "T2_us": 8.64591898237013,
+     "mean_no_eve_QBER": 0.04462890625
+    },
+    "worse_minus_best_QBER": 0.039843750000000004,
+    "typical_minus_best_QBER": 0.0046142578125,
+    "rank_order_matches_readout_rank": true,
+    "note": "only three pre-selected qubits: descriptive rank comparison, no correlation coefficient claimed"
+   },
+   "transpilation": [
+    {
+     "circuit_name": "grover_opt0",
+     "optimization_level": 0,
+     "logical_depth": 8,
+     "transpiled_depth": 14,
+     "one_qubit_gate_count": 22.0,
+     "two_qubit_gate_count": 2
+    },
+    {
+     "circuit_name": "grover_opt1",
+     "optimization_level": 1,
+     "logical_depth": 8,
+     "transpiled_depth": 12,
+     "one_qubit_gate_count": 18.0,
+     "two_qubit_gate_count": 2
+    },
+    {
+     "circuit_name": "grover_opt2",
+     "optimization_level": 2,
+     "logical_depth": 8,
+     "transpiled_depth": 10,
+     "one_qubit_gate_count": 12.0,
+     "two_qubit_gate_count": 2
+    },
+    {
+     "circuit_name": "grover_opt3",
+     "optimization_level": 3,
+     "logical_depth": 8,
+     "transpiled_depth": 10,
+     "one_qubit_gate_count": 12.0,
+     "two_qubit_gate_count": 2
+    }
+   ],
+   "pilot": {
+    "job_id": "db2u94vr11fs7397g1u0",
+    "backend": "ibm_marrakesh",
+    "classification": "PILOT / HARDWARE BASELINE",
+    "circuits": 17,
+    "shots": 1024
+   }
+  }
+ },
+ "layer3": {
+  "grover": {
+   "hardware": {
+    "pair": [
+     135,
+     139
+    ],
+    "gate": "cz",
+    "pair_gate_error": 0.0011199823212822702,
+    "pooled_mean_success": 0.94599609375,
+    "by_level": [
+     {
+      "opt_level": 0,
+      "n_jobs": 5,
+      "mean_success": 0.94648,
+      "std": 0.00873,
+      "ci95_low": 0.93565,
+      "ci95_high": 0.95732,
+      "min": 0.9375,
+      "max": 0.96094,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96729,
+      "transpiled_depth": 14,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 22,
+      "hw_minus_ideal": -0.05352,
+      "hw_minus_noisy": -0.0208
+     },
+     {
+      "opt_level": 1,
+      "n_jobs": 5,
+      "mean_success": 0.95215,
+      "std": 0.00543,
+      "ci95_low": 0.94541,
+      "ci95_high": 0.95889,
+      "min": 0.94434,
+      "max": 0.95947,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 12,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 18,
+      "hw_minus_ideal": -0.04785,
+      "hw_minus_noisy": -0.01587
+     },
+     {
+      "opt_level": 2,
+      "n_jobs": 5,
+      "mean_success": 0.94414,
+      "std": 0.01117,
+      "ci95_low": 0.93027,
+      "ci95_high": 0.95801,
+      "min": 0.93066,
+      "max": 0.95752,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 10,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 12,
+      "hw_minus_ideal": -0.05586,
+      "hw_minus_noisy": -0.02388
+     },
+     {
+      "opt_level": 3,
+      "n_jobs": 5,
+      "mean_success": 0.94121,
+      "std": 0.00755,
+      "ci95_low": 0.93184,
+      "ci95_high": 0.95058,
+      "min": 0.93359,
+      "max": 0.95166,
+      "ideal_aer_success": 1.0,
+      "noisy_aer_success": 0.96802,
+      "transpiled_depth": 10,
+      "two_qubit_gates": 2,
+      "one_qubit_gates": 12,
+      "hw_minus_ideal": -0.05879,
+      "hw_minus_noisy": -0.02681
+     }
+    ],
+    "note": "two-qubit Grover over 4 items, marked state |11>; educational demonstration only"
+   },
+   "status": "small 2-qubit educational demonstration (simulator + IBM hardware)"
+  },
+  "shor": {
+   "status": "NOT IMPLEMENTED in this repository; literature/theory only"
+  }
+ },
+ "tests": {
+  "source": "pytest junit xml",
+  "total": 269,
+  "failed": 0,
+  "skipped": 0,
+  "passed": 269
+ },
+ "provenance": {
+  "generated_utc": "2026-10-07T06:54:14.304363+00:00",
+  "git_head": "a0e890647e31044f379603aa459986fb660a0d9e",
+  "git_branch": "main",
+  "python": "3.14.3",
+  "os": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "packages": {
+   "qiskit": "2.5.2",
+   "qiskit-aer": "0.17.2",
+   "qiskit-ibm-runtime": "0.49.0",
+   "pqcrypto": "1.0.0",
+   "cryptography": "50.0.0",
+   "numpy": "2.5.1",
+   "scipy": "1.18.0"
+  },
+  "liboqs": "not operational (native build failed: no CMake/MSVC); no liboqs measurements",
+  "overleaf_sync": "not verified"
+ }
+}

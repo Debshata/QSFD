@@ -49,7 +49,7 @@ the baseline.
 | RQ1 | How do strong classical and quantum models compare for highly imbalanced fraud detection? | Classical (XGBoost) leads on both production and controlled benchmarks | `docs/research/layer1/QUANTUM_GATE_RESULT.md` |
 | RQ2 | Can observable locality materially improve a variational quantum fraud classifier without increasing quantum resources? | **Yes — statistically supported** | 20-seed paired experiment, below |
 | RQ3 | Does the improved QML representation provide statistically verified incremental utility beyond strong classical controls? | **No — not verified** | Classical capacity control, below |
-| RQ4 | What overhead arises from introducing standardized post-quantum primitives into the transaction-security layer? | Substantial and implementation-dependent (up to ~15s/signature for SLH-DSA in this pure-Python build) | `docs/research/layer2/LAYER2_RESULTS.md` |
+| RQ4 | What overhead arises from introducing standardized post-quantum primitives into the transaction-security layer? | Substantial and strongly implementation-dependent: compiled `pqcrypto` is 3.4-62x faster than the pure-Python reference; SLH-DSA-128s signing stays ~1.3 s even compiled (see Final Layer 2 Results) | `docs/research/layer2/LAYER2_RESULTS.md` |
 | RQ5 | Does the implemented BB84 simulator reproduce expected eavesdropping/noise behavior? | **Yes, under stated simulation conditions** (30/30 trials) | `results/layer2/bb84_summary.csv` |
 | RQ6 | Can Layer 1 risk intelligence improve Layer 2 security orchestration under a pre-specified operational cost budget? | **Not under the tested configurations** | `docs/research/integration/LAYER1_LAYER2_INTEGRATION_EXPERIMENT_RESULTS.md` |
 | RQ7 | What architectural lesson emerges from integrating fraud risk, QML, PQC, and simulated QKD? | Fraud risk and cryptographic-quantum-threat posture must be modeled as separate axes, not one derived from the other | See diagram above |
@@ -130,15 +130,11 @@ QML addresses *prediction*; PQC addresses *cryptographic resilience against futu
 Post-quantum key/signature material is substantially larger than classical equivalents (ML-DSA-65's signature is
 ~47× ECDSA's; SLH-DSA's is ~112×), and signing latency varies by algorithm — ML-DSA's rejection-sampling
 construction gives it genuinely high variance (86–1494ms across 30 runs), while SLH-DSA-SHA2-128s required
-~15 seconds per signature **in this project's pure-Python implementation**. The project evaluates both a
-reference pure-Python and an attempted optimized/native PQC backend, so implementation overhead can be
-separated, in principle, from primitive-level trade-offs: installing `liboqs-python` as a native backend was
-attempted, but importing it triggers an automatic native `liboqs` build via CMake, which failed in this sandboxed
-Windows environment (no CMake/MSVC toolchain on `PATH`, and no unattended toolchain installation was possible).
-**Result: NATIVE PQC BACKEND UNAVAILABLE IN CURRENT ENVIRONMENT** — all PQC latency figures in this project,
-including the ~15-second SLH-DSA signing time, remain reference-Python-implementation costs and should not be
-generalized to optimized native implementations. Full benchmarks and the native-backend attempt record:
-[`docs/research/layer2/LAYER2_RESULTS.md`](docs/research/layer2/LAYER2_RESULTS.md) /
+~15 seconds per signature **in this project's pure-Python implementation**. The project evaluates both a reference pure-Python backend and a compiled optimized backend (`pqcrypto`), so
+implementation overhead can be separated from primitive-level cost (see *Final Layer 2 Results* below; the ~15 s
+SLH-DSA figure is preserved as reference-implementation history and is not reproduced by the controlled re-measurement).
+Native `liboqs` was attempted and could not be built (no CMake/MSVC); **no liboqs measurements exist**. Full benchmarks:
+[`LAYER2_FINAL_RESULTS.md`](docs/research/layer2/LAYER2_FINAL_RESULTS.md), [`LAYER2_RESULTS.md`](docs/research/layer2/LAYER2_RESULTS.md),
 [`LAYER2_LIMITATIONS.md`](docs/research/layer2/LAYER2_LIMITATIONS.md).
 
 ### BB84 Simulation
@@ -160,6 +156,21 @@ eavesdropper in 30/30 trials at the same threshold — see
 This is cross-implementation validation of simulated protocol logic; **it does not make BB84 a physical QKD
 demonstration** — no photon is transmitted and no physical no-cloning property is exercised, on a simulator or on
 real quantum hardware.
+
+<!-- FINAL-RESULTS-START -->
+## Final Layer 2 Results (generated from `results/final/final_results.json`)
+
+| Area | Result (source artifact) |
+|---|---|
+| PQC backends | Reference Python vs. compiled `pqcrypto` 1.0.0; ML-KEM-768 keygen/encaps/decaps speedups 51x / 57x / 61x; ML-DSA-65 sign 4.8x, verify 58x (`results/layer2/pqc_backend_comparison.csv`) |
+| SLH-DSA-SHA2-128s sign | reference 4.33 s (n=3) vs. pqcrypto 1.27 s: 3.4x; earlier ~15 s figure preserved as reference-implementation history |
+| End-to-end (median) | classical 0.30 ms; reference PQC 72.8 ms; optimized PQC 10.2 ms; hybrid 10.5 ms |
+| BB84 software | protocol vs. Qiskit MAE 0.0028, max gap 0.0065; intercept-resend QBER 0.2508 (protocol, 2000 bits) / 0.2438 (Qiskit, 500 bits) |
+| IBM hardware (`ibm_marrakesh`, 5 jobs) | no-Eve QBER best/typical/worse qubit 0.0048 / 0.0094 / 0.0446; intercept-resend model clearly separable; Grover pooled success 0.9460 |
+| Tests | 269 passed / 0 failed / 0 skipped |
+
+Full tables: [`docs/research/layer2/LAYER2_FINAL_RESULTS.md`](docs/research/layer2/LAYER2_FINAL_RESULTS.md). BB84 is software-simulated at protocol and circuit level; IBM hardware runs validate selected circuits and are **not** physical QKD.
+<!-- FINAL-RESULTS-END -->
 
 ## Layer 1 → Layer 2 Integration
 
@@ -214,8 +225,10 @@ of invention.
 
 - No web dashboard or API layer exists — this is a research codebase (CLI + notebooks + tests), not a deployed
   system. See [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md).
-- Post-quantum benchmarks reflect a pure-Python implementation, not production-grade native code; a native
-  `liboqs` backend was attempted and found unavailable in this environment (no C/CMake toolchain).
+- Post-quantum benchmarks compare a pure-Python reference with the compiled `pqcrypto` package (not native liboqs, which could not be
+  built here); absolute latencies are machine- and build-specific.
+- IBM Quantum hardware runs validate selected circuits only (single backend, five jobs within one calibration window); they are not
+  physical QKD and the full fraud classifier was not run on hardware. Shor's algorithm is not implemented.
 - BB84 is a software simulation with no physical channel; a second, independent Qiskit circuit-level
   implementation adds a simple bit-flip channel noise model and cross-validates the original simulator, but
   neither implementation involves a physical channel or hardware.

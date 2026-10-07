@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\caption{End-to-end banking-transaction protection (serialize--sign--key establishment--AES-256-GCM--decrypt--verify). Plaintext is the same canonical JSON payload in all rows.}
+\label{tab:e2e}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Configuration & n & Median (ms) & P95 (ms) & Secured (B) & Expansion \\
+\midrule
+A\_classical\_ECDH+ECDSA & 200 & 0.302 & 0.568 & 475 & 1.52 \\
+B\_reference\_ML-KEM-768+ML-DSA-65 & 30 & 72.8 & 141 & 4737 & 15.2 \\
+C\_optimized\_ML-KEM-768+ML-DSA-65 & 200 & 10.2 & 11 & 4737 & 15.2 \\
+D\_hybrid\_optimized\_ECDH+ML-KEM-768\_ECDSA+ML-DSA-65 & 200 & 10.5 & 11 & 4873 & 15.6 \\
+B2\_reference\_ML-KEM-768+SLH-DSA-128s & 3 & 3.63e+03 & 3.66e+03 & 9284 & 29.8 \\
+C2\_optimized\_ML-KEM-768+SLH-DSA-128s & 20 & 1.25e+03 & 1.27e+03 & 9284 & 29.8 \\
+\bottomrule
+\end{tabular}}
+\end{table}

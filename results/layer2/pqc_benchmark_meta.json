@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-07T06:35:34.837620+00:00",
+  "os": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "python": "3.14.3",
+  "cryptography": "50.0.0",
+  "backends": {
+    "pqcrypto": {
+      "available": true,
+      "version": "1.0.0"
+    },
+    "reference_python": {
+      "available": true,
+      "libraries": {
+        "kyber-py": "1.2.0",
+        "dilithium-py": "1.4.0",
+        "slh-dsa": "0.2.5"
+      }
+    }
+  },
+  "liboqs": "python wrapper installed (liboqs-python 0.16.0.1); native library build failed (no CMake/MSVC); no liboqs measurements",
+  "timer": "time.perf_counter_ns",
+  "message_bytes": 87
+}

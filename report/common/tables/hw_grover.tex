@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Two-qubit Grover (marked state $|11\rangle$): success probability by transpiler optimization level (5 independent jobs).}
+\label{tab:hw-grover}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{rrrrrrrr}
+\toprule
+Opt. level & Depth & 2Q gates & HW success & CI low & CI high & Noisy Aer & Ideal Aer \\
+\midrule
+0 & 14 & 2 & 0.9465 & 0.9357 & 0.9573 & 0.9673 & 1.0000 \\
+1 & 12 & 2 & 0.9521 & 0.9454 & 0.9589 & 0.9680 & 1.0000 \\
+2 & 10 & 2 & 0.9441 & 0.9303 & 0.9580 & 0.9680 & 1.0000 \\
+3 & 10 & 2 & 0.9412 & 0.9318 & 0.9506 & 0.9680 & 1.0000 \\
+\bottomrule
+\end{tabular}}
+\end{table}

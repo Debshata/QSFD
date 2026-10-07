@@ -1,5 +1,7 @@
 # Layer 2 Results
 
+> **Update:** sections below record the earlier reference-Python measurements, preserved as history. The finalized reference-vs-`pqcrypto` comparison, end-to-end banking experiment, strengthened BB84 statistics, threshold analysis and replicated IBM hardware results are in [`LAYER2_FINAL_RESULTS.md`](LAYER2_FINAL_RESULTS.md) (generated from `results/final/final_results.json`).
+
 All numbers below are read directly from `research/layer2/results/*.csv`/`*.json`, produced by
 `scripts/security/run_layer2_benchmarks.py` and `scripts/security/run_bb84_and_e2e_benchmarks.py`. Every claim
 cites its source file.

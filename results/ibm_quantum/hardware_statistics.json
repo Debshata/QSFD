@@ -1,0 +1,252 @@
+{
+ "campaign": "A",
+ "n_jobs": 5,
+ "job_ids": [
+  "db2ugk42ljfc73d57mi0",
+  "db2ukr42ljfc73d57ttg",
+  "db2ul8u8v0ts73c3j3i0",
+  "db2ulj7r11fs7397go30",
+  "db2ulu42ljfc73d57vl0"
+ ],
+ "backend": "ibm_marrakesh",
+ "shots_per_circuit": 2048,
+ "eve_vs_no_eve": {
+  "best": {
+   "label": "best qubit, paired by job",
+   "n_pairs": 5,
+   "mean_delta": 0.25841064453125,
+   "bootstrap_ci95": [
+    0.2558349609375,
+    0.2614501953125
+   ],
+   "sign_flip_permutation_p_one_sided": 0.03125,
+   "min_attainable_p": 0.03125,
+   "cohens_dz": 72.80526715499943,
+   "all_deltas_positive": true
+  },
+  "typical": {
+   "label": "typical qubit, paired by job",
+   "n_pairs": 5,
+   "mean_delta": 0.2497314453125,
+   "bootstrap_ci95": [
+    0.24591064453125,
+    0.2525634765625
+   ],
+   "sign_flip_permutation_p_one_sided": 0.03125,
+   "min_attainable_p": 0.03125,
+   "cohens_dz": 58.5572858821292,
+   "all_deltas_positive": true
+  },
+  "worse": {
+   "label": "worse qubit, paired by job",
+   "n_pairs": 5,
+   "mean_delta": 0.24215087890625,
+   "bootstrap_ci95": [
+    0.2356201171875,
+    0.2505859375
+   ],
+   "sign_flip_permutation_p_one_sided": 0.03125,
+   "min_attainable_p": 0.03125,
+   "cohens_dz": 24.664702449844697,
+   "all_deltas_positive": true
+  }
+ },
+ "eve_noeve_separation": {
+  "max_no_eve_qber": 0.05615234375,
+  "min_eve_qber": 0.25238037109375,
+  "fully_separated": true
+ },
+ "state_asymmetry_Z": {
+  "best": {
+   "P_meas1_given_prep0": 0.00087890625,
+   "P_meas0_given_prep1": 0.00986328125,
+   "ratio_1_over_0": 11.222222222222221
+  },
+  "typical": {
+   "P_meas1_given_prep0": 0.00703125,
+   "P_meas0_given_prep1": 0.011328125,
+   "ratio_1_over_0": 1.611111111111111
+  },
+  "worse": {
+   "P_meas1_given_prep0": 0.05634765625,
+   "P_meas0_given_prep1": 0.03388671875,
+   "ratio_1_over_0": 0.6013864818024264
+  }
+ },
+ "state_asymmetry_consistent_across_all_job_role_cells": false,
+ "state_asymmetry_cells_consistent": "11/15",
+ "noisy_aer_prediction": {
+  "MAE_hw_vs_noisy": 0.013028971354166667,
+  "RMSE_hw_vs_noisy": 0.01863294550299298,
+  "MAE_hw_vs_ideal": 0.02184516059027778,
+  "RMSE_hw_vs_ideal": 0.03326152378099053,
+  "n_circuit_role_cells": 36,
+  "noisy_underpredicts_in": 17,
+  "matched_best": {
+   "hardware": 0.00478515625,
+   "noisy_aer": 0.00250244140625,
+   "ideal_aer": 0.0
+  },
+  "matched_typical": {
+   "hardware": 0.0093994140625,
+   "noisy_aer": 0.010986328125,
+   "ideal_aer": 0.0
+  },
+  "matched_worse": {
+   "hardware": 0.04462890625,
+   "noisy_aer": 0.07379150390625,
+   "ideal_aer": 0.0
+  }
+ },
+ "grover": {
+  "pair": [
+   135,
+   139
+  ],
+  "gate": "cz",
+  "pair_gate_error": 0.0011199823212822702,
+  "pooled_mean_success": 0.94599609375,
+  "by_level": [
+   {
+    "opt_level": 0,
+    "n_jobs": 5,
+    "mean_success": 0.94648,
+    "std": 0.00873,
+    "ci95_low": 0.93565,
+    "ci95_high": 0.95732,
+    "min": 0.9375,
+    "max": 0.96094,
+    "ideal_aer_success": 1.0,
+    "noisy_aer_success": 0.96729,
+    "transpiled_depth": 14,
+    "two_qubit_gates": 2,
+    "one_qubit_gates": 22,
+    "hw_minus_ideal": -0.05352,
+    "hw_minus_noisy": -0.0208
+   },
+   {
+    "opt_level": 1,
+    "n_jobs": 5,
+    "mean_success": 0.95215,
+    "std": 0.00543,
+    "ci95_low": 0.94541,
+    "ci95_high": 0.95889,
+    "min": 0.94434,
+    "max": 0.95947,
+    "ideal_aer_success": 1.0,
+    "noisy_aer_success": 0.96802,
+    "transpiled_depth": 12,
+    "two_qubit_gates": 2,
+    "one_qubit_gates": 18,
+    "hw_minus_ideal": -0.04785,
+    "hw_minus_noisy": -0.01587
+   },
+   {
+    "opt_level": 2,
+    "n_jobs": 5,
+    "mean_success": 0.94414,
+    "std": 0.01117,
+    "ci95_low": 0.93027,
+    "ci95_high": 0.95801,
+    "min": 0.93066,
+    "max": 0.95752,
+    "ideal_aer_success": 1.0,
+    "noisy_aer_success": 0.96802,
+    "transpiled_depth": 10,
+    "two_qubit_gates": 2,
+    "one_qubit_gates": 12,
+    "hw_minus_ideal": -0.05586,
+    "hw_minus_noisy": -0.02388
+   },
+   {
+    "opt_level": 3,
+    "n_jobs": 5,
+    "mean_success": 0.94121,
+    "std": 0.00755,
+    "ci95_low": 0.93184,
+    "ci95_high": 0.95058,
+    "min": 0.93359,
+    "max": 0.95166,
+    "ideal_aer_success": 1.0,
+    "noisy_aer_success": 0.96802,
+    "transpiled_depth": 10,
+    "two_qubit_gates": 2,
+    "one_qubit_gates": 12,
+    "hw_minus_ideal": -0.05879,
+    "hw_minus_noisy": -0.02681
+   }
+  ],
+  "note": "two-qubit Grover over 4 items, marked state |11>; educational demonstration only"
+ },
+ "qubit_quality": {
+  "best": {
+   "physical_qubit": 98,
+   "readout_error": 0.0020751953125,
+   "sx_error": 0.0008155212164657947,
+   "T1_us": 265.63317629889644,
+   "T2_us": 68.8483615630601,
+   "mean_no_eve_QBER": 0.00478515625
+  },
+  "typical": {
+   "physical_qubit": 155,
+   "readout_error": 0.01220703125,
+   "sx_error": 0.0003536518433568813,
+   "T1_us": 393.90483205593597,
+   "T2_us": 106.9500324101309,
+   "mean_no_eve_QBER": 0.0093994140625
+  },
+  "worse": {
+   "physical_qubit": 126,
+   "readout_error": 0.075927734375,
+   "sx_error": 0.00043577243429264516,
+   "T1_us": 104.25380759795331,
+   "T2_us": 8.64591898237013,
+   "mean_no_eve_QBER": 0.04462890625
+  },
+  "worse_minus_best_QBER": 0.039843750000000004,
+  "typical_minus_best_QBER": 0.0046142578125,
+  "rank_order_matches_readout_rank": true,
+  "note": "only three pre-selected qubits: descriptive rank comparison, no correlation coefficient claimed"
+ },
+ "transpilation": [
+  {
+   "circuit_name": "grover_opt0",
+   "optimization_level": 0,
+   "logical_depth": 8,
+   "transpiled_depth": 14,
+   "one_qubit_gate_count": 22.0,
+   "two_qubit_gate_count": 2
+  },
+  {
+   "circuit_name": "grover_opt1",
+   "optimization_level": 1,
+   "logical_depth": 8,
+   "transpiled_depth": 12,
+   "one_qubit_gate_count": 18.0,
+   "two_qubit_gate_count": 2
+  },
+  {
+   "circuit_name": "grover_opt2",
+   "optimization_level": 2,
+   "logical_depth": 8,
+   "transpiled_depth": 10,
+   "one_qubit_gate_count": 12.0,
+   "two_qubit_gate_count": 2
+  },
+  {
+   "circuit_name": "grover_opt3",
+   "optimization_level": 3,
+   "logical_depth": 8,
+   "transpiled_depth": 10,
+   "one_qubit_gate_count": 12.0,
+   "two_qubit_gate_count": 2
+  }
+ ],
+ "pilot": {
+  "job_id": "db2u94vr11fs7397g1u0",
+  "backend": "ibm_marrakesh",
+  "classification": "PILOT / HARDWARE BASELINE",
+  "circuits": 17,
+  "shots": 1024
+ }
+}

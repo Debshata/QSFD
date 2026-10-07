@@ -550,6 +550,12 @@ print("of this pure-Python implementation, not minimized here or in docs/researc
 """)
 
 # ============================================================================
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+import nb2_final_cells
+nb2_final_cells.add(md, code)
+
+# ============================================================================
 md("""
 ## 38. Negative Results (Consolidated)
 
@@ -559,7 +565,7 @@ md("""
 | Anomaly-assisted routing adds cost without adding fraud coverage | 24-29 |
 | Quantum-assisted routing fails its own pre-specified cost budget by 16x | 30 |
 | HYBRID_MAXIMUM/QKD_EXPERIMENTAL cost ~4-6+ seconds, dominated by SLH-DSA | 21, 36-37 |
-| SLH-DSA is not currently practical in a real-time path (pure-Python) | 14 |
+| SLH-DSA-SHA2-128s signing stays ~1 s even with a compiled backend (pqcrypto), ~100x ML-DSA-65: mostly a parameter-set cost, partly implementation | 14, 35c |
 | Native `liboqs` PQC backend unavailable in this environment (no C/CMake toolchain) | 35b |
 
 ## 39. Scientific Contribution

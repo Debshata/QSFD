@@ -1,0 +1,26 @@
+{
+ "campaign": "A",
+ "backend": "ibm_marrakesh",
+ "shots": 2048,
+ "n_jobs": 5,
+ "qubit_selection": {
+  "best": 98,
+  "typical": 155,
+  "worse": 126,
+  "n_eligible": 150,
+  "rule": "score=readout_error+sx_error; best=rank0, typical=median, worse=90th percentile; readout<=0.2"
+ },
+ "grover_pair": [
+  135,
+  139
+ ],
+ "grover_pair_gate": "cz",
+ "seed_transpiler": 20261008,
+ "bb84_opt_level": 1,
+ "grover_opt_levels": [
+  0,
+  1,
+  2,
+  3
+ ]
+}

@@ -1,5 +1,7 @@
 # Layer 2 Limitations
 
+> **Update (2026-10-07):** a compiled `pqcrypto` backend (v1.0.0) is now benchmarked against the reference implementations (`LAYER2_FINAL_RESULTS.md`); item 1 below remains true for native `liboqs` (no measurements). Additional limits: pqcrypto is a compiled but not necessarily AVX2-optimized build; IBM hardware results cover selected circuits on one backend within one calibration window; Shor is not implemented; BB84 remains software-simulated.
+
 1. **Native PQC backend attempted, unavailable in this environment.** A follow-up session attempted to install
    `liboqs-python` (which wraps the native `liboqs` C library) as an optimized/native PQC backend to compare
    against the pure-Python reference implementations. The Python package installed successfully, but importing

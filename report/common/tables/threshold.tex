@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Eve-detection threshold analysis at the conventional 0.11 value; last column is the lowest threshold attaining the maximum balanced accuracy in this simulated design.}
+\label{tab:threshold}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+Impl. & Eve-absent set & TPR@0.11 & FPR@0.11 & Miss@0.11 & First best thr. \\
+\midrule
+protocol 2000 & no eve all noise levels & 1.000 & 0.030 & 0.000 & 0.120 \\
+protocol 2000 & no eve clean to 5pct & 1.000 & 0.000 & 0.000 & 0.070 \\
+protocol 500 & no eve all noise levels & 1.000 & 0.085 & 0.000 & 0.140 \\
+protocol 500 & no eve clean to 5pct & 1.000 & 0.000 & 0.000 & 0.080 \\
+qiskit 500 & no eve all noise levels & 1.000 & 0.055 & 0.000 & 0.160 \\
+qiskit 500 & no eve clean to 5pct & 1.000 & 0.000 & 0.000 & 0.090 \\
+\bottomrule
+\end{tabular}}
+\end{table}
