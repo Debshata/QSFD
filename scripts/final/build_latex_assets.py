@@ -169,7 +169,10 @@ def tex(df, name, caption, label, cols=None, fmt=None, colfmt=None, small=True):
     df = df.copy()
     n = len(df.columns)
     colfmt = colfmt or "l" + "r" * (n - 1)
-    body = df.to_latex(index=False, escape=True, float_format=(fmt or (lambda x: f"{x:.3f}")), column_format=colfmt, na_rep="--").replace("\\begin{tabular}", "\\begin{tabular}", 1)
+    for c_ in df.columns:
+        if not pd.api.types.is_numeric_dtype(df[c_]):
+            df[c_] = df[c_].astype(str).str.replace("_", r"\_", regex=False).str.replace("%", r"\%", regex=False)
+    body = df.to_latex(index=False, escape=False, float_format=(fmt or (lambda x: f"{x:.3f}")), column_format=colfmt, na_rep="--").replace("\\begin{tabular}", "\\begin{tabular}", 1)
     body = body.replace("\\toprule", "\\toprule").strip()
     s = ("\\begin{table}[t]\n\\centering\n" + ("\\small\n" if small else "") + f"\\caption{{{caption}}}\n\\label{{{label}}}\n" + "\\resizebox{\\linewidth}{!}{%\n" + body + "}\n\\end{table}\n")
     (T / f"{name}.tex").write_text(s, encoding="utf-8")

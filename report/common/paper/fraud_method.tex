@@ -1,0 +1,30 @@
+\section{Fraud Detection Methodology}\label{sec:fraud}
+\subsection{Data and metrics}
+Layer~1 uses the public credit-card fraud dataset~\cite{dalpozzolo} with duplicate removal before splitting, a temporal train/validation/test split, and preprocessing fitted on the training fold only. Because of the extreme imbalance, PR-AUC is the primary metric, supplemented by precision, recall and $F_1$:
+\begin{equation}
+\mathrm{Precision}=\frac{TP}{TP+FP},\quad
+\mathrm{Recall}=\frac{TP}{TP+FN},\quad
+F_1=2\,\frac{\mathrm{Precision}\cdot\mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}.
+\label{eq:prf}
+\end{equation}
+
+\subsection{Quantum model and observable}
+A classical feature vector $x$ is encoded into a parameterized state, and the model output is an expectation value:
+\begin{equation}
+f_\theta(x)=\langle\psi(x,\theta)|\,O\,|\psi(x,\theta)\rangle,\qquad |\psi(x,\theta)\rangle=V(\theta)\,U_{\mathrm{enc}}(x)\,|0\rangle^{\otimes n}.
+\label{eq:qnn}
+\end{equation}
+Motivated by Cerezo et~al.~\cite{cerezo}, two observables are compared on otherwise identical circuits (Fig.~\ref{fig:obs}):
+\begin{equation}
+O_{\mathrm{global}}=Z_0\otimes Z_1\otimes\cdots\otimes Z_{n-1},\qquad
+O_{\mathrm{local\text{-}sum}}=\frac1n\sum_{i=0}^{n-1}Z_i .
+\label{eq:obs}
+\end{equation}
+Paired per-seed differences are $\Delta_i=\mathrm{PRAUC}^{(i)}_{\text{local-sum}}-\mathrm{PRAUC}^{(i)}_{\text{global}}$ with initialization held identical within each seed; uncertainty uses a 5000-resample bootstrap~\cite{efron}, a one-sided Wilcoxon signed-rank test~\cite{wilcoxon} and a sign-flip permutation test. The result is then tested against a matched classical nonlinear control so that quantum design effects are not conflated with added model capacity.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\figw]{global_vs_localsum_diagram}
+\caption{Global versus local-sum measurement on the same encoded state; only the observable differs.}
+\label{fig:obs}
+\end{figure}

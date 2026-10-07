@@ -1,0 +1,12 @@
+\section{Project Constraints}
+\textbf{High-level constraints.} Limited compute (a single Windows machine) restricted quantum-circuit simulation to small qubit counts; the public dataset has very few fraud cases (0.17\% of transactions), which limits statistical power and motivates paired multi-seed designs; there was no physical QKD hardware; time was limited to the project period (repository history spans 2026-08-25 to 2026-10-07 in its recorded commits).
+
+\textbf{Implementation constraints.}
+\begin{itemize}[noitemsep]
+\item Native \texttt{liboqs} could not be built (no CMake or MSVC toolchain, which was deliberately not installed); the compiled \texttt{pqcrypto} package was used instead, and no liboqs measurements exist.
+\item The reference SLH-DSA implementation is computationally expensive (seconds per signature), so its repetition counts are small (3 for key generation and signing).
+\item Quantum simulation overhead limited the Qiskit BB84 trials to 500 bits per trial (protocol simulator: up to 2000 bits).
+\item IBM Quantum open-plan access limits runtime and queue time, so the hardware campaign used small circuits and five jobs within one session.
+\item Simulation assumptions: both BB84 implementations are software simulations with different noise models; no real fraud-bank data were available.
+\item The \texttt{pqcrypto} build is compiled but not necessarily the most optimized code path; absolute latencies are machine-specific.
+\end{itemize}

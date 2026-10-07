@@ -1,0 +1,49 @@
+The requirements below follow the project's SRS and were traced to the implementation (full matrix: \texttt{docs/project/PROJECT\_REQUIREMENTS\_TRACEABILITY.md}). The prototype is a command-line, notebook and test-driven research system; a web dashboard and API layer were not implemented.
+
+\section{Functional Requirement}
+\begin{longtable}{@{}p{1.1cm}p{7.2cm}p{5.3cm}@{}}
+\caption{Functional requirements and implementation evidence}\label{tab:fr}\\
+\toprule ID & Requirement & Evidence in repository\\ \midrule \endfirsthead
+\toprule ID & Requirement & Evidence in repository\\ \midrule \endhead
+FR1 & Load transaction data & \texttt{src/data}\\
+FR2 & Preprocess banking transaction data & \texttt{src/data} (fit on training fold only)\\
+FR3 & Detect fraudulent transactions & \texttt{src/fraud\_engine}, \texttt{src/classical\_ml}\\
+FR4 & Train classical ML models & \texttt{src/classical\_ml}\\
+FR5 & Execute QML experiments & \texttt{src/qml}, \texttt{src/qml\_experimental}\\
+FR6 & Compare classical and quantum-enhanced models & Notebook 1, \texttt{results/layer1}\\
+FR7 & Encrypt transactions with AES-256 & \texttt{src/security/classical/aes.py}\\
+FR8 & RSA / ECC operations & \texttt{src/security/classical}\\
+FR9 & Generate ML-KEM keypairs & \texttt{src/security/pqc/backends.py}\\
+FR10 & Encapsulate / decapsulate PQC secrets & \texttt{src/security/pqc/backends.py}\\
+FR11 & Generate ML-DSA signatures & \texttt{src/security/pqc}\\
+FR12 & Verify ML-DSA signatures & \texttt{src/security/pqc}\\
+FR13 & Generate / verify SLH-DSA signatures & \texttt{src/security/pqc}\\
+FR14 & Simulate BB84 & \texttt{src/security/qkd/bb84.py}\\
+FR15 & Simulate channel noise & \texttt{bb84.py}, \texttt{bb84\_qiskit.py}\\
+FR16 & Simulate intercept--resend & \texttt{bb84.py}, \texttt{bb84\_qiskit.py}\\
+FR17 & Calculate QBER & both BB84 modules\\
+FR18 & Determine the sifted key & both BB84 modules\\
+FR19 & Evaluate Eve-detection thresholds & \texttt{scripts/security/run\_bb84\_final.py}\\
+FR20 & Execute Qiskit BB84 circuits & \texttt{bb84\_qiskit.py}; IBM scripts\\
+FR21 & Generate benchmark results & \texttt{scripts/security}, \texttt{results/layer2}\\
+FR22 & Generate figures and tables & \texttt{scripts/security/make\_layer2\_final\_figures.py}\\
+FR23 & Reproduce Layer~2 experiments & scripts above; \texttt{results/final/final\_results.json}\\
+\bottomrule
+\end{longtable}
+
+\section{Non-Functional Requirement}
+\begin{longtable}{@{}p{3.2cm}p{10.4cm}@{}}
+\caption{Non-functional requirements (research prototype versus production)}\label{tab:nfr}\\
+\toprule Attribute & Prototype requirement and how it is met; production note\\ \midrule \endfirsthead
+\toprule Attribute & Prototype requirement and how it is met; production note\\ \midrule \endhead
+Reproducibility & Fixed seeds, saved raw artifacts, pre-specified protocols, scripts that regenerate every table and figure.\\
+Correctness & \TestsTotal{} automated tests (\TestsPassed{} passed); real cryptographic round-trips and tamper-rejection tests, no mocks for primary paths.\\
+Maintainability, modularity & Separate packages per layer; backend abstraction for PQC.\\
+Performance & Latency measured, not assumed; pure-Python reference versus compiled backend. Production would need native, audited libraries.\\
+Security & Standard algorithms only; no custom cryptography. Production would need HSMs, key management and audits.\\
+Reliability, portability & Runs on Windows with Python~3.14; optional components degrade gracefully (backend detection).\\
+Documentation, testability & README, notebooks, generated results document, test suite.\\
+Scalability & Not evaluated (no concurrency or load tests); a stated limitation.\\
+Ethical data handling & Only a public, anonymized dataset; no real customer data; credentials excluded from the repository.\\
+\bottomrule
+\end{longtable}

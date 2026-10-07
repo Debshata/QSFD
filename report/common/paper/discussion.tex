@@ -1,0 +1,8 @@
+\section{Discussion}\label{sec:disc}
+\paragraph{Quantum model design versus system value.} The observable-locality result is a statistically supported, architecture-level finding under the evaluated conditions; it did not translate into incremental value once a matched classical nonlinear control and XGBoost were present. Reporting both outcomes is the point of the design: improved quantum model design is not the same as quantum predictive advantage.
+
+\paragraph{Implementation versus primitive cost.} Compiling the post-quantum primitives removed most of the measured latency for ML-KEM and for ML-DSA key generation and verification, but not for ML-DSA signing or SLH-DSA-128s signing. Operational feasibility conclusions about post-quantum migration should therefore be stated per primitive and per implementation. The \texttt{pqcrypto} build is compiled but not necessarily the most heavily optimized code path available, so its numbers are an upper bound on what a tuned native library might achieve and are not a claim about \texttt{liboqs}.
+
+\paragraph{BB84 evidence.} Two independent software implementations agree to within a maximum mean-QBER difference of \BbMaxDiff{} and reproduce the expected clean, noisy and intercept--resend behaviour. The IBM runs add a different kind of evidence: calibration-dependent hardware error is of the same order as moderate channel noise, but the intercept--resend model remains distinguishable from it. Neither is physical QKD.
+
+\paragraph{Threshold choice.} A fixed QBER threshold trades missed detections against false alarms when noise varies; the value must be set for the expected channel noise rather than treated as a universal constant.

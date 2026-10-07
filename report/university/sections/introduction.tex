@@ -1,0 +1,24 @@
+Digital banking has moved a large share of payments to cards, mobile applications and online channels, and with it the opportunity for fraud. Rule engines catch known patterns but adapt slowly, while machine-learning models learn from labelled transactions; both operate on highly imbalanced data, in which fraud is a small fraction of all transactions (0.17\% in the public dataset used here). At the same time, the cryptography that protects transactions in transit rests largely on RSA and elliptic-curve assumptions that a sufficiently large quantum computer could break~\cite{shor}, and data recorded today could be decrypted later~\cite{mosca}. Standardized post-quantum algorithms now exist~\cite{nist203,nist204,nist205}, and quantum key distribution (QKD) offers a different, physics-based route to key exchange that is studied here only by simulation.
+
+The Quantum-Secure Fraud Detection System (QSFD) is a three-layer research prototype. Layer~1 detects fraud with classical and quantum machine-learning models. Layer~2 protects transactions with classical and post-quantum cryptography and studies BB84. Layer~3 (attack analysis) is represented by a small Grover circuit and literature-based discussion; Shor's algorithm is not implemented. The architecture is shown in Section~\ref{sec:arch}; the central design lesson is that fraud risk is not the same as cryptographic quantum risk.
+
+\section{Purpose of Plan}
+The project exists to answer, with evidence, what quantum technologies add to a banking fraud-and-security pipeline and what they do not. Specifically it aims to (i) build and compare fraud-detection models; (ii) protect transactions with classical and post-quantum cryptography and compare their costs; (iii) study QKD by simulation and by executing the underlying circuits on quantum hardware; and (iv) validate every claim with reproducible experiments, including negative results. It is a research and educational prototype; it is not a deployed banking system.
+
+\section{Background Information / Available Alternatives}
+\textbf{Fraud detection.} Alternatives include rule engines, classical machine learning (logistic regression, random forests, gradient boosting~\cite{xgboost}), deep learning and, experimentally, quantum machine learning~\cite{havlicek,schuld}. Classical gradient boosting is fast and strong on tabular data, so it is the baseline against which quantum models must be judged.
+
+\textbf{Encryption and signatures.} AES-256 remains the bulk cipher; RSA and ECC provide key establishment and signatures today; ML-KEM, ML-DSA and SLH-DSA are the standardized quantum-resistant replacements for key establishment and signatures. They differ in key size, signature size and speed, so no single choice dominates.
+
+\textbf{QKD.} BB84~\cite{bb84} gives keys whose secrecy rests on quantum measurement; real deployments need photonic hardware and trusted infrastructure that this project does not have. QSFD therefore simulates BB84 at protocol and circuit level and uses IBM Quantum hardware only to measure circuit-level error, which is not QKD.
+
+\textbf{Backends for PQC.} The Open Quantum Safe library \texttt{liboqs}~\cite{liboqs} is the usual native choice; it was attempted first but requires a CMake and MSVC toolchain that this Windows environment does not provide, so no liboqs measurements exist. The compiled \texttt{pqcrypto} package~\cite{pqcrypto} was used as the optimized backend and compared with the project's pure-Python reference implementations. Commercial banking-security products were not evaluated.
+
+QSFD combines these approaches rather than relying on one because they solve different problems: models detect fraud, classical and post-quantum cryptography protect data and identity, and QKD is a research alternative for key exchange.
+
+\section{Project Goals and Objectives}\label{sec:goals}
+\textbf{Primary objectives:} (1) build a Layer~1 fraud-detection pipeline and compare classical and quantum models with proper statistics; (2) implement classical and post-quantum cryptography and an end-to-end transaction-protection pipeline; (3) simulate BB84 including channel noise and intercept--resend attacks and measure detection.
+
+\textbf{Secondary objectives:} (4) compare the reference and compiled PQC backends; (5) implement BB84 as explicit Qiskit circuits and cross-validate it against the protocol simulator; (6) analyse Eve-detection thresholds; (7) produce reproducible experiments, figures and tables.
+
+\textbf{Research objectives:} (8) test whether quantum-model design improves a quantum fraud classifier and whether any improvement survives a classical control; (9) separate implementation cost from primitive cost in PQC; (10) experimentally validate selected QSFD circuits on IBM Quantum hardware and quantify deviations between ideal simulation, noisy simulation and physical-device execution.

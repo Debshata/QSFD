@@ -1,0 +1,46 @@
+The project followed an iterative research-and-validation approach rather than a formal ceremony-based method: problem identification, literature review, architecture design, implementation, experimental validation, statistical analysis, testing, documentation and revision, repeated per layer. Experimental protocols for the Layer~1 to Layer~2 integration were written and committed \emph{before} the experiment ran, to prevent post-hoc selection.
+
+\section{Project Timeline}
+Only two dates are evidenced by repository history: the first commit on 2026-08-25 (which also contains the earlier \texttt{ibm\_fez} QML hardware run) and the latest work on 2026-10-07 (pqcrypto comparison, final BB84 statistics, IBM \texttt{ibm\_marrakesh} campaign). Other phases are given as ordered stages without invented dates.
+
+\begin{table}[ht]
+\centering\small
+\caption{Project phases (ordered; dates only where repository evidence exists)}
+\label{tab:timeline}
+\begin{tabular}{@{}rp{4.1cm}p{3.6cm}p{4.6cm}@{}}
+\toprule
+\# & Phase & Date evidence & Main artifacts\\
+\midrule
+1 & Problem identification, SRS & before 2026-08-25 & SRS (three listed authors)\\
+2 & Literature review & before/during Layer~1 & \texttt{docs/research/literature}\\
+3 & Dataset preparation & Layer~1 period & \texttt{src/data}\\
+4 & Layer~1 development and experiments & Layer~1 period & \texttt{results/layer1}, Notebook 1\\
+5 & Layer~2 classical cryptography & Layer~2 period & \texttt{src/security/classical}\\
+6 & Layer~2 PQC (reference) & Layer~2 period & \texttt{src/security/pqc}\\
+7 & Layer~2 BB84 and Qiskit circuits & Layer~2 period & \texttt{src/security/qkd}\\
+8 & Integration experiment & after Layer~2 & \texttt{results/integration}\\
+9 & IBM QML hardware run (\texttt{ibm\_fez}) & 2026-08-25 & \texttt{reports/ibm\_hardware}\\
+10 & pqcrypto, end-to-end, final BB84 statistics & up to 2026-10-07 & \texttt{results/layer2}\\
+11 & IBM \texttt{ibm\_marrakesh} pilot and campaign & 2026-10-07 & \texttt{results/ibm\_quantum}\\
+12 & Testing, statistical validation, documentation, report & throughout & \TestsTotal{} tests; this report\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Project Roles and Responsibilities}
+The SRS lists three authors (Shreyansh Jaiswal, Abhishek Chaubey, Debshata Choudhury). The repository's 24 commits are all by Debshata Choudhury; roles of the other two authors cannot be verified from repository evidence and are therefore left for the team to complete.
+
+\begin{table}[ht]
+\centering\small
+\caption{Roles and responsibilities (evidence-based)}
+\label{tab:roles}
+\begin{tabular}{@{}p{3.2cm}p{10.2cm}@{}}
+\toprule
+Member & Responsibilities\\
+\midrule
+Debshata Choudhury & Research design, Layer~1 and Layer~2 coding, QML and statistical experiments, PQC backends and benchmarks, BB84 protocol and Qiskit implementations, IBM Quantum experiments, testing, figures, notebooks, documentation and report writing, integration (all evidenced by repository commits).\\
+Shreyansh Jaiswal & \placeholder{Role and contribution}\\
+Abhishek Chaubey & \placeholder{Role and contribution}\\
+\bottomrule
+\end{tabular}
+\end{table}

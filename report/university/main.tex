@@ -1,0 +1,110 @@
+% University project report (complete record). Class: report (standard). Build: pdflatex -> bibtex -> pdflatex x2.
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array,tabularx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nottoc]{tocbibind}
+\graphicspath{{../common/figures/}}
+\newcommand{\figw}{0.9\textwidth}
+\newcommand{\placeholder}[1]{\textbf{[#1 -- to be completed]}}
+\input{../common/generated/results_macros.tex}
+\onehalfspacing
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\Large \textbf{Quantum-Secure Fraud Detection System for Banking Transactions}\par}
+\vspace{1cm}
+{\large Project Report\par}
+\vspace{1.5cm}
+Submitted by:\\ Debshata Choudhury\\ \placeholder{Co-authors from the SRS (Shreyansh Jaiswal, Abhishek Chaubey): confirm inclusion, registration numbers}\\[1cm]
+\placeholder{University / Department / Programme}\\[0.5cm]
+Supervisor: \placeholder{Supervisor name and designation}\\[0.5cm]
+Academic year: \placeholder{Year}\\[2cm]
+{\small Repository: https://github.com/Debshata/QSFD}
+\end{titlepage}
+
+\chapter*{Certificate}
+\placeholder{Certificate text and signatures supplied by the institution}
+
+\chapter*{Declaration}
+\placeholder{Declaration text supplied by the institution}
+
+\chapter*{Acknowledgement}
+\placeholder{Acknowledgement of supervisor, institution and resources. The study used IBM Quantum open-plan access and open-source software}
+
+\chapter*{Abstract}
+The Quantum-Secure Fraud Detection System (QSFD) is a research prototype that studies fraud detection and transaction security for digital banking in the era of quantum computing. Layer~1 compares classical and quantum machine-learning fraud models; a 20-seed paired experiment shows that a local-sum measurement observable significantly improves a matched quantum neural network (mean PR-AUC difference \LsDelta{}, bootstrap 95\% CI [\LsCIlo{}, \LsCIhi{}]), while a matched classical control and XGBoost show no verified incremental quantum value. Layer~2 implements AES-256-GCM, RSA, ECC, ML-KEM, ML-DSA and SLH-DSA and compares a pure-Python reference with the compiled \texttt{pqcrypto} backend (speedups \SpeedupMin{}--\SpeedupMax{}$\times$), measures end-to-end transaction protection (\EEAMedian{}~ms classical, \EECMedian{}~ms compiled ML-KEM-768 + ML-DSA-65), and cross-validates BB84 with a protocol-level and a Qiskit circuit-level simulator (maximum mean-QBER difference \BbMaxDiff{}). Selected circuits were executed on IBM Quantum hardware (\HwJobs{} independent jobs on \HwBackend{}), showing calibration-dependent error and a clearly distinguishable intercept--resend model. The study claims no quantum advantage, no physical QKD and no practical attack on deployed cryptography.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter*{List of Abbreviations}
+\begin{tabular}{@{}ll@{}}
+AES & Advanced Encryption Standard\\
+BB84 & Bennett--Brassard 1984 QKD protocol\\
+ECC / ECDH / ECDSA & Elliptic-curve cryptography / key agreement / signatures\\
+KEM & Key-encapsulation mechanism\\
+ML-KEM / ML-DSA / SLH-DSA & NIST FIPS 203 / 204 / 205 standards\\
+NISQ & Noisy intermediate-scale quantum\\
+PQC & Post-quantum cryptography\\
+PR-AUC & Area under the precision--recall curve\\
+QBER & Quantum bit error rate\\
+QKD & Quantum key distribution\\
+QML / QNN / VQC / QSVM & Quantum machine learning / neural network / variational classifier / support-vector machine\\
+RSA & Rivest--Shamir--Adleman\\
+\end{tabular}
+
+\chapter{Introduction}
+\input{sections/introduction.tex}
+\chapter{Scope}
+\input{sections/scope.tex}
+\chapter{Constraints}
+\input{sections/constraints.tex}
+\chapter{Requirement Analysis}
+\input{sections/requirements.tex}
+\chapter{Project Management Approach}
+\input{sections/management.tex}
+\chapter{Risk Assessment}
+\input{sections/risk.tex}
+\chapter{Literature Review}
+\input{../common/paper/related.tex}
+\chapter{Individual Contribution}
+\input{sections/contribution.tex}
+\input{../common/paper/contributions.tex}
+\chapter{System Design and Architecture}
+\input{../common/paper/architecture.tex}
+\chapter{Implementation}
+\input{../common/paper/fraud_method.tex}
+\input{../common/paper/security.tex}
+\input{sections/implementation_ibm.tex}
+\chapter{Experimental Methodology}
+\input{../common/paper/method.tex}
+\chapter{Results and Analysis}
+\input{../common/paper/fraud_results.tex}
+\input{../common/paper/results_security.tex}
+\chapter{IBM Quantum Hardware Experimental Validation}
+\input{../common/paper/hardware.tex}
+\chapter{Discussion}
+\input{../common/paper/discussion.tex}
+\chapter{Limitations}
+\input{../common/paper/limitations.tex}
+\chapter{Conclusion and Future Work}
+\input{../common/paper/conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{../common/bibliography/references}
+
+\appendix
+\chapter{Environment, Reproduction and Test Summary}
+\input{sections/appendix.tex}
+\end{document}

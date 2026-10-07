@@ -1,0 +1,44 @@
+\section{Quantum-Secure Transaction Protection}\label{sec:security}
+\subsection{Primitives and roles}
+Different primitives serve different functions and are compared only within a role. \emph{Bulk encryption}: AES-256-GCM in every configuration. \emph{Key establishment}: ECDH-P256 or RSA-3072 key wrap (classical) versus ML-KEM-512/768/1024 (post-quantum), following the generic KEM interface
+\begin{equation}
+(pk,sk)\leftarrow\mathrm{KeyGen}();\quad (c,K)\leftarrow\mathrm{Encaps}(pk);\quad K'\leftarrow\mathrm{Decaps}(sk,c);\quad K=K'.
+\label{eq:kem}
+\end{equation}
+\emph{Signatures}: ECDSA-P256 or RSA-3072-PSS versus ML-DSA-44/65/87 and SLH-DSA-SHA2-128s/128f, with $\sigma\leftarrow\mathrm{Sign}(sk,m)$ and $\mathrm{Verify}(pk,m,\sigma)\in\{\text{true},\text{false}\}$. The hybrid profile derives the session key as
+\begin{equation}
+K=\mathrm{HKDF\text{-}SHA256}\bigl(K_{\mathrm{ECDH}}\,\Vert\,K_{\mathrm{ML\text{-}KEM}}\bigr).
+\label{eq:hybrid}
+\end{equation}
+
+\subsection{Reference and compiled backends}
+The reference implementations are pure Python (\texttt{kyber-py}, \texttt{dilithium-py}, \texttt{slh-dsa}); the compiled backend is \texttt{pqcrypto}~\cite{pqcrypto} version \PqcryptoVersion{}. Native \texttt{liboqs}~\cite{liboqs} was attempted first, but the build required CMake and an MSVC toolchain that were not present, so \emph{no liboqs measurements exist}. Both backends expose the same parameter sets and produced identical key, ciphertext and signature sizes, and a unified interface records the backend name with every measurement. Backend speedup is
+\begin{equation}
+S=\frac{T_{\mathrm{reference}}}{T_{\mathrm{optimized}}},\qquad
+R=\frac{T_{\mathrm{reference}}-T_{\mathrm{optimized}}}{T_{\mathrm{reference}}}\times100\%,
+\label{eq:speedup}
+\end{equation}
+which compares implementations and says nothing about cryptographic strength.
+
+\subsection{BB84 at two simulation levels}
+Alice encodes bit $a_i$ in basis $A_i\in\{Z,X\}$ as $|0\rangle,|1\rangle$ (Z) or $|\pm\rangle=(|0\rangle\pm|1\rangle)/\sqrt2$ (X); Bob measures in a random basis, and matching-basis positions form the sifted key:
+\begin{equation}
+Q=\frac{N_{\mathrm{error}}}{N_{\mathrm{sifted}}},\qquad
+\eta_{\mathrm{sift}}=\frac{N_{\mathrm{sifted}}}{N_{\mathrm{transmitted}}}.
+\label{eq:qber}
+\end{equation}
+The \emph{protocol-level simulator} samples basis and error outcomes directly. The \emph{Qiskit/Aer simulator} builds explicit single-qubit circuits (identity or X, then H for X-basis states; H before measurement for X-basis readout) and models noise as bit-flips after single-qubit gates. For a random-basis intercept--resend attacker, Eve's basis differs from Alice's half the time and then corrupts Bob's matched-basis outcome half the time, so ideally $Q=\tfrac12\cdot\tfrac12=25\%$. A simplified asymptotic secret fraction $\eta_{\mathrm{sift}}[1-2h_2(Q)]$ with $h_2(Q)=-Q\log_2Q-(1-Q)\log_2(1-Q)$ is reported only as a theoretical estimate, not as a finite-key bound or physical throughput. Both implementations are software simulations.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\figw]{layer2_crypto_workflow}
+\caption{Layer~2 cryptographic workflow. The KEM establishes a key; AES-256-GCM encrypts the payload.}
+\label{fig:l2flow}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\figw]{bb84_circuit_full_representative}
+\caption{Executable Qiskit circuit for a matched-basis BB84 trial (bit 1, Z basis); circuits are generated from the project's implementation.}
+\label{fig:bb84circ}
+\end{figure}

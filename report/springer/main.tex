@@ -1,0 +1,49 @@
+% Springer LNCS-format paper. Requires the OFFICIAL Springer class files llncs.cls and splncs04.bst placed in this folder
+% (download the LNCS author kit from Springer; they are not redistributed or modified here).
+% Build: pdflatex -> bibtex -> pdflatex x2.
+\documentclass[runningheads]{llncs}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\graphicspath{{../common/figures/}}
+\newcommand{\figw}{\textwidth}
+\input{../common/generated/results_macros.tex}
+
+\begin{document}
+\title{Quantum-Secure Fraud Detection for Banking Transactions: A Layered Experimental Framework Combining Machine Learning, Post-Quantum Cryptography and Simulated and Hardware-Validated Quantum Circuits}
+\titlerunning{Quantum-Secure Fraud Detection (QSFD)}
+\author{Debshata Choudhury}
+\authorrunning{D. Choudhury}
+\institute{[Affiliation and co-authors: to be completed by the team]\\
+\email{debshatachoudhury@gmail.com}}
+\maketitle
+
+\begin{abstract}
+We study where machine learning, quantum machine learning (QML), post-quantum cryptography (PQC) and quantum-key-distribution (QKD) simulation help, and where they do not, in a layered banking-security prototype (QSFD). In Layer~1, a 20-seed paired experiment shows that a local-sum measurement observable significantly improves a matched quantum neural network (mean PR-AUC difference \LsDelta{}, bootstrap 95\% CI [\LsCIlo{}, \LsCIhi{}]), but a matched classical control and XGBoost show no verified incremental quantum value. In Layer~2, a compiled PQC backend is \SpeedupMin{}--\SpeedupMax{}$\times$ faster than the pure-Python reference across operations, yet SLH-DSA-128s signing remains about \OptSlhSSignMs{}~ms; end-to-end transaction protection costs \EEAMedian{}~ms classically and \EECMedian{}~ms with compiled ML-KEM-768 + ML-DSA-65. Two independent BB84 simulations (protocol level and Qiskit circuits) agree within \BbMaxDiff{} in mean QBER and reproduce the intercept--resend signature. Selected circuits executed on IBM Quantum hardware (\HwJobs{} independent jobs on \HwBackend{}) show calibration-dependent error (no-Eve QBER \HwNoEveBest{}--\HwNoEveWorse{}) while the intercept--resend model stays distinguishable. No quantum advantage, physical QKD or practical attack on deployed cryptography is claimed.
+\keywords{Financial fraud detection \and Post-quantum cryptography \and Quantum machine learning \and BB84 \and IBM Quantum}
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+Digital banking exposes transactions to two distinct problems: behavioural fraud, which machine learning addresses, and the long-term threat that quantum computers pose to public-key cryptography~\cite{shor,mosca}. We ask three questions: (A) can quantum-model design improve a quantum fraud classifier; (B) does such an improvement carry over to a system-level advantage over strong classical models; and (C) how do fraud intelligence, post-quantum cryptography and simulated QKD fit in one architecture, and what do they cost? A conceptual point runs through the paper: fraud risk is not cryptographic quantum risk.
+
+\textbf{Contributions.} (1) A layered, reproducible experimental architecture. (2) A paired, statistically controlled test of an observable-locality design choice with a classical capacity control. (3) A reference-versus-compiled analysis of standardized PQC primitives and an end-to-end banking pipeline. (4) Independent BB84 implementations at protocol and circuit level with threshold analysis. (5) Replicated IBM Quantum hardware validation of selected circuits against ideal and backend-derived noisy simulation. We do not claim priority for any single component.
+
+\input{../common/paper/contributions.tex}
+\input{../common/paper/related.tex}
+\input{../common/paper/architecture.tex}
+\input{../common/paper/fraud_method.tex}
+\input{../common/paper/security.tex}
+\input{../common/paper/method.tex}
+\input{../common/paper/fraud_results.tex}
+\input{../common/paper/results_security.tex}
+\input{../common/paper/hardware.tex}
+\input{../common/paper/discussion.tex}
+\input{../common/paper/limitations.tex}
+\input{../common/paper/conclusion.tex}
+
+\bibliographystyle{splncs04}
+\bibliography{../common/bibliography/references}
+\end{document}

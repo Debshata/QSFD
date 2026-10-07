@@ -1,0 +1,38 @@
+\section{Scope Definition}
+The project covers a three-layer architecture: Layer~1 fraud detection (classical and quantum ML), Layer~2 security (AES-256-GCM, RSA, ECC, ML-KEM, ML-DSA, SLH-DSA, BB84 simulation and IBM hardware circuit validation), and Layer~3 attack analysis limited to a small Grover circuit and literature-based discussion.
+
+\subsection*{In scope}
+\begin{itemize}[noitemsep]
+\item Classical machine learning (logistic regression, random forest, XGBoost, isolation forest) and QML experiments (QSVM, VQC, QNN, Chow--Liu QNN, QBoost, hybrids, quantum anomaly detection).
+\item Classical cryptography (AES-256-GCM, RSA-3072, ECC P-256) and post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA) with a reference and a compiled backend.
+\item BB84 protocol-level simulation, Qiskit/Aer circuit-level simulation, noise, intercept--resend and Eve-detection analysis.
+\item Execution of selected small circuits on IBM Quantum hardware, simulator-to-hardware comparison, hardware-noise analysis and transpilation analysis.
+\item A small two-qubit Grover demonstration; benchmarking, statistical analysis, tests and reproducible reporting.
+\end{itemize}
+
+\subsection*{Out of scope}
+\begin{itemize}[noitemsep]
+\item Real banking deployment, real customer data, production authorization, certification, HSM integration.
+\item A physical quantum network, photons, QKD hardware or fibre channels.
+\item Production-scale quantum computing; training the full fraud classifier on quantum hardware.
+\item Shor's algorithm and any practical attack on RSA, ECC or AES (Shor is discussed from the literature only).
+\item A web dashboard or API layer (recorded as not implemented in the requirements traceability document).
+\end{itemize}
+
+\section{Projected Budget}
+All software used is free or open source (Python, Jupyter, VS Code, Qiskit, Qiskit Aer, \texttt{pqcrypto}, scikit-learn, XGBoost, GitHub, \LaTeX); IBM Quantum access used the open plan with no purchase recorded. Hardware was an existing personal computer; its cost is not itemized in the repository.
+
+\begin{table}[ht]
+\centering\small
+\caption{Budget summary (no amounts are invented; only recorded facts are stated)}
+\label{tab:budget}
+\begin{tabular}{@{}p{3.2cm}p{5.2cm}p{5.2cm}@{}}
+\toprule
+Category & Item & Cost status\\
+\midrule
+Current development & Open-source software stack; IBM Quantum open plan; existing computer & No purchases recorded\\
+Optional deployment & Cloud hosting, API gateway, monitoring, real transaction data feeds & Not purchased; to be estimated by the institution\\
+Future production & HSM, PQC-certified libraries, audited key management, QKD hardware or service, compliance audit & Not in project scope; not estimated\\
+\bottomrule
+\end{tabular}
+\end{table}

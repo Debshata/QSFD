@@ -1,0 +1,23 @@
+Risks were identified in nine categories: technical, research, data, performance, security, schedule, dependency, hardware and documentation. Each was rated by the author for probability (P) and impact (I) on a Low/Medium/High scale; the level combines both.
+
+\section{Project Risk Assessment}
+\begin{longtable}{@{}p{0.8cm}p{3.6cm}p{0.9cm}p{0.9cm}p{1.2cm}p{4.0cm}p{2.2cm}@{}}
+\caption{Risk matrix (author assessment)}\label{tab:risk}\\
+\toprule ID & Risk & P & I & Level & Mitigation & Residual\\ \midrule \endfirsthead
+\toprule ID & Risk & P & I & Level & Mitigation & Residual\\ \midrule \endhead
+R1 & Insufficient fraud samples & H & H & High & Paired multi-seed tests; bootstrap intervals; report limits & Medium\\
+R2 & Overfitting / leakage & M & H & High & Temporal split; preprocessing on training fold; locked confirmation split & Low\\
+R3 & Class imbalance & H & M & High & PR-AUC primary metric; classical controls & Low\\
+R4 & QML scalability & H & M & High & Small controlled subsets; no scalability claim & Medium\\
+R5 & Qiskit simulation cost & M & M & Medium & Small qubit counts, bounded trials & Low\\
+R6 & PQC library incompatibility & M & M & Medium & Backend abstraction; backend detection & Low\\
+R7 & Native liboqs unavailable & H & M & High & Compiled \texttt{pqcrypto}; failure documented, no substitute claims & Medium\\
+R8 & High reference SLH-DSA runtime & H & M & High & Fewer repetitions with reported $n$; compiled comparison & Low\\
+R9 & Dependency changes & M & M & Medium & Versions recorded in metadata; tests & Low\\
+R10 & Computer resource limitation & M & M & Medium & Bounded experiments; saved artifacts & Low\\
+R11 & Incorrect quantum-security claims & M & H & High & Explicit claim boundaries; no physical-QKD or advantage claims & Low\\
+R12 & Deadline pressure & M & M & Medium & Prioritized phases; reproducible scripts & Medium\\
+R13 & IBM queue or quota limits & M & M & Medium & Small circuits; five-job campaign; saved raw data & Medium\\
+R14 & Credential exposure & L & H & Medium & Token only in gitignored \texttt{.env}; scans before commits & Low\\
+\bottomrule
+\end{longtable}

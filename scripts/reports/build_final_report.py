@@ -32,6 +32,7 @@ FIG_L1 = ROOT / "artifacts" / "figures" / "layer1"
 FIG_L2 = ROOT / "artifacts" / "figures" / "layer2"
 FIG_INT = ROOT / "artifacts" / "figures" / "integration"
 FIG_DIAG = ROOT / "artifacts" / "figures" / "diagrams"
+FIG_IBM = ROOT / "artifacts" / "figures" / "ibm_quantum"
 
 FIG_COUNTER = [0]
 TABLE_COUNTER = [0]
@@ -375,10 +376,10 @@ def main():
         "PATH and no unattended toolchain installation route was available. Per the pre-specified fallback rule "
         "for this experiment, no substitute cryptographic package was installed merely for having a similarly "
         "named algorithm. Result: native PQC backend unavailable in the current environment. Consequently, no "
-        "reference-vs-native benchmark could be produced, and the SLH-DSA signing time reported above should be "
-        "read strictly as a reference-Python-implementation cost -- not as a general statement about SLH-DSA's "
-        "practicality on optimized native code. This attempt, and its outcome, are reported rather than omitted, "
-        "since honestly measuring an implementation limitation is itself part of this study's contribution.",
+        "native-liboqs benchmark exists. The reference-vs-compiled comparison was instead carried out with the pqcrypto "
+        "package (see the Final Layer 2 Experiments chapter below), and the SLH-DSA signing time reported above is a "
+        "reference-Python-implementation cost, not an implementation-independent property. This attempt, and its "
+        "outcome, are reported rather than omitted.",
         "IEEE Paragraph")
 
     p(doc, "Qiskit Circuit-Level BB84 Cross-Validation", "IEEE Heading 2")
@@ -428,6 +429,11 @@ def main():
         "hypothetically on real quantum hardware, still transmits no physical photon and exercises no physical "
         "no-cloning property. BB84 in this project remains, in every implementation, a software simulation.",
         "IEEE Paragraph")
+
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).parent))
+    from _docx_final_block import add_final_block
+    add_final_block(doc, p, eq, figure, table_with_caption, FIG_L2, FIG_IBM)
 
     # ---- VII. Integration ----
     p(doc, "Layer 1-to-Layer 2 Integration", "IEEE Heading 1")
@@ -514,6 +520,8 @@ def main():
         ["Categorical routing differs from continuous routing", "Identical on tested dataset"],
         ["Anomaly/quantum-assisted routing improves Layer 2", "Fails pre-specified cost budget"],
         ["Native liboqs PQC backend installable in this environment", "Unavailable -- no C/CMake toolchain"],
+        ["SLH-DSA cost is mostly a pure-Python artifact", "Only partly: compiled SLH-DSA-128s signing still ~1.3 s, ~100x compiled ML-DSA-65"],
+        ["IBM hardware asymmetry |1> > |0> error is universal", "Qubit-dependent: reversed on the worse-calibrated qubit"],
     ]
     table_with_caption(doc, "Negative and Null Results", neg_table)
     p(doc,
@@ -566,7 +574,7 @@ def main():
     ref_lines = [l for l in (MATERIALS / "REFERENCE_INDEX.md").read_text(encoding="utf-8").split("\n")
                  if l.strip() and l.strip()[0].isdigit()]
     for line in ref_lines:
-        text = line.split(". ", 1)[1] if ". " in line else line
+        text = (line.split(". ", 1)[1] if ". " in line else line).replace("**", "")
         p(doc, text, "IEEE Reference Item")
 
     doc.save(str(OUT_PATH))

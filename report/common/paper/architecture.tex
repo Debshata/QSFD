@@ -1,0 +1,18 @@
+\section{QSFD System Architecture}\label{sec:arch}
+QSFD is organized in three layers (Fig.~\ref{fig:arch}). \textbf{Layer~1} scores each transaction with classical models (logistic regression, random forest, XGBoost, isolation forest) and quantum-model research branches (QSVM, VQC, QNN, Chow--Liu-structured QNN). \textbf{Layer~2} protects the transaction with AES-256-GCM, key establishment and signatures from classical (RSA, ECC) and post-quantum (ML-KEM, ML-DSA, SLH-DSA) families, and studies BB84 by simulation. \textbf{Layer~3} (attack analysis) is represented here only by a small Grover circuit and by literature-based discussion of Shor's algorithm; Shor is not implemented.
+
+A central design lesson is that \emph{fraud risk is not cryptographic quantum risk}: the probability that a transaction is fraudulent says nothing about how exposed its ciphertext is to a future quantum adversary. Fig.~\ref{fig:refined} therefore routes fraud intelligence and security requirements into a policy engine as separate inputs.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\figw]{overall_architecture}
+\caption{Overall QSFD architecture. Every security profile applies AES-256-GCM and a real key-establishment algorithm; fraud risk only selects additional protection.}
+\label{fig:arch}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\figw]{refined_fraud_vs_crypto_risk}
+\caption{Fraud intelligence and security requirements as separate inputs to the policy engine.}
+\label{fig:refined}
+\end{figure}
