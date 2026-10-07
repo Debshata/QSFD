@@ -1,0 +1,39 @@
+{
+  "experiments": [
+    {
+      "name": "BB84 primitives + intercept-resend model + 2-qubit Grover",
+      "backend": "ibm_marrakesh",
+      "job_id": "db2u94vr11fs7397g1u0",
+      "status": "DONE",
+      "executed_utc": "2026-10-07T06:19:03.035486+00:00",
+      "shots_per_circuit": 1024,
+      "n_circuits": 17,
+      "transpilation_optimization_level": 1,
+      "physical_qubits_used": [
+        0,
+        1
+      ],
+      "raw_counts_file": "bb84_grover_experiments.json",
+      "classification": "IBM_HARDWARE_VERIFIED",
+      "calibration": {
+        "0": {
+          "readout_error": 0.0067138671875
+        },
+        "1": {
+          "readout_error": 0.0079345703125
+        }
+      }
+    },
+    {
+      "name": "CLT/generic QNN expectation values (4 qubits)",
+      "backend": "ibm_fez",
+      "job_id": "da6ejl46l22c73dm82ng",
+      "classification": "IBM_HARDWARE_VERIFIED",
+      "source": "reports/ibm_hardware/hardware_run.json (earlier session, 2026-08-25)"
+    }
+  ],
+  "notes": [
+    "Shor: not implemented in this repository; no hardware run.",
+    "Full fraud classifier was NOT executed on hardware; training is simulator-based."
+  ]
+}

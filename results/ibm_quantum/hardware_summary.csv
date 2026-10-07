@@ -1,0 +1,5 @@
+quantity,theory,ideal,ideal_ci95,ideal_n,noisy,noisy_ci95,noisy_n,hardware,hardware_ci95,hardware_n
+BB84 matched (no Eve) QBER,0,0.0,0.0,4096,0.0073,0.0026,4096,0.0186,0.0041,4096
+Intercept-resend QBER (Eve basis Z/X equally),0.25,0.25,0.0094,8192,0.2524,0.0094,8192,0.2916,0.0098,8192
+Mismatched basis P(0) (expect 0.5),0.5,0.5039,0.0153,4096,0.5078,0.0153,4096,0.52,0.0153,4096
+Grover 2-qubit failure prob.,0,0.0,0.0,1024,0.0234,0.0093,1024,0.0645,0.015,1024

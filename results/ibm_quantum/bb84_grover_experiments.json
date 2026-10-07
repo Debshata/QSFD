@@ -1,0 +1,623 @@
+{
+  "meta": {
+    "timestamp_utc": "2026-10-07T06:19:03.035486+00:00",
+    "shots": 1024,
+    "seed": 20261007,
+    "python": "3.14.3",
+    "qiskit": "2.5.2",
+    "qiskit_aer": "0.17.2",
+    "backend": "ibm_marrakesh",
+    "backend_num_qubits": 156,
+    "job_id": "db2u94vr11fs7397g1u0",
+    "job_status": "DONE",
+    "calibration_used_qubits": {
+      "0": {
+        "readout_error": 0.0067138671875
+      },
+      "1": {
+        "readout_error": 0.0079345703125
+      }
+    }
+  },
+  "experiments": [
+    {
+      "name": "matched_Z0",
+      "kind": "matched",
+      "logical_depth": 1,
+      "transpiled_depth": 1,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 1
+      },
+      "bit": 0,
+      "a": "Z",
+      "b": "Z",
+      "eve": null,
+      "ideal_counts": {
+        "0": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "0": 1017,
+        "1": 7
+      },
+      "noisy_error": 0.00684,
+      "hardware_counts": {
+        "0": 1020,
+        "1": 4
+      },
+      "hardware_error": 0.00391
+    },
+    {
+      "name": "matched_X0",
+      "kind": "matched",
+      "logical_depth": 3,
+      "transpiled_depth": 1,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 1
+      },
+      "bit": 0,
+      "a": "X",
+      "b": "X",
+      "eve": null,
+      "ideal_counts": {
+        "0": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "0": 1017,
+        "1": 7
+      },
+      "noisy_error": 0.00684,
+      "hardware_counts": {
+        "0": 1020,
+        "1": 4
+      },
+      "hardware_error": 0.00391
+    },
+    {
+      "name": "matched_Z1",
+      "kind": "matched",
+      "logical_depth": 2,
+      "transpiled_depth": 2,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "x": 1,
+        "measure": 1
+      },
+      "bit": 1,
+      "a": "Z",
+      "b": "Z",
+      "eve": null,
+      "ideal_counts": {
+        "1": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "1": 1016,
+        "0": 8
+      },
+      "noisy_error": 0.00781,
+      "hardware_counts": {
+        "1": 990,
+        "0": 34
+      },
+      "hardware_error": 0.0332
+    },
+    {
+      "name": "matched_X1",
+      "kind": "matched",
+      "logical_depth": 4,
+      "transpiled_depth": 2,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "x": 1,
+        "measure": 1
+      },
+      "bit": 1,
+      "a": "X",
+      "b": "X",
+      "eve": null,
+      "ideal_counts": {
+        "1": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "1": 1016,
+        "0": 8
+      },
+      "noisy_error": 0.00781,
+      "hardware_counts": {
+        "1": 990,
+        "0": 34
+      },
+      "hardware_error": 0.0332
+    },
+    {
+      "name": "mismatch_Z0_X",
+      "kind": "mismatch",
+      "logical_depth": 2,
+      "transpiled_depth": 4,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 2,
+        "sx": 1,
+        "measure": 1
+      },
+      "bit": 0,
+      "a": "Z",
+      "b": "X",
+      "eve": null,
+      "ideal_counts": {
+        "0": 516,
+        "1": 508
+      },
+      "ideal_error": 0.50391,
+      "noisy_counts": {
+        "0": 520,
+        "1": 504
+      },
+      "noisy_error": 0.50781,
+      "hardware_counts": {
+        "0": 526,
+        "1": 498
+      },
+      "hardware_error": 0.51367
+    },
+    {
+      "name": "mismatch_X0_Z",
+      "kind": "mismatch",
+      "logical_depth": 2,
+      "transpiled_depth": 4,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 2,
+        "sx": 1,
+        "measure": 1
+      },
+      "bit": 0,
+      "a": "X",
+      "b": "Z",
+      "eve": null,
+      "ideal_counts": {
+        "0": 516,
+        "1": 508
+      },
+      "ideal_error": 0.50391,
+      "noisy_counts": {
+        "0": 520,
+        "1": 504
+      },
+      "noisy_error": 0.50781,
+      "hardware_counts": {
+        "1": 501,
+        "0": 523
+      },
+      "hardware_error": 0.51074
+    },
+    {
+      "name": "mismatch_Z1_X",
+      "kind": "mismatch",
+      "logical_depth": 3,
+      "transpiled_depth": 4,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 2,
+        "sx": 1,
+        "measure": 1
+      },
+      "bit": 1,
+      "a": "Z",
+      "b": "X",
+      "eve": null,
+      "ideal_counts": {
+        "0": 516,
+        "1": 508
+      },
+      "ideal_error": 0.50391,
+      "noisy_counts": {
+        "0": 520,
+        "1": 504
+      },
+      "noisy_error": 0.50781,
+      "hardware_counts": {
+        "0": 554,
+        "1": 470
+      },
+      "hardware_error": 0.54102
+    },
+    {
+      "name": "mismatch_X1_Z",
+      "kind": "mismatch",
+      "logical_depth": 3,
+      "transpiled_depth": 4,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 2,
+        "sx": 1,
+        "measure": 1
+      },
+      "bit": 1,
+      "a": "X",
+      "b": "Z",
+      "eve": null,
+      "ideal_counts": {
+        "0": 516,
+        "1": 508
+      },
+      "ideal_error": 0.50391,
+      "noisy_counts": {
+        "0": 520,
+        "1": 504
+      },
+      "noisy_error": 0.50781,
+      "hardware_counts": {
+        "1": 497,
+        "0": 527
+      },
+      "hardware_error": 0.51465
+    },
+    {
+      "name": "eveZ_Z0",
+      "kind": "eve",
+      "logical_depth": 2,
+      "transpiled_depth": 2,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 2
+      },
+      "bit": 0,
+      "a": "Z",
+      "b": "Z",
+      "eve": "Z",
+      "ideal_counts": {
+        "0 0": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "0 0": 1014,
+        "1 0": 4,
+        "1 1": 1,
+        "0 1": 5
+      },
+      "noisy_error": 0.00488,
+      "hardware_counts": {
+        "0 0": 1021,
+        "0 1": 2,
+        "1 1": 1
+      },
+      "hardware_error": 0.00098
+    },
+    {
+      "name": "eveX_Z0",
+      "kind": "eve",
+      "logical_depth": 4,
+      "transpiled_depth": 8,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 4,
+        "sx": 2,
+        "measure": 2
+      },
+      "bit": 0,
+      "a": "Z",
+      "b": "Z",
+      "eve": "X",
+      "ideal_counts": {
+        "1 1": 259,
+        "1 0": 281,
+        "0 0": 239,
+        "0 1": 245
+      },
+      "ideal_error": 0.52734,
+      "noisy_counts": {
+        "1 1": 262,
+        "0 1": 279,
+        "1 0": 235,
+        "0 0": 248
+      },
+      "noisy_error": 0.48535,
+      "hardware_counts": {
+        "0 1": 261,
+        "1 0": 267,
+        "1 1": 249,
+        "0 0": 247
+      },
+      "hardware_error": 0.50391
+    },
+    {
+      "name": "eveZ_X0",
+      "kind": "eve",
+      "logical_depth": 4,
+      "transpiled_depth": 8,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 4,
+        "sx": 2,
+        "measure": 2
+      },
+      "bit": 0,
+      "a": "X",
+      "b": "X",
+      "eve": "Z",
+      "ideal_counts": {
+        "1 1": 259,
+        "1 0": 281,
+        "0 0": 239,
+        "0 1": 245
+      },
+      "ideal_error": 0.52734,
+      "noisy_counts": {
+        "1 1": 262,
+        "0 1": 279,
+        "1 0": 235,
+        "0 0": 248
+      },
+      "noisy_error": 0.48535,
+      "hardware_counts": {
+        "1 1": 263,
+        "1 0": 238,
+        "0 1": 254,
+        "0 0": 269
+      },
+      "hardware_error": 0.48926
+    },
+    {
+      "name": "eveX_X0",
+      "kind": "eve",
+      "logical_depth": 6,
+      "transpiled_depth": 2,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 2
+      },
+      "bit": 0,
+      "a": "X",
+      "b": "X",
+      "eve": "X",
+      "ideal_counts": {
+        "0 0": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "0 0": 1014,
+        "1 0": 4,
+        "1 1": 1,
+        "0 1": 5
+      },
+      "noisy_error": 0.00488,
+      "hardware_counts": {
+        "0 0": 1015,
+        "0 1": 3,
+        "1 1": 5,
+        "1 0": 1
+      },
+      "hardware_error": 0.00586
+    },
+    {
+      "name": "eveZ_Z1",
+      "kind": "eve",
+      "logical_depth": 3,
+      "transpiled_depth": 3,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 2,
+        "x": 1
+      },
+      "bit": 1,
+      "a": "Z",
+      "b": "Z",
+      "eve": "Z",
+      "ideal_counts": {
+        "1 1": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "1 1": 1012,
+        "1 0": 7,
+        "0 1": 5
+      },
+      "noisy_error": 0.00488,
+      "hardware_counts": {
+        "1 1": 865,
+        "0 1": 119,
+        "0 0": 39,
+        "1 0": 1
+      },
+      "hardware_error": 0.1543
+    },
+    {
+      "name": "eveX_Z1",
+      "kind": "eve",
+      "logical_depth": 5,
+      "transpiled_depth": 8,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 4,
+        "sx": 2,
+        "measure": 2
+      },
+      "bit": 1,
+      "a": "Z",
+      "b": "Z",
+      "eve": "X",
+      "ideal_counts": {
+        "1 1": 259,
+        "1 0": 281,
+        "0 0": 239,
+        "0 1": 245
+      },
+      "ideal_error": 0.47266,
+      "noisy_counts": {
+        "1 1": 262,
+        "0 1": 279,
+        "1 0": 235,
+        "0 0": 248
+      },
+      "noisy_error": 0.51465,
+      "hardware_counts": {
+        "0 0": 258,
+        "0 1": 258,
+        "1 1": 263,
+        "1 0": 245
+      },
+      "hardware_error": 0.50391
+    },
+    {
+      "name": "eveZ_X1",
+      "kind": "eve",
+      "logical_depth": 5,
+      "transpiled_depth": 8,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "rz": 4,
+        "sx": 2,
+        "measure": 2
+      },
+      "bit": 1,
+      "a": "X",
+      "b": "X",
+      "eve": "Z",
+      "ideal_counts": {
+        "1 1": 259,
+        "1 0": 281,
+        "0 0": 239,
+        "0 1": 245
+      },
+      "ideal_error": 0.47266,
+      "noisy_counts": {
+        "1 1": 262,
+        "0 1": 279,
+        "1 0": 235,
+        "0 0": 248
+      },
+      "noisy_error": 0.51465,
+      "hardware_counts": {
+        "1 0": 257,
+        "0 0": 261,
+        "0 1": 256,
+        "1 1": 250
+      },
+      "hardware_error": 0.50488
+    },
+    {
+      "name": "eveX_X1",
+      "kind": "eve",
+      "logical_depth": 7,
+      "transpiled_depth": 3,
+      "two_qubit_gates": 0,
+      "physical_qubits": [
+        0
+      ],
+      "transpiled_ops": {
+        "measure": 2,
+        "x": 1
+      },
+      "bit": 1,
+      "a": "X",
+      "b": "X",
+      "eve": "X",
+      "ideal_counts": {
+        "1 1": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "1 1": 1012,
+        "1 0": 7,
+        "0 1": 5
+      },
+      "noisy_error": 0.00488,
+      "hardware_counts": {
+        "1 1": 850,
+        "0 1": 136,
+        "0 0": 38
+      },
+      "hardware_error": 0.16992
+    },
+    {
+      "name": "grover_2q_11",
+      "kind": "grover",
+      "logical_depth": 8,
+      "transpiled_depth": 12,
+      "two_qubit_gates": 2,
+      "physical_qubits": [
+        0,
+        1
+      ],
+      "transpiled_ops": {
+        "rz": 12,
+        "sx": 6,
+        "cz": 2,
+        "measure": 2
+      },
+      "bit": null,
+      "a": null,
+      "b": null,
+      "eve": null,
+      "ideal_counts": {
+        "11": 1024
+      },
+      "ideal_error": 0.0,
+      "noisy_counts": {
+        "11": 1000,
+        "10": 15,
+        "01": 8,
+        "00": 1
+      },
+      "noisy_error": 0.02344,
+      "hardware_counts": {
+        "11": 958,
+        "10": 39,
+        "01": 25,
+        "00": 2
+      },
+      "hardware_error": 0.06445
+    }
+  ]
+}
