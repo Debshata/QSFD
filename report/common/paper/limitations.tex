@@ -2,7 +2,7 @@
 \begin{itemize}
 \item \textbf{No physical QKD, photons or quantum network.} BB84 is software-simulated at protocol and circuit level; IBM runs are circuit-level hardware validation.
 \item \textbf{Hardware scope.} Selected circuits on one backend (\HwBackend{}), five jobs within a single session and calibration window; temporal replication across calibration periods was not performed. Results depend on backend, calibration, qubit mapping, transpilation and execution time. Only three qubits were compared, so no correlation with calibration quality is claimed. The noisy-Aer model used properties at analysis time.
-\item \textbf{Full QSFD not on hardware.} The fraud classifier was trained and evaluated in simulation; the earlier \texttt{ibm\_fez} run executed six inference circuits only.
+\item \textbf{Full QSFD not on hardware.} The fraud classifier was trained and evaluated in simulation; the earlier \path{ibm_fez} run executed six inference circuits only.
 \item \textbf{PQC backends.} Native \texttt{liboqs} could not be built (no CMake/MSVC); \texttt{pqcrypto} is a compiled but not necessarily AVX2-optimized build; absolute latencies are machine-specific, and repetition counts differ between backends (reference SLH-DSA signing $n=3$). The earlier ${\sim}15$~s reference figure was measured in another session and is not reproduced here.
 \item \textbf{End-to-end experiment.} In-memory transmission only; long-term keys assumed pre-distributed; no concurrency, load or HSM integration.
 \item \textbf{BB84 simulations.} Different noise models in the two simulators; Qiskit trials used 500 bits (not 2000) for runtime; the detection-threshold optimum depends on the noise range chosen.

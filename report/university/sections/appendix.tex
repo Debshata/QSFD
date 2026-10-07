@@ -1,20 +1,20 @@
 \section*{Environment and versions}
-Operating system Windows~11; Python~3.14; Qiskit~2.5.2; Qiskit Aer~0.17.2; \texttt{pqcrypto}~\PqcryptoVersion{}; full metadata in \texttt{results/final/final\_results.json} and \texttt{results/layer2/pqc\_benchmark\_meta.json}. Native \texttt{liboqs}: not operational (no CMake/MSVC); no liboqs measurements.
+Operating system Windows~11; Python~3.14; Qiskit~2.5.2; Qiskit Aer~0.17.2; \texttt{pqcrypto}~\PqcryptoVersion{}; full metadata in \path{results/final/final_results.json} and \path{results/layer2/pqc_benchmark_meta.json}. Native \texttt{liboqs}: not operational (no CMake/MSVC); no liboqs measurements.
 
 \section*{Test summary}
 Total \TestsTotal{}; passed \TestsPassed{}; failed \TestsFailed{}; skipped \TestsSkipped{}.
 
 \section*{Reproduction commands}
 \begin{itemize}[noitemsep]
-\item \texttt{python scripts/security/run\_pqc\_backend\_benchmarks.py}
-\item \texttt{python scripts/security/run\_end\_to\_end\_banking.py}
-\item \texttt{python scripts/security/run\_bb84\_final.py}
-\item \texttt{python scripts/ibm\_quantum/analyze\_campaign.py A} (saved artifacts only; no hardware quota)
-\item \texttt{python scripts/final/build\_final\_results.py} then \texttt{python scripts/final/build\_latex\_assets.py}
+\item \path{python scripts/security/run_pqc_backend_benchmarks.py}
+\item \path{python scripts/security/run_end_to_end_banking.py}
+\item \path{python scripts/security/run_bb84_final.py}
+\item \path{python scripts/ibm_quantum/analyze_campaign.py A} (saved artifacts only; no hardware quota)
+\item \path{python scripts/final/build_final_results.py} then \path{python scripts/final/build_latex_assets.py}
 \end{itemize}
 
 \section*{IBM job provenance}
-Pilot: \texttt{ibm\_marrakesh} job \HwPilotJob{}. Campaign A: five jobs listed in \texttt{results/final/final\_results.json} (field \texttt{ibm\_quantum.campaign.job\_ids}). QML run: \texttt{ibm\_fez} job \HwFezJob{}.
+Pilot: \path{ibm_marrakesh} job \HwPilotJob{}. Campaign A: five jobs listed in \path{results/final/final_results.json} (field \path{ibm_quantum.campaign.job_ids}). QML run: \path{ibm_fez} job \HwFezJob{}.
 
 \section*{Algorithm name mapping}
-ML-KEM (FIPS~203, from CRYSTALS-Kyber), ML-DSA (FIPS~204, from CRYSTALS-Dilithium), SLH-DSA (FIPS~205, from SPHINCS+). Reference identifiers: \texttt{ML\_KEM\_768}, \texttt{ML\_DSA\_65}, \texttt{sha2\_128s}; \texttt{pqcrypto} modules: \texttt{pqcrypto.kem.ml\_kem\_768}, \texttt{pqcrypto.sign.ml\_dsa\_65}, \texttt{pqcrypto.sign.slh\_dsa\_sha2\_128s}.
+ML-KEM (FIPS~203, from CRYSTALS-Kyber), ML-DSA (FIPS~204, from CRYSTALS-Dilithium), SLH-DSA (FIPS~205, from SPHINCS+). Reference identifiers: \path{ML_KEM_768}, \path{ML_DSA_65}, \path{sha2_128s}; \texttt{pqcrypto} modules: \path{pqcrypto.kem.ml_kem_768}, \path{pqcrypto.sign.ml_dsa_65}, \path{pqcrypto.sign.slh_dsa_sha2_128s}.

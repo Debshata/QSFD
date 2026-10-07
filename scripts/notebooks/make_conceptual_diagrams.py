@@ -39,16 +39,22 @@ graph TD
 """
 
 DIAGRAMS["layer1_experimental_workflow"] = """
-graph TD
-    A[Classical Baselines<br/>LR / RF / XGBoost / Isolation Forest] --> B[Conventional QML<br/>QSVM / VQC / QNN]
-    B --> C[Structured / Paper-Driven Experiments<br/>Chow-Liu, QBoost, hybrids, anomaly detector]
-    C --> D[Rejected Hypotheses<br/>re-uploading, near-zero init, anomaly detector at scale]
-    D --> E[Local-Sum Observable Candidate Identified]
-    E --> F[Independent Confirmation<br/>separate QML-M context]
-    F --> G[20-Seed Paired Validation<br/>bootstrap / Wilcoxon / permutation]
-    G --> H[Gradient Diagnostics]
-    H --> I[Classical Capacity Control]
-    I --> J[Scientific Boundary:<br/>architecture-level improvement,<br/>no system-level advantage]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A[Classical baselines<br/>LR, RF, XGBoost, IF] --> B[Conventional QML<br/>QSVM, VQC, QNN] --> C[Structured and<br/>paper-driven experiments]
+    end
+    subgraph R2[" "]
+        direction LR
+        D[Rejected hypotheses<br/>re-uploading, near-zero init,<br/>anomaly detector at scale] --> E[Local-Sum observable<br/>candidate] --> F[Independent<br/>confirmation]
+    end
+    subgraph R3[" "]
+        direction LR
+        G[20-seed paired validation<br/>bootstrap, Wilcoxon, permutation] --> H[Gradient<br/>diagnostics] --> I[Classical<br/>capacity control]
+    end
+    R1 --> R2
+    R2 --> R3
+    R3 --> J[Scientific boundary:<br/>architecture-level gain,<br/>no system-level advantage]
     style E fill:#FCEAEA,stroke:#C44E52
     style G fill:#FCEAEA,stroke:#C44E52
     style J fill:#FCEAEA,stroke:#C44E52
@@ -81,24 +87,31 @@ graph TD
 """
 
 DIAGRAMS["layer2_crypto_workflow"] = """
-graph TD
-    A[Transaction Payload] --> B[Security Profile Selection<br/>BASELINE / PQC_ENHANCED / HYBRID_MAXIMUM / QKD_EXPERIMENTAL]
-    B --> C[Key Establishment<br/>ECDH-P256 and/or ML-KEM-768 - plus simulated BB84 material for QKD_EXPERIMENTAL]
-    C --> D[HKDF-SHA256 -> AES-256 key]
-    D --> E[AES-256-GCM Authenticated Encryption of Payload]
-    E --> F[Digital Signature<br/>ECDSA / ML-DSA / plus SLH-DSA for hybrid profiles]
-    F --> G[Protected Transaction<br/>ciphertext + signature + audit metadata]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A[Transaction<br/>payload] --> B[Security profile selection<br/>BASELINE / PQC_ENHANCED /<br/>HYBRID_MAXIMUM / QKD_EXPERIMENTAL] --> C[Key establishment<br/>ECDH-P256 and/or ML-KEM-768]
+    end
+    subgraph R2[" "]
+        direction LR
+        D[HKDF-SHA256<br/>to AES-256 key] --> E[AES-256-GCM<br/>authenticated encryption] --> F[Digital signature<br/>ECDSA / ML-DSA / SLH-DSA]
+    end
+    R1 --> R2
+    R2 --> G[Protected transaction<br/>ciphertext + signature + audit metadata]
     style C fill:#FCEAEA,stroke:#C44E52
 """
 
 DIAGRAMS["bb84_protocol_diagram"] = """
-graph TD
-    A[Alice: random bits + random bases] --> B["State preparation: |0>, |1>, |+>, |->"]
-    B --> C[Quantum channel - optional noise]
-    C --> D[Bob: random bases, measures]
-    D --> E[Alice and Bob publicly compare bases]
-    E --> F[Sifted key - matching-basis bits kept]
-    F --> G["Sample disclosed -> QBER = N_error / N_sifted -> accept/reject key"]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A[Alice: random bits<br/>and bases] --> B[State preparation<br/>0, 1, +, -] --> C[Quantum channel<br/>optional noise] --> D[Bob: random bases,<br/>measures]
+    end
+    subgraph R2[" "]
+        direction LR
+        E[Public basis<br/>comparison] --> F[Sifted key:<br/>matching bases] --> G[QBER = N_error / N_sifted<br/>accept or reject key]
+    end
+    R1 --> R2
     style G fill:#FCEAEA,stroke:#C44E52
 """
 

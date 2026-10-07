@@ -1,8 +1,11 @@
-graph TD
-    A[Alice: random bits + random bases] --> B["State preparation: |0>, |1>, |+>, |->"]
-    B --> C[Quantum channel - optional noise]
-    C --> D[Bob: random bases, measures]
-    D --> E[Alice and Bob publicly compare bases]
-    E --> F[Sifted key - matching-basis bits kept]
-    F --> G["Sample disclosed -> QBER = N_error / N_sifted -> accept/reject key"]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A[Alice: random bits<br/>and bases] --> B[State preparation<br/>0, 1, +, -] --> C[Quantum channel<br/>optional noise] --> D[Bob: random bases,<br/>measures]
+    end
+    subgraph R2[" "]
+        direction LR
+        E[Public basis<br/>comparison] --> F[Sifted key:<br/>matching bases] --> G[QBER = N_error / N_sifted<br/>accept or reject key]
+    end
+    R1 --> R2
     style G fill:#FCEAEA,stroke:#C44E52

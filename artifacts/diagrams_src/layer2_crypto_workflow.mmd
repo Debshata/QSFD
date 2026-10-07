@@ -1,8 +1,12 @@
-graph TD
-    A[Transaction Payload] --> B[Security Profile Selection<br/>BASELINE / PQC_ENHANCED / HYBRID_MAXIMUM / QKD_EXPERIMENTAL]
-    B --> C[Key Establishment<br/>ECDH-P256 and/or ML-KEM-768 - plus simulated BB84 material for QKD_EXPERIMENTAL]
-    C --> D[HKDF-SHA256 -> AES-256 key]
-    D --> E[AES-256-GCM Authenticated Encryption of Payload]
-    E --> F[Digital Signature<br/>ECDSA / ML-DSA / plus SLH-DSA for hybrid profiles]
-    F --> G[Protected Transaction<br/>ciphertext + signature + audit metadata]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A[Transaction<br/>payload] --> B[Security profile selection<br/>BASELINE / PQC_ENHANCED /<br/>HYBRID_MAXIMUM / QKD_EXPERIMENTAL] --> C[Key establishment<br/>ECDH-P256 and/or ML-KEM-768]
+    end
+    subgraph R2[" "]
+        direction LR
+        D[HKDF-SHA256<br/>to AES-256 key] --> E[AES-256-GCM<br/>authenticated encryption] --> F[Digital signature<br/>ECDSA / ML-DSA / SLH-DSA]
+    end
+    R1 --> R2
+    R2 --> G[Protected transaction<br/>ciphertext + signature + audit metadata]
     style C fill:#FCEAEA,stroke:#C44E52

@@ -1,33 +1,33 @@
-The requirements below follow the project's SRS and were traced to the implementation (full matrix: \texttt{docs/project/PROJECT\_REQUIREMENTS\_TRACEABILITY.md}). The prototype is a command-line, notebook and test-driven research system; a web dashboard and API layer were not implemented.
+The requirements below follow the project's SRS and were traced to the implementation (full matrix: \path{docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md}). The prototype is a command-line, notebook and test-driven research system; a web dashboard and API layer were not implemented.
 
 \section{Functional Requirement}
 \begin{longtable}{@{}p{1.1cm}p{7.2cm}p{5.3cm}@{}}
 \caption{Functional requirements and implementation evidence}\label{tab:fr}\\
 \toprule ID & Requirement & Evidence in repository\\ \midrule \endfirsthead
 \toprule ID & Requirement & Evidence in repository\\ \midrule \endhead
-FR1 & Load transaction data & \texttt{src/data}\\
-FR2 & Preprocess banking transaction data & \texttt{src/data} (fit on training fold only)\\
-FR3 & Detect fraudulent transactions & \texttt{src/fraud\_engine}, \texttt{src/classical\_ml}\\
-FR4 & Train classical ML models & \texttt{src/classical\_ml}\\
-FR5 & Execute QML experiments & \texttt{src/qml}, \texttt{src/qml\_experimental}\\
-FR6 & Compare classical and quantum-enhanced models & Notebook 1, \texttt{results/layer1}\\
-FR7 & Encrypt transactions with AES-256 & \texttt{src/security/classical/aes.py}\\
-FR8 & RSA / ECC operations & \texttt{src/security/classical}\\
-FR9 & Generate ML-KEM keypairs & \texttt{src/security/pqc/backends.py}\\
-FR10 & Encapsulate / decapsulate PQC secrets & \texttt{src/security/pqc/backends.py}\\
-FR11 & Generate ML-DSA signatures & \texttt{src/security/pqc}\\
-FR12 & Verify ML-DSA signatures & \texttt{src/security/pqc}\\
-FR13 & Generate / verify SLH-DSA signatures & \texttt{src/security/pqc}\\
-FR14 & Simulate BB84 & \texttt{src/security/qkd/bb84.py}\\
-FR15 & Simulate channel noise & \texttt{bb84.py}, \texttt{bb84\_qiskit.py}\\
-FR16 & Simulate intercept--resend & \texttt{bb84.py}, \texttt{bb84\_qiskit.py}\\
+FR1 & Load transaction data & \path{src/data}\\
+FR2 & Preprocess banking transaction data & \path{src/data} (fit on training fold only)\\
+FR3 & Detect fraudulent transactions & \path{src/fraud_engine}, \path{src/classical_ml}\\
+FR4 & Train classical ML models & \path{src/classical_ml}\\
+FR5 & Execute QML experiments & \path{src/qml}, \path{src/qml_experimental}\\
+FR6 & Compare classical and quantum-enhanced models & Notebook 1, \path{results/layer1}\\
+FR7 & Encrypt transactions with AES-256 & \path{src/security/classical/aes.py}\\
+FR8 & RSA / ECC operations & \path{src/security/classical}\\
+FR9 & Generate ML-KEM keypairs & \path{src/security/pqc/backends.py}\\
+FR10 & Encapsulate / decapsulate PQC secrets & \path{src/security/pqc/backends.py}\\
+FR11 & Generate ML-DSA signatures & \path{src/security/pqc}\\
+FR12 & Verify ML-DSA signatures & \path{src/security/pqc}\\
+FR13 & Generate / verify SLH-DSA signatures & \path{src/security/pqc}\\
+FR14 & Simulate BB84 & \path{src/security/qkd/bb84.py}\\
+FR15 & Simulate channel noise & \texttt{bb84.py}, \path{bb84_qiskit.py}\\
+FR16 & Simulate intercept--resend & \texttt{bb84.py}, \path{bb84_qiskit.py}\\
 FR17 & Calculate QBER & both BB84 modules\\
 FR18 & Determine the sifted key & both BB84 modules\\
-FR19 & Evaluate Eve-detection thresholds & \texttt{scripts/security/run\_bb84\_final.py}\\
-FR20 & Execute Qiskit BB84 circuits & \texttt{bb84\_qiskit.py}; IBM scripts\\
-FR21 & Generate benchmark results & \texttt{scripts/security}, \texttt{results/layer2}\\
-FR22 & Generate figures and tables & \texttt{scripts/security/make\_layer2\_final\_figures.py}\\
-FR23 & Reproduce Layer~2 experiments & scripts above; \texttt{results/final/final\_results.json}\\
+FR19 & Evaluate Eve-detection thresholds & \path{scripts/security/run_bb84_final.py}\\
+FR20 & Execute Qiskit BB84 circuits & \path{bb84_qiskit.py}; IBM scripts\\
+FR21 & Generate benchmark results & \path{scripts/security}, \path{results/layer2}\\
+FR22 & Generate figures and tables & \path{scripts/security/make_layer2_final_figures.py}\\
+FR23 & Reproduce Layer~2 experiments & scripts above; \path{results/final/final_results.json}\\
 \bottomrule
 \end{longtable}
 

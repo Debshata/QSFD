@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 
 import numpy as np
+from PIL import Image
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -229,7 +230,12 @@ for sub, names in src.items():
     for n in names:
         p = ROOT / "artifacts" / "figures" / sub / f"{n}.png"
         if p.exists():
-            shutil.copy(p, FG / f"{n}.png")
+            im = Image.open(p)
+            if im.width > 1500:
+                im = im.resize((1500, round(im.height * 1500 / im.width)), Image.LANCZOS)
+            im.save(FG / f"{n}.png", optimize=True)
         else:
             missing.append(str(p.relative_to(ROOT)))
+for t_ in ("university", "ieee", "springer"):
+    shutil.copy(ROOT / "report" / "common" / "bibliography" / "references.bib", ROOT / "report" / t_ / "references.bib")
 print("macros:", len(macros), "| missing figures:", missing)
