@@ -1,35 +1,82 @@
-% University project report (complete record). Class: report (standard). Build: pdflatex -> bibtex -> pdflatex x2.
+% QSFD Minor Project Report (university format). pdfLaTeX. Build: pdflatex x2 (bibliography is pre-generated).
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx}% Times New Roman-compatible text and math font
-\usepackage[a4paper,left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{ebgaramond}% Garamond, used for captions only
+\usepackage{mathptmx}% Times New Roman-compatible text and math (loaded last: sets the main font)
+\usepackage[a4paper,top=1in,bottom=1.15in,left=1.5in,right=0.6in,headheight=30pt]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs,longtable,array,tabularx}
 \usepackage{url}
 \usepackage{setspace}
 \usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[explicit]{titlesec}
+\usepackage{caption}
 \usepackage[hidelinks]{hyperref}
-\usepackage[nottoc]{tocbibind}
-\graphicspath{{../common/figures/}}
+\graphicspath{{../common/figures/}{./}}
 \setkeys{Gin}{height=0.4\textheight,keepaspectratio=true}
 \emergencystretch=3em
 \newcommand{\figw}{0.9\textwidth}
 \newcommand{\placeholder}[1]{\textbf{[#1 -- to be completed]}}
 \input{../common/generated/results_macros.tex}
-\setstretch{1.5}% 1.5 line spacing throughout
+
+% ---- project title and authors ----
+\newcommand{\projtitle}{Quantum-Secure Fraud Detection Using QML and Post-Quantum Cryptography}
+\newcommand{\projnames}{Shreyansh Jaiswal, Abhishek Chaubey and Debshata Choudhury}
+
+% ---- body text: Times 12 pt, justified, 1.5 spacing, 1 cm paragraph indent ----
+\setstretch{1.5}
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{0pt}
+
+% ---- headings: Times, bold; chapter 18 pt centred; 1st order 16 pt; 2nd 14 pt; 3rd 12 pt ----
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}
+  {\centering\fontsize{18}{22}\selectfont\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {0pt}
+  {\vspace{24pt}\raggedright\fontsize{16}{20}\selectfont\thechapter.\ \MakeUppercase{#1}}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\bfseries\centering}
+  {}
+  {0pt}
+  {\fontsize{18}{22}\selectfont\MakeUppercase{#1}\vspace{24pt}}
+\titlespacing*{\chapter}{0pt}{0pt}{12pt}
+\titleformat{\section}{\normalfont\fontsize{14}{18}\bfseries}{\thesection.}{0.6em}{#1}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titleformat{\subsection}{\normalfont\fontsize{12}{16}\bfseries}{\thesubsection.}{0.6em}{#1}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titleformat{\subsubsection}{\normalfont\fontsize{12}{16}\bfseries}{\thesubsubsection.}{0.6em}{#1}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% ---- captions: Garamond, bold, 10 pt, centred; figure caption below, table caption above ----
+\DeclareCaptionFont{garamondbold}{\fontencoding{T1}\fontfamily{EBGaramond-TLF}\fontsize{10}{12}\bfseries\selectfont}
+\captionsetup{font=garamondbold,labelfont=garamondbold,textfont=garamondbold,justification=centering,singlelinecheck=false,skip=6pt}
+\captionsetup[table]{position=above}
+\captionsetup[figure]{position=below}
+
+% ---- header / footer (Times 12 pt) ----
+\newcommand{\hf}{\fontsize{12}{14}\selectfont}
+\fancypagestyle{nohdr}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[L]{\hf\projtitle}\fancyfoot[R]{\hf\thepage}}
+\fancypagestyle{bodyhdr}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+  \fancyhead[R]{\hf\projtitle\\\projnames}\fancyfoot[L]{\hf\projtitle}\fancyfoot[R]{\hf\thepage}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[L]{\hf\projtitle}\fancyfoot[R]{\hf\thepage}}
 
 \begin{document}
-\pagestyle{plain}% page number at the bottom of every page
+\pagenumbering{roman}
 
+% ---- cover page (no header, no footer) ----
 \begin{titlepage}
+\thispagestyle{empty}
 \centering
-{\Large \textbf{Quantum-Secure Fraud Detection System for Banking Transactions}\par}
+\vspace*{1cm}
+{\fontsize{18}{22}\bfseries\selectfont \projtitle\par}
 \vspace{1cm}
 {\large QSFD Minor Project Report\par}
 \vspace{1.5cm}
-Submitted by:\\ Shreyansh Jaiswal, Abhishek Chaubey and Debshata Choudhury\\[0.5cm]
+Submitted by:\\ \projnames\\[0.5cm]
 Department of Computer Science \& Engineering\\
 Amity School of Engineering \& Technology, Amity University, India\\[0.3cm]
 {\small jaiswal.shreyansh.official@gmail.com, abhishekchaubey501@gmail.com, debshatachoudhury@gmail.com}\\[1cm]
@@ -38,6 +85,7 @@ Academic year: \placeholder{Year}\\[2cm]
 {\small Repository: https://github.com/Debshata/QSFD}
 \end{titlepage}
 
+\pagestyle{nohdr}
 \chapter*{Certificate}
 \placeholder{Certificate text and signatures supplied by the institution}
 
@@ -47,10 +95,9 @@ Academic year: \placeholder{Year}\\[2cm]
 \chapter*{Acknowledgement}
 \placeholder{Acknowledgement of supervisor, institution and resources. The study used IBM Quantum open-plan access and open-source software}
 
-\chapter*{Abstract}
-The Quantum-Secure Fraud Detection System (QSFD) is a research prototype that studies fraud detection and transaction security for digital banking in the era of quantum computing. Layer~1 compares classical and quantum machine-learning fraud models; a 20-seed paired experiment shows that a local-sum measurement observable significantly improves a matched quantum neural network (mean PR-AUC difference \LsDelta{}, bootstrap 95\% CI [\LsCIlo{}, \LsCIhi{}]), while a matched classical control and XGBoost show no verified incremental quantum value. Layer~2 implements AES-256-GCM, RSA, ECC, ML-KEM, ML-DSA and SLH-DSA and compares a pure-Python reference with the compiled \texttt{pqcrypto} backend (speedups \SpeedupMin{}--\SpeedupMax{}$\times$), measures end-to-end transaction protection (\EEAMedian{}~ms classical, \EECMedian{}~ms compiled ML-KEM-768 + ML-DSA-65), and cross-validates BB84 with a protocol-level and a Qiskit circuit-level simulator (maximum mean-QBER difference \BbMaxDiff{}). Selected circuits were executed on IBM Quantum hardware (\HwJobs{} independent jobs on \HwBackend{}), showing calibration-dependent error and a clearly distinguishable intercept--resend model. The study claims no quantum advantage, no physical QKD and no practical attack on deployed cryptography.
-
+\renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
+\renewcommand{\listfigurename}{Figure Index}
 \listoffigures
 \listoftables
 
@@ -70,6 +117,19 @@ QML / QNN / VQC / QSVM & Quantum machine learning / neural network / variational
 RSA & Rivest--Shamir--Adleman\\
 \end{tabular}
 
+% ---- Arabic numbering from the abstract to the bibliography ----
+\clearpage
+\pagenumbering{arabic}
+\begin{center}{\fontsize{12}{14}\bfseries\selectfont ABSTRACT}\end{center}
+\vspace{2\baselineskip}
+\begin{itshape}
+\noindent The Quantum-Secure Fraud Detection System (QSFD) is a research prototype that studies fraud detection and transaction security for digital banking in the era of quantum computing. Layer~1 compares classical and quantum machine-learning fraud models; a 20-seed paired experiment shows that a local-sum measurement observable improves a matched quantum neural network (mean PR-AUC difference \LsDelta{}, 95\% bootstrap CI [\LsCIlo{}, \LsCIhi{}]), while a matched classical control and XGBoost show no verified incremental quantum value. Layer~2 implements AES-256-GCM, RSA, ECC, ML-KEM, ML-DSA and SLH-DSA, compares a pure-Python reference with the compiled pqcrypto backend (speedups \SpeedupMin{}--\SpeedupMax{}$\times$), measures end-to-end transaction protection (\EEAMedian{}~ms classical, \EECMedian{}~ms compiled), and cross-validates BB84 with protocol-level and Qiskit simulators. Selected circuits were also executed on IBM Quantum hardware (\HwJobs{} independent jobs on \HwBackend{}). No quantum advantage, physical QKD or practical attack on deployed cryptography is claimed.
+\end{itshape}
+
+\clearpage
+\pagestyle{bodyhdr}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyhead[R]{\hf\projtitle\\\projnames}\fancyfoot[L]{\hf\projtitle}\fancyfoot[R]{\hf\thepage}}
+
 \chapter{INTRODUCTION}
 \input{sections/introduction.tex}
 \chapter{SCOPE}
@@ -87,9 +147,6 @@ RSA & Rivest--Shamir--Adleman\\
 \chapter{INDIVIDUAL CONTRIBUTION}
 \input{sections/contribution.tex}
 \input{../common/paper/contributions.tex}
-
-\bibliographystyle{plain}
-\bibliography{references}
 
 \appendix
 \chapter{System Design and Architecture}
@@ -113,4 +170,13 @@ RSA & Rivest--Shamir--Adleman\\
 \input{../common/paper/conclusion.tex}
 \chapter{Environment, Reproduction and Test Summary}
 \input{sections/appendix.tex}
+
+% ---- bibliography: no header ----
+\clearpage
+\pagestyle{nohdr}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[L]{\hf\projtitle}\fancyfoot[R]{\hf\thepage}}
+\renewcommand{\bibname}{BIBLIOGRAPHY}
+\addcontentsline{toc}{chapter}{Bibliography}
+\chapter*{Bibliography}
+\input{bibliography.tex}
 \end{document}

@@ -13,7 +13,7 @@ begin end item centering small chapter tableofcontents listoffigures listoftable
 title author institution email keywords and titlerunning authorrunning IEEEauthorblockN IEEEauthorblockA textit hline
 toprule midrule bottomrule endfirsthead endhead multicolumn midrule frac sum otimes cdots langle rangle mathrm text tfrac Vert
 log hat Delta theta psi leq le times approx cdot vspace hspace noindent usepackage documentclass graphicspath newcommand
-onehalfspacing appendix IEEEkeywords abstract titlepage equation itemize longtable tabular table figure url Z X
+onehalfspacing fancyhf textquotedblleft textquotedblright appendix IEEEkeywords abstract titlepage equation itemize longtable tabular table figure url Z X
 """.split())
 problems = []
 

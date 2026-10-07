@@ -1,0 +1,31 @@
+\begin{longtable}{@{}p{1.1cm}p{5.0cm}p{2.0cm}p{1.6cm}p{0.9cm}p{3.1cm}@{}}
+\caption{Work-package schedule (drafted baseline; points are relative planning estimates)}\label{tab:wbs}\\
+\toprule ID & Work package & Owner & Weeks & Pts & Evidence\\ \midrule \endfirsthead
+\toprule ID & Work package & Owner & Weeks & Pts & Evidence\\ \midrule \endhead
+WP1 & Requirements analysis and literature review for fraud detection and classical ML & Shreyansh & W1--W2 & 3 & \path{SRS, literature notes}\\
+WP2 & Requirements analysis and literature review for cryptography and PQC & Abhishek & W1--W2 & 3 & \path{SRS, literature notes}\\
+WP3 & Dataset acquisition, cleaning, duplicate removal and temporal split & Abhishek & W1--W3 & 8 & \path{src/data}\\
+WP4 & Logistic regression, random forest, XGBoost, isolation forest; PR-AUC evaluation & Shreyansh & W2--W5 & 10 & \path{src/classical_ml, reports/classical_model_comparison.csv}\\
+WP5 & AES-256-GCM, RSA-3072, ECC P-256 implementation and tests & Abhishek & W3--W5 & 7 & \path{src/security/classical}\\
+WP6 & Three-layer architecture, repository structure, test scaffolding & Debshata & W4--W6 & 3 & \path{first commit 2026-08-25}\\
+WP7 & CLT-QNN / linear QNN circuits executed on ibm\_fez & Debshata & W6 & 3 & \path{reports/ibm_hardware (2026-08-25)}\\
+WP8 & Metrics, calibration and error analysis of the classical models & Shreyansh & W6--W8 & 4 & \path{reports/*.csv}\\
+WP9 & QSVM, VQC and QNN experiments on the controlled subset & Debshata & W5--W8 & 6 & \path{src/qml}\\
+WP10 & Chow-Liu circuits, QBoost, hybrid fusion, quantum anomaly detector & Debshata & W7--W10 & 7 & \path{results/layer1/quantum_contribution}\\
+WP11 & Matched classical control, bootstrap / Wilcoxon / permutation tests & Shreyansh & W8--W10 & 7 & \path{results/layer1/local_sum_decisive}\\
+WP12 & 20-seed paired experiment, gradient diagnostics, capacity control & Debshata & W9--W10 & 7 & \path{results/layer1/local_sum_decisive (2026-09-25)}\\
+WP13 & ML-KEM, ML-DSA, SLH-DSA reference wrappers and benchmarks & Abhishek & W9--W11 & 7 & \path{src/security/pqc (2026-09-30)}\\
+WP14 & Protocol-level BB84 with noise and intercept-resend & Debshata & W10--W11 & 4 & \path{src/security/qkd/bb84.py}\\
+WP15 & Pre-specified routing experiment (risk and routing policies) & Shreyansh & W10--W11 & 6 & \path{docs/protocols, results/integration}\\
+WP16 & Layer 1 unit tests and result documentation & Shreyansh & W10--W12 & 3 & \path{tests, docs/research/layer1}\\
+WP17 & Cryptography, PQC and BB84 unit tests & Abhishek & W10--W12 & 2 & \path{tests/test_security_*.py}\\
+WP18 & Layer 1 research notebook & Shreyansh & W11 & 4 & \path{research/01_*.ipynb}\\
+WP19 & Layer 2 research notebook & Abhishek & W11 & 4 & \path{research/02_*.ipynb}\\
+WP20 & Circuit-level BB84, cross-validation, threshold analysis & Debshata & W11--W12 & 4 & \path{src/security/qkd/bb84_qiskit.py}\\
+WP21 & Compiled backend, reference-vs-compiled benchmarks, banking pipeline & Abhishek & W11--W12 & 6 & \path{results/layer2 (2026-10-07)}\\
+WP22 & Pilot and 5 replicated ibm\_marrakesh jobs, Aer controls, analysis & Debshata & W12 & 3 & \path{results/ibm_quantum (2026-10-07)}\\
+WP23 & Report sections on Layer 1 and classical ML & Shreyansh & W11--W12 & 3 & \path{report/}\\
+WP24 & Report sections on Layer 2 and cryptography & Abhishek & W11--W12 & 3 & \path{report/}\\
+WP25 & Quantum sections, IBM chapter, LaTeX assembly & Debshata & W11--W12 & 3 & \path{report/, docs/}\\
+\bottomrule
+\end{longtable}

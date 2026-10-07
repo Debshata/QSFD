@@ -1,40 +1,57 @@
-The project followed an iterative research-and-validation approach rather than a formal ceremony-based method: problem identification, literature review, architecture design, implementation, experimental validation, statistical analysis, testing, documentation and revision, repeated per layer. Experimental protocols for the Layer~1 to Layer~2 integration were written and committed \emph{before} the experiment ran, to prevent post-hoc selection.
+The project followed an iterative research-and-validation approach organised in twelve one-week planning cycles between 20 July 2026 and 11 October 2026. Each cycle had the same loop: choose the next experiment or component, implement it, validate it with tests or statistics, record the result in the repository, and revise the plan. Work was divided by the three roles in Table~\ref{tab:roles}. Experimental protocols for the Layer~1 to Layer~2 integration were written and committed \emph{before} the experiment ran, to prevent post-hoc selection. The schedule, owners and planning points in this chapter are a drafted baseline built from the team's twelve weeks and aligned with the dates recorded in the repository; the points are relative planning estimates, not measured effort, and the team may replace them with its own records.
 
 \section{Project Timeline}
-Only two dates are evidenced by repository history: the first commit on 2026-08-25 (which also contains the earlier \path{ibm_fez} QML hardware run) and the latest work on 2026-10-07 (pqcrypto comparison, final BB84 statistics, IBM \path{ibm_marrakesh} campaign). Other phases are given as ordered stages without invented dates (Table~\ref{tab:timeline}).
+The twelve weeks are listed in Table~\ref{tab:weekly}. The project was split into twenty-five work packages (Table~\ref{tab:wbs}), shared so that each member carries the same planned effort of 40 of the 120 planning points (Fig.~\ref{fig:pm-share}), with six milestones (Table~\ref{tab:milestones}). Four milestones are anchored to repository evidence: the first commit on 25 August 2026 (week~6, which also holds the first \path{ibm_fez} QML hardware run), the decisive Layer~1 validation on 25 September (week~10), the Layer~2 core, integration experiment and notebooks on 30 September (week~11), and the pqcrypto comparison, replicated IBM hardware campaign and report package on 7 October (week~12). Weeks~1--5 (data, classical baselines, classical cryptography, literature) precede the first commit; their allocation is a planning estimate.
 
-\begin{table}[ht]
-\centering\small
-\caption{Project phases (ordered; dates only where repository evidence exists)}
-\label{tab:timeline}
-\begin{tabular}{@{}rp{4.1cm}p{3.6cm}p{4.6cm}@{}}
-\toprule
-\# & Phase & Date evidence & Main artifacts\\
-\midrule
-1 & Problem identification, SRS & before 2026-08-25 & SRS (three listed authors)\\
-2 & Literature review & before/during Layer~1 & \path{docs/research/literature}\\
-3 & Dataset preparation & Layer~1 period & \path{src/data}\\
-4 & Layer~1 development and experiments & Layer~1 period & \path{results/layer1}, Notebook 1\\
-5 & Layer~2 classical cryptography & Layer~2 period & \path{src/security/classical}\\
-6 & Layer~2 PQC (reference) & Layer~2 period & \path{src/security/pqc}\\
-7 & Layer~2 BB84 and Qiskit circuits & Layer~2 period & \path{src/security/qkd}\\
-8 & Integration experiment & after Layer~2 & \path{results/integration}\\
-9 & IBM QML hardware run (\path{ibm_fez}) & 2026-08-25 & \path{reports/ibm_hardware}\\
-10 & pqcrypto, end-to-end, final BB84 statistics & up to 2026-10-07 & \path{results/layer2}\\
-11 & IBM \path{ibm_marrakesh} pilot and campaign & 2026-10-07 & \path{results/ibm_quantum}\\
-12 & Testing, statistical validation, documentation, report & throughout & \TestsTotal{} tests; this report\\
-\bottomrule
-\end{tabular}
-\end{table}
+Fig.~\ref{fig:pm-gantt} shows the Gantt chart. Fig.~\ref{fig:pm-burndown} shows the burndown of the 120 planning points: the blue line is the remaining work implied by the work-package schedule and the dashed line is an ideal linear burndown. The drafted schedule stays above the ideal line until the final week (the gap is widest in weeks~7--8, at roughly 25 points) because the larger quantum and cryptography work packages start late; about 67 of the 120 points fall in the last four weeks, when the decisive Layer~1 validation, the Layer~2 work, the hardware campaign and the report were concentrated. This back-loaded profile is a schedule risk and is recorded as such in the risk assessment. Fig.~\ref{fig:pm-workload} shows the planned weekly workload per role and Fig.~\ref{fig:pm-burnup} the cumulative planned progress.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{pm_gantt}
+\caption{Gantt chart of the drafted work-package schedule (20 July to 11 October 2026). Bar colour shows the owner; diamonds mark milestones M1--M6.}
+\label{fig:pm-gantt}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{pm_burndown}
+\caption{Burndown chart: remaining planning points at the end of each week (drafted baseline) against an ideal linear burndown. Dotted lines mark the milestones.}
+\label{fig:pm-burndown}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{pm_share}
+\caption{Planned effort per team member: 40 planning points each (drafted baseline).}
+\label{fig:pm-share}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{pm_workload}
+\caption{Planned weekly workload by role (drafted baseline).}
+\label{fig:pm-workload}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{pm_burnup}
+\caption{Cumulative planned progress (burn-up).}
+\label{fig:pm-burnup}
+\end{figure}
+
+\input{../common/tables/pm_weekly.tex}
+\input{../common/tables/pm_wbs.tex}
+\input{../common/tables/pm_milestones.tex}
 
 \section{Project Roles and Responsibilities}
-The project was carried out by three team members, whose roles are given in Table~\ref{tab:roles}. The code repository records all of its commits under one account (Debshata Choudhury); the roles of the other two members are stated by the team and are not derived from commit history.
+The project was carried out by three team members, whose roles are given in Table~\ref{tab:roles}. Table~\ref{tab:raci} shows who is responsible, accountable, consulted and informed for each activity. The code repository records all of its commits under one account (Debshata Choudhury); the roles of the other two members are stated by the team and are not derived from commit history.
 
 \begin{table}[ht]
 \centering\small
 \caption{Team roles and responsibilities}
 \label{tab:roles}
-\begin{tabular}{@{}p{3.4cm}p{3.4cm}p{7.0cm}@{}}
+\begin{tabular}{@{}p{3.4cm}p{3.4cm}p{6.6cm}@{}}
 \toprule
 Member & Role & Responsibilities\\
 \midrule
@@ -44,3 +61,10 @@ Abhishek Chaubey & Data Analyst and Cryptography & Data analysis and preparation
 \bottomrule
 \end{tabular}
 \end{table}
+
+\input{../common/tables/pm_raci.tex}
+
+\section{Future Work Plan}
+The work above is the minor project. The twenty items in Table~\ref{tab:future} are the planned future work for the major project. They extend the existing components into one simulation platform. Owners are proposed from the stated roles, and the status column states honestly what exists at the end of the minor project. Several items (for example the Shor demonstration and the replay and tampering experiments) are educational or defensive experiments only: none of them is intended to show a practical attack on RSA, AES or deployed banking systems.
+
+\input{../common/tables/pm_future.tex}
