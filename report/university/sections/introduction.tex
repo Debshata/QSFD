@@ -5,7 +5,7 @@ The Quantum-Secure Fraud Detection System (QSFD) is a three-layer research proto
 \section{Purpose of Plan}
 The project exists to answer, with evidence, what quantum technologies add to a banking fraud-and-security pipeline and what they do not. Specifically it aims to (i) build and compare fraud-detection models; (ii) protect transactions with classical and post-quantum cryptography and compare their costs; (iii) study QKD by simulation and by executing the underlying circuits on quantum hardware; and (iv) validate every claim with reproducible experiments, including negative results. It is a research and educational prototype; it is not a deployed banking system.
 
-\section{Background Information / Available Alternatives}
+\section{Background Information/Available Alternatives}
 \textbf{Fraud detection.} Alternatives include rule engines, classical machine learning (logistic regression, random forests, gradient boosting~\cite{xgboost}), deep learning and, experimentally, quantum machine learning~\cite{havlicek,schuld}. Classical gradient boosting is fast and strong on tabular data, so it is the baseline against which quantum models must be judged.
 
 \textbf{Encryption and signatures.} AES-256 remains the bulk cipher; RSA and ECC provide key establishment and signatures today; ML-KEM, ML-DSA and SLH-DSA are the standardized quantum-resistant replacements for key establishment and signatures. They differ in key size, signature size and speed, so no single choice dominates.

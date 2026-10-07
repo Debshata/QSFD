@@ -318,4 +318,4 @@ recruiters — should come away understanding both what worked and what did not,
 - [`docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md`](docs/project/PROJECT_REQUIREMENTS_TRACEABILITY.md)
 - [`docs/research/layer1/`](docs/research/layer1/), [`docs/research/layer2/`](docs/research/layer2/), [`docs/research/integration/`](docs/research/integration/), [`docs/research/literature/`](docs/research/literature/)
 - [`reports/materials/`](reports/materials/) — literature review, claim-evidence matrix, figure/table/equation indices, final report DOCX source material
-- [`Quantum_Secure_Fraud_Detection_System_Final_Report.docx`](Quantum_Secure_Fraud_Detection_System_Final_Report.docx) — the complete standalone research report
+- [`QSFD Minor Project Report.docx`](QSFD%20Minor%20Project%20Report.docx) — the complete standalone research report

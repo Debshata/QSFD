@@ -2,7 +2,8 @@
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage{mathptmx}% Times New Roman-compatible text and math font
+\usepackage[a4paper,left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs,longtable,array,tabularx}
@@ -17,18 +18,21 @@
 \newcommand{\figw}{0.9\textwidth}
 \newcommand{\placeholder}[1]{\textbf{[#1 -- to be completed]}}
 \input{../common/generated/results_macros.tex}
-\onehalfspacing
+\setstretch{1.5}% 1.5 line spacing throughout
 
 \begin{document}
+\pagestyle{plain}% page number at the bottom of every page
 
 \begin{titlepage}
 \centering
 {\Large \textbf{Quantum-Secure Fraud Detection System for Banking Transactions}\par}
 \vspace{1cm}
-{\large Project Report\par}
+{\large QSFD Minor Project Report\par}
 \vspace{1.5cm}
-Submitted by:\\ Debshata Choudhury\\ \placeholder{Co-authors from the SRS (Shreyansh Jaiswal, Abhishek Chaubey): confirm inclusion, registration numbers}\\[1cm]
-\placeholder{University / Department / Programme}\\[0.5cm]
+Submitted by:\\ Shreyansh Jaiswal, Abhishek Chaubey and Debshata Choudhury\\[0.5cm]
+Department of Computer Science \& Engineering\\
+Amity School of Engineering \& Technology, Amity University, India\\[0.3cm]
+{\small jaiswal.shreyansh.official@gmail.com, abhishekchaubey501@gmail.com, debshatachoudhury@gmail.com}\\[1cm]
 Supervisor: \placeholder{Supervisor name and designation}\\[0.5cm]
 Academic year: \placeholder{Year}\\[2cm]
 {\small Repository: https://github.com/Debshata/QSFD}
@@ -66,23 +70,28 @@ QML / QNN / VQC / QSVM & Quantum machine learning / neural network / variational
 RSA & Rivest--Shamir--Adleman\\
 \end{tabular}
 
-\chapter{Introduction}
+\chapter{INTRODUCTION}
 \input{sections/introduction.tex}
-\chapter{Scope}
+\chapter{SCOPE}
 \input{sections/scope.tex}
-\chapter{Constraints}
+\chapter{CONSTRAINTS}
 \input{sections/constraints.tex}
-\chapter{Requirement Analysis}
+\chapter{REQUIREMENT ANALYSIS}
 \input{sections/requirements.tex}
-\chapter{Project Management Approach}
+\chapter{PROJECT MANAGEMENT APPROACH}
 \input{sections/management.tex}
-\chapter{Risk Assessment}
+\chapter{RISK ASSESSMENT}
 \input{sections/risk.tex}
-\chapter{Literature Review}
+\chapter{LITERATURE REVIEW}
 \input{../common/paper/related.tex}
-\chapter{Individual Contribution}
+\chapter{INDIVIDUAL CONTRIBUTION}
 \input{sections/contribution.tex}
 \input{../common/paper/contributions.tex}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\appendix
 \chapter{System Design and Architecture}
 \input{../common/paper/architecture.tex}
 \chapter{Implementation}
@@ -102,11 +111,6 @@ RSA & Rivest--Shamir--Adleman\\
 \input{../common/paper/limitations.tex}
 \chapter{Conclusion and Future Work}
 \input{../common/paper/conclusion.tex}
-
-\bibliographystyle{plain}
-\bibliography{references}
-
-\appendix
 \chapter{Environment, Reproduction and Test Summary}
 \input{sections/appendix.tex}
 \end{document}

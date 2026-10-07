@@ -41,3 +41,5 @@ report/**/*.bbl
 report/**/*.blg
 report/**/*.pdf
 report/**/*.synctex.gz
+report/university/plain_text.txt
+report/university/plain_text.docx

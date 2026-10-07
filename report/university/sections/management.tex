@@ -1,7 +1,7 @@
 The project followed an iterative research-and-validation approach rather than a formal ceremony-based method: problem identification, literature review, architecture design, implementation, experimental validation, statistical analysis, testing, documentation and revision, repeated per layer. Experimental protocols for the Layer~1 to Layer~2 integration were written and committed \emph{before} the experiment ran, to prevent post-hoc selection.
 
 \section{Project Timeline}
-Only two dates are evidenced by repository history: the first commit on 2026-08-25 (which also contains the earlier \path{ibm_fez} QML hardware run) and the latest work on 2026-10-07 (pqcrypto comparison, final BB84 statistics, IBM \path{ibm_marrakesh} campaign). Other phases are given as ordered stages without invented dates.
+Only two dates are evidenced by repository history: the first commit on 2026-08-25 (which also contains the earlier \path{ibm_fez} QML hardware run) and the latest work on 2026-10-07 (pqcrypto comparison, final BB84 statistics, IBM \path{ibm_marrakesh} campaign). Other phases are given as ordered stages without invented dates (Table~\ref{tab:timeline}).
 
 \begin{table}[ht]
 \centering\small
@@ -28,19 +28,19 @@ Only two dates are evidenced by repository history: the first commit on 2026-08-
 \end{table}
 
 \section{Project Roles and Responsibilities}
-The SRS lists three authors (Shreyansh Jaiswal, Abhishek Chaubey, Debshata Choudhury). The repository's 24 commits are all by Debshata Choudhury; roles of the other two authors cannot be verified from repository evidence and are therefore left for the team to complete.
+The project was carried out by three team members, whose roles are given in Table~\ref{tab:roles}. The code repository records all of its commits under one account (Debshata Choudhury); the roles of the other two members are stated by the team and are not derived from commit history.
 
 \begin{table}[ht]
 \centering\small
-\caption{Roles and responsibilities (evidence-based)}
+\caption{Team roles and responsibilities}
 \label{tab:roles}
-\begin{tabular}{@{}p{3.2cm}p{10.2cm}@{}}
+\begin{tabular}{@{}p{3.4cm}p{3.4cm}p{7.0cm}@{}}
 \toprule
-Member & Responsibilities\\
+Member & Role & Responsibilities\\
 \midrule
-Debshata Choudhury & Research design, Layer~1 and Layer~2 coding, QML and statistical experiments, PQC backends and benchmarks, BB84 protocol and Qiskit implementations, IBM Quantum experiments, testing, figures, notebooks, documentation and report writing, integration (all evidenced by repository commits).\\
-Shreyansh Jaiswal & \placeholder{Role and contribution}\\
-Abhishek Chaubey & \placeholder{Role and contribution}\\
+Debshata Choudhury & Quantum Engineer & Quantum machine-learning experiments, BB84 protocol and Qiskit circuits, IBM Quantum hardware experiments, post-quantum backend benchmarking, testing, figures, notebooks, documentation and integration of the layers.\\
+Shreyansh Jaiswal & Classical ML & Classical machine-learning fraud models and their evaluation, which serve as the baselines for the quantum models.\\
+Abhishek Chaubey & Data Analyst and Cryptography & Data analysis and preparation, and the classical and post-quantum cryptography components.\\
 \bottomrule
 \end{tabular}
 \end{table}

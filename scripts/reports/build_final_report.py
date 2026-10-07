@@ -26,7 +26,7 @@ from docx.oxml.ns import qn
 
 ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE = Path(r"C:\Users\debsh\Downloads\IEEE-Format (1).docx")
-OUT_PATH = ROOT / "Quantum_Secure_Fraud_Detection_System_Final_Report.docx"
+OUT_PATH = ROOT / "QSFD Minor Project Report.docx"
 MATERIALS = ROOT / "reports" / "materials"
 FIG_L1 = ROOT / "artifacts" / "figures" / "layer1"
 FIG_L2 = ROOT / "artifacts" / "figures" / "layer2"
@@ -122,8 +122,8 @@ def main():
             "Quantum Machine Learning, Post-Quantum Cryptography, and "
             "Risk-Adaptive Financial Security", "IEEE Title")
     p(doc, "Shreyansh Jaiswal, Abhishek Chaubey, Debshata Choudhury", "IEEE Author Name")
-    p(doc, "Department of Computer Science and Engineering", "IEEE Author Affiliation")
-    p(doc, "debshatachoudhury@gmail.com", "IEEE Author Email")
+    p(doc, "Department of Computer Science & Engineering, Amity School of Engineering & Technology, Amity University, India", "IEEE Author Affiliation")
+    p(doc, "jaiswal.shreyansh.official@gmail.com, abhishekchaubey501@gmail.com, debshatachoudhury@gmail.com", "IEEE Author Email")
 
     p(doc, "Abstract", "IEEE Abstract Heading")
     p(doc,

@@ -42,6 +42,8 @@ for root in ("university", "ieee", "springer"):
     refs = set(re.findall(r"\\(?:ref|eqref)\{([^}]+)\}", text))
     for r in sorted(refs - labels):
         problems.append(f"{root}: undefined ref {r}")
+    for u in sorted(l for l in labels - refs if l.startswith(("fig:", "tab:"))):
+        problems.append(f"{root}: figure/table never cited in text: {u}")
     cites = {c.strip() for m in re.findall(r"\\cite\{([^}]+)\}", text) for c in m.split(",")}
     for c in sorted(cites - keys):
         problems.append(f"{root}: undefined citation {c}")
